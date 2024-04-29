@@ -1,0 +1,15 @@
+<div class="form-group {{ $errors->has('idArtefacto') ? 'has-error' : ''}}">
+    <label for="idArtefacto" class="control-label">{{ 'Idartefacto' }}</label>
+    <input class="form-control" name="idArtefacto" type="number" id="idArtefacto" value="{{ isset($documentacione->idArtefacto) ? $documentacione->idArtefacto : ''}}" >
+    {!! $errors->first('idArtefacto', '<p class="help-block">:message</p>') !!}
+</div>
+<div class="form-group {{ $errors->has('directorio') ? 'has-error' : ''}}">
+    <label for="directorio" class="control-label">{{ 'Directorio' }}</label>
+    <input class="form-control" name="directorio" type="text" id="directorio" value="{{ isset($documentacione->directorio) ? $documentacione->directorio : ''}}" >
+    {!! $errors->first('directorio', '<p class="help-block">:message</p>') !!}
+</div>
+
+
+<div class="form-group">
+    <input class="btn btn-primary" type="submit" value="{{ $formMode === 'edit' ? 'Update' : 'Create' }}">
+</div>
