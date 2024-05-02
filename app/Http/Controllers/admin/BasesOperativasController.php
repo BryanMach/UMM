@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests;
 
 use App\Models\BasesOperativa;
+use App\Models\Cuenca;
 use Illuminate\Http\Request;
 
 class BasesOperativasController extends Controller
@@ -19,13 +20,29 @@ class BasesOperativasController extends Controller
     {
         $keyword = $request->get('search');
         $perPage = 25;
-
+        
         if (!empty($keyword)) {
+            switch ($keyword):
+                case "Lacustre":
+                    $keyword="3";
+                    break;
+                case "De la Plata":
+                    $keyword="2";
+                    break;
+                case "Amazónica":
+                    $keyword="1";
+                    break;
+                case "Amazonica":
+                    $keyword="1";
+                    break;
+                default:
+                    break;
+            endswitch;
             $basesoperativas = BasesOperativa::where('idCuenca', 'LIKE', "%$keyword%")
                 ->orWhere('baseOperativa', 'LIKE', "%$keyword%")
                 ->latest()->paginate($perPage);
         } else {
-            $basesoperativas = BasesOperativa::latest()->paginate($perPage);
+            $basesoperativas = BasesOperativa::with('cuenca')->latest()->paginate($perPage);
         }
 
         return view('admin.bases-operativas.index', compact('basesoperativas'));
@@ -38,7 +55,8 @@ class BasesOperativasController extends Controller
      */
     public function create()
     {
-        return view('admin.bases-operativas.create');
+        $cuencas = Cuenca::All();
+        return view('admin.bases-operativas.create',compact('cuencas'));
     }
 
     /**
@@ -55,7 +73,7 @@ class BasesOperativasController extends Controller
         
         BasesOperativa::create($requestData);
 
-        return redirect('admin/bases-operativas')->with('flash_message', 'BasesOperativa added!');
+        return redirect('admin/bases-operativas')->with('flash_message', 'Base operativa agregada!!!');
     }
 
     /**
@@ -68,7 +86,6 @@ class BasesOperativasController extends Controller
     public function show($id)
     {
         $basesoperativa = BasesOperativa::findOrFail($id);
-
         return view('admin.bases-operativas.show', compact('basesoperativa'));
     }
 
@@ -82,8 +99,8 @@ class BasesOperativasController extends Controller
     public function edit($id)
     {
         $basesoperativa = BasesOperativa::findOrFail($id);
-
-        return view('admin.bases-operativas.edit', compact('basesoperativa'));
+        $cuencas = Cuenca::All();
+        return view('admin.bases-operativas.edit', compact('basesoperativa', 'cuencas'));
     }
 
     /**
@@ -102,7 +119,7 @@ class BasesOperativasController extends Controller
         $basesoperativa = BasesOperativa::findOrFail($id);
         $basesoperativa->update($requestData);
 
-        return redirect('admin/bases-operativas')->with('flash_message', 'BasesOperativa updated!');
+        return redirect('admin/bases-operativas')->with('flash_message', 'BasesOperativa actualizado!');
     }
 
     /**
@@ -116,6 +133,6 @@ class BasesOperativasController extends Controller
     {
         BasesOperativa::destroy($id);
 
-        return redirect('admin/bases-operativas')->with('flash_message', 'BasesOperativa deleted!');
+        return redirect('admin/bases-operativas')->with('flash_message', 'Base operativa borrada!');
     }
 }

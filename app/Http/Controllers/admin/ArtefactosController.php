@@ -70,7 +70,7 @@ class ArtefactosController extends Controller
         
         Artefacto::create($requestData);
 
-        return redirect('admin/artefactos')->with('flash_message', 'Artefacto added!');
+        return redirect('admin/artefactos')->with('flash_message', 'Artefacto agregado!!!');
     }
 
     /**
@@ -117,7 +117,7 @@ class ArtefactosController extends Controller
         $artefacto = Artefacto::findOrFail($id);
         $artefacto->update($requestData);
 
-        return redirect('admin/artefactos')->with('flash_message', 'Artefacto updated!');
+        return redirect('admin/artefactos')->with('flash_message', 'Artefacto actualizado!');
     }
 
     /**
@@ -131,6 +131,6 @@ class ArtefactosController extends Controller
     {
         Artefacto::destroy($id);
 
-        return redirect('admin/artefactos')->with('flash_message', 'Artefacto deleted!');
+        return redirect('admin/artefactos')->with('flash_message', 'Artefacto borrado!');
     }
 }

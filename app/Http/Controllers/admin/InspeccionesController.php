@@ -55,7 +55,7 @@ class InspeccionesController extends Controller
         
         Inspeccione::create($requestData);
 
-        return redirect('admin/inspecciones')->with('flash_message', 'Inspeccione added!');
+        return redirect('admin/inspecciones')->with('flash_message', 'Inspeccione agregado!!!');
     }
 
     /**
@@ -102,7 +102,7 @@ class InspeccionesController extends Controller
         $inspeccione = Inspeccione::findOrFail($id);
         $inspeccione->update($requestData);
 
-        return redirect('admin/inspecciones')->with('flash_message', 'Inspeccione updated!');
+        return redirect('admin/inspecciones')->with('flash_message', 'Inspeccione actualizado!');
     }
 
     /**
@@ -116,6 +116,6 @@ class InspeccionesController extends Controller
     {
         Inspeccione::destroy($id);
 
-        return redirect('admin/inspecciones')->with('flash_message', 'Inspeccione deleted!');
+        return redirect('admin/inspecciones')->with('flash_message', 'Inspeccione borrado!');
     }
 }

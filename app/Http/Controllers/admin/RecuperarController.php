@@ -60,7 +60,7 @@ class RecuperarController extends Controller
         
         Recuperar::create($requestData);
 
-        return redirect('admin/recuperar')->with('flash_message', 'Recuperar added!');
+        return redirect('admin/recuperar')->with('flash_message', 'Recuperar agregado!!!');
     }
 
     /**
@@ -107,7 +107,7 @@ class RecuperarController extends Controller
         $recuperar = Recuperar::findOrFail($id);
         $recuperar->update($requestData);
 
-        return redirect('admin/recuperar')->with('flash_message', 'Recuperar updated!');
+        return redirect('admin/recuperar')->with('flash_message', 'Recuperar actualizado!');
     }
 
     /**
@@ -121,6 +121,6 @@ class RecuperarController extends Controller
     {
         Recuperar::destroy($id);
 
-        return redirect('admin/recuperar')->with('flash_message', 'Recuperar deleted!');
+        return redirect('admin/recuperar')->with('flash_message', 'Recuperar borrado!');
     }
 }

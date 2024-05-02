@@ -57,7 +57,7 @@ class PropietarioController extends Controller
         
         Propietario::create($requestData);
 
-        return redirect('admin/propietario')->with('flash_message', 'Propietario added!');
+        return redirect('admin/propietario')->with('flash_message', 'Propietario agregado!!!');
     }
 
     /**
@@ -104,7 +104,7 @@ class PropietarioController extends Controller
         $propietario = Propietario::findOrFail($id);
         $propietario->update($requestData);
 
-        return redirect('admin/propietario')->with('flash_message', 'Propietario updated!');
+        return redirect('admin/propietario')->with('flash_message', 'Propietario actualizado!');
     }
 
     /**
@@ -118,6 +118,6 @@ class PropietarioController extends Controller
     {
         Propietario::destroy($id);
 
-        return redirect('admin/propietario')->with('flash_message', 'Propietario deleted!');
+        return redirect('admin/propietario')->with('flash_message', 'Propietario borrado!');
     }
 }

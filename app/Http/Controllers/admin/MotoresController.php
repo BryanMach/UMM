@@ -59,7 +59,7 @@ class MotoresController extends Controller
         
         Motore::create($requestData);
 
-        return redirect('admin/motores')->with('flash_message', 'Motore added!');
+        return redirect('admin/motores')->with('flash_message', 'Motore agregado!!!');
     }
 
     /**
@@ -106,7 +106,7 @@ class MotoresController extends Controller
         $motore = Motore::findOrFail($id);
         $motore->update($requestData);
 
-        return redirect('admin/motores')->with('flash_message', 'Motore updated!');
+        return redirect('admin/motores')->with('flash_message', 'Motore actualizado!');
     }
 
     /**
@@ -120,6 +120,6 @@ class MotoresController extends Controller
     {
         Motore::destroy($id);
 
-        return redirect('admin/motores')->with('flash_message', 'Motore deleted!');
+        return redirect('admin/motores')->with('flash_message', 'Motore borrado!');
     }
 }

@@ -9,7 +9,7 @@
     {!! $errors->first('usuario', '<p class="help-block">:message</p>') !!}
 </div>
 <div class="form-group {{ $errors->has('contrasena') ? 'has-error' : ''}}">
-    <label for="contrasena" class="control-label">{{ 'Contrasena' }}</label>
+    <label for="contrasena" class="control-label">{{ 'Contraseña' }}</label>
     <input class="form-control" name="contrasena" type="text" id="contrasena" value="{{ isset($usuario->contrasena) ? $usuario->contrasena : ''}}" >
     {!! $errors->first('contrasena', '<p class="help-block">:message</p>') !!}
 </div>
@@ -18,8 +18,12 @@
     <input class="form-control" name="nivel" type="number" id="nivel" value="{{ isset($usuario->nivel) ? $usuario->nivel : ''}}" >
     {!! $errors->first('nivel', '<p class="help-block">:message</p>') !!}
 </div>
-
+<div class="form-group {{ $errors->has('nivel') ? 'has-error' : ''}}">
+    <label for="nivel" class="control-label">{{ 'Nivel' }}</label>
+    <input class="form-control" name="nivel" type="number" id="nivel" value="{{ isset($usuario->nivel) ? $usuario->nivel : ''}}" >
+    {!! $errors->first('nivel', '<p class="help-block">:message</p>') !!}
+</div>
 
 <div class="form-group">
-    <input class="btn btn-primary" type="submit" value="{{ $formMode === 'edit' ? 'Update' : 'Create' }}">
+    <input class="btn btn-primary" type="submit" value="{{ $formMode === 'edit' ? 'Actualizar' : 'Añadir' }}">
 </div>

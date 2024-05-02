@@ -54,7 +54,7 @@ class CuencaController extends Controller
         
         Cuenca::create($requestData);
 
-        return redirect('admin/cuenca')->with('flash_message', 'Cuenca added!');
+        return redirect('admin/cuenca')->with('flash_message', 'Cuenca agregado!!!');
     }
 
     /**
@@ -101,7 +101,7 @@ class CuencaController extends Controller
         $cuenca = Cuenca::findOrFail($id);
         $cuenca->update($requestData);
 
-        return redirect('admin/cuenca')->with('flash_message', 'Cuenca updated!');
+        return redirect('admin/cuenca')->with('flash_message', 'Cuenca actualizado!');
     }
 
     /**
@@ -115,6 +115,6 @@ class CuencaController extends Controller
     {
         Cuenca::destroy($id);
 
-        return redirect('admin/cuenca')->with('flash_message', 'Cuenca deleted!');
+        return redirect('admin/cuenca')->with('flash_message', 'Cuenca borrado!');
     }
 }

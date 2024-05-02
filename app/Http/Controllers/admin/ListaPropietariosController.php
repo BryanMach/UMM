@@ -55,7 +55,7 @@ class ListaPropietariosController extends Controller
         
         ListaPropietario::create($requestData);
 
-        return redirect('admin/lista-propietarios')->with('flash_message', 'ListaPropietario added!');
+        return redirect('admin/lista-propietarios')->with('flash_message', 'ListaPropietario agregado!!!');
     }
 
     /**
@@ -102,7 +102,7 @@ class ListaPropietariosController extends Controller
         $listapropietario = ListaPropietario::findOrFail($id);
         $listapropietario->update($requestData);
 
-        return redirect('admin/lista-propietarios')->with('flash_message', 'ListaPropietario updated!');
+        return redirect('admin/lista-propietarios')->with('flash_message', 'ListaPropietario actualizado!');
     }
 
     /**
@@ -116,6 +116,6 @@ class ListaPropietariosController extends Controller
     {
         ListaPropietario::destroy($id);
 
-        return redirect('admin/lista-propietarios')->with('flash_message', 'ListaPropietario deleted!');
+        return redirect('admin/lista-propietarios')->with('flash_message', 'ListaPropietario borrado!');
     }
 }

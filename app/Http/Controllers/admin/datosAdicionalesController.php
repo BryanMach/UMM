@@ -60,7 +60,7 @@ class datosAdicionalesController extends Controller
         
         datosAdicionale::create($requestData);
 
-        return redirect('admin/datos-adicionales')->with('flash_message', 'datosAdicionale added!');
+        return redirect('admin/datos-adicionales')->with('flash_message', 'datosAdicionale agregado!!!');
     }
 
     /**
@@ -107,7 +107,7 @@ class datosAdicionalesController extends Controller
         $datosadicionale = datosAdicionale::findOrFail($id);
         $datosadicionale->update($requestData);
 
-        return redirect('admin/datos-adicionales')->with('flash_message', 'datosAdicionale updated!');
+        return redirect('admin/datos-adicionales')->with('flash_message', 'datosAdicionale actualizado!');
     }
 
     /**
@@ -121,6 +121,6 @@ class datosAdicionalesController extends Controller
     {
         datosAdicionale::destroy($id);
 
-        return redirect('admin/datos-adicionales')->with('flash_message', 'datosAdicionale deleted!');
+        return redirect('admin/datos-adicionales')->with('flash_message', 'datosAdicionale borrado!');
     }
 }

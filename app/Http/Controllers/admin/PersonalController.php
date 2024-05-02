@@ -62,7 +62,7 @@ class PersonalController extends Controller
         
         Personal::create($requestData);
 
-        return redirect('admin/personal')->with('flash_message', 'Personal added!');
+        return redirect('admin/personal')->with('flash_message', 'Personal agregado!!!');
     }
 
     /**
@@ -109,7 +109,7 @@ class PersonalController extends Controller
         $personal = Personal::findOrFail($id);
         $personal->update($requestData);
 
-        return redirect('admin/personal')->with('flash_message', 'Personal updated!');
+        return redirect('admin/personal')->with('flash_message', 'Personal actualizado!');
     }
 
     /**
@@ -123,6 +123,6 @@ class PersonalController extends Controller
     {
         Personal::destroy($id);
 
-        return redirect('admin/personal')->with('flash_message', 'Personal deleted!');
+        return redirect('admin/personal')->with('flash_message', 'Personal borrado!');
     }
 }

@@ -54,7 +54,7 @@ class MaterialController extends Controller
         
         Material::create($requestData);
 
-        return redirect('admin/material')->with('flash_message', 'Material added!');
+        return redirect('admin/material')->with('flash_message', 'Material agregado!!!');
     }
 
     /**
@@ -101,7 +101,7 @@ class MaterialController extends Controller
         $material = Material::findOrFail($id);
         $material->update($requestData);
 
-        return redirect('admin/material')->with('flash_message', 'Material updated!');
+        return redirect('admin/material')->with('flash_message', 'Material actualizado!');
     }
 
     /**
@@ -115,6 +115,6 @@ class MaterialController extends Controller
     {
         Material::destroy($id);
 
-        return redirect('admin/material')->with('flash_message', 'Material deleted!');
+        return redirect('admin/material')->with('flash_message', 'Material borrado!');
     }
 }

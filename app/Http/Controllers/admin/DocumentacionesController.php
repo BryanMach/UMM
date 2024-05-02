@@ -55,7 +55,7 @@ class DocumentacionesController extends Controller
         
         Documentacione::create($requestData);
 
-        return redirect('admin/documentaciones')->with('flash_message', 'Documentacione added!');
+        return redirect('admin/documentaciones')->with('flash_message', 'Documentacione agregado!!!');
     }
 
     /**
@@ -102,7 +102,7 @@ class DocumentacionesController extends Controller
         $documentacione = Documentacione::findOrFail($id);
         $documentacione->update($requestData);
 
-        return redirect('admin/documentaciones')->with('flash_message', 'Documentacione updated!');
+        return redirect('admin/documentaciones')->with('flash_message', 'Documentacione actualizado!');
     }
 
     /**
@@ -116,6 +116,6 @@ class DocumentacionesController extends Controller
     {
         Documentacione::destroy($id);
 
-        return redirect('admin/documentaciones')->with('flash_message', 'Documentacione deleted!');
+        return redirect('admin/documentaciones')->with('flash_message', 'Documentacione borrado!');
     }
 }

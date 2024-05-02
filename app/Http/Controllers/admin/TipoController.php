@@ -54,7 +54,7 @@ class TipoController extends Controller
         
         Tipo::create($requestData);
 
-        return redirect('admin/tipo')->with('flash_message', 'Tipo added!');
+        return redirect('admin/tipo')->with('flash_message', 'Tipo agregado!!!');
     }
 
     /**
@@ -101,7 +101,7 @@ class TipoController extends Controller
         $tipo = Tipo::findOrFail($id);
         $tipo->update($requestData);
 
-        return redirect('admin/tipo')->with('flash_message', 'Tipo updated!');
+        return redirect('admin/tipo')->with('flash_message', 'Tipo actualizado!');
     }
 
     /**
@@ -115,6 +115,6 @@ class TipoController extends Controller
     {
         Tipo::destroy($id);
 
-        return redirect('admin/tipo')->with('flash_message', 'Tipo deleted!');
+        return redirect('admin/tipo')->with('flash_message', 'Tipo borrado!');
     }
 }

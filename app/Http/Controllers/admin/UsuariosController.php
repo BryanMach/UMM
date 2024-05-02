@@ -57,7 +57,7 @@ class UsuariosController extends Controller
         
         Usuario::create($requestData);
 
-        return redirect('admin/usuarios')->with('flash_message', 'Usuario added!');
+        return redirect('admin/usuarios')->with('flash_message', 'Usuario agregado!!!');
     }
 
     /**
@@ -104,7 +104,7 @@ class UsuariosController extends Controller
         $usuario = Usuario::findOrFail($id);
         $usuario->update($requestData);
 
-        return redirect('admin/usuarios')->with('flash_message', 'Usuario updated!');
+        return redirect('admin/usuarios')->with('flash_message', 'Usuario actualizado!');
     }
 
     /**
@@ -118,6 +118,6 @@ class UsuariosController extends Controller
     {
         Usuario::destroy($id);
 
-        return redirect('admin/usuarios')->with('flash_message', 'Usuario deleted!');
+        return redirect('admin/usuarios')->with('flash_message', 'Usuario borrado!');
     }
 }

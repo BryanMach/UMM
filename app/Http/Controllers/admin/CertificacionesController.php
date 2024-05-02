@@ -55,7 +55,7 @@ class CertificacionesController extends Controller
         
         Certificacione::create($requestData);
 
-        return redirect('admin/certificaciones')->with('flash_message', 'Certificacione added!');
+        return redirect('admin/certificaciones')->with('flash_message', 'Certificacione agregado!!!');
     }
 
     /**
@@ -102,7 +102,7 @@ class CertificacionesController extends Controller
         $certificacione = Certificacione::findOrFail($id);
         $certificacione->update($requestData);
 
-        return redirect('admin/certificaciones')->with('flash_message', 'Certificacione updated!');
+        return redirect('admin/certificaciones')->with('flash_message', 'Certificacione actualizado!');
     }
 
     /**
@@ -116,6 +116,6 @@ class CertificacionesController extends Controller
     {
         Certificacione::destroy($id);
 
-        return redirect('admin/certificaciones')->with('flash_message', 'Certificacione deleted!');
+        return redirect('admin/certificaciones')->with('flash_message', 'Certificacione borrado!');
     }
 }
