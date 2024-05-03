@@ -9,7 +9,7 @@ use App\Models\Artefacto;
 use App\Models\BasesOperativa;
 use App\Models\Tipo;
 use Illuminate\Http\Request;
-
+use App\Models\Usuario;
 class ArtefactosController extends Controller
 {
     /**
@@ -74,8 +74,9 @@ class ArtefactosController extends Controller
     public function create()
     {
         $basesoperativas = BasesOperativa::All();
+        $usuarios = Usuario::All();
         $tipos = Tipo::All();
-        return view('admin.artefactos.create', compact('basesoperativas','tipos'));
+        return view('admin.artefactos.create', compact('basesoperativas','tipos','usuarios'));
     }
 
     /**
