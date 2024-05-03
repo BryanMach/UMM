@@ -294,7 +294,6 @@ return [
     | https://github.com/jeroennoten/Laravel-AdminLTE/wiki/Menu-Configuration
     |
     */
-
     'menu' => [
         // Navbar items:
         [
@@ -320,106 +319,106 @@ return [
         [
             'text' => 'Cuencas',
             'url' => 'admin/cuenca',
-            'icon' => 'far fa-fw fa-file',
-            
+            'icon' => 'fas fa-water',
+
             'label_color' => 'success',
         ],
         [
             'text' => 'Bases operativas',
             'url' => 'admin/bases-operativas',
-            'icon' => 'far fa-fw fa-file',
-            
+            'icon' => 'fas fa-building',
+
             'label_color' => 'success',
         ],
         [
             'text' => 'Personal',
             'url' => 'admin/personal',
-            'icon' => 'far fa-fw fa-file',
-            
+            'icon' => 'fas fa-user-friends',
+
             'label_color' => 'success',
         ],
         [
             'text' => 'Usuarios',
             'url' => 'admin/usuarios',
             'icon' => 'fas fa-user-circle',
-            
+
             'label_color' => 'success',
         ],
         [
             'text' => 'Material',
             'url' => 'admin/material',
-            'icon' => 'far fa-fw fa-file',
-            
+            'icon' => 'fas fa-pallet',
+
             'label_color' => 'success',
         ],
         [
             'text' => 'Tipos',
             'url' => 'admin/tipo',
-            'icon' => 'far fa-fw fa-file',
-            
+            'icon' => 'fas fa-ship',
+
             'label_color' => 'success',
         ],
         [
             'text' => 'Propietarios',
             'url' => 'admin/propietario',
-            'icon' => 'far fa-fw fa-file',
-            
+            'icon' => 'fas fa-user-tie',
+
             'label_color' => 'success',
         ],
         [
             'text' => 'Artefactos',
             'url' => 'admin/artefactos',
-            'icon' => 'far fa-fw fa-file',
-            
+            'icon' => 'fas fa-tools',
+
             'label_color' => 'success',
         ],
         [
             'text' => 'Documentación',
             'url' => 'admin/documentaciones',
-            'icon' => 'far fa-fw fa-file',
-            
+            'icon' => 'fas fa-book',
+
             'label_color' => 'success',
         ],
         [
             'text' => 'Inspección',
             'url' => 'admin/inspecciones',
-            'icon' => 'far fa-fw fa-file',
-            
+            'icon' => 'fas fa-binoculars',
+
             'label_color' => 'success',
         ],
         [
             'text' => 'Lista de propietarios',
             'url' => 'admin/lista-propietarios',
-            'icon' => 'far fa-fw fa-file',
-            
+            'icon' => 'fas fa-list',
+
             'label_color' => 'success',
         ],
         [
             'text' => 'Motores',
             'url' => 'admin/motores',
-            'icon' => 'far fa-fw fa-file',
-            
+            'icon' => 'fas fa-cogs',
+
             'label_color' => 'success',
         ],
         [
             'text' => 'Datos adicionales',
             'url' => 'admin/datos-adicionales',
-            'icon' => 'far fa-fw fa-file',
-            
+            'icon' => 'fas fa-chart-bar',
+
             'label_color' => 'success',
         ],
         [
             'text' => 'Certificaciones',
             'url' => 'admin/certificaciones',
-            'icon' => 'far fa-fw fa-file',
-            
+            'icon' => 'fas fa-address-card',
+
             'label_color' => 'success',
         ],
         [
             'text' => 'Recuperar',
             'url' => 'admin/recuperar',
-            'icon' => 'far fa-fw fa-file',
-            
+            'icon' => 'fas fa-undo',
+
             'label_color' => 'success',
         ],
         ['header' => 'account_settings'],
@@ -488,7 +487,6 @@ return [
             'url' => '#',
         ],
     ],
-
     /*
     |--------------------------------------------------------------------------
     | Menu Filters

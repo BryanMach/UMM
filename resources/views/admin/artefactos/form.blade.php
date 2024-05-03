@@ -3,9 +3,18 @@
     <input class="form-control" name="idUsuarios" type="number" id="idUsuarios" value="{{ isset($artefacto->idUsuarios) ? $artefacto->idUsuarios : ''}}" >
     {!! $errors->first('idUsuarios', '<p class="help-block">:message</p>') !!}
 </div>
-<div class="form-group {{ $errors->has('idBaseOperativa') ? 'has-error' : ''}}">
+<!--<div class="form-group {{ $errors->has('idBaseOperativa') ? 'has-error' : ''}}">
     <label for="idBaseOperativa" class="control-label">{{ 'Idbaseoperativa' }}</label>
     <input class="form-control" name="idBaseOperativa" type="number" id="idBaseOperativa" value="{{ isset($artefacto->idBaseOperativa) ? $artefacto->idBaseOperativa : ''}}" >
+    {!! $errors->first('idBaseOperativa', '<p class="help-block">:message</p>') !!}
+</div>-->
+<div class="form-group {{ $errors->has('idBaseOperativa') ? 'has-error' : ''}}">
+    <label for="idBaseOperativa" class="control-label">{{ 'Base operativa' }}</label>
+    <select class="form-control" name="idBaseOperativa" id="idBaseOperativa">
+        @foreach ($basesoperativas as $baseoperativa)
+            <option value="{{$baseoperativa->id}}">{{$baseoperativa->baseOperativa}}</option>
+        @endforeach
+    </select>
     {!! $errors->first('idBaseOperativa', '<p class="help-block">:message</p>') !!}
 </div>
 <div class="form-group {{ $errors->has('matricula') ? 'has-error' : ''}}">
@@ -19,13 +28,13 @@
     {!! $errors->first('nombre', '<p class="help-block">:message</p>') !!}
 </div>
 <div class="form-group {{ $errors->has('idTipo') ? 'has-error' : ''}}">
-    <label for="idTipo" class="control-label">{{ 'Idtipo' }}</label>
-    <input class="form-control" name="idTipo" type="number" id="idTipo" value="{{ isset($artefacto->idTipo) ? $artefacto->idTipo : ''}}" >
+    <label for="idTipo" class="control-label">{{ 'Tipo' }}</label>
+    <input class="form-control" name="idTipo" type="number" id="idTipo" value="{{ isset($artefacto->idTipo) ? $artefacto->tipos->tipo : ''}}" >
     {!! $errors->first('idTipo', '<p class="help-block">:message</p>') !!}
 </div>
 <div class="form-group {{ $errors->has('idMaterial') ? 'has-error' : ''}}">
-    <label for="idMaterial" class="control-label">{{ 'Idmaterial' }}</label>
-    <input class="form-control" name="idMaterial" type="number" id="idMaterial" value="{{ isset($artefacto->idMaterial) ? $artefacto->idMaterial : ''}}" >
+    <label for="idMaterial" class="control-label">{{ 'Material' }}</label>
+    <input class="form-control" name="idMaterial" type="number" id="idMaterial" value="{{ isset($artefacto->idMaterial) ? $artefacto->materials->material : ''}}" >
     {!! $errors->first('idMaterial', '<p class="help-block">:message</p>') !!}
 </div>
 <div class="form-group {{ $errors->has('eslora') ? 'has-error' : ''}}">

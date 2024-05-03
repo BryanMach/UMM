@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests;
 
 use App\Models\Artefacto;
+use App\Models\BasesOperativa;
+use App\Models\Tipo;
 use Illuminate\Http\Request;
 
 class ArtefactosController extends Controller
@@ -21,7 +23,7 @@ class ArtefactosController extends Controller
         $perPage = 25;
 
         if (!empty($keyword)) {
-            $artefactos = Artefacto::where('idUsuarios', 'LIKE', "%$keyword%")
+            /*$artefactos = Artefacto::where('idUsuarios', 'LIKE', "%$keyword%")
                 ->orWhere('idBaseOperativa', 'LIKE', "%$keyword%")
                 ->orWhere('matricula', 'LIKE', "%$keyword%")
                 ->orWhere('nombre', 'LIKE', "%$keyword%")
@@ -38,9 +40,27 @@ class ArtefactosController extends Controller
                 ->orWhere('servicio', 'LIKE', "%$keyword%")
                 ->orWhere('asociacion', 'LIKE', "%$keyword%")
                 ->orWhere('observaciones', 'LIKE', "%$keyword%")
+                ->latest()->paginate($perPage);*/
+                $artefactos = Artefacto::with('c')->where('matricula', 'LIKE', "%$keyword%")
+                ->orWhere('nombre', 'LIKE', "%$keyword%")
+                ->orWhere('eslora', 'LIKE', "%$keyword%")
+                ->orWhere('manga', 'LIKE', "%$keyword%")
+                ->orWhere('puntal', 'LIKE', "%$keyword%")
+                ->orWhere('francobordo', 'LIKE', "%$keyword%")
+                ->orWhere('propulsion', 'LIKE', "%$keyword%")
+                ->orWhere('construccion', 'LIKE', "%$keyword%")
+                ->orWhere('trn', 'LIKE', "%$keyword%")
+                ->orWhere('trb', 'LIKE', "%$keyword%")
+                ->orWhere('servicio', 'LIKE', "%$keyword%")
+                ->orWhere('asociacion', 'LIKE', "%$keyword%")
+                ->orWhere('observaciones', 'LIKE', "%$keyword%")
+                ->orWhere('idBaseOperativa', 'LIKE', "%$keyword%")
+                ->orWhere('idUsuarios', 'LIKE', "%$keyword%")
+                ->orWhere('idTipo', 'LIKE', "%$keyword%")
+                ->orWhere('idMaterial', 'LIKE', "%$keyword%")
                 ->latest()->paginate($perPage);
         } else {
-            $artefactos = Artefacto::latest()->paginate($perPage);
+            $artefactos = Artefacto::with('tipos','material','baseoperativa')->latest()->paginate($perPage);
         }
 
         return view('admin.artefactos.index', compact('artefactos'));
@@ -53,7 +73,9 @@ class ArtefactosController extends Controller
      */
     public function create()
     {
-        return view('admin.artefactos.create');
+        $basesoperativas = BasesOperativa::All();
+        $tipos = Tipo::All();
+        return view('admin.artefactos.create', compact('basesoperativas','tipos'));
     }
 
     /**

@@ -20,7 +20,6 @@ class BasesOperativasController extends Controller
     {
         $keyword = $request->get('search');
         $perPage = 25;
-        
         if (!empty($keyword)) {
             switch ($keyword):
                 case "Lacustre":
@@ -38,11 +37,21 @@ class BasesOperativasController extends Controller
                 default:
                     break;
             endswitch;
+            /*$basesoperativas = BasesOperativa::where('baseOperativa', 'LIKE', "%$keyword%")
+                ->latest()->paginate($perPage);
+            if(empty($basesoperativas)){
+                $var=Cuenca::where('cuenca','LIKE', "%$keyword%")->latest()->paginate($perPage);
+                if(!empty($var)){
+                    $keyword=$var->cuenca->id;
+                    $basesoperativas = BasesOperativa::where('idCuenca', 'LIKE', "%$keyword%")
+                        ->latest()->paginate($perPage);
+                }
+            }*/
             $basesoperativas = BasesOperativa::where('idCuenca', 'LIKE', "%$keyword%")
                 ->orWhere('baseOperativa', 'LIKE', "%$keyword%")
                 ->latest()->paginate($perPage);
         } else {
-            $basesoperativas = BasesOperativa::with('cuenca')->latest()->paginate($perPage);
+            $basesoperativas = BasesOperativa::with('cuenca')->latest("idCuenca")->latest("baseOperativa")->paginate($perPage);
         }
 
         return view('admin.bases-operativas.index', compact('basesoperativas'));
