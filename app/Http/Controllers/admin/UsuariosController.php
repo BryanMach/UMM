@@ -4,7 +4,7 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
-
+use App\Models\Personal;
 use App\Models\Usuario;
 use Illuminate\Http\Request;
 
@@ -40,7 +40,8 @@ class UsuariosController extends Controller
      */
     public function create()
     {
-        return view('admin.usuarios.create');
+        $personas = Personal::All();
+        return view('admin.usuarios.create', compact('personas'));
     }
 
     /**
@@ -52,9 +53,9 @@ class UsuariosController extends Controller
      */
     public function store(Request $request)
     {
-        
+
         $requestData = $request->all();
-        
+
         Usuario::create($requestData);
 
         return redirect('admin/usuarios')->with('flash_message', 'Usuario agregado!!!');
@@ -98,9 +99,9 @@ class UsuariosController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
+
         $requestData = $request->all();
-        
+
         $usuario = Usuario::findOrFail($id);
         $usuario->update($requestData);
 

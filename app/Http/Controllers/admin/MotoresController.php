@@ -4,7 +4,7 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
-
+use App\Models\Artefacto;
 use App\Models\Motore;
 use Illuminate\Http\Request;
 
@@ -42,7 +42,8 @@ class MotoresController extends Controller
      */
     public function create()
     {
-        return view('admin.motores.create');
+        $artefactos = Artefacto::All();
+        return view('admin.motores.create', compact('artefactos'));
     }
 
     /**
@@ -54,9 +55,9 @@ class MotoresController extends Controller
      */
     public function store(Request $request)
     {
-        
+
         $requestData = $request->all();
-        
+
         Motore::create($requestData);
 
         return redirect('admin/motores')->with('flash_message', 'Motore agregado!!!');
@@ -100,9 +101,9 @@ class MotoresController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
+
         $requestData = $request->all();
-        
+
         $motore = Motore::findOrFail($id);
         $motore->update($requestData);
 

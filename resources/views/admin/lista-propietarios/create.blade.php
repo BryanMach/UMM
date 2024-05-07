@@ -7,7 +7,9 @@
                 <div class="card">
                     <div class="card-header">Crear nuevo ListaPropietario</div>
                     <div class="card-body">
-                        <a href="{{ url('/admin/lista-propietarios') }}" title="Back"><button class="btn btn-warning btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i> Retroceder</button></a>
+                        <a href="{{ url('/admin/lista-propietarios') }}" title="Back"><button
+                                class="btn btn-warning btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i>
+                                Retroceder</button></a>
                         <br />
                         <br />
 
@@ -19,7 +21,8 @@
                             </ul>
                         @endif
 
-                        <form method="POST" action="{{ url('/admin/lista-propietarios') }}" accept-charset="UTF-8" class="form-horizontal" enctype="multipart/form-data">
+                        <form method="POST" action="{{ url('/admin/lista-propietarios') }}" accept-charset="UTF-8"
+                            class="form-horizontal" enctype="multipart/form-data">
                             {{ csrf_field() }}
 
                             @include ('admin.lista-propietarios.form', ['formMode' => 'create'])

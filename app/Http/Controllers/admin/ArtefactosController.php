@@ -7,9 +7,11 @@ use App\Http\Requests;
 
 use App\Models\Artefacto;
 use App\Models\BasesOperativa;
+use App\Models\Material;
 use App\Models\Tipo;
 use Illuminate\Http\Request;
 use App\Models\Usuario;
+
 class ArtefactosController extends Controller
 {
     /**
@@ -41,7 +43,7 @@ class ArtefactosController extends Controller
                 ->orWhere('asociacion', 'LIKE', "%$keyword%")
                 ->orWhere('observaciones', 'LIKE', "%$keyword%")
                 ->latest()->paginate($perPage);*/
-                $artefactos = Artefacto::with('c')->where('matricula', 'LIKE', "%$keyword%")
+            $artefactos = Artefacto::where('matricula', 'LIKE', "%$keyword%")
                 ->orWhere('nombre', 'LIKE', "%$keyword%")
                 ->orWhere('eslora', 'LIKE', "%$keyword%")
                 ->orWhere('manga', 'LIKE', "%$keyword%")
@@ -60,7 +62,7 @@ class ArtefactosController extends Controller
                 ->orWhere('idMaterial', 'LIKE', "%$keyword%")
                 ->latest()->paginate($perPage);
         } else {
-            $artefactos = Artefacto::with('tipos','material','baseoperativa')->latest()->paginate($perPage);
+            $artefactos = Artefacto::with('usuarios')->latest()->paginate($perPage);
         }
 
         return view('admin.artefactos.index', compact('artefactos'));
@@ -76,7 +78,8 @@ class ArtefactosController extends Controller
         $basesoperativas = BasesOperativa::All();
         $usuarios = Usuario::All();
         $tipos = Tipo::All();
-        return view('admin.artefactos.create', compact('basesoperativas','tipos','usuarios'));
+        $materiales = Material::All();
+        return view('admin.artefactos.create', compact('basesoperativas', 'tipos', 'usuarios', 'materiales'));
     }
 
     /**
@@ -88,9 +91,9 @@ class ArtefactosController extends Controller
      */
     public function store(Request $request)
     {
-        
+
         $requestData = $request->all();
-        
+
         Artefacto::create($requestData);
 
         return redirect('admin/artefactos')->with('flash_message', 'Artefacto agregado!!!');
@@ -134,9 +137,9 @@ class ArtefactosController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
+
         $requestData = $request->all();
-        
+
         $artefacto = Artefacto::findOrFail($id);
         $artefacto->update($requestData);
 

@@ -3,7 +3,8 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use app\Models\Artefacto;
+use App\Models\Artefacto;
+use App\Models\Propietario;
 
 class ListaPropietario extends Model
 {
@@ -15,10 +16,10 @@ class ListaPropietario extends Model
     protected $table = 'lista_propietarios';
 
     /**
-    * The database primary key value.
-    *
-    * @var string
-    */
+     * The database primary key value.
+     *
+     * @var string
+     */
     protected $primaryKey = 'id';
 
     /**
@@ -28,10 +29,12 @@ class ListaPropietario extends Model
      */
     protected $fillable = ['idPropietario', 'idArtefacto'];
 
-    public function artefactos(){
-        return $this->belongsTo(Artefacto::class,'idArtefacto','id');
+    public function artefactos()
+    {
+        return $this->belongsTo(Artefacto::class, 'idArtefacto', 'id');
     }
-    public function propietarios(){
-        return $this->belongsTo(Tipo::class, 'idPropietario', 'id');
+    public function propietarios()
+    {
+        return $this->belongsTo(Propietario::class, 'idPropietario', 'id');
     }
 }

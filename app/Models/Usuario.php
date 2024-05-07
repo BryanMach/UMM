@@ -15,10 +15,10 @@ class Usuario extends Model
     protected $table = 'usuarios';
 
     /**
-    * The database primary key value.
-    *
-    * @var string
-    */
+     * The database primary key value.
+     *
+     * @var string
+     */
     protected $primaryKey = 'id';
 
     /**
@@ -28,7 +28,12 @@ class Usuario extends Model
      */
     protected $fillable = ['idPersonal', 'usuario', 'contrasena', 'nivel'];
 
-    public function artefactos(){
+    public function artefactos()
+    {
         return $this->hasMany(Artefacto::class);
+    }
+    public function personals()
+    {
+        return $this->belongsTo(Personal::class, 'idPersonal', 'id');
     }
 }

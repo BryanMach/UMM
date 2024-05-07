@@ -4,8 +4,9 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
-
+use App\Models\Artefacto;
 use App\Models\ListaPropietario;
+use App\Models\Propietario;
 use Illuminate\Http\Request;
 
 class ListaPropietariosController extends Controller
@@ -38,7 +39,9 @@ class ListaPropietariosController extends Controller
      */
     public function create()
     {
-        return view('admin.lista-propietarios.create');
+        $propietarios = Propietario::All();
+        $artefactos = Artefacto::All();
+        return view('admin.lista-propietarios.create', compact('propietarios', 'artefactos'));
     }
 
     /**
@@ -50,9 +53,9 @@ class ListaPropietariosController extends Controller
      */
     public function store(Request $request)
     {
-        
+
         $requestData = $request->all();
-        
+
         ListaPropietario::create($requestData);
 
         return redirect('admin/lista-propietarios')->with('flash_message', 'ListaPropietario agregado!!!');
@@ -96,9 +99,9 @@ class ListaPropietariosController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
+
         $requestData = $request->all();
-        
+
         $listapropietario = ListaPropietario::findOrFail($id);
         $listapropietario->update($requestData);
 

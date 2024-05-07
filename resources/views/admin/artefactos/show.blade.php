@@ -8,24 +8,98 @@
                     <div class="card-header">Artefacto {{ $artefacto->id }}</div>
                     <div class="card-body">
 
-                        <a href="{{ url('/admin/artefactos') }}" title="Back"><button class="btn btn-warning btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i> Retroceder</button></a>
-                        <a href="{{ url('/admin/artefactos/' . $artefacto->id . '/edit') }}" title="Editar Artefacto"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Editar</button></a>
+                        <a href="{{ url('/admin/artefactos') }}" title="Back"><button class="btn btn-warning btn-sm"><i
+                                    class="fa fa-arrow-left" aria-hidden="true"></i> Retroceder</button></a>
+                        <a href="{{ url('/admin/artefactos/' . $artefacto->id . '/edit') }}"
+                            title="Editar Artefacto"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o"
+                                    aria-hidden="true"></i> Editar</button></a>
 
-                        <form method="POST" action="{{ url('admin/artefactos' . '/' . $artefacto->id) }}" accept-charset="UTF-8" style="display:inline">
+                        <form method="POST" action="{{ url('admin/artefactos' . '/' . $artefacto->id) }}"
+                            accept-charset="UTF-8" style="display:inline">
                             {{ method_field('DELETE') }}
                             {{ csrf_field() }}
-                            <button type="submit" class="btn btn-danger btn-sm" title="Borrar Artefacto" onclick="return confirm(&quot;Confirm delete?&quot;)"><i class="fa fa-trash-o" aria-hidden="true"></i> Borrar</button>
+                            <button type="submit" class="btn btn-danger btn-sm" title="Borrar Artefacto"
+                                onclick="return confirm(&quot;Confirm delete?&quot;)"><i class="fa fa-trash-o"
+                                    aria-hidden="true"></i> Borrar</button>
                         </form>
-                        <br/>
-                        <br/>
+                        <br />
+                        <br />
 
                         <div class="table-responsive">
                             <table class="table">
                                 <tbody>
                                     <tr>
-                                        <th>ID</th><td>{{ $artefacto->id }}</td>
+                                        <th>ID</th>
+                                        <td>{{ $artefacto->id }}</td>
                                     </tr>
-                                    <tr><th> IdUsuarios </th><td> {{ $artefacto->idUsuarios }} </td></tr><tr><th> IdBaseOperativa </th><td> {{ $artefacto->idBaseOperativa }} </td></tr><tr><th> Matricula </th><td> {{ $artefacto->matricula }} </td></tr>
+                                    <tr>
+                                        <th> Usuarios </th>
+                                        <td> {{ $artefacto->usuarios->usuario }} </td>
+                                    </tr>
+                                    <tr>
+                                        <th> Base operativa </th>
+                                        <td> {{ $artefacto->baseoperativa->baseOperativa }} </td>
+                                    </tr>
+                                    <tr>
+                                        <th> Matricula </th>
+                                        <td> {{ $artefacto->matricula }} </td>
+                                    </tr>
+                                    <tr>
+                                        <th> Nombre </th>
+                                        <td> {{ $artefacto->nombre }} </td>
+                                    </tr>
+                                    <tr>
+                                        <th> Tipo </th>
+                                        <td> {{ $artefacto->tipo->tipo }} </td>
+                                    </tr>
+                                    <tr>
+                                        <th> Material </th>
+                                        <td> {{ $artefacto->material->material }} </td>
+                                    </tr>
+                                    <tr>
+                                        <th> Eslora </th>
+                                        <td> {{ $artefacto->eslora }} </td>
+                                    </tr>
+                                    <tr>
+                                        <th> Manga </th>
+                                        <td> {{ $artefacto->manga }} </td>
+                                    </tr>
+                                    <tr>
+                                        <th> Puntal </th>
+                                        <td> {{ $artefacto->puntal }} </td>
+                                    </tr>
+                                    <tr>
+                                        <th> Francobordo </th>
+                                        <td> {{ $artefacto->francobordo }} </td>
+                                    </tr>
+                                    <tr>
+                                        <th> Propulsion </th>
+                                        <td> {{ $artefacto->propulsion }} </td>
+                                    </tr>
+                                    <tr>
+                                        <th> Construccion </th>
+                                        <td> {{ $artefacto->construccion }} </td>
+                                    </tr>
+                                    <tr>
+                                        <th> TRN </th>
+                                        <td> {{ $artefacto->trn }} </td>
+                                    </tr>
+                                    <tr>
+                                        <th> TRB </th>
+                                        <td> {{ $artefacto->trb }} </td>
+                                    </tr>
+                                    <tr>
+                                        <th> Servicio </th>
+                                        <td> {{ $artefacto->servicio }} </td>
+                                    </tr>
+                                    <tr>
+                                        <th> Asociacion </th>
+                                        <td> {{ $artefacto->asociacion }} </td>
+                                    </tr>
+                                    <tr>
+                                        <th> Observaciones </th>
+                                        <td> {{ $artefacto->observaciones }} </td>
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>
