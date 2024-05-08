@@ -32,6 +32,7 @@
                                 <thead>
                                     <tr>
                                         <th>Nº</th>
+                                        <th>CI</th>
                                         <th>Propietario</th>
                                         <th>Artefacto</th>
                                         <th>Opciones</th>
@@ -41,9 +42,13 @@
                                     @foreach ($listapropietarios as $item)
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
-                                            <td>{{ $item->propietarios->identificador }} {{ $item->propietarios->nombre }}
+                                            <td><a
+                                                    href="{{ url('/admin/propietario/' . $item->idPropietario) }}">{{ $item->propietarios->identificador }}</a>
                                             </td>
-                                            <td>{{ $item->artefactos->matricula }} {{ $item->artefactos->nombre }}</td>
+                                            <td> {{ $item->propietarios->nombre }}</td>
+                                            <td><a href="{{ url('/admin/artefactos/' . $item->idArtefacto) }}">{{ $item->artefactos->matricula }}
+                                                    {{ $item->artefactos->nombre }}</a>
+                                            </td>
                                             <td>
                                                 <a href="{{ url('/admin/lista-propietarios/' . $item->id) }}"
                                                     title="Ver ListaPropietario"><button class="btn btn-info btn-sm"><i

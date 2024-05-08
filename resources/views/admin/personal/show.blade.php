@@ -58,7 +58,7 @@
                                     </tr>
                                     <tr>
                                         <th> Foto </th>
-                                        <td> {{ $personal->foto }} </td>
+                                        <td> <img src="{{ asset('storage') . '/' . $personal->foto }}" alt=""> </td>
                                     </tr>
                                     <tr>
                                         <th> Descripcion </th>

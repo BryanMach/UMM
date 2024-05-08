@@ -53,6 +53,9 @@ class DocumentacionesController extends Controller
     {
 
         $requestData = $request->all();
+        if ($request->hasFile('directorio')) {
+            $requestData['directorio'] = $request->file('directorio')->store('uploads', 'public');
+        }
 
         Documentacione::create($requestData);
 

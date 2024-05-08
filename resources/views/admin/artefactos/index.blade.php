@@ -42,7 +42,9 @@
                                     @foreach ($artefactos as $item)
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
-                                            <td>{{ $item->usuarios->usuario }}</td>
+                                            <td><a
+                                                    href="{{ url('/admin/usuarios/' . $item->idUsuarios) }}">{{ $item->usuarios->usuario }}</a>
+                                            </td>
                                             <td>{{ $item->baseoperativa->baseOperativa }}</td>
                                             <td>{{ $item->matricula }}</td>
                                             <td>

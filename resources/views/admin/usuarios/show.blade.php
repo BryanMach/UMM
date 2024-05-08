@@ -34,7 +34,8 @@
                                     </tr>
                                     <tr>
                                         <th> Personal </th>
-                                        <td> {{ $usuario->personals->nombres }} {{ $usuario->personals->apellidos }} </td>
+                                        <td> <a href="{{ url('/admin/personal/' . $usuario->idPersonal) }}">{{ $usuario->personals->nombres }}
+                                                {{ $usuario->personals->apellidos }} </a></td>
                                     </tr>
                                     <tr>
                                         <th> Usuario </th>
