@@ -1,31 +1,19 @@
+
 <!--<div class="form-group {{ $errors->has('idUsuarios') ? 'has-error' : '' }}">
     <label for="idUsuarios" class="control-label">{{ 'Idusuarios' }}</label>
     <input class="form-control" name="idUsuarios" type="number" id="idUsuarios" value="{{ isset($artefacto->idUsuarios) ? $artefacto->idUsuarios : '' }}" >
     {!! $errors->first('idUsuarios', '<p class="help-block">:message</p>') !!}
 </div>-->
 <div class="form-group {{ $errors->has('idUsuarios') ? 'has-error' : '' }}">
-    <label for="idUsuarios" class="control-label">{{ 'Usuarios' }}</label>
-    <select class="form-control" name="idUsuarios" id="idUsuarios">
-        @foreach ($usuarios as $usuario)
-            <option value="{{ $usuario->id }}">{{ $usuario->usuario }}</option>
-        @endforeach
-    </select>
-    {!! $errors->first('idUsuarios', '<p class="help-block">:message</p>') !!}
-</div>
+<div class="form-group {{ $errors->has('idUsuarios') ? 'has-error' : ''}}">
+
+
 <!--<div class="form-group {{ $errors->has('idBaseOperativa') ? 'has-error' : '' }}">
     <label for="idBaseOperativa" class="control-label">{{ 'Idbaseoperativa' }}</label>
     <input class="form-control" name="idBaseOperativa" type="number" id="idBaseOperativa" value="{{ isset($artefacto->idBaseOperativa) ? $artefacto->idBaseOperativa : '' }}" >
     {!! $errors->first('idBaseOperativa', '<p class="help-block">:message</p>') !!}
 </div>-->
 <div class="form-group {{ $errors->has('idBaseOperativa') ? 'has-error' : '' }}">
-    <label for="idBaseOperativa" class="control-label">{{ 'Base operativa' }}</label>
-    <select class="form-control" name="idBaseOperativa" id="idBaseOperativa">
-        @foreach ($basesoperativas as $baseoperativa)
-            <option value="{{ $baseoperativa->id }}">{{ $baseoperativa->baseOperativa }}</option>
-        @endforeach
-    </select>
-    {!! $errors->first('idBaseOperativa', '<p class="help-block">:message</p>') !!}
-</div>
 <div class="form-group {{ $errors->has('matricula') ? 'has-error' : '' }}">
     <label for="matricula" class="control-label">{{ 'Matricula' }}</label>
     <input class="form-control" name="matricula" type="text" id="matricula"
