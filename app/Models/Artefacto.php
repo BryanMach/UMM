@@ -14,10 +14,10 @@ class Artefacto extends Model
     protected $table = 'artefactos';
 
     /**
-    * The database primary key value.
-    *
-    * @var string
-    */
+     * The database primary key value.
+     *
+     * @var string
+     */
     protected $primaryKey = 'id';
 
     /**
@@ -27,34 +27,44 @@ class Artefacto extends Model
      */
     protected $fillable = ['idUsuarios', 'idBaseOperativa', 'matricula', 'nombre', 'idTipo', 'idMaterial', 'eslora', 'manga', 'puntal', 'francobordo', 'propulsion', 'construccion', 'trn', 'trb', 'servicio', 'asociacion', 'observaciones'];
 
-    public function documentos(){
+    public function documentos()
+    {
         return $this->hasMany(Documentacione::class);
     }
-    public function inspecciones(){
+    public function inspecciones()
+    {
         return $this->hasMany(Inspeccione::class);
     }
-    public function datosadicionales(){
+    public function datosadicionales()
+    {
         return $this->hasMany(datosAdicionale::class);
     }
-    public function motores(){
+    public function motores()
+    {
         return $this->hasMany(Motore::class);
     }
-    public function certificaciones(){
+    public function certificaciones()
+    {
         return $this->hasMany(Certificacione::class);
     }
-    public function propietario(){
+    public function propietario()
+    {
         return $this->hasMany(ListaPropietario::class);
     }
-    public function usuarios(){
-        return $this->belongsTo(Usuario::class);
+    public function usuarios()
+    {
+        return $this->belongsTo(Usuario::class, 'idUsuarios', 'id');
     }
-    public function baseoperativa(){
+    public function baseoperativa()
+    {
         return $this->belongsTo(BasesOperativa::class, 'idBaseOperativa', 'id');
     }
-    public function material(){
+    public function material()
+    {
         return $this->belongsTo(Material::class, 'idMaterial', 'id');
     }
-    public function tipo(){
+    public function tipo()
+    {
         return $this->belongsTo(Tipo::class, 'idTipo', 'id');
     }
 }

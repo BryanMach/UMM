@@ -3,7 +3,8 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use app\Models\ListaPropietario;
+use App\Models\ListaPropietario;
+
 class Propietario extends Model
 {
     /**
@@ -14,10 +15,10 @@ class Propietario extends Model
     protected $table = 'propietarios';
 
     /**
-    * The database primary key value.
-    *
-    * @var string
-    */
+     * The database primary key value.
+     *
+     * @var string
+     */
     protected $primaryKey = 'id';
 
     /**
@@ -27,7 +28,8 @@ class Propietario extends Model
      */
     protected $fillable = ['nombre', 'tipo', 'identificador', 'FechaIni'];
 
-    public function propietario(){
+    public function propietario()
+    {
         return $this->hasMany(ListaPropietario::class);
     }
 }

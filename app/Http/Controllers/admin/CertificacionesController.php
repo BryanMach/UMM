@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests;
 
 use App\Models\Certificacione;
+use App\Models\Cuenca;
 use Illuminate\Http\Request;
 
 class CertificacionesController extends Controller
@@ -38,7 +39,8 @@ class CertificacionesController extends Controller
      */
     public function create()
     {
-        return view('admin.certificaciones.create');
+        $cuencas = Cuenca::All();
+        return view('admin.certificaciones.create', compact('cuencas'));
     }
 
     /**
@@ -50,9 +52,9 @@ class CertificacionesController extends Controller
      */
     public function store(Request $request)
     {
-        
+
         $requestData = $request->all();
-        
+
         Certificacione::create($requestData);
 
         return redirect('admin/certificaciones')->with('flash_message', 'Certificacione agregado!!!');
@@ -96,9 +98,9 @@ class CertificacionesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
+
         $requestData = $request->all();
-        
+
         $certificacione = Certificacione::findOrFail($id);
         $certificacione->update($requestData);
 

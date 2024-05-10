@@ -4,7 +4,7 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
-
+use App\Models\Artefacto;
 use App\Models\Inspeccione;
 use Illuminate\Http\Request;
 
@@ -38,7 +38,8 @@ class InspeccionesController extends Controller
      */
     public function create()
     {
-        return view('admin.inspecciones.create');
+        $artefactos = Artefacto::All();
+        return view('admin.inspecciones.create', compact('artefactos'));
     }
 
     /**
@@ -50,9 +51,9 @@ class InspeccionesController extends Controller
      */
     public function store(Request $request)
     {
-        
+
         $requestData = $request->all();
-        
+
         Inspeccione::create($requestData);
 
         return redirect('admin/inspecciones')->with('flash_message', 'Inspeccione agregado!!!');
@@ -96,9 +97,9 @@ class InspeccionesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
+
         $requestData = $request->all();
-        
+
         $inspeccione = Inspeccione::findOrFail($id);
         $inspeccione->update($requestData);
 

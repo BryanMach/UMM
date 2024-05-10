@@ -4,7 +4,7 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
-
+use App\Models\Artefacto;
 use App\Models\Documentacione;
 use Illuminate\Http\Request;
 
@@ -38,7 +38,8 @@ class DocumentacionesController extends Controller
      */
     public function create()
     {
-        return view('admin.documentaciones.create');
+        $artefactos = Artefacto::All();
+        return view('admin.documentaciones.create', compact('artefactos'));
     }
 
     /**
@@ -50,9 +51,12 @@ class DocumentacionesController extends Controller
      */
     public function store(Request $request)
     {
-        
+
         $requestData = $request->all();
-        
+        if ($request->hasFile('directorio')) {
+            $requestData['directorio'] = $request->file('directorio')->store('uploads', 'public');
+        }
+
         Documentacione::create($requestData);
 
         return redirect('admin/documentaciones')->with('flash_message', 'Documentacione agregado!!!');
@@ -96,9 +100,9 @@ class DocumentacionesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
+
         $requestData = $request->all();
-        
+
         $documentacione = Documentacione::findOrFail($id);
         $documentacione->update($requestData);
 

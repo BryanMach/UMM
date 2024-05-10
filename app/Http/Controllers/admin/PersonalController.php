@@ -45,6 +45,7 @@ class PersonalController extends Controller
      */
     public function create()
     {
+
         return view('admin.personal.create');
     }
 
@@ -57,10 +58,13 @@ class PersonalController extends Controller
      */
     public function store(Request $request)
     {
-        
+
         $requestData = $request->all();
-        
+        if ($request->hasFile('foto')) {
+            $requestData['foto'] = $request->file('foto')->store('uploads', 'public');
+        }
         Personal::create($requestData);
+
 
         return redirect('admin/personal')->with('flash_message', 'Personal agregado!!!');
     }
@@ -103,9 +107,9 @@ class PersonalController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
+
         $requestData = $request->all();
-        
+
         $personal = Personal::findOrFail($id);
         $personal->update($requestData);
 

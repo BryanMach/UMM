@@ -4,7 +4,7 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
-
+use App\Models\Artefacto;
 use App\Models\datosAdicionale;
 use Illuminate\Http\Request;
 
@@ -43,7 +43,8 @@ class datosAdicionalesController extends Controller
      */
     public function create()
     {
-        return view('admin.datos-adicionales.create');
+        $artefactos = Artefacto::All();
+        return view('admin.datos-adicionales.create', compact('artefactos'));
     }
 
     /**
@@ -55,9 +56,9 @@ class datosAdicionalesController extends Controller
      */
     public function store(Request $request)
     {
-        
+
         $requestData = $request->all();
-        
+
         datosAdicionale::create($requestData);
 
         return redirect('admin/datos-adicionales')->with('flash_message', 'datosAdicionale agregado!!!');
@@ -101,9 +102,9 @@ class datosAdicionalesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
+
         $requestData = $request->all();
-        
+
         $datosadicionale = datosAdicionale::findOrFail($id);
         $datosadicionale->update($requestData);
 
