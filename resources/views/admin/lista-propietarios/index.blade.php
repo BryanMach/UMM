@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-md-9">
                 <div class="card">
-                    <div class="card-header">Listapropietarios</div>
+                    <div class="card-header">Lista de propietarios</div>
                     <div class="card-body">
                         <a href="{{ url('/admin/lista-propietarios/create') }}" class="btn btn-success btn-sm"
                             title="Agregar nuevo ListaPropietario">

@@ -8,37 +8,37 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Unidad de Marina Mercante') }}</title>
+    <title>{{ config('Unidad de marina mercante', 'Unidad de Marina Mercante') }}</title>
 
     <!-- Styles -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
-    <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
+        <div id="app" class="min-h-screen bg-gray-100 dark:bg-gray-900">
+        <!--<nav class="navbar navbar-expand-md navbar-light navbar-laravel">-->
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Unidad de Marina Mercante') }}
+                <!--<a class="navbar-brand" href="{{ url('/') }}">
+                    {{ config('Unidad de Marina Mercante', 'Unidad de Marina Mercante') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-
+                -->
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto">
+                    <!--<ul class="navbar-nav mr-auto">
 
-                    </ul>
+                    </ul>-->
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
                         @if(!Auth::check())
-                            <li><a class="nav-link" href="{{ url('/login') }}">Login</a></li>
-                            <li><a class="nav-link" href="{{ url('/register') }}">Register</a></li>
+                            <li><a class="nav-link" href="{{ url('/login') }}">_Ingresar</a></li>
+                            <li><a class="nav-link" href="{{ url('/register') }}">_Registrarse</a></li>
                         @else
-                            <li class="nav-item dropdown">
+                            <!--<li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
@@ -54,12 +54,12 @@
                                         @csrf
                                     </form>
                                 </div>
-                            </li>
+                            </li>-->
                         @endif
                     </ul>
                 </div>
             </div>
-        </nav>
+        <!--</nav>-->
 
         <main class="py-4">
             @extends('adminlte::page')

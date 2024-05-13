@@ -6,10 +6,10 @@
 <div class="form-group {{ $errors->has('tipo') ? 'has-error' : ''}}">
     <label for="tipo" class="control-label">{{ 'Tipo' }}</label>
     <div class="radio">
-    <label><input name="tipo" type="radio" value="1" {{ (isset($propietario) && 1 == $propietario->tipo) ? 'checked' : '' }}> Yes</label>
+    <label><input name="tipo" type="radio" value="1" {{ (isset($propietario) && 1 == $propietario->tipo) ? 'checked' : '' }}> Persona</label>
 </div>
 <div class="radio">
-    <label><input name="tipo" type="radio" value="0" @if (isset($propietario)) {{ (0 == $propietario->tipo) ? 'checked' : '' }} @else {{ 'checked' }} @endif> No</label>
+    <label><input name="tipo" type="radio" value="0" @if (isset($propietario)) {{ (0 == $propietario->tipo) ? 'checked' : '' }} @else {{ 'checked' }} @endif> Empresa</label>
 </div>
     {!! $errors->first('tipo', '<p class="help-block">:message</p>') !!}
 </div>

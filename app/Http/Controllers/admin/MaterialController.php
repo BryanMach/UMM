@@ -19,7 +19,6 @@ class MaterialController extends Controller
     {
         $keyword = $request->get('search');
         $perPage = 25;
-
         if (!empty($keyword)) {
             $material = Material::where('material', 'LIKE', "%$keyword%")
                 ->latest()->paginate($perPage);

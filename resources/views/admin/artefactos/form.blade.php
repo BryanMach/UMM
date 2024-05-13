@@ -4,15 +4,13 @@
     <input class="form-control" name="idUsuarios" type="number" id="idUsuarios" value="{{ isset($artefacto->idUsuarios) ? $artefacto->idUsuarios : '' }}" >
     {!! $errors->first('idUsuarios', '<p class="help-block">:message</p>') !!}
 </div>-->
-<div class="form-group {{ $errors->has('idUsuarios') ? 'has-error' : '' }}">
-<div class="form-group {{ $errors->has('idUsuarios') ? 'has-error' : ''}}">
+<div class="form-group {{ $errors->has('idUsuarios') ? 'has-error' : '' }}" for="idUsuarios" id="idUsuarios" value="{{isset( Auth::user()->name )}}">
 
-
-<!--<div class="form-group {{ $errors->has('idBaseOperativa') ? 'has-error' : '' }}">
+<div class="form-group {{ $errors->has('idBaseOperativa') ? 'has-error' : '' }}">
     <label for="idBaseOperativa" class="control-label">{{ 'Idbaseoperativa' }}</label>
     <input class="form-control" name="idBaseOperativa" type="number" id="idBaseOperativa" value="{{ isset($artefacto->idBaseOperativa) ? $artefacto->idBaseOperativa : '' }}" >
     {!! $errors->first('idBaseOperativa', '<p class="help-block">:message</p>') !!}
-</div>-->
+</div>
 <div class="form-group {{ $errors->has('idBaseOperativa') ? 'has-error' : '' }}">
 <div class="form-group {{ $errors->has('matricula') ? 'has-error' : '' }}">
     <label for="matricula" class="control-label">{{ 'Matricula' }}</label>

@@ -43,8 +43,12 @@
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
                                             <td>{{ $item->nombre }}</td>
-                                            <td>{{ $item->tipo }}</td>
-                                            <td>{{ $item->identificador }}</td>
+                                            @if($item->tipo==1)
+                                                <td>Persona</td>
+                                            @else
+                                                <td>Empresa</td>
+                                            @endif
+                                                <td>{{ $item->identificador }}</td>
                                             <td>
                                                 <a href="{{ url('/admin/propietario/' . $item->id) }}"
                                                     title="Ver Propietario"><button class="btn btn-info btn-sm"><i
