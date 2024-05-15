@@ -165,12 +165,20 @@ class ArtefactosController extends Controller
         $vista = \View::make('admin.certificados.certificarregistro', compact('artefactos'))->render();
         return view('admin.certificados.certificarregistro', compact('vista','artefactos'));
     }
-    public function imprimir_certificado(){//muestro un pdf
+    public function imprimir_certificado_registro(){//muestro un pdf
         /*dd('Probando imprimir certificados');*/
         $artefactos=Artefacto::all();
         $vista = \View::make('admin.certificados.certificarregistro', compact('artefactos'))->render();
         $pdf= \App::make('dompdf.wrapper');
         $pdf->loadHTML($vista);
-        return $pdf->stream('hola.pdf');
+        return $pdf->stream('registro.pdf');
+    }
+    public function imprimir_certificado_seguridad(){//muestro un pdf
+        /*dd('Probando imprimir certificados');*/
+        $artefactos=Artefacto::all();
+        $vista = \View::make('admin.certificados.certificarseguridad', compact('artefactos'))->render();
+        $pdf= \App::make('dompdf.wrapper');
+        $pdf->loadHTML($vista);
+        return $pdf->stream('seguridad.pdf');
     }
 }
