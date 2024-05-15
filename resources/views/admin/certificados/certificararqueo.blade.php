@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Certificado de Asignación de Francobordo</title>
+    <title>Certificado Nacional de Arqueo</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
@@ -44,9 +44,6 @@
             background-color: rgb(209, 246, 252);
             /* Fondo celeste para la cabecera */
         }
-        .small-text {
-            font-size: 0.85rem;
-        }
     </style>
 </head>
 <body>
@@ -71,58 +68,76 @@
                 </tbody>
             </table>
         </div>
-        <h5>CERTIFICADO DE ASIGNACIÓN DE FRANCOBORDO</h5>
-        <h5>PARA LAS EMBARCACIONES NACIONALES</h5>
-        <h6>Expedido en virtud de las disposiciones del Reglamento Nacional para la Asignación de Francobordo</h6> 
-        <h6>para embarcaciones mayores a 10 TRB, de navegación interior.</h6>
+        <h5>CERTIFICADO NACIONAL DE ARQUEO</h5>
+        <h6>Expedido en virtud de las disposiciones del Reglamento Nacional de Arqueo para Buques, Embarcaciones y Artefactos Navales.</h6>
     </div>
+
     <div class="table-responsive">
         <table class="table table-bordered">
             <tbody>
                 <tr>
-                    <th>Nombre de la Embarcación</th>
-                    <th>Matrícula</th>
-                    <th>Puerto de Registro</th>
-                    <th>Eslora (L) definida en<br> el Art. 3.3</th>
+                    <th>NOMBRE DE LA EMBARCACIÓN</th>
+                    <th>MATRICULA</th>
+                    <th>PUERTO DE REGISTRO</th>
+                    <th>AÑO DE CONSTRUCCIÓN</th>
                 </tr>
                 <tr>
                     <td>SOBERANIA I</td>
                     <td></td>
                     <td>PUERTO BUSCH - SANTA CRUZ</td>
-                    <td>25,00</td>
+                    <td>2023</td>
                 </tr>
             </tbody>
         </table>
     </div>
 
+    <div>
+        <h6>DIMENSIONES PRINCIPALES DE REGISTRO</h6>
+    </div>
     <div class="table-responsive">
-        <table>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>ESLORA</th>
+                    <th>MANGA</th>
+                    <th>PUNTAL DE TRAZADO</th>
+                </tr>
+            </thead>
             <tbody>
                 <tr>
-                    <td>Francobordo asignado como:</td>
-                    <td>Embarcación nueva ( )</td>
-                    <td>Embarcación existente ( X )</td>
-                </tr>
-                <tr>
-                    <td>Tipo de Embarcación:</td>
-                    <td>Embarcación Autopropulsada ( )</td>
-                    <td>Embarcación Sin Propulsión ( X )</td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td>Tanque ( ) Cerrada ( )</td>
-                    <td>Tanque ( ) Cerrada ( ) Abierta ( X )</td>
+                    <td>25,00</td>
+                    <td>10,00</td>
+                    <td>2,00</td>
                 </tr>
             </tbody>
         </table>
     </div>
 
-    <p class="small-text">Francobordo asignado (FB) medido desde la línea de cubierta 243,75 mm</p>
+    <div>
+        <h6>LOS ARQUEOS DE LA EMBARCACIÓN SON:</h6>
+    </div>
+    <div class="table-responsive">
+        <table>
+            <thead>
+                <tr>
+                    <td><strong>ARQUEO BRUTO</strong></td>
+                    <td><strong>ARQUEO NETO</strong></td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>99,26 <strong>TRB</strong></td>
+                    <td>61,98 <strong>TRN</strong></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 
-    <div class="footer">
-        <p>Se certifica que esta embarcación ha sido inspeccionada y que su francobordo ha sido asignado y marcado de acuerdo con lo dispuesto en el “Reglamento Nacional para la Asignación de Francobordo”, aprobado por RM. 736.</p>
-        <p>Este certificado, es emitido el <strong>21/MARZO/2024</strong>, es válido hasta el <strong>21/MARZO/2025</strong></p>
-        <p>Expedido en: LA PAZ, 21 DE MARZO DE 2024</p>
+    <div>
+        <p>Se certifica que los arqueos de esta embarcación han sido determinados de acuerdo con las disposiciones del Reglamento Nacional de Arqueo para Buques, Embarcaciones y Artefactos Navales, aprobadas mediante RM. 736.</p>
+        <p class="text-center"><strong>EXPEDIDO EN:</strong> PUERTO BUSCH - SANTA CRUZ</p>
+        <p class="text-center"><strong>FECHA:</strong> 21 DE MARZO DE 2024</p>
+        <p>El suscrito Jefe de la Unidad de Marina Mercante declara que esta debidamente autorizado para expedir el presente Certificado.</p>
     </div>
 </div>
 

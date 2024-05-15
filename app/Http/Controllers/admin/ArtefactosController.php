@@ -181,4 +181,20 @@ class ArtefactosController extends Controller
         $pdf->loadHTML($vista);
         return $pdf->stream('seguridad.pdf');
     }
+    public function imprimir_certificado_francobordo(){//muestro un pdf
+        /*dd('Probando imprimir certificados');*/
+        $artefactos=Artefacto::all();
+        $vista = \View::make('admin.certificados.certificarfrancobordo', compact('artefactos'))->render();
+        $pdf= \App::make('dompdf.wrapper');
+        $pdf->loadHTML($vista);
+        return $pdf->stream('francobordo.pdf');
+    }
+    public function imprimir_certificado_arqueo(){//muestro un pdf
+        /*dd('Probando imprimir certificados');*/
+        $artefactos=Artefacto::all();
+        $vista = \View::make('admin.certificados.certificararqueo', compact('artefactos'))->render();
+        $pdf= \App::make('dompdf.wrapper');
+        $pdf->loadHTML($vista);
+        return $pdf->stream('arqueo.pdf');
+    }
 }
