@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests;
+use PDF;
 
 use App\Models\Artefacto;
 use App\Models\BasesOperativa;
@@ -158,5 +158,19 @@ class ArtefactosController extends Controller
         Artefacto::destroy($id);
 
         return redirect('admin/artefactos')->with('flash_message', 'Artefacto borrado!');
+    }
+    public function imprimir(){//con esto muestro una página
+        /*dd('Probando imprimir certificados');*/
+        $artefactos=Artefacto::all();
+        $vista = \View::make('admin.certificados.certificarregistro', compact('artefactos'))->render();
+        return view('admin.certificados.certificarregistro', compact('vista','artefactos'));
+    }
+    public function imprimir_certificado(){//muestro un pdf
+        /*dd('Probando imprimir certificados');*/
+        $artefactos=Artefacto::all();
+        $vista = \View::make('admin.certificados.certificarregistro', compact('artefactos'))->render();
+        $pdf= \App::make('dompdf.wrapper');
+        $pdf->loadHTML($vista);
+        return $pdf->stream('hola.pdf');
     }
 }

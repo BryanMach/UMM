@@ -59,4 +59,6 @@ Route::group(['middleware'=> ['auth']], function () {
     Route::resource('admin/motores', MotoresController::class);
     Route::resource('admin/datos-adicionales', datosAdicionalesController::class);
     Route::resource('admin/recuperar', RecuperarController::class);
+    Route::get('admin/imprimir-certificado',[ArtefactosController::class,'imprimir_certificado']);
+    Route::get('admin/imprimir',[ArtefactosController::class,'imprimir']);
 });
