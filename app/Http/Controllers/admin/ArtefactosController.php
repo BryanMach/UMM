@@ -166,8 +166,8 @@ class ArtefactosController extends Controller
     public function imprimir(){//con esto muestro una página
         /*dd('Probando imprimir certificados');*/
         $artefactos=Artefacto::all();
-        $vista = \View::make('admin.certificados.certificarregistro', compact('artefactos'))->render();
-        return view('admin.certificados.certificarregistro', compact('vista','artefactos'));
+        $vista = \View::make('admin.perfiles.prueba', compact('artefactos'))->render();
+        return view('admin.perfiles.prueba', compact('vista','artefactos'));
     }
     public function imprimir_certificado_registro(){//muestro un pdf
         /*dd('Probando imprimir certificados');*/
