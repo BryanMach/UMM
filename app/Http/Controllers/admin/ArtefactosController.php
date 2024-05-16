@@ -123,8 +123,12 @@ class ArtefactosController extends Controller
     public function edit($id)
     {
         $artefacto = Artefacto::findOrFail($id);
+        $basesoperativas = BasesOperativa::All();
+        $usuarios = Usuario::All();
+        $tipos = Tipo::All();
+        $materiales = Material::All();
 
-        return view('admin.artefactos.edit', compact('artefacto'));
+        return view('admin.artefactos.edit', compact('artefacto','basesoperativas', 'tipos', 'usuarios', 'materiales'));
     }
 
     /**

@@ -1,16 +1,29 @@
-
-<!--<div class="form-group {{ $errors->has('idUsuarios') ? 'has-error' : '' }}">
-    <label for="idUsuarios" class="control-label">{{ 'Idusuarios' }}</label>
-    <input class="form-control" name="idUsuarios" type="number" id="idUsuarios" value="{{ isset($artefacto->idUsuarios) ? $artefacto->idUsuarios : '' }}" >
+<div class="form-group {{ $errors->has('idUsuarios') ? 'has-error' : '' }}">
+    <label for="idUsuarios" class="control-label">{{ 'Usuarios' }}</label>
+    <select class="form-control" name="idUsuarios" id="idUsuarios">
+        @foreach ($usuarios as $usuario)
+            <option value="{{ $usuario->id }}">{{ $usuario->usuario }}</option>
+        @endforeach
+    </select>
     {!! $errors->first('idUsuarios', '<p class="help-block">:message</p>') !!}
-</div>-->
-<div class="form-group {{ $errors->has('idUsuarios') ? 'has-error' : '' }}" for="idUsuarios" id="idUsuarios" value="{{isset( Auth::user()->name )}}">
-
-<div class="form-group {{ $errors->has('idBaseOperativa') ? 'has-error' : '' }}">
-    <label for="idBaseOperativa" class="control-label">{{ 'Idbaseoperativa' }}</label>
-    <input class="form-control" name="idBaseOperativa" type="number" id="idBaseOperativa" value="{{ isset($artefacto->idBaseOperativa) ? $artefacto->idBaseOperativa : '' }}" >
-    {!! $errors->first('idBaseOperativa', '<p class="help-block">:message</p>') !!}
 </div>
+    <div class="form-group {{ $errors->has('idBaseOperativa') ? 'has-error' : '' }}">
+        <label for="idBaseOperativa" class="control-label">{{ 'Bases operativas' }}</label>
+        <select class="form-control" name="idBaseOperativa" id="idBaseOperativa">
+            @foreach ($basesoperativas as $base)
+                @if ($formMode == 'edit')
+                    @if ( $base->id ==  $artefacto->idBaseOperativa )
+                        <option value="{{ $base->id }}" selected>{{ $base->baseOperativa }}</option>
+                    @else
+                        <option value="{{ $base->id }}">{{ $base->baseOperativa }}</option>
+                    @endif
+                @else
+                    <option value="{{ $base->id }}">{{ $base->baseOperativa }}</option>
+                @endif
+            @endforeach
+        </select>
+        {!! $errors->first('idBaseOperativa', '<p class="help-block">:message</p>') !!}
+    </div>
 <div class="form-group {{ $errors->has('idBaseOperativa') ? 'has-error' : '' }}">
 <div class="form-group {{ $errors->has('matricula') ? 'has-error' : '' }}">
     <label for="matricula" class="control-label">{{ 'Matricula' }}</label>
@@ -28,8 +41,16 @@
     <label for="idTipo" class="control-label">{{ 'Tipo' }}</label>
     <select class="form-control" name="idTipo" id="idTipo">
         @foreach ($tipos as $tipo)
-            <option value="{{ $tipo->id }}">{{ $tipo->tipo }}</option>
-        @endforeach
+                @if ($formMode == 'edit')
+                    @if ( $tipo->id ==  $artefacto->idTipo )
+                        <option value="{{ $tipo->id }}" selected>{{ $tipo->tipo }}</option>
+                    @else
+                        <option value="{{ $tipo->id }}">{{ $tipo->tipo }}</option>
+                    @endif
+                @else
+                    <option value="{{ $tipo->id }}">{{ $tipo->tipo }}</option>
+                @endif
+            @endforeach
     </select>
     {!! $errors->first('idTipo', '<p class="help-block">:message</p>') !!}
 </div>
@@ -37,8 +58,16 @@
     <label for="idMaterial" class="control-label">{{ 'Material' }}</label>
     <select class="form-control" name="idMaterial" id="idMaterial">
         @foreach ($materiales as $material)
-            <option value="{{ $material->id }}">{{ $material->material }}</option>
-        @endforeach
+                @if ($formMode == 'edit')
+                    @if ( $material->id ==  $artefacto->idMaterial )
+                        <option value="{{ $material->id }}" selected>{{ $material->material }}</option>
+                    @else
+                        <option value="{{ $material->id }}">{{ $material->material }}</option>
+                    @endif
+                @else
+                    <option value="{{ $material->id }}">{{ $material->material }}</option>
+                @endif
+            @endforeach
     </select>
     {!! $errors->first('idMaterial', '<p class="help-block">:message</p>') !!}
 </div>
@@ -63,7 +92,7 @@
 </div>
 <div class="form-group {{ $errors->has('francobordo') ? 'has-error' : '' }}">
     <label for="francobordo" class="control-label">{{ 'Francobordo' }}</label>
-    <input class="form-control" name="francobordo" type="number" id="francobordo"
+    <input class="form-control" name="francobordo" type="decimal" id="francobordo"
         value="{{ isset($artefacto->francobordo) ? $artefacto->francobordo : '' }}">
     {!! $errors->first('francobordo', '<p class="help-block">:message</p>') !!}
 </div>
