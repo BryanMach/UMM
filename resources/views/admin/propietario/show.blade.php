@@ -38,14 +38,26 @@
                                     </tr>
                                     <tr>
                                         <th> Tipo </th>
-                                        <td> {{ $propietario->tipo }} </td>
+                                        @if ( $propietario->tipo == 1)
+                                            <td>Empresa</td>
+                                        @else
+                                            <td>Persona</td>
+                                        @endif
                                     </tr>
                                     <tr>
-                                        <th> Identificador </th>
+                                        @if ( $propietario->tipo == 1)
+                                            <th>SEPREC</th>
+                                        @else
+                                            <th>CI</th>
+                                        @endif
                                         <td> {{ $propietario->identificador }} </td>
                                     </tr>
                                     <tr>
-                                        <th> Fecha de nacimiento </th>
+                                        @if ( $propietario->tipo == 1)
+                                            <th>Fecha de constitución</th>
+                                        @else
+                                            <th>Fecha de nacimiento</th>
+                                        @endif
                                         <td> {{ $propietario->FechaIni }} </td>
                                     </tr>
                                 </tbody>

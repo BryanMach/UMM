@@ -77,7 +77,7 @@
     </style>
 </head>
 <body>
-    <div class="sidebar">
+    <div class="sidebar"><!--Sección de lado derecho-->
         <div class="profile">
             <img src="https://via.placeholder.com/100" alt="User">
             <h4>Nombre de personal</h4>
@@ -99,91 +99,91 @@
                         <td>dato</td>
                     </tr>
             </table>
-            <button class="btn btn-danger btn-block">Salir</button>
+            <a href="route('logout')">Salir</a>
         </div>
     </div>
-    <div class="main-content">
+    <div class="main-content"><!--Contenido central sea tabla o botones-->
         <div class="search-bar">
-            <h2>Title</h2>
-            <input type="text" class="form-control" placeholder="Search">
+            <h2>Planilla de personal</h2>
+            <input type="text" class="form-control" placeholder="Buscar">
             <button class="btn btn-outline-secondary"><i class="fas fa-filter"></i></button>
         </div>
         <div class="table-responsive">
             <table class="table">
                 <thead>
                     <tr>
-                        <th>Task</th>
-                        <th>Title</th>
-                        <th>Project</th>
-                        <th>Priority</th>
+                        <th>Cargo</th>
+                        <th>Nombre y apellido</th>
+                        <th>Cédula de identidad</th>
+                        <th>Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td>FIG-121</td>
-                        <td>Write blog post for demo day</td>
-                        <td>Acme GTM</td>
-                        <td><span class="badge badge-danger">High</span></td>
+                        <td>Puesto dentro de la unidad</td>
+                        <td>un nombre y un apellido</td>
+                        <td>123456789 AA</td>
+                        <td><span class="badge badge-danger">HVer o realizar seguimiento</span></td>
                     </tr>
                     <tr>
-                        <td>FIG-122</td>
-                        <td>Publish blog page</td>
-                        <td>Website launch</td>
-                        <td><span class="badge badge-secondary">Low</span></td>
+                        <td>Puesto dentro de la unidad</td>
+                        <td>un nombre y un apellido</td>
+                        <td>123456789 AA</td>
+                        <td><span class="badge badge-secondary">Ver o realizar seguimiento</span></td>
                     </tr>
                     <tr>
-                        <td>FIG-123</td>
-                        <td>Add gradients to design system</td>
-                        <td>Design backlog</td>
-                        <td><span class="badge badge-warning">Medium</span></td>
+                        <td>Puesto dentro de la unidad</td>
+                        <td>un nombre y un apellido</td>
+                        <td>123456789 AA</td>
+                        <td><span class="badge badge-warning">MedVer o realizar seguimiento</span></td>
                     </tr>
                     <tr>
-                        <td>FIG-124</td>
-                        <td>Responsive behavior doesn’t work</td>
-                        <td>Bug fixes</td>
-                        <td><span class="badge badge-warning">Medium</span></td>
+                        <td>Puesto dentro de la unidad</td>
+                        <td>un nombre y un apellido</td>
+                        <td>123456789 AA</td>
+                        <td><span class="badge badge-warning">MedVer o realizar seguimiento</span></td>
                     </tr>
                     <tr>
-                        <td>FIG-125</td>
-                        <td>Confirmation states not rendering</td>
-                        <td>Bug fixes</td>
-                        <td><span class="badge badge-warning">Medium</span></td>
+                        <td>Puesto dentro de la unidad</td>
+                        <td>un nombre y un apellido</td>
+                        <td>123456789 AA</td>
+                        <td><span class="badge badge-warning">MedVer o realizar seguimiento</span></td>
                     </tr>
                     <tr>
-                        <td>FIG-126</td>
-                        <td>Revise copy on the About page</td>
-                        <td>Website launch</td>
-                        <td><span class="badge badge-secondary">Low</span></td>
+                        <td>Puesto dentro de la unidad</td>
+                        <td>un nombre y un apellido</td>
+                        <td>123456789 AA</td>
+                        <td><span class="badge badge-secondary">Ver o realizar seguimiento</span></td>
                     </tr>
                     <tr>
-                        <td>FIG-127</td>
-                        <td>Text wrapping is awkward on mobile</td>
-                        <td>Bug fixes</td>
-                        <td><span class="badge badge-secondary">Low</span></td>
+                        <td>Puesto dentro de la unidad</td>
+                        <td>un nombre y un apellido</td>
+                        <td>123456789 AA</td>
+                        <td><span class="badge badge-secondary">Ver o realizar seguimiento</span></td>
                     </tr>
                     <tr>
-                        <td>FIG-128</td>
-                        <td>Publish HackerNews post</td>
-                        <td>Acme GTM</td>
-                        <td><span class="badge badge-secondary">Low</span></td>
+                        <td>Puesto dentro de la unidad</td>
+                        <td>un nombre y un apellido</td>
+                        <td>123456789 AA</td>
+                        <td><span class="badge badge-secondary">Ver o realizar seguimiento</span></td>
                     </tr>
                     <tr>
-                        <td>FIG-129</td>
-                        <td>Review image licensing for blog</td>
-                        <td>Website Launch</td>
-                        <td><span class="badge badge-danger">High</span></td>
+                        <td>Puesto dentro de la unidad</td>
+                        <td>un nombre y un apellido</td>
+                        <td>123456789 AA</td>
+                        <td><span class="badge badge-danger">HVer o realizar seguimiento</span></td>
                     </tr>
                     <tr>
-                        <td>FIG-130</td>
-                        <td>Accessibility focused state for buttons</td>
-                        <td>Design backlog</td>
-                        <td><span class="badge badge-danger">High</span></td>
+                        <td>Puesto dentro de la unidad</td>
+                        <td>un nombre y un apellido</td>
+                        <td>123456789 AA</td>
+                        <td><span class="badge badge-danger">HVer o realizar seguimiento</span></td>
                     </tr>
                     <tr>
-                        <td>FIG-131</td>
-                        <td>Header IA revision to support a11y</td>
-                        <td>Design backlog</td>
-                        <td><span class="badge badge-danger">High</span></td>
+                        <td>Puesto dentro de la unidad</td>
+                        <td>un nombre y un apellido</td>
+                        <td>123456789 AA</td>
+                        <td><span class="badge badge-danger">HVer o realizar seguimiento</span></td>
                     </tr>
                 </tbody>
             </table>
@@ -191,17 +191,19 @@
     </div>
     <div class="right-sidebar">
         <div class="sidebar-header text-center p-3">
-            <h4>Music app</h4>
+            <h4>Acceso a tablas</h4>
         </div>
         <div class="sidebar-content">
-            <a href="#">Discover</a>
-            <a href="#" class="active">Home</a>
-            <a href="#">Browse</a>
-            <a href="#">Radio</a>
-            <h5 class="px-3 pt-3">Library</h5>
-            <a href="#">Playlists</a>
-            <a href="#">Songs</a>
-            <a href="#">Personalized picks</a>
+            <a href="personal">Personal</a>
+            <a href="usuarios">Usuarios</a>
+            <a href="bases-operativas" class="active">Bases de operaciones</a>
+            <h5 class="px-3 pt-3">Registros</h5>
+            <a href="propietarios">Propietarios</a>
+            <a href="artefactos">Artefactos</a>
+            <a href="lista-propietarios">Listas de propietarios de embarcaciones</a>
+            <a href="imprimir">Certificaciones</a>
+            <a href="imprimir">Alertas de Vencimiento</a>
+            <a href="dashboard">Modo Administrador</a>
         </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
@@ -209,3 +211,73 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
+<!-- resources/views/form.blade.php -->
+
+<!-- resources/views/ejemplo.blade.php -->
+
+<!--<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejemplo de Blade</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        @php
+            $mensaje = 'Hola, Mundo!';
+            $valor = 3;
+            $lista = [1, 2, 3, 4, 5];
+        @endphp
+
+        <h1>{{ $mensaje }}</h1>
+
+        @if($valor === 1)
+            <p>El valor es uno.</p>
+        @elseif($valor === 2)
+            <p>El valor es dos.</p>
+        @else
+            <p>El valor no es uno ni dos.</p>
+        @endif
+
+        @switch($valor)
+            @case(1)
+                <p>Switch: El valor es uno.</p>
+                @break
+            @case(2)
+                <p>Switch: El valor es dos.</p>
+                @break
+            @default
+                <p>Switch: El valor no es uno ni dos.</p>
+        @endswitch
+
+        <h2>Lista de valores:</h2>
+        <ul>
+            @foreach($lista as $item)
+                <li>{{ $item }}</li>
+            @endforeach
+        </ul>
+
+        @php
+            $contador = 0;
+        @endphp
+
+        <h2>Contador While:</h2>
+        @while($contador < 5)
+            <p>Contador: {{ $contador }}</p>
+            @php
+                $contador++;
+            @endphp
+        @endwhile
+
+        <h2>Contador For:</h2>
+        @for($i = 0; $i < 5; $i++)
+            <p>Contador: {{ $i }}</p>
+        @endfor
+    </div>
+</body>
+</html>-->
+
+
+

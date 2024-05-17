@@ -34,7 +34,7 @@
                                         <th>Nº</th>
                                         <th>Nombre</th>
                                         <th>Tipo</th>
-                                        <th>CI</th>
+                                        <th>SEPREC/CI</th>
                                         <th>Opciones</th>
                                     </tr>
                                 </thead>
@@ -43,7 +43,7 @@
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
                                             <td>{{ $item->nombre }}</td>
-                                            @if($item->tipo==1)
+                                            @if($item->tipo==0)
                                                 <td>Persona</td>
                                             @else
                                                 <td>Empresa</td>

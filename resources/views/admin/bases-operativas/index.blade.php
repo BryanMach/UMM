@@ -33,7 +33,7 @@
                                     <tr>
                                         <th>Nº</th>
                                         <th>Cuenca</th>
-                                        <th>BaseOperativa</th>
+                                        <th>Base de Operaciones</th>
                                         <th>Opciones</th>
                                     </tr>
                                 </thead>

@@ -172,7 +172,7 @@ class ArtefactosController extends Controller
     public function imprimir_certificado_registro(){//muestro un pdf
         /*dd('Probando imprimir certificados');*/
         $artefactos=Artefacto::all();
-        $vista = \View::make('admin.certificados.certificarregistro', compact('artefactos'))->render();
+        $vista = \View::make('admin.certificadospdf.certificarregistro', compact('artefactos'))->render();
         $pdf= \App::make('dompdf.wrapper');
         $pdf->loadHTML($vista);
         return $pdf->stream('registro.pdf');
@@ -180,7 +180,7 @@ class ArtefactosController extends Controller
     public function imprimir_certificado_seguridad(){//muestro un pdf
         /*dd('Probando imprimir certificados');*/
         $artefactos=Artefacto::all();
-        $vista = \View::make('admin.certificados.certificarseguridad', compact('artefactos'))->render();
+        $vista = \View::make('admin.certificadospdf.certificarseguridad', compact('artefactos'))->render();
         $pdf= \App::make('dompdf.wrapper');
         $pdf->loadHTML($vista);
         return $pdf->stream('seguridad.pdf');
@@ -188,7 +188,7 @@ class ArtefactosController extends Controller
     public function imprimir_certificado_francobordo(){//muestro un pdf
         /*dd('Probando imprimir certificados');*/
         $artefactos=Artefacto::all();
-        $vista = \View::make('admin.certificados.certificarfrancobordo', compact('artefactos'))->render();
+        $vista = \View::make('admin.certificadospdf.certificarfrancobordo', compact('artefactos'))->render();
         $pdf= \App::make('dompdf.wrapper');
         $pdf->loadHTML($vista);
         return $pdf->stream('francobordo.pdf');
@@ -196,7 +196,7 @@ class ArtefactosController extends Controller
     public function imprimir_certificado_arqueo(){//muestro un pdf
         /*dd('Probando imprimir certificados');*/
         $artefactos=Artefacto::all();
-        $vista = \View::make('admin.certificados.certificararqueo', compact('artefactos'))->render();
+        $vista = \View::make('admin.certificadospdf.certificararqueo', compact('artefactos'))->render();
         $pdf= \App::make('dompdf.wrapper');
         $pdf->loadHTML($vista);
         return $pdf->stream('arqueo.pdf');

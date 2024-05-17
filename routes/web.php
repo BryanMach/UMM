@@ -65,3 +65,5 @@ Route::group(['middleware'=> ['auth']], function () {
     Route::get('admin/imprimir-certificado-arqueo',[ArtefactosController::class,'imprimir_certificado_arqueo']);
     Route::get('admin/imprimir',[ArtefactosController::class,'imprimir']);
 });
+Route::resource('admin/certicados', 'admin\certicadosController');
+Route::resource('admin/certificados', 'admin\certificadosController');
