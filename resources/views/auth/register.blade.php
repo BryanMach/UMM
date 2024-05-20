@@ -1,7 +1,12 @@
 <x-guest-layout>
     <form method="POST" action="{{ route('register') }}">
         @csrf
-
+        <!-- IdPersonal -->
+        <div>
+            <x-input-label for="IdPersonal" :value="__('IdPersonal')" />
+            <x-text-input id="IdPersonal" class="block mt-1 w-full" type="text" name="IdPersonal" :value="old('IdPersonal')" required autofocus autocomplete="IdPersonal" />
+            <x-input-error :messages="$errors->get('IdPersonal')" class="mt-2" />
+        </div>
         <!-- Name -->
         <div>
             <x-input-label for="name" :value="__('Name')" />
@@ -38,14 +43,20 @@
 
             <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
         </div>
+        <!-- nivel -->
+        <div>
+            <x-input-label for="nivel" :value="__('nivel')" />
+            <x-text-input id="nivel" class="block mt-1 w-full" type="text" name="nivel" :value="old('nivel')" required autofocus autocomplete="nivel" />
+            <x-input-error :messages="$errors->get('nivel')" class="mt-2" />
+        </div>
 
         <div class="flex items-center justify-end mt-4">
             <a class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800" href="{{ route('login') }}">
-                {{ __('Already registered?') }}
+                {{ __('¿Estás registrado?') }}
             </a>
 
             <x-primary-button class="ml-4">
-                {{ __('Register') }}
+                {{ __('Registrado') }}
             </x-primary-button>
         </div>
     </form>

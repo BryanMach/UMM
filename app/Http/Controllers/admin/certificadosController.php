@@ -4,11 +4,11 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
-use App\Models\Personal;
-use App\Models\Usuario;
+
+use App\Models\certificado;
 use Illuminate\Http\Request;
 
-class UsuariosController extends Controller
+class certificadosController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,18 +19,19 @@ class UsuariosController extends Controller
     {
         $keyword = $request->get('search');
         $perPage = 25;
-        $personas = Personal::all();
+
         if (!empty($keyword)) {
-            $usuarios = Usuario::where('idPersonal', 'LIKE', "%$keyword%")
-                ->orWhere('usuario', 'LIKE', "%$keyword%")
-                ->orWhere('contrasena', 'LIKE', "%$keyword%")
-                ->orWhere('nivel', 'LIKE', "%$keyword%")
+            $certificados = certificado::where('tipo', 'LIKE', "%$keyword%")
+                ->orWhere('nreg', 'LIKE', "%$keyword%")
+                ->orWhere('fechaEmision', 'LIKE', "%$keyword%")
+                ->orWhere('fechaVecimiento', 'LIKE', "%$keyword%")
+                ->orWhere('idArtefactos', 'LIKE', "%$keyword%")
                 ->latest()->paginate($perPage);
         } else {
-            $usuarios = Usuario::latest()->paginate($perPage);
+            $certificados = certificado::latest()->paginate($perPage);
         }
 
-        return view('admin.usuarios.index', compact('usuarios','personas'));
+        return view('admin.certificados.index', compact('certificados'));
     }
 
     /**
@@ -40,8 +41,7 @@ class UsuariosController extends Controller
      */
     public function create()
     {
-        $personas = Personal::All();
-        return view('admin.usuarios.create', compact('personas'));
+        return view('admin.certificados.create');
     }
 
     /**
@@ -53,12 +53,12 @@ class UsuariosController extends Controller
      */
     public function store(Request $request)
     {
-
+        
         $requestData = $request->all();
+        
+        certificado::create($requestData);
 
-        Usuario::create($requestData);
-
-        return redirect('admin/usuarios')->with('flash_message', 'Usuario agregado!!!');
+        return redirect('admin/certificados')->with('flash_message', 'certificado added!');
     }
 
     /**
@@ -70,9 +70,9 @@ class UsuariosController extends Controller
      */
     public function show($id)
     {
-        $usuario = Usuario::findOrFail($id);
+        $certificado = certificado::findOrFail($id);
 
-        return view('admin.usuarios.show', compact('usuario'));
+        return view('admin.certificados.show', compact('certificado'));
     }
 
     /**
@@ -84,10 +84,9 @@ class UsuariosController extends Controller
      */
     public function edit($id)
     {
-        $personas = Personal::All();
-        $usuario = Usuario::findOrFail($id);
+        $certificado = certificado::findOrFail($id);
 
-        return view('admin.usuarios.edit', compact('usuario','personas'));
+        return view('admin.certificados.edit', compact('certificado'));
     }
 
     /**
@@ -100,13 +99,13 @@ class UsuariosController extends Controller
      */
     public function update(Request $request, $id)
     {
-
+        
         $requestData = $request->all();
+        
+        $certificado = certificado::findOrFail($id);
+        $certificado->update($requestData);
 
-        $usuario = Usuario::findOrFail($id);
-        $usuario->update($requestData);
-
-        return redirect('admin/usuarios')->with('flash_message', 'Usuario actualizado!');
+        return redirect('admin/certificados')->with('flash_message', 'certificado updated!');
     }
 
     /**
@@ -118,8 +117,8 @@ class UsuariosController extends Controller
      */
     public function destroy($id)
     {
-        Usuario::destroy($id);
+        certificado::destroy($id);
 
-        return redirect('admin/usuarios')->with('flash_message', 'Usuario borrado!');
+        return redirect('admin/certificados')->with('flash_message', 'certificado deleted!');
     }
 }
