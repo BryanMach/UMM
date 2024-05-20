@@ -19,7 +19,7 @@ class UsuariosController extends Controller
     {
         $keyword = $request->get('search');
         $perPage = 25;
-
+        $personas = Personal::all();
         if (!empty($keyword)) {
             $usuarios = Usuario::where('idPersonal', 'LIKE', "%$keyword%")
                 ->orWhere('usuario', 'LIKE', "%$keyword%")
@@ -30,7 +30,7 @@ class UsuariosController extends Controller
             $usuarios = Usuario::latest()->paginate($perPage);
         }
 
-        return view('admin.usuarios.index', compact('usuarios'));
+        return view('admin.usuarios.index', compact('usuarios','personas'));
     }
 
     /**
@@ -84,9 +84,10 @@ class UsuariosController extends Controller
      */
     public function edit($id)
     {
+        $personas = Personal::All();
         $usuario = Usuario::findOrFail($id);
 
-        return view('admin.usuarios.edit', compact('usuario'));
+        return view('admin.usuarios.edit', compact('usuario','personas'));
     }
 
     /**

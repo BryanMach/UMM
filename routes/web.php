@@ -17,6 +17,9 @@ use App\Http\Controllers\admin\CertificacionesController;
 use App\Http\Controllers\admin\MotoresController;
 use App\Http\Controllers\admin\datosAdicionalesController;
 use App\Http\Controllers\admin\RecuperarController;
+use App\Http\Controllers\admin\certificadosController;
+use App\Http\Controllers\admin\PerfilesController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -64,6 +67,8 @@ Route::group(['middleware'=> ['auth']], function () {
     Route::get('admin/imprimir-certificado-francobordo',[ArtefactosController::class,'imprimir_certificado_francobordo']);
     Route::get('admin/imprimir-certificado-arqueo',[ArtefactosController::class,'imprimir_certificado_arqueo']);
     Route::get('admin/imprimir',[ArtefactosController::class,'imprimir']);
+    Route::resource('admin/perfil',PerfilesController::class);
+    Route::resource('admin/certificados', certificadosController::class);
 });
 Route::resource('admin/certicados', 'admin\certicadosController');
 Route::resource('admin/certificados', 'admin\certificadosController');

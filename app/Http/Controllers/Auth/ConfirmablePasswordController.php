@@ -35,7 +35,10 @@ class ConfirmablePasswordController extends Controller
         }
 
         $request->session()->put('auth.password_confirmed_at', time());
-
+/* 
+Aqui es donde redirecciona hacia dashboard porque seguro eso esta como ruta de home
+Sugiero modificar esto en home
+*/
         return redirect()->intended(RouteServiceProvider::HOME);
     }
 }

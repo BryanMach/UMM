@@ -6,15 +6,30 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests;
 use App\Models\Personal;
 use App\Models\Usuario;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
-class UsuariosController extends Controller
+class PerfilesController extends Controller
 {
     /**AQUIIII: adapta esta cosa para controlar perfiles como el jefe, interno y externo
+     * luego recomiendo que el if se cambie por un switch
      * Display a listing of the resource.
      *
      * @return \Illuminate\View\View
      */
+    public function perfil(request $request){
+        @dd('id:', Auth::user()->id);
+        $usuario = Auth::user()->id;
+        $nivel= Usuario::findOrFail($usuario);
+        if($nivel->nivel == 1){
+            return view("id",[""=> $usuario]);
+        }elseif($nivel->nivel == 2){
+            return view("",[""=> $usuario]);
+        }else{
+            return view("",[""=> $usuario]);
+        }
+    }
     public function index(Request $request)
     {
         $keyword = $request->get('search');
