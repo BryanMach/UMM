@@ -101,15 +101,16 @@
             </table>
         </div>
             <div>
-                <a class="btn btn-default btn-flat float-right  btn-block "
-                    href="#" onclick="event.preventDefault();
-                     document.getElementById('logout-form').submit();">
-                    <i class="fa fa-fw fa-power-off text-red"></i>
+                    <a class="btn btn-default btn-flat float-right  btn-block "
+                        href="#" onclick="event.preventDefault();
+                        document.getElementById('logout-form').submit();">
+                        <i class="fa fa-fw fa-power-off text-red"></i>
                         Salir
                     </a>
-                <form id="logout-form" action="http://localhost/rcumm/public/logout" method="POST" style="display: none;">
                     <input type="hidden" name="_token" value="wYPQSAtVT40RtK4HcL0s7NqEGk4DAyBtDQJNesfB">
-                </form>
+                    <form id="logout-form" action="http://localhost/rcumm/public/logout" method="POST" style="display: none;">
+                         @CSRF
+                    </form>
             </div>
         </div>
     </div>

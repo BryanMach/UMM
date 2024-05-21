@@ -113,7 +113,7 @@
                 <p id="pg-registrobuques-contenido" class="justificado"></p>
                     <div class="container">
                     <div class="row">
-                        <div class="acordion-manual-header col-12" id="acordion-reg-normal-header">Servicios<span class="ti-angle-up"></span></div>
+                        <div class="acordion-manual-header col-12" id="acordion-reg-normal-header">Servicios</div>
                         <div class="acordion-manual-contenido-show col-12" id="acordion-reg-normal-contenido">
                             <span id="intro-reg-normal"></span>
                                 <div class="row">
@@ -137,7 +137,7 @@
                                     <div id="reg-normal-contenido"></div>
                                 </div>
                         </div>
-                        <div class="acordion-manual-header col-12" id="acordion-reg-dual-header">¿Quienes somos?<span class="ti-angle-down"></span></div>
+                        <div class="acordion-manual-header col-12" id="acordion-reg-dual-header">¿Quienes somos?</div>
                         <div class="acordion-manual-contenido-hide col-12" id="acordion-reg-dual-contenido">
                             <span id="intro-reg-dual"></span>
                                 <div class="row">
@@ -154,7 +154,7 @@
                                     <div id="reg-dual-contenido"></div>
                                 </div>
                         </div>
-                        <div class="acordion-manual-header col-12" id="acordion-reg-especial-header">Empresas certificadas}<span class="ti-angle-down"></span></div>
+                        <div class="acordion-manual-header col-12" id="acordion-reg-especial-header">Empresas certificadas</div>
                         <div class="acordion-manual-contenido-hide col-12" id="acordion-reg-especial-contenido">
                             <h4 id="reg-especial-titulo"></h4>
                             <hr>

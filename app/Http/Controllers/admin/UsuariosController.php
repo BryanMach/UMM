@@ -7,6 +7,7 @@ use App\Http\Requests;
 use App\Models\Personal;
 use App\Models\Usuario;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UsuariosController extends Controller
 {
@@ -119,7 +120,6 @@ class UsuariosController extends Controller
     public function destroy($id)
     {
         Usuario::destroy($id);
-
         return redirect('admin/usuarios')->with('flash_message', 'Usuario borrado!');
     }
 }

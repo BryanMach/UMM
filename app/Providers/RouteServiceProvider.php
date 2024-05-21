@@ -5,6 +5,7 @@ namespace App\Providers;
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Facades\Route;
 
@@ -17,10 +18,18 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @var string
      * si te fijas aqui es donde define a donde va despues del login aquiiiiiiiiiiiiiiiiiiiiiiiiiiiiii
-     * 
+     * pero se hace la llamada desde AutenticatedSessionController
      */
-    public const HOME = '/admin/imprimir';
-
+    public const HOME = 'dashboard';
+    public static function HOME(){
+        if(Auth::user()->id==1){
+            //dd(Auth::user()->id);
+            $HOME1 = '/admin/imprimir';   
+        }else{
+            $HOME1 = 'dashboard';
+        }
+        return $HOME1;
+    }
     /**
      * Define your route model bindings, pattern filters, and other route configuration.
      *

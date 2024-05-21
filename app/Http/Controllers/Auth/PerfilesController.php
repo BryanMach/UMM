@@ -18,34 +18,20 @@ class PerfilesController extends Controller
      *
      * @return \Illuminate\View\View
      */
-    public function perfil(request $request){
+    public function index(request $request){
         @dd('id:', Auth::user()->id);
         $usuario = Auth::user()->id;
+        $usuarios= Usuario::where('id',$usuario)->get();
         $nivel= Usuario::findOrFail($usuario);
+        $personal = Personal::where('id',$usuario->idPersonal)->get();
         if($nivel->nivel == 1){
             return view("id",[""=> $usuario]);
         }elseif($nivel->nivel == 2){
             return view("",[""=> $usuario]);
         }else{
-            return view("",[""=> $usuario]);
+            //return view("",[""=> $usuario]);
+            return view('admin.perfiles.prueba', compact('usuarios', 'personal'));
         }
-    }
-    public function index(Request $request)
-    {
-        $keyword = $request->get('search');
-        $perPage = 25;
-
-        if (!empty($keyword)) {
-            $usuarios = Usuario::where('idPersonal', 'LIKE', "%$keyword%")
-                ->orWhere('usuario', 'LIKE', "%$keyword%")
-                ->orWhere('contrasena', 'LIKE', "%$keyword%")
-                ->orWhere('nivel', 'LIKE', "%$keyword%")
-                ->latest()->paginate($perPage);
-        } else {
-            $usuarios = Usuario::latest()->paginate($perPage);
-        }
-
-        return view('admin.usuarios.index', compact('usuarios'));
     }
 
     /**

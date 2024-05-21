@@ -22,6 +22,7 @@ class AuthenticatedSessionController extends Controller
 
     /**
      * Handle an incoming authentication request.
+     * es auí donde se hace la llamada a la función para mostrar un perfil
      */
     public function store(LoginRequest $request): RedirectResponse
     {
@@ -29,7 +30,7 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        return redirect()->intended(RouteServiceProvider::HOME);
+        return redirect()->intended(RouteServiceProvider::HOME());
     }
 
     /**
