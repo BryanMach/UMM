@@ -8,6 +8,10 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@600&family=Poetsen+One&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"
         integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -37,6 +41,7 @@
         top: 0;
         left: 0;
         z-index: 99;
+        transition: top 0.3s;
     }
 
     .contenedor-header header {
@@ -97,20 +102,33 @@
 
     /* SECCION I N I C I O */
     .inicio {
-        background: linear-gradient(to top, rgba(5, 145, 225, 0.8), rgb(183, 198, 208));
+        background:
+            linear-gradient(to top, rgba(5, 145, 225, 0.8), rgba(183, 198, 208, 0.8)),
+            url('{{ asset('images/Logotipo UMM-2024 - Transp.png') }}');
+        /* Usa asset() para la URL correcta */
         background-size: cover;
+        /* También puedes probar con 'contain' */
+        background-repeat: no-repeat;
+        background-position: center;
         height: 100vh;
         color: #fff;
         display: flex;
         align-items: center;
+        justify-content: center;
+        /* Centra el contenido dentro de la sección */
+        text-align: center;
+        /* Centra el texto */
+        padding: 20px;
+        /* Añade padding si es necesario */
     }
+
 
 
     .inicio .contenido-banner {
         padding: 20px;
         background-color: #404d54;
-        width: 70%;
-        height: 50%;
+        width: 40%;
+        height: 55%;
         margin: auto;
         text-align: center;
         border-radius: 40px;
@@ -120,10 +138,11 @@
         margin-top: 40px;
         font-size: 42px;
         font-family: 'Righteous';
+        font-weight: bold;
     }
 
     .inicio .contenido-banner h2 {
-        font-size: 15px;
+        font-size: 25px;
         font-weight: normal;
     }
 
@@ -285,9 +304,9 @@
     }
 
     .skills .skill>span {
-        font-weight: bold;
         display: block;
         margin-bottom: 10px;
+        font-size: 24px;
     }
 
     .skills .skill .barra-skill {
@@ -316,158 +335,7 @@
         text-align: center;
         top: -17px;
         right: -15px;
-        font-size: 14px;
-    }
-
-    /* Estas clases se agregaran dinamicamente mediante javascript */
-    .skills .skill .javascript {
-        width: 0%;
-        animation: 2s javascript forwards;
-    }
-
-    @keyframes javascript {
-        0% {
-            width: 0%;
-        }
-
-        100% {
-            width: 75%;
-        }
-    }
-
-    .skills .skill .htmlcss {
-        width: 0%;
-        animation: 2s htmlcss forwards;
-    }
-
-    @keyframes htmlcss {
-        0% {
-            width: 0%;
-        }
-
-        100% {
-            width: 89%;
-        }
-    }
-
-    .skills .skill .photoshop {
-        width: 0%;
-        animation: 2s photoshop forwards;
-    }
-
-    @keyframes photoshop {
-        0% {
-            width: 0%;
-        }
-
-        100% {
-            width: 95%;
-        }
-    }
-
-    .skills .skill .wordpress {
-        width: 0%;
-        animation: 2s wordpress forwards;
-    }
-
-    @keyframes wordpress {
-        0% {
-            width: 0%;
-        }
-
-        100% {
-            width: 81%;
-        }
-    }
-
-    .skills .skill .drupal {
-        width: 0%;
-        animation: 2s drupal forwards;
-    }
-
-    @keyframes drupal {
-        0% {
-            width: 0%;
-        }
-
-        100% {
-            width: 55%;
-        }
-    }
-
-    .skills .skill .comunicacion {
-        width: 0%;
-        animation: 2s comunicacion forwards;
-    }
-
-    @keyframes comunicacion {
-        0% {
-            width: 0%;
-        }
-
-        100% {
-            width: 80%;
-        }
-    }
-
-    .skills .skill .trabajo {
-        width: 0%;
-        animation: 2s trabajo forwards;
-    }
-
-    @keyframes trabajo {
-        0% {
-            width: 0%;
-        }
-
-        100% {
-            width: 70%;
-        }
-    }
-
-    .skills .skill .creatividad {
-        width: 0%;
-        animation: 2s creatividad forwards;
-    }
-
-    @keyframes creatividad {
-        0% {
-            width: 0%;
-        }
-
-        100% {
-            width: 99%;
-        }
-    }
-
-    .skills .skill .dedicacion {
-        width: 0%;
-        animation: 2s dedicacion forwards;
-    }
-
-    @keyframes dedicacion {
-        0% {
-            width: 0%;
-        }
-
-        100% {
-            width: 65%;
-        }
-    }
-
-    .skills .skill .proyect {
-        width: 0%;
-        animation: 2s proyect forwards;
-    }
-
-    @keyframes proyect {
-        0% {
-            width: 0%;
-        }
-
-        100% {
-            width: 94%;
-        }
+        font-size: 30px;
     }
 
     /* SECCION CURRICULUM */
@@ -664,7 +532,9 @@
 
     /* SECCION CONTACTO */
     .contacto {
-        background-image: url(img/contact_bg.png);
+        background:
+            linear-gradient(to top, rgba(5, 145, 225, 0.8), rgba(183, 198, 208, 0.8)),
+            url('{{ asset('images/fondo2.png') }}');
         background-color: #1e2326;
         color: #fff;
         padding: 50px 0;
@@ -677,7 +547,7 @@
 
     .contacto h2 {
         font-size: 48px;
-        font-family: 'Righteous';
+        /*font-family: 'Righteous';*/
         text-align: center;
         padding: 20px 0;
     }
@@ -745,6 +615,7 @@
         max-swidth: 350px;
         left: 50%;
         transform: translate(-50%, -50%);
+        font-size: 25px;
     }
 
     .contacto .col .info ul {
@@ -753,6 +624,7 @@
 
     .contacto .col .info ul li {
         margin-bottom: 20px;
+        font-family: "Poetsen One", sans-serif;
     }
 
     .contacto .col .info ul li i {
@@ -849,10 +721,6 @@
             width: 100%;
         }
 
-        .skills .fila .col .barra-skill {
-            width: 100%;
-        }
-
         .curriculum .fila {
             display: block;
         }
@@ -894,7 +762,7 @@
     <div class="contenedor-header">
         <header>
             <img src="{{ asset('images/Logotipo UMM-2024 - Transp.png') }}" style="height: 100px; margin-left: -15%">
-            <div class="logo" style="margin-left: 15px">
+            <div class="logo" style="margin-left: 5%">
                 <a href="#">
                     UNIDAD MARINA MERCANTE
                 </a>
@@ -905,7 +773,8 @@
                     <li class="text-center"><a href="#skills" onclick="seleccionar()">SERVICIOS</a></li>
                     <li class="text-center"><a href="#curriculum" onclick="seleccionar()">EMPRESAS CERTIFICADAS</a></li>
                     <li class="text-center"><a href="#contacto" onclick="seleccionar()">CONTACTO</a></li>
-                    <li class="text-center"><a href="http://localhost/UMM/public/login">INGRESAR</a></li>
+                    <li class="text-center"><a href="http://localhost/UMM/public/login"
+                            style="margin-left: 150%">INGRESAR</a></li>
                 </ul>
             </nav>
             <div class="nav-responsive" onclick="mostrarOcultarMenu()">
@@ -931,141 +800,91 @@
     <!-- SECCION SOBRE MI -->
     <section id="sobremi" class="sobremi">
         <div class="contenido-seccion">
-            <h2>Servicios</h2>
-            <p><span>Hola, soy Nick Perez.</span> Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam unde
-                soluta minima necessitatibus, voluptas consectetur vero officiis quas, explicabo deleniti repellendus
-                aliquid debitis maiores numquam voluptate reprehenderit in delectus dolores.</p>
-
+            <h2>Quienes Somos</h2>
             <div class="fila">
-                <!-- datos personales -->
-                <div class="col">
-                    <h3>Datos Personales</h3>
-                    <ul>
-                        <li>
-                            <strong>Cumpleaños</strong>
-                            15-01-1980
-                        </li>
-                        <li>
-                            <strong>Teléfono</strong>
-                            2555 5454545
-                        </li>
-                        <li>
-                            <strong>Email</strong>
-                            cw@example.com
-                        </li>
-                        <li>
-                            <strong>Website</strong>
-                            www.example.com
-                        </li>
-                        <li>
-                            <strong>Dirección</strong>
-                            123 San Luis, Argentina
-                        </li>
-                        <li>
-                            <strong>Cargo</strong>
-                            <span>FREELANCE</span>
-                        </li>
-                    </ul>
+                <div class="col izquierda">
+                    <h3>Misión</h3>
+                    <div class="item izq">
+                        <p>Promover, fomentar y normar toda actividad de la marina mercante en los ámbitos marítimo,
+                            fluvial y lacustre, velar por la seguridad de la navegación, la vida humana y evitar la
+                            contaminación del medio acuático, a fin de contribuir al cumplimiento de la misión de la
+                            DGIMFLMM.</p>
+                        <div class="conectori">
+                            <div class="circuloi"></div>
+                        </div>
+                    </div>
+                    {{--  <div class="item izq">
+                        <h4>Arte y Multimedia</h4>
+                        <span class="casa">Universidad de Oxford</span>
+                        <span class="fecha">2005 - 2008</span>
+                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quis, cumque repellat, tempora
+                            recusandae aliquam nemo esse natus impedit, nostrum temporibus veritatis eaque soluta
+                            aperiam id repudiandae fugiat deserunt! Explicabo, veritatis?</p>
+                        <div class="conectori">
+                            <div class="circuloi"></div>
+                        </div>
+                    </div> --}}
                 </div>
 
+                <div class="col derecha">
+                    <h3>Visión</h3>
+                    <div class="item der">
+                        <p>Constituirse en el ente rector que administre y norme la actividad de marina mercante a nivel
+                            nacional e internacional.</p>
+                        <div class="conectord">
+                            <div class="circulod"></div>
+                        </div>
+                    </div>
+                    {{--   <div class="item der">
+                        <h4>Front Developer</h4>
+                        <span class="casa">Nombre de Compañía</span>
+                        <span class="fecha">2005 - 2008</span>
+                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quis, cumque repellat, tempora
+                            recusandae aliquam nemo esse natus impedit, nostrum temporibus veritatis eaque soluta
+                            aperiam id repudiandae fugiat deserunt! Explicabo, veritatis?</p>
+                        <div class="conectord">
+                            <div class="circulod"></div>
+                        </div>
+                    </div> --}}
+                </div>
             </div>
-            <button>
-                Descargar CV <i class="fa-solid fa-download"></i>
-                <span class="overlay"></span>
-            </button>
         </div>
+
     </section>
 
     <!-- SECCION SKILLS -->
-    <section class="skills" id="skills">
+    <section id="skills" class="curriculum">
         <div class="contenido-seccion">
-            <h2>Empresas certificadas</h2>
+            <h2>Servicios</h2>
             <div class="fila">
-                <!-- Technical Skill -->
-                <div class="col">
-                    <h3>Technical Skills</h3>
-                    <div class="skill">
-                        <span>Javascript</span>
-                        <div class="barra-skill">
-                            <div class="progreso">
-                                <span>75%</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="skill">
-                        <span>HTML & CSS</span>
-                        <div class="barra-skill">
-                            <div class="progreso">
-                                <span>89%</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="skill">
-                        <span>Photoshop</span>
-                        <div class="barra-skill">
-                            <div class="progreso">
-                                <span>95%</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="skill">
-                        <span>Wordpress</span>
-                        <div class="barra-skill">
-                            <div class="progreso">
-                                <span>81%</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="skill">
-                        <span>Drupa</span>
-                        <div class="barra-skill">
-                            <div class="progreso">
-                                <span>55%</span>
-                            </div>
+                <div class="col izquierda">
+                    <div class="item izq">
+                        <span class="casa">Carnetizacíon</span>
+                        <p>La unidad marina mercante es la entidad responsable de expedir los carnets
+                            de habilitacion para el personal que trabaja en el ámbito maritimo, fluvial
+                            y lacustre. Estos carnets son documentos esenciales que certifican la
+                            identidad y competencia del personal mercante y sus embarcaciones,
+                            garantizando así que cumplen con los requisitos y estándares necesarios para
+                            desempeñar sus funciones a bordo de los buques, embarcaciones y artefactos
+                            navales.</p>
+                        {{-- libretas de embarque --}}
+                        <div class="conectori">
+                            <div class="circuloi"></div>
                         </div>
                     </div>
                 </div>
-                <!-- Professional Skills -->
-                <div class="col">
-                    <h3>Professional Skills</h3>
-                    <div class="skill">
-                        <span>Comunicación</span>
-                        <div class="barra-skill">
-                            <div class="progreso">
-                                <span>80%</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="skill">
-                        <span>Trabajo en Equipo</span>
-                        <div class="barra-skill">
-                            <div class="progreso">
-                                <span>70%</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="skill">
-                        <span>Creatividad</span>
-                        <div class="barra-skill">
-                            <div class="progreso">
-                                <span>99%</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="skill">
-                        <span>Dedicación</span>
-                        <div class="barra-skill">
-                            <div class="progreso">
-                                <span>65%</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="skill">
-                        <span>Proyect Management</span>
-                        <div class="barra-skill">
-                            <div class="progreso">
-                                <span>94%</span>
-                            </div>
+
+                <div class="col derecha">
+                    <div class="item der">
+                        <span class="casa">Certificaciones</span><br>
+                        <p>La unidad marina mercante es la entidad responsable de realizar el registro de buques,
+                            embarcaciones y artefactos navales, emitiendo los correspondientes Certificados de Registro
+                            y Estatutarios en el ámbito nacional e internacional. Asi mismo emite certificados
+                            Estatutarios de
+                            cese de bandera, privilegios marítimos, libretas de embarco y otros de conformidad a
+                            disposiciones legales vigentes</p>
+                        <div class="conectord">
+                            <div class="circulod"></div>
                         </div>
                     </div>
                 </div>
@@ -1074,85 +893,48 @@
     </section>
 
     <!-- SECCION CURRICULUM -->
-    <section id="curriculum" class="curriculum">
+    <section class="skills" id="curriculum">
         <div class="contenido-seccion">
-            <h2>Curriculum</h2>
-            <div class="fila">
-                <div class="col izquierda">
-                    <h3>Educación</h3>
-                    <div class="item izq">
-                        <h4>Arte y Multimedia</h4>
-                        <span class="casa">Universidad de Oxford</span>
-                        <span class="fecha">2005 - 2008</span>
-                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quis, cumque repellat, tempora
-                            recusandae aliquam nemo esse natus impedit, nostrum temporibus veritatis eaque soluta
-                            aperiam id repudiandae fugiat deserunt! Explicabo, veritatis?</p>
-                        <div class="conectori">
-                            <div class="circuloi"></div>
-                        </div>
-                    </div>
-                    <div class="item izq">
-                        <h4>Arte y Multimedia</h4>
-                        <span class="casa">Universidad de Oxford</span>
-                        <span class="fecha">2005 - 2008</span>
-                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quis, cumque repellat, tempora
-                            recusandae aliquam nemo esse natus impedit, nostrum temporibus veritatis eaque soluta
-                            aperiam id repudiandae fugiat deserunt! Explicabo, veritatis?</p>
-                        <div class="conectori">
-                            <div class="circuloi"></div>
-                        </div>
-                    </div>
-                    <div class="item izq">
-                        <h4>Arte y Multimedia</h4>
-                        <span class="casa">Universidad de Oxford</span>
-                        <span class="fecha">2005 - 2008</span>
-                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quis, cumque repellat, tempora
-                            recusandae aliquam nemo esse natus impedit, nostrum temporibus veritatis eaque soluta
-                            aperiam id repudiandae fugiat deserunt! Explicabo, veritatis?</p>
-                        <div class="conectori">
-                            <div class="circuloi"></div>
-                        </div>
-                    </div>
-                </div>
+            <h2>Empresas certificadas</h2>
+            <table class="table table-md table-dark text-center">
+                <thead>
+                    <tr>
+                        <th scope="col">Empresa</th>
+                        <th scope="col">Lugar</th>
+                        <th scope="col">Contacto</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>Mark</td>
+                        <td>Otto</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">2</th>
+                        <td>Jacob</td>
+                        <td>Thornton</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">3</th>
+                        <td>Larry</td>
+                        <td>the Bird</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">3</th>
+                        <td>Larry</td>
+                        <td>the Bird</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">3</th>
+                        <td>Larry</td>
+                        <td>the Bird</td>
+                    </tr>
+                </tbody>
+            </table>
 
-                <div class="col derecha">
-                    <h3>Experiencia de trabajo</h3>
-                    <div class="item der">
-                        <h4>Front Developer</h4>
-                        <span class="casa">Nombre de Compañía</span>
-                        <span class="fecha">2005 - 2008</span>
-                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quis, cumque repellat, tempora
-                            recusandae aliquam nemo esse natus impedit, nostrum temporibus veritatis eaque soluta
-                            aperiam id repudiandae fugiat deserunt! Explicabo, veritatis?</p>
-                        <div class="conectord">
-                            <div class="circulod"></div>
-                        </div>
-                    </div>
-                    <div class="item der">
-                        <h4>Front Developer</h4>
-                        <span class="casa">Nombre de Compañía</span>
-                        <span class="fecha">2005 - 2008</span>
-                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quis, cumque repellat, tempora
-                            recusandae aliquam nemo esse natus impedit, nostrum temporibus veritatis eaque soluta
-                            aperiam id repudiandae fugiat deserunt! Explicabo, veritatis?</p>
-                        <div class="conectord">
-                            <div class="circulod"></div>
-                        </div>
-                    </div>
-                    <div class="item der">
-                        <h4>Front Developer</h4>
-                        <span class="casa">Nombre de Compañía</span>
-                        <span class="fecha">2005 - 2008</span>
-                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quis, cumque repellat, tempora
-                            recusandae aliquam nemo esse natus impedit, nostrum temporibus veritatis eaque soluta
-                            aperiam id repudiandae fugiat deserunt! Explicabo, veritatis?</p>
-                        <div class="conectord">
-                            <div class="circulod"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
+
     </section>
 
     <!-- SECCION CONTACTO -->
@@ -1160,30 +942,23 @@
         <div class="contenido-seccion">
             <h2>CONTACTO</h2>
             <div class="fila">
-                <!-- Formulario -->
-                <div class="col">
-                    <input type="text" placeholder="Tú Nombre">
-                    <input type="text" placeholder="Número telefónico">
-                    <input type="text" placeholder="Dirección de correo">
-                    <input type="text" placeholder="Tema">
-                    <textarea name="" id="" cols="30" rows="10" placeholder="Mensaje"></textarea>
-                    <button>
-                        Enviar Mensaje<i class="fa-solid fa-paper-plane"></i>
-                        <span class="overlay"></span>
-                    </button>
-                </div>
                 <!-- Mapa -->
                 <div class="col">
-                    <img src="img/ubicacion.png" alt="">
+                    <div><img src="{{ asset('images/foto.jpg') }}" alt=""
+                            style="width: 250px; border: 15px solid rgba(127, 71, 7, 0.893);"></div>
                     <div class="info">
                         <ul>
                             <li>
-                                <i class="fa-solid fa-location-dot"></i>
-                                Nicaragua 159, San Rafael Mza
+                                <i class="fas fa-address-card"></i>
+                                Nombre del de la foto
+                            </li>
+                            <li>
+                                <i class="fas fa-portrait"></i>
+                                Cargo del de la foto
                             </li>
                             <li>
                                 <i class="fa-solid fa-mobile-screen"></i>
-                                Llamanos: 2384 - 4343443
+                                Numero de contacto
                             </li>
                             <li>
                                 <i class="fa-solid fa-envelope"></i>
@@ -1201,13 +976,13 @@
         <a href="#inicio" class="arriba">
             <i class="fa-solid fa-angles-up"></i>
         </a>
-        <div class="redes">
+        {{--  <div class="redes">
             <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
             <a href="#"><i class="fa-brands fa-twitter"></i></a>
             <a href="#"><i class="fa-brands fa-skype"></i></a>
             <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
             <a href="#"><i class="fa-solid fa-rss"></i></a>
-        </div>
+        </div> --}}
     </footer>
 
     <script>
@@ -1252,6 +1027,23 @@
         window.onscroll = function() {
             efectoHabilidades();
         }
+
+
+
+        document.addEventListener("DOMContentLoaded", function() {
+            var prevScrollpos = window.pageYOffset;
+            var header = document.querySelector(".contenedor-header");
+
+            window.onscroll = function() {
+                var currentScrollPos = window.pageYOffset;
+                if (prevScrollpos > currentScrollPos) {
+                    header.style.top = "0";
+                } else {
+                    header.style.top = "-150px"; // Ajusta este valor según la altura de tu header
+                }
+                prevScrollpos = currentScrollPos;
+            };
+        });
     </script>
 </body>
 
