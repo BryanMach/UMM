@@ -39,16 +39,19 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    
                                     @foreach ($listapropietarios as $item)
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
-                                            <td><a
+                                            
+                                                <td><a
                                                     href="{{ url('/admin/propietario/' . $item->idPropietario) }}">{{ $item->propietarios->identificador }}</a>
-                                            </td>
-                                            <td> {{ $item->propietarios->nombre }}</td>
-                                            <td><a href="{{ url('/admin/artefactos/' . $item->idArtefacto) }}">{{ $item->artefactos->matricula }}
+                                                </td>
+                                                <td> {{ $item->propietarios->nombre }}</td>
+                                            
+                                                <td><a href="{{ url('/admin/artefactos/' . $item->idArtefacto) }}">{{ $item->artefactos->matricula }}
                                                     {{ $item->artefactos->nombre }}</a>
-                                            </td>
+                                                </td>
                                             <td>
                                                 <a href="{{ url('/admin/lista-propietarios/' . $item->id) }}"
                                                     title="Ver ListaPropietario"><button class="btn btn-info btn-sm"><i

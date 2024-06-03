@@ -1,8 +1,16 @@
-<div class="form-group {{ $errors->has('idCuenca') ? 'has-error' : ''}}">
+<div class="form-group {{ $errors->has('idCuenca') ? 'has-error' : '' }}">
     <label for="idCuenca" class="control-label">{{ 'Cuenca' }}</label>
     <select class="form-control" name="idCuenca" id="idCuenca">
         @foreach ($cuencas as $cuenca)
-            <option value="{{$cuenca->id}}">{{$cuenca->cuenca}}</option>
+            @if ($formMode == 'edit')
+                @if ( $cuenca->id ==  $basesoperativa->idCuenca )
+                    <option value="{{ $cuenca->id }}" selected>{{ $cuenca->cuenca }}</option>
+                @else
+                    <option value="{{ $cuenca->id }}">{{ $cuenca->cuenca }}</option>
+                @endif
+            @else
+                <option value="{{ $cuenca->id }}">{{ $cuenca->cuenca }}</option>
+            @endif
         @endforeach
     </select>
     {!! $errors->first('idCuenca', '<p class="help-block">:message</p>') !!}

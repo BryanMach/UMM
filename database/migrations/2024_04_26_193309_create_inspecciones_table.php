@@ -17,6 +17,8 @@ class CreateInspeccionesTable extends Migration
             $table->timestamps();
             $table->integer('idArtefacto')->unsigned();
             $table->string('gestion')->nullable();
+            $table->string('jefeinspector')->nullable();
+            $table->string('motivo')->nullable();
             $table->foreign('idArtefacto')->references('id')->on('artefactos');
             });
     }

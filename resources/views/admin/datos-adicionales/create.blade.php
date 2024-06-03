@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-md-9">
                 <div class="card">
-                    <div class="card-header">Crear nuevo datosAdicionale</div>
+                    <div class="card-header">Crear nuevo dato adicional</div>
                     <div class="card-body">
                         <a href="{{ url('/admin/datos-adicionales') }}" title="Back"><button class="btn btn-warning btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i> Retroceder</button></a>
                         <br />
@@ -25,8 +25,10 @@
                             @include ('admin.datos-adicionales.form', ['formMode' => 'create'])
 
                         </form>
-
                     </div>
+                    Emitir certificado de:<br>
+                    <a href="{{ url('/admin/imprimir-certificado-seguridad') }}" title="seguridad"><button class="form-control"> Seguridad de la navegación</button></a>
+
                 </div>
             </div>
         </div>

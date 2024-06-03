@@ -26,9 +26,9 @@ class Inspeccione extends Model
      *
      * @var array
      */
-    protected $fillable = ['idArtefacto', 'gestion'];
+    protected $fillable = ['idArtefacto', 'gestion','jefeinspector','motivo'];
 
     public function artefactos(){
-        return $this->belongsTo(Artefacto::class);
+        return $this->belongsTo(Artefacto::class,'idArtefacto','id');
     }
 }

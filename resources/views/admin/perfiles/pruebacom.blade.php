@@ -77,26 +77,29 @@
     </style>
 </head>
 <body>
+    @php
+        $idCuenca=request('idCuenca', null);
+        $idBaseOperativa=request('idBaseOperativa', null);
+    @endphp
     <div class="sidebar">
         <div class="profile">
             <img src="https://via.placeholder.com/100" alt="User">
-            <h4>Nombre de personal</h4>
+            <h4>{{$perfil->grado}} {{$perfil->nombres}} {{$perfil->apellidos}}</h4>
         </div>
-        <a href="#" class="active">Title</a>
+        <a href="#" class="active">Usuario: {{$usuario->usuario}}</a>
         <div class="table-container">
-            <h5>Usuario</h5>
             <table class="table table-borderless">
                     <tr>
-                        <th>subtítulo</th>
-                        <td>dato</td>
+                        <th>CI:</th>
+                        <td>{{$perfil->ci}}</td>
                     </tr>
                     <tr>
-                        <th>subtítulo</th>
-                        <td>dato</td>
+                        <th>Cargo:</th>
+                        <td>{{$perfil->cargo}}</td>
                     </tr>
                     <tr>
-                        <th>subtítulo</th>
-                        <td>dato</td>
+                        <th>Contacto:</th>
+                        <td>{{$perfil->contacto}}</td>
                     </tr>
             </table>
         </div>
@@ -109,100 +112,94 @@
                     </a>
                     <input type="hidden" name="_token" value="wYPQSAtVT40RtK4HcL0s7NqEGk4DAyBtDQJNesfB">
                     <form id="logout-form" action="http://localhost/rcumm/public/logout" method="POST" style="display: none;">
-                         @CSRF
+                        @CSRF
                     </form>
             </div>
-        </div>
     </div>
     <div class="search-bar">
         <div class="main-content">
-            <h2>Planilla de personal</h2>
+            <h2>Planilla de artefactos</h2>
+            <div class="form-group {{ $errors->has('idCuenca') ? 'has-error' : '' }}">
+                <label for="idCuenca" class="control-label">{{ 'Cuenca' }}</label>
+                <select class="form-control" name="idCuenca" id="idCuenca" href="#">
+                    @foreach ($cuencas as $cuenca)
+                        @if ( $idCuenca != null )
+                            @if ( $cuenca->id ==  $idCuenca )
+                                <option value="{{ $cuenca->id }}" selected>{{ $cuenca->cuenca }}</option>
+                            @else
+                                <option value="{{ $cuenca->id }}">{{ $cuenca->cuenca }}</option>
+                            @endif
+                        @else
+                            <option value="{{ $cuenca->id }}">{{ $cuenca->cuenca }}</option>
+                        @endif
+                    @endforeach
+                </select>
+                {!! $errors->first('idCuenca', '<p class="help-block">:message</p>') !!}
+            </div>
+            <div class="form-group {{ $errors->has('idBaseOperativa') ? 'has-error' : '' }}">
+                <label for="idBaseOperativa" class="control-label">{{ 'Bases operativas' }}</label>
+                <select class="form-control" name="idBaseOperativa" id="idBaseOperativa" href="#">
+                    @if ( $idCuenca != null )
+                        @foreach ($basesoperativas as $base)
+                            @if ($idBaseOperativa != null)
+                                @if ( $base->id ==  $artefacto->idBaseOperativa )
+                                    <option value="{{ $base->id }}" selected>{{ $base->baseOperativa }}</option>
+                                @else
+                            <option value="{{ $base->id }}">{{ $base->baseOperativa }}</option>
+                            @endif
+                            @else
+                                <option value="{{ $base->id }}">{{ $base->baseOperativa }}</option>
+                            @endif
+                        @endforeach
+                    @else
+                    @foreach ($basesoperativas as $base)
+                        @if ($idBaseOperativa != null)
+                            @if ( $base->id ==  $artefacto->idBaseOperativa )
+                                <option value="{{ $base->id }}" selected>{{ $base->baseOperativa }}</option>
+                            @else
+                                <option value="{{ $base->id }}">{{ $base->baseOperativa }}</option>
+                            @endif
+                        @else
+                            <option value="{{ $base->id }}">{{ $base->baseOperativa }}</option>
+                        @endif
+                @endforeach
+                    @endif
+                </select>
+                {!! $errors->first('idBaseOperativa', '<p class="help-block">:message</p>') !!}
+            </div>
             <input type="text" class="form-control" placeholder="Buscar">
-        <div class="table-responsive">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>Cargo</th>
-                        <th>Nombre y apellido</th>
-                        <th>Cédula de identidad</th>
-                        <th>Acciones</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Puesto dentro de la unidad</td>
-                        <td>un nombre y un apellido</td>
-                        <td>123456789 AA</td>
-                        <td><span class="badge badge-danger">Ver o realizar seguimiento</span></td>
-                    </tr>
-                    <tr>
-                        <td>Puesto dentro de la unidad</td>
-                        <td>un nombre y un apellido</td>
-                        <td>123456789 AA</td>
-                        <td><span class="badge badge-secondary">Ver o realizar seguimiento</span></td>
-                    </tr>
-                    <tr>
-                        <td>Puesto dentro de la unidad</td>
-                        <td>un nombre y un apellido</td>
-                        <td>123456789 AA</td>
-                        <td><span class="badge badge-warning">Ver o realizar seguimiento</span></td>
-                    </tr>
-                    <tr>
-                        <td>Puesto dentro de la unidad</td>
-                        <td>un nombre y un apellido</td>
-                        <td>123456789 AA</td>
-                        <td><span class="badge badge-warning">Ver o realizar seguimiento</span></td>
-                    </tr>
-                    <tr>
-                        <td>Puesto dentro de la unidad</td>
-                        <td>un nombre y un apellido</td>
-                        <td>123456789 AA</td>
-                        <td><span class="badge badge-warning">Ver o realizar seguimiento</span></td>
-                    </tr>
-                    <tr>
-                        <td>Puesto dentro de la unidad</td>
-                        <td>un nombre y un apellido</td>
-                        <td>123456789 AA</td>
-                        <td><span class="badge badge-secondary">Ver o realizar seguimiento</span></td>
-                    </tr>
-                    <tr>
-                        <td>Puesto dentro de la unidad</td>
-                        <td>un nombre y un apellido</td>
-                        <td>123456789 AA</td>
-                        <td><span class="badge badge-secondary">Ver o realizar seguimiento</span></td>
-                    </tr>
-                    <tr>
-                        <td>Puesto dentro de la unidad</td>
-                        <td>un nombre y un apellido</td>
-                        <td>123456789 AA</td>
-                        <td><span class="badge badge-secondary">Ver o realizar seguimiento</span></td>
-                    </tr>
-                    <tr>
-                        <td>Puesto dentro de la unidad</td>
-                        <td>un nombre y un apellido</td>
-                        <td>123456789 AA</td>
-                        <td><span class="badge badge-danger">Ver o realizar seguimiento</span></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-    </div>
-    <div class="right-sidebar">
-        <div class="sidebar-header text-center p-3">
-            <h4>Registros de personal</h4>
-        </div>
-        <div class="sidebar-content">
-            <a href="personal">Personal</a>
-            <a href="usuarios">Usuarios</a>
-            <a href="bases-operativas" class="active">Bases de operaciones</a>
-            <h5 class="px-3 pt-3">Registros de embarcaciones</h5>
-            <a href="propietario">Propietarios</a>
-            <a href="artefactos">Artefactos</a>
-            <a href="lista-propietarios">Listas de propietarios de embarcaciones</a>
-            <a href="imprimir">Certificaciones</a>
-            <a href="imprimir">Alertas de Vencimiento</a>
-            <a href="dashboard">Modo Administrador</a>
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Cargo</th>
+                            <th>Nombre y apellido</th>
+                            <th>Cédula de identidad</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Puesto dentro de la unidad</td>
+                            <td>un nombre y un apellido</td>
+                            <td>123456789 AA</td>
+                            <td><span class="badge badge-danger">Ver o realizar seguimiento</span></td>
+                        </tr>
+                        <tr>
+                            <td><a href="registro"><button class="block mt-1 w-full" action="GET"> Registrar</button></a></td>
+                        </tr>
+                        
+                        <tr>
+                            <td><button class="block mt-1 w-full"> Renovar</button></td>
+                        </tr>
+                        
+                        <tr>
+                            <td><button class="block mt-1 w-full"> Inspección</button></td>
+                        </tr>
+                        
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

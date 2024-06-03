@@ -25,7 +25,7 @@ class certificado extends Model
      *
      * @var array
      */
-    protected $fillable = ['tipo', 'nreg', 'fechaEmision', 'fechaVecimiento', 'idArtefactos'];
+    protected $fillable = ['idArtefactos', 'tipoC', 'nreg','correlativo', 'fechaEmision', 'fechaVecimiento'];
 
     
 }

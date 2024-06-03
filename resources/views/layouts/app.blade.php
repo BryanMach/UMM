@@ -45,8 +45,8 @@
 
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ url('/logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
+                                        onclick="event.preventDefault();
+                                        document.getElementById('logout-form').submit();">
                                         Logout
                                     </a>
 
@@ -62,7 +62,14 @@
         <!--</nav>-->
 
         <main class="py-4">
+            {{--ver por que no ome wopermite tener una condicional aqui--}}
+            {{--@dd(Auth::user()->id)--}}
+            {{--@if (Auth::user()->id==0)--}}
             @extends('adminlte::page')
+            {{--@else
+                @yield('')
+            @endif--}}
+                
         </main>
     </div>
 

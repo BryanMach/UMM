@@ -32,7 +32,7 @@
                                 <thead>
                                     <tr>
                                         <th>Nº</th>
-                                        <th>Artefactos</th>
+                                        <th>Artefacto</th>
                                         <th>Gestion</th>
                                         <th>Opciones</th>
                                     </tr>
@@ -41,7 +41,7 @@
                                     @foreach ($inspecciones as $item)
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
-                                            <td>{{ $item->idArtefacto }}</td>
+                                            <td>{{ $item->artefactos->matricula }}</td>
                                             <td>{{ $item->gestion }}</td>
                                             <td>
                                                 <a href="{{ url('/admin/inspecciones/' . $item->id) }}"

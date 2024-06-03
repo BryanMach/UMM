@@ -4,7 +4,7 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
-
+use App\Models\Artefacto;
 use App\Models\Propietario;
 use Illuminate\Http\Request;
 
@@ -54,8 +54,14 @@ class PropietarioController extends Controller
     {
         
         $requestData = $request->all();
-        
+        //$request->get('idUsuarios');
+        //$dato=$requestData;
+        $dato=Artefacto::latest()->first();
+        dd($dato);
+
         Propietario::create($requestData);
+        
+        //$id=Propietario::all();
 
         return redirect('admin/propietario')->with('flash_message', 'Propietario agregado!!!');
     }

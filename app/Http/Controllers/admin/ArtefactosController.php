@@ -25,24 +25,6 @@ class ArtefactosController extends Controller
         $perPage = 25;
 
         if (!empty($keyword)) {
-            /*$artefactos = Artefacto::where('idUsuarios', 'LIKE', "%$keyword%")
-                ->orWhere('idBaseOperativa', 'LIKE', "%$keyword%")
-                ->orWhere('matricula', 'LIKE', "%$keyword%")
-                ->orWhere('nombre', 'LIKE', "%$keyword%")
-                ->orWhere('idTipo', 'LIKE', "%$keyword%")
-                ->orWhere('idMaterial', 'LIKE', "%$keyword%")
-                ->orWhere('eslora', 'LIKE', "%$keyword%")
-                ->orWhere('manga', 'LIKE', "%$keyword%")
-                ->orWhere('puntal', 'LIKE', "%$keyword%")
-                ->orWhere('francobordo', 'LIKE', "%$keyword%")
-                ->orWhere('propulsion', 'LIKE', "%$keyword%")
-                ->orWhere('construccion', 'LIKE', "%$keyword%")
-                ->orWhere('trn', 'LIKE', "%$keyword%")
-                ->orWhere('trb', 'LIKE', "%$keyword%")
-                ->orWhere('servicio', 'LIKE', "%$keyword%")
-                ->orWhere('asociacion', 'LIKE', "%$keyword%")
-                ->orWhere('observaciones', 'LIKE', "%$keyword%")
-                ->latest()->paginate($perPage);*/
             $artefactos = Artefacto::where('matricula', 'LIKE', "%$keyword%")
                 ->orWhere('nombre', 'LIKE', "%$keyword%")
                 ->orWhere('eslora', 'LIKE', "%$keyword%")
@@ -166,8 +148,8 @@ class ArtefactosController extends Controller
     public function imprimir(){//con esto muestro una página
         /*dd('Probando imprimir certificados');*/
         $artefactos=Artefacto::all();
-        $vista = \View::make('admin.perfiles.prueba', compact('artefactos'))->render();
-        return view('admin.perfiles.prueba', compact('vista','artefactos'));
+        $vista = \View::make('admin.perfiles.Jefe', compact('artefactos'))->render();
+        return view('admin.perfiles.Jefe', compact('vista','artefactos'));
     }
     public function imprimir_certificado_registro(){//muestro un pdf
         /*dd('Probando imprimir certificados');*/

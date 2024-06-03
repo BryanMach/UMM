@@ -2,7 +2,7 @@
     <label for="idArtefacto" class="control-label">{{ 'Artefactos' }}</label>
     <select class="form-control" name="idArtefacto" id="idArtefacto">
         @foreach ($artefactos as $artefacto)
-            <option value="{{ $artefacto->idArtefacto }}">
+            <option value="{{ $artefacto->id }}">
                 {{ $artefacto->matricula }}</option>
         @endforeach
     </select>
@@ -15,16 +15,18 @@
     {!! $errors->first('lugar', '<p class="help-block">:message</p>') !!}
 </div>
 <div class="form-group {{ $errors->has('mercPelig') ? 'has-error' : '' }}">
-    <label for="mercPelig" class="control-label">{{ 'Mercpelig' }}</label>
-    <input class="form-control" name="mercPelig" type="text" id="mercPelig"
-        value="{{ isset($datosadicionale->mercPelig) ? $datosadicionale->mercPelig : '' }}">
+    <label for="mercPelig" class="control-label">{{ '¿Trasporta mercancias peligrosas?' }}</label>
+    <select class="form-control" name="mercPelig" type="text" id="mercPelig">
+        <option Value="Si">Si</option>
+        <option Value="No">No</option>
+    </select>
     {!! $errors->first('mercPelig', '<p class="help-block">:message</p>') !!}
 </div>
 <div class="form-group {{ $errors->has('maxPasajeros') ? 'has-error' : '' }}">
     <label for="maxPasajeros" class="control-label">{{ 'Maxpasajeros' }}</label>
     <input class="form-control" name="maxPasajeros" type="number" id="maxPasajeros"
         value="{{ isset($datosadicionale->maxPasajeros) ? $datosadicionale->maxPasajeros : '' }}">
-    {!! $errors->first('maxPasajeros', '<p class="help-block">:message</p>') !!}
+        {!! $errors->first('maxPasajeros', '<p class="help-block">:message</p>') !!}
 </div>
 <div class="form-group {{ $errors->has('cargaComb') ? 'has-error' : '' }}">
     <label for="cargaComb" class="control-label">{{ 'Cargacomb' }}</label>

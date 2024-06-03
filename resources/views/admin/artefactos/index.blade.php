@@ -28,7 +28,7 @@
                         <br />
                         <br />
                         <div class="table-responsive">
-                            <table class="table">
+                            <table class="table" width="100%">
                                 <thead>
                                     <tr>
                                         <th>Nº</th>

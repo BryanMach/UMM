@@ -38,6 +38,12 @@ class AuthenticatedSessionController extends Controller
      */
     public function destroy(Request $request): RedirectResponse
     {
+        
+        //en esta función se destruye una sesión
+        //con ayuda del token de l a sesión a destruir
+        //pero como era predeterminado no logra
+        //funcionar de la misma forma, asumo que se debe regenerar un
+        //token nuevo lara esta pagina-sesións
         Auth::guard('web')->logout();
 
         $request->session()->invalidate();

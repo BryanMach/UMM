@@ -1,12 +1,17 @@
-<div class="form-group {{ $errors->has('tipo') ? 'has-error' : ''}}">
-    <label for="tipo" class="control-label">{{ 'Tipo' }}</label>
-    <input class="form-control" name="tipo" type="number" id="tipo" value="{{ isset($certificado->tipo) ? $certificado->tipo : ''}}" >
-    {!! $errors->first('tipo', '<p class="help-block">:message</p>') !!}
+<div class="form-group {{ $errors->has('tipoC') ? 'has-error' : ''}}">
+    <label for="tipoC" class="control-label">{{ 'TipoC' }}</label>
+    <input class="form-control" name="tipoC" type="number" id="tipoC" value="{{ isset($certificado->tipoC) ? $certificado->tipoC : ''}}" >
+    {!! $errors->first('tipoC', '<p class="help-block">:message</p>') !!}
 </div>
 <div class="form-group {{ $errors->has('nreg') ? 'has-error' : ''}}">
     <label for="nreg" class="control-label">{{ 'Nreg' }}</label>
     <input class="form-control" name="nreg" type="number" id="nreg" value="{{ isset($certificado->nreg) ? $certificado->nreg : ''}}" >
     {!! $errors->first('nreg', '<p class="help-block">:message</p>') !!}
+</div>
+<div class="form-group {{ $errors->has('correlativo') ? 'has-error' : ''}}">
+    <label for="correlativo" class="control-label">{{ 'Correlativo' }}</label>
+    <input class="form-control" name="correlativo" type="number" id="correlativo" value="{{ isset($certificado->correlativo) ? $certificado->correlativo : ''}}" >
+    {!! $errors->first('correlativo', '<p class="help-block">:message</p>') !!}
 </div>
 <div class="form-group {{ $errors->has('fechaEmision') ? 'has-error' : ''}}">
     <label for="fechaEmision" class="control-label">{{ 'Fechaemision' }}</label>

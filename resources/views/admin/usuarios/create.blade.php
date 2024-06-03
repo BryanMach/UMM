@@ -5,9 +5,12 @@
         <div class="row">
             <div class="col-md-9">
                 <div class="card">
-                    <div class="card-header">Crear nuevo Usuario</div>
+                    <div class="card-header">Datos del nuevo Usuario</div>
                     <div class="card-body">
                         <a href="{{ url('/admin/usuarios') }}" title="Back"><button class="btn btn-warning btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i> Retroceder</button></a>
+                        <a href="{{ url('/admin/usuarios') }}" title="Back"><button class="btn btn-warning btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i> Inicio</button></a>
+                        <a href="{{ url('/admin/usuarios') }}" title="Back"><button class="btn btn-warning btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i> Siguiente</button></a>
+                        <a href="{{ url('/admin/usuarios') }}" title="Back"><button class="btn btn-warning btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i> Certificar</button></a>
                         <br />
                         <br />
 

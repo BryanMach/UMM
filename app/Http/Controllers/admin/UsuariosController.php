@@ -6,8 +6,12 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests;
 use App\Models\Personal;
 use App\Models\Usuario;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Rules;
+use Illuminate\View\View;
 
 class UsuariosController extends Controller
 {
@@ -54,7 +58,29 @@ class UsuariosController extends Controller
      */
     public function store(Request $request)
     {
-
+        /*
+        id	
+        email	
+        email_verified_at	
+        password	
+        remember_token	
+        created_at	
+        updated_at	
+        name	
+        */
+        /*
+        $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:'.User::class],
+            'password' => ['required', 'confirmed', Rules\Password::defaults()],
+        ]);
+        */
+        $user = User::create([
+            'name' => $request->usuario,
+            'email' => $request->usuario.'@usuario',
+            'password' => Hash::make($request->contrasena),
+            /*'password'=> $request->password,*/
+        ]);
         $requestData = $request->all();
 
         Usuario::create($requestData);

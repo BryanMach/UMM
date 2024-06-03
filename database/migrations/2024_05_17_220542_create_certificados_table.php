@@ -15,12 +15,13 @@ class CreateCertificadosTable extends Migration
         Schema::create('certificados', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
-            $table->integer('tipo')->nullable();
+            $table->integer('idArtefacto')->unsigned();
+            $table->integer('tipoC')->nullable();
             $table->integer('nreg')->nullable();
+            $table->integer('correlativo')->nullable();
             $table->date('fechaEmision')->nullable();
-            $table->date('fechaVecimiento')->nullable();
-            $table->integer('idArtefactos')->nullable();
-            $table->foreign('idArtefactos')->references('id')->on('artefactos');
+            $table->date('fechaVencimiento')->nullable();
+            $table->foreign('idArtefacto')->references('id')->on('artefactos');
             });
     }
 

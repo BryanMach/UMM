@@ -84,7 +84,18 @@
     <div class="top-half" style="background: #2805a7">
         <div class="title">Unidad de Marina Mercante</div>
         <div class="button-container">
-            <a href="http://localhost/rcumm/public/login">Ingresar</a>
+            <!--<a href="http://localhost/rcumm/public/login">Ingresar</a>-->
+
+            @if (Route::has('login'))
+                <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
+                    @auth
+                        <a href="{{ url('/dashboard') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Panel</a>
+                    @else
+                        <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Ingresar</a>
+                    @endauth
+                </div>
+            @endif
+
         </div>
         <div class="subtitle">Autoridad dependiente de la armada boliviana</div>
     </div>
