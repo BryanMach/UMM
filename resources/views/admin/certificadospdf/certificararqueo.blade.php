@@ -116,7 +116,7 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td class="text-center">{{ $certificados->nreg }}</td>
+                            <td class="text-center">{{ $certificado->nreg }}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -139,7 +139,7 @@
                     <tr class="text-center">
                         <td>{{ $artefacto->nombre }}</td>
                         <td>{{ $artefacto->matricula }}</td>
-                        <td>{{ baseOperativa->nombreBO }}</td>
+                        <td>{{ $baseOperativa->nombreBO }}</td>
                         <td>{{ $artefacto->año }}</td>
                     </tr>
                 </tbody>
@@ -193,9 +193,8 @@
             <p>Se certifica que los arqueos de esta embarcación han sido determinados de acuerdo con las disposiciones
                 del Reglamento Nacional de Arqueo para Buques, Embarcaciones y Artefactos Navales, aprobadas mediante
                 RM. 736.</p>
-            <p class="text-left"><strong>EXPEDIDO EN:</strong>{{ baseOperativa->nombreBO }}<strong class="fecha">
-                    FECHA:</strong> 21 DE
-                MARZO DE 2024</p>
+            <p class="text-left"><strong>EXPEDIDO EN:</strong>{{ $baseOperativa->nombreBO }}<strong class="fecha">
+                    FECHA:</strong>{{ $certificado->fechaEmision }}</p>
             <p>El suscrito Jefe de la Unidad de Marina Mercante declara que esta debidamente autorizado para expedir el
                 presente Certificado.</p>
     </div>

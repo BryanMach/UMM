@@ -90,7 +90,7 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td class="text-center">{{ $certificados->nreg }}</td>
+                            <td class="text-center">{{ $certificado->nreg }}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -113,9 +113,9 @@
                 </thead>
                 <tbody class="text-center">
                     <tr>
-                        <td class="align-middle">{{ $artefactos->nombre }}</td>
+                        <td class="align-middle">{{ $artefacto->nombre }}</td>
                         <td class="align-middle">{{ $artefacto->matricula }}</td>
-                        <td>{{ baseOperativa->nombreBO }}</td>
+                        <td>{{ $baseOperativa->nombreBO }}</td>
                         <td class="align-middle">{{ $artefacto->eslora }}</td>
                     </tr>
                 </tbody>
@@ -184,11 +184,11 @@
                 asignado y marcado
                 de acuerdo con lo dispuesto en el “Reglamento Nacional para la Asignación de Francobordo”, aprobado por
                 RM. 736. <br>
-                Este certificado, es emitido el <strong>21/MARZO/2024</strong>, es válido hasta el
-                <strong>21/MARZO/2025</strong><br>
+                Este certificado, es emitido el <strong>{{ $certificado->fechaEmision }}</strong>, es válido hasta el
+                <strong>{{ $certificado->fechaVecimiento }}</strong><br>
 
                 Expedido en:
-                LA PAZ, 21 DE MARZO DE 2024
+                {{ $certificado->fechaEmision }}
             </p>
         </div>
     </div>

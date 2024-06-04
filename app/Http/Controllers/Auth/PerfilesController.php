@@ -33,10 +33,11 @@ class PerfilesController extends Controller
      *
      * @return \Illuminate\View\View
      */
-    public function index(request $request){
+    public function index(request $request)
+    {
         $idusuario = Auth::user()->id;
-        $usuario= Usuario::findOrFail($idusuario);
-        switch($usuario->nivel){
+        $usuario = Usuario::findOrFail($idusuario);
+        switch ($usuario->nivel) {
             case 1:
                 return $this->administrador($request);
                 break;
@@ -50,62 +51,65 @@ class PerfilesController extends Controller
                 return $this->registrador($request);
                 break;
         }
+    }
+    public function administrador(request $request)
+    {
+        //@dd('id:', Auth::user()->id);
+        $idusuario = Auth::user()->id;
+        $usuario = Usuario::findOrFail($idusuario);
 
-    }
-    public function administrador(request $request){
-        //@dd('id:', Auth::user()->id);
-        $idusuario = Auth::user()->id;
-        $usuario= Usuario::findOrFail($idusuario);
-        
-        if($usuario->nivel==1){
-            $artefactos=Artefacto::all();
+        if ($usuario->nivel == 1) {
+            $artefactos = Artefacto::all();
             $vista = \View::make('admin.perfiles.prueba', compact('artefactos'))->render();
-            return view('admin.perfiles.prueba', compact('vista','artefactos'));
+            return view('admin.perfiles.prueba', compact('vista', 'artefactos'));
         }
     }
-    public function jefe(request $request){
+    public function jefe(request $request)
+    {
         //@dd('id:', Auth::user()->id);
         $idusuario = Auth::user()->id;
-        $usuario= Usuario::findOrFail($idusuario);
-        $perfil= Personal::findOrFail($usuario->idPersonal);
-        $personal=Personal::All();
-        if($usuario->nivel==2){
-            $vista = \View::make('admin.perfiles.Jefe',compact('personal','usuario','perfil'))->render();
-            return view('admin.perfiles.Jefe', compact('vista','personal','usuario','perfil'));
+        $usuario = Usuario::findOrFail($idusuario);
+        $perfil = Personal::findOrFail($usuario->idPersonal);
+        $personal = Personal::All();
+        if ($usuario->nivel == 2) {
+            $vista = \View::make('admin.perfiles.Jefe', compact('personal', 'usuario', 'perfil'))->render();
+            return view('admin.perfiles.Jefe', compact('vista', 'personal', 'usuario', 'perfil'));
         }
     }
-    public function interno(request $request){
+    public function interno(request $request)
+    {
         //@dd('id:', Auth::user()->id);
         $idusuario = Auth::user()->id;
-        $usuario= Usuario::findOrFail($idusuario);
-        $perfil= Personal::findOrFail($usuario->idPersonal);
-        $personal=Personal::All();
-        if($usuario->nivel==3){
-            $vista = \View::make('admin.perfiles.pruebaarch',compact('personal','usuario','perfil'))->render();
-            return view('admin.perfiles.pruebaarch', compact('vista','personal','usuario','perfil'));
+        $usuario = Usuario::findOrFail($idusuario);
+        $perfil = Personal::findOrFail($usuario->idPersonal);
+        $persona = Personal::All();
+        if ($usuario->nivel == 3) {
+            $vista = \View::make('admin.perfiles.interno', compact('persona', 'usuario', 'perfil'))->render();
+            return view('admin.perfiles.interno', compact('vista', 'persona', 'usuario', 'perfil'));
         }
     }
-    public function registrador(request $request){
+    public function registrador(request $request)
+    {
         //@dd('id:', Auth::user()->id);
         $idusuario = Auth::user()->id;
-        $usuario= Usuario::findOrFail($idusuario);
-        $perfil= Personal::findOrFail($usuario->idPersonal);
-        $personal=Personal::All();
-        $basesoperativas=BasesOperativa::All();
-        $cuencas=Cuenca::All();
-        if($usuario->nivel==4){
-            $vista = \View::make('admin.perfiles.pruebacom',compact('personal','usuario','perfil','basesoperativas','cuencas'))->render();
-            return view('admin.perfiles.pruebacom', compact('vista','personal','usuario','perfil','basesoperativas','cuencas'));
+        $usuario = Usuario::findOrFail($idusuario);
+        $perfil = Personal::findOrFail($usuario->idPersonal);
+        $personal = Personal::All();
+        $basesoperativas = BasesOperativa::All();
+        $cuencas = Cuenca::All();
+        if ($usuario->nivel == 4) {
+            $vista = \View::make('admin.perfiles.externo', compact('personal', 'usuario', 'perfil', 'basesoperativas', 'cuencas'))->render();
+            return view('admin.perfiles.externo', compact('vista', 'personal', 'usuario', 'perfil', 'basesoperativas', 'cuencas'));
         }
     }
-    
+
     public function registrar(Request $request)
     {
 
         $requestData = $request->all();
         //dd($requestData);
-        $cuenca=$request->idCuenca;
-        $baseoperativa=$request->idBaseOperativa;
+        $cuenca = $request->idCuenca;
+        $baseoperativa = $request->idBaseOperativa;
         $personas = Personal::All();
         $tipos = Tipo::All();
         $materiales = Material::All();
@@ -115,11 +119,10 @@ class PerfilesController extends Controller
         $propietarios = Propietario::All();
         $basesoperativas = BasesOperativa::All();
         $cuencas = Cuenca::All();
-        $certificacion =Certificacione::All();
+        $certificacion = Certificacione::All();
         //Usuario::create($requestData);
 
-        return view('admin.registros.create', compact('tipos','materiales','personas','usuarios','artefactos','basesoperativas','cuencas','certificacion'));
-
+        return view('admin.registros.create', compact('tipos', 'materiales', 'personas', 'usuarios', 'artefactos', 'basesoperativas', 'cuencas', 'certificacion'));
     }
     /*
     Aqui recibo todos los datos para todas las tablas de parte del  registrador
@@ -127,32 +130,38 @@ class PerfilesController extends Controller
     */
     public function guardarRegistro(Request $request)
     {
-        $Usuario=Usuario::findOrFail(Auth::user()->id);
+        $Usuario = Usuario::findOrFail(Auth::user()->id);
         $requestData = $request->all();
-        $requestPropietario = ['nombre'=>$requestData['nombre'],'tipo'=>$requestData['tipo'],'identificador'=>$requestData['identificador'],'FechaIni'=>$requestData['FechaIni']];
+        $requestPropietario = ['nombre' => $requestData['nombre'], 'tipo' => $requestData['tipo'], 'identificador' => $requestData['identificador'], 'FechaIni' => $requestData['FechaIni']];
         //cabe resaltar que en la siguiente linea
         //obtengo todos los campos del reciente registro
         //y me es tan ffácil sacar la id con un ->id
-        $idPropietario=Propietario::create($requestPropietario);
+        $idPropietario = Propietario::create($requestPropietario);
         //$idPropietario=Propietario::latest()->first();
-        $requestArtefacto = ['idUsuarios'=>$Usuario->id,'idBaseOperativa'=>$requestData['idBaseOperativa'],'matricula'=>$requestData['matricula'],'nombre'=>$requestData['nombreA'],'idTipo'=>$requestData['idTipo'],'idMaterial'=>$requestData['idMaterial'],
-            'eslora'=>$requestData['eslora'],'manga'=>$requestData['manga'],'puntal'=>$requestData['puntal'],
-            'francobordo'=>$requestData['francobordo'],'propulsion'=>$requestData['propulsion'],'construccion'=>$requestData['construccion'],'trn'=>$requestData['trn'],'trb'=>$requestData['trb'],
-            'servicio'=>$requestData['servicio'],'asociacion'=>$requestData['asociacion'],'observaciones'=>$requestData['observaciones']];
+        $requestArtefacto = [
+            'idUsuarios' => $Usuario->id, 'idBaseOperativa' => $requestData['idBaseOperativa'], 'matricula' => $requestData['matricula'], 'nombre' => $requestData['nombreA'], 'idTipo' => $requestData['idTipo'], 'idMaterial' => $requestData['idMaterial'],
+            'eslora' => $requestData['eslora'], 'manga' => $requestData['manga'], 'puntal' => $requestData['puntal'],
+            'francobordo' => $requestData['francobordo'], 'propulsion' => $requestData['propulsion'], 'construccion' => $requestData['construccion'], 'trn' => $requestData['trn'], 'trb' => $requestData['trb'],
+            'servicio' => $requestData['servicio'], 'asociacion' => $requestData['asociacion'], 'observaciones' => $requestData['observaciones']
+        ];
         $idArtefacto = Artefacto::create($requestArtefacto);
-        $requestListaPropietarios = ['idPropietario'=>$idPropietario->id,'idArtefacto'=>$idArtefacto->id];
+        $requestListaPropietarios = ['idPropietario' => $idPropietario->id, 'idArtefacto' => $idArtefacto->id];
         ListaPropietario::create($requestListaPropietarios);
-        $requestMotor = ['idArtefacto'=>$idArtefacto->id,'tipo'=>$requestData['tipoM'],'marca'=>$requestData['marca'],'numero'=>$requestData['numero'],
-            'potencia'=>$requestData['potencia'],'nominalelectrica'=>$requestData['nominalelectrica']];
+        $requestMotor = [
+            'idArtefacto' => $idArtefacto->id, 'tipo' => $requestData['tipoM'], 'marca' => $requestData['marca'], 'numero' => $requestData['numero'],
+            'potencia' => $requestData['potencia'], 'nominalelectrica' => $requestData['nominalelectrica']
+        ];
         Motore::create($requestMotor);
-        $requestDatoAdicional = ['idArtefacto'=>$idArtefacto->id,'lugar'=>$requestData['lugar'],'mercpelig'=>$requestData['mercpelig'],
-            'maxPasajeros'=>$requestData['maxPasajeros'],'cargaComb'=>$requestData['cargaComb'],'peso'=>$requestData['peso'],'altura'=>$requestData['altura']];
+        $requestDatoAdicional = [
+            'idArtefacto' => $idArtefacto->id, 'lugar' => $requestData['lugar'], 'mercpelig' => $requestData['mercpelig'],
+            'maxPasajeros' => $requestData['maxPasajeros'], 'cargaComb' => $requestData['cargaComb'], 'peso' => $requestData['peso'], 'altura' => $requestData['altura']
+        ];
         datosAdicionale::create($requestDatoAdicional);
-        $requestInspeccion = ['idArtefacto'=>$idArtefacto->id,'gestion'=>$requestData['gestion'],'jefeinspector'=>$requestData['jefeinspector'],'motivo'=>$requestData['motivo']];
+        $requestInspeccion = ['idArtefacto' => $idArtefacto->id, 'gestion' => $requestData['gestion'], 'jefeinspector' => $requestData['jefeinspector'], 'motivo' => $requestData['motivo']];
         Inspeccione::create($requestInspeccion);
-        $requestDocumentacion = ['idArtefacto'=>$idArtefacto->id,'directorio'=>$requestData['directorio']];
+        $requestDocumentacion = ['idArtefacto' => $idArtefacto->id, 'directorio' => $requestData['directorio']];
         Documentacione::create($requestDocumentacion);
-        $requestRecuperar = [''=>$requestData[''],'.'=>$requestData[''],'..'=>$requestData[''],'...'=>$requestData[''],''];
+        $requestRecuperar = ['' => $requestData[''], '.' => $requestData[''], '..' => $requestData[''], '...' => $requestData[''], ''];
         /*
         $requestData['idUsuarios'] = '9';
         //$request->get('idUsuarios');
@@ -161,7 +170,7 @@ class PerfilesController extends Controller
         $datos=['uno'=>'1','dos'=>'a','tres'=>' ','cuatro'=>'*','3'];
         dd($datos);
         */
-        
+
         return redirect('admin/usuarios')->with('flash_message', 'Nuevo registro exitoso!!!');
     }
 
