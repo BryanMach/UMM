@@ -90,7 +90,11 @@
                     </thead>
                     <tbody>
                         <tr>
+<<<<<<< HEAD
                             <td class="text-center">{{ $certificado->nreg }}</td>
+=======
+                            <td class="text-center">{{ $certificados->nreg }}</td>
+>>>>>>> 707f60b686a5b92c334831ea6ac85d501e7bfb58
                         </tr>
                     </tbody>
                 </table>
@@ -113,9 +117,15 @@
                 </thead>
                 <tbody class="text-center">
                     <tr>
+<<<<<<< HEAD
                         <td class="align-middle">{{ $artefacto->nombre }}</td>
                         <td class="align-middle">{{ $artefacto->matricula }}</td>
                         <td>{{ $baseOperativa->nombreBO }}</td>
+=======
+                        <td class="align-middle">{{ $artefactos->nombre }}</td>
+                        <td class="align-middle">{{ $artefacto->matricula }}</td>
+                        <td>{{ baseOperativa->nombreBO }}</td>
+>>>>>>> 707f60b686a5b92c334831ea6ac85d501e7bfb58
                         <td class="align-middle">{{ $artefacto->eslora }}</td>
                     </tr>
                 </tbody>

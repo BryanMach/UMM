@@ -1,202 +1,278 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Unidad de Marina Mercante</title>
+    <title>Archivo Externo</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rowdies:wght@300;400;700&display=swap" rel="stylesheet">
+
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f8f9fa;
-        }
-        .sidebar, .right-sidebar {
-            height: 100vh;
-            background-color: #fff;
-            border-right: 1px solid #ddd;
-            position: fixed;
-            top: 0;
-        }
-        .sidebar {
-            width: 220px;
-            left: 0;
-        }
-        .right-sidebar {
-            width: 200px;
-            right: 0;
-            border-left: 1px solid #ddd;
-        }
-        .sidebar .profile {
-            text-align: center;
-            padding: 20px;
-        }
-        .sidebar .profile img {
-            border-radius: 50%;
-            width: 100px;
-        }
-        .sidebar .profile h4 {
-            margin-top: 10px;
-        }
-        .sidebar a, .right-sidebar a {
-            color: #333;
-            display: block;
-            padding: 10px 20px;
-            text-decoration: none;
-        }
-        .sidebar a:hover, .right-sidebar a:hover {
-            background-color: #f1f1f1;
-        }
-        .sidebar .active {
             background-color: #e9ecef;
-            font-weight: bold;
         }
-        .main-content {
-            margin-left: 220px;
-            margin-right: 200px;
-            padding: 20px;
+
+        .sidebar {
+            height: 100vh;
+            background: linear-gradient(to bottom, white, rgb(16, 232, 200));
+            padding: 30px;
+            border-right: 1px solid #dee2e6;
         }
-        .search-bar {
-            display: flex;
-            align-items: center;
+
+        .profile-img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .sidebar h3 {
+            margin-top: 15px;
+            font-size: 1.75rem;
+            color: #000;
+        }
+
+        .sidebar .role {
+            color: #9370DB;
+            font-size: 1.1rem;
             margin-bottom: 20px;
         }
-        .search-bar input {
-            flex-grow: 1;
-            margin-right: 10px;
+
+        .sidebar .description {
+            color: #6c757d;
+            font-size: 20px;
+
         }
-        .table-container {
-            background-color: #fff;
-            border: 1px solid #ddd;
+
+        .description td {
+            font-family: "Rowdies", sans-serif;
+        }
+
+        .main-content {
             padding: 20px;
-            border-radius: 5px;
         }
-        .table-responsive {
-            margin-top: 20px;
+
+        .navbar {
+            border-bottom: 2px solid #e9ecef;
+            background-color: #fff;
+        }
+
+        .navbar-brand {
+            color: #e74c3c;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .navbar-nav .nav-link {
+            color: #e74c3c;
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-right: 20px;
+        }
+
+        .navbar-nav .nav-link.active {
+            color: #c0392b;
+            text-decoration: underline;
+        }
+
+        .form-inline .form-control {
+            border-radius: 20px;
+        }
+
+        .table thead th {
+            background-color: #f8f9fa;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .table tbody tr {
+            background-color: #eaf2f8;
+            text-align: center;
+        }
+
+        .table tbody tr td {
+            vertical-align: middle;
+        }
+
+        .table tbody tr:hover {
+            background-color: #d1e7f2;
+        }
+
+        .btn-outline-secondary {
+            border-color: #e74c3c;
+            color: #e74c3c;
+        }
+
+        .btn-outline-secondary:hover {
+            background-color: #e74c3c;
+            color: #fff;
+        }
+
+        .nav {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        .nav-item {
+            position: relative;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            padding: 10px 15px;
+            display: block;
+        }
+
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: white;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .dropdown-menu li {
+            padding: 10px 15px;
+        }
+
+        .dropdown-menu li a {
+            text-decoration: none;
+            color: black;
+        }
+
+        .dropdown-menu li:hover {
+            background-color: #f1f1f1;
+        }
+
+        table caption {
+            caption-side: top;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 0.5em;
         }
     </style>
 </head>
+
 <body>
-    @php
-        $idCuenca=request('idCuenca', null);
-        $idBaseOperativa=request('idBaseOperativa', null);
-    @endphp
-    <div class="sidebar">
-        <div class="profile">
-            <img src="https://via.placeholder.com/100" alt="User">
-            <h4>{{$perfil->grado}} {{$perfil->nombres}} {{$perfil->apellidos}}</h4>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-3 sidebar text-center" style="position: fixed;">
+                <img src="{{ asset('images/foto.jpg') }}" alt="Foto de Perfil" class="profile-img">
+                <h3>John David</h3>
+                <p class="role">Rol de Persona</p>
+                <table class="description text-left">
+                    <tbody>
+                        <tr>
+                            <td>Cargo</td>
+                        </tr>
+                    </tbody>
+                    <tbody>
+                        <tr>
+                            <td>CI</td>
+                        </tr>
+                        <tr>
+                            <td>Contacto</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <button class="btn btn-outline-secondary mt-4"><i class="fas fa-power-off"></i> Cerrar Sesión</button>
+            </div>
         </div>
-        <a href="#" class="active">Usuario: {{$usuario->usuario}}</a>
-        <div class="table-container">
-            <table class="table table-borderless">
-                    <tr>
-                        <th>CI:</th>
-                        <td>{{$perfil->ci}}</td>
-                    </tr>
-                    <tr>
-                        <th>Cargo:</th>
-                        <td>{{$perfil->cargo}}</td>
-                    </tr>
-                    <tr>
-                        <th>Contacto:</th>
-                        <td>{{$perfil->contacto}}</td>
-                    </tr>
-            </table>
-        </div>
-            <div>
-                    <a class="btn btn-default btn-flat float-right  btn-block "
-                        href="#" onclick="event.preventDefault();
-                        document.getElementById('logout-form').submit();">
-                        <i class="fa fa-fw fa-power-off text-red"></i>
-                        Salir
-                    </a>
-                    <input type="hidden" name="_token" value="wYPQSAtVT40RtK4HcL0s7NqEGk4DAyBtDQJNesfB">
-                    <form id="logout-form" action="http://localhost/rcumm/public/logout" method="POST" style="display: none;">
-                        @CSRF
-                    </form>
-            </div>
-    </div>
-    <div class="search-bar">
-        <div class="main-content">
-            <h2>Planilla de artefactos</h2>
-            <div class="form-group {{ $errors->has('idCuenca') ? 'has-error' : '' }}">
-                <label for="idCuenca" class="control-label">{{ 'Cuenca' }}</label>
-                <select class="form-control" name="idCuenca" id="idCuenca" href="#">
-                    @foreach ($cuencas as $cuenca)
-                        @if ( $idCuenca != null )
-                            @if ( $cuenca->id ==  $idCuenca )
-                                <option value="{{ $cuenca->id }}" selected>{{ $cuenca->cuenca }}</option>
-                            @else
-                                <option value="{{ $cuenca->id }}">{{ $cuenca->cuenca }}</option>
-                            @endif
-                        @else
-                            <option value="{{ $cuenca->id }}">{{ $cuenca->cuenca }}</option>
-                        @endif
-                    @endforeach
-                </select>
-                {!! $errors->first('idCuenca', '<p class="help-block">:message</p>') !!}
-            </div>
-            <div class="form-group {{ $errors->has('idBaseOperativa') ? 'has-error' : '' }}">
-                <label for="idBaseOperativa" class="control-label">{{ 'Bases operativas' }}</label>
-                <select class="form-control" name="idBaseOperativa" id="idBaseOperativa" href="#">
-                    @if ( $idCuenca != null )
-                        @foreach ($basesoperativas as $base)
-                            @if ($idBaseOperativa != null)
-                                @if ( $base->id ==  $artefacto->idBaseOperativa )
-                                    <option value="{{ $base->id }}" selected>{{ $base->baseOperativa }}</option>
-                                @else
-                            <option value="{{ $base->id }}">{{ $base->baseOperativa }}</option>
-                            @endif
-                            @else
-                                <option value="{{ $base->id }}">{{ $base->baseOperativa }}</option>
-                            @endif
-                        @endforeach
-                    @else
-                    @foreach ($basesoperativas as $base)
-                        @if ($idBaseOperativa != null)
-                            @if ( $base->id ==  $artefacto->idBaseOperativa )
-                                <option value="{{ $base->id }}" selected>{{ $base->baseOperativa }}</option>
-                            @else
-                                <option value="{{ $base->id }}">{{ $base->baseOperativa }}</option>
-                            @endif
-                        @else
-                            <option value="{{ $base->id }}">{{ $base->baseOperativa }}</option>
-                        @endif
-                @endforeach
-                    @endif
-                </select>
-                {!! $errors->first('idBaseOperativa', '<p class="help-block">:message</p>') !!}
-            </div>
-            <input type="text" class="form-control" placeholder="Buscar">
-            <div class="table-responsive">
-                <table class="table">
+            <div class="col-md-9 main-content">
+                <nav class="navbar navbar-expand-lg navbar-light">
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav mr-auto">
+                            <li class="nav-item">
+                                <a class="nav-link" href="#" onclick="toggleDropdown(event)">Registro<i
+                                        class="fas fa-caret-down"></i></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">Provicional</a></li>
+                                    <li><a href="#">Especial</a></li>
+                                    <li><a href="#">Permanente</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Renovación</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Corrección</a>
+                            </li>
+                        </ul>
+                        <form class="form-inline my-2 my-lg-0">
+                            <input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Buscar">
+                        </form>
+                    </div>
+                </nav>
+                <table class="table table-bordered mt-4">
+                    {{-- <caption>Información de Propietarios y Embarcaciones</caption> --}}
                     <thead>
                         <tr>
-                            <th>Cargo</th>
-                            <th>Nombre y apellido</th>
-                            <th>Cédula de identidad</th>
-                            <th>Acciones</th>
+                            <th scope="col">PROPIETARIO</th>
+                            <th scope="col">EMBARCACION</th>
+                            <th scope="col">VIGENCIAS</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td>Puesto dentro de la unidad</td>
-                            <td>un nombre y un apellido</td>
-                            <td>123456789 AA</td>
-                            <td><span class="badge badge-danger">Ver o realizar seguimiento</span></td>
+                            <td>#AHGA68</td>
+                            <td>23/09/2022</td>
+                            <td>Jacob Marcus</td>
                         </tr>
                         <tr>
-                            <td><a href="registro"><button class="block mt-1 w-full" action="GET"> Registrar</button></a></td>
+                            <td>#AHGA68</td>
+                            <td>23/09/2022</td>
+                            <td>Jacob Marcus</td>
                         </tr>
-                        
                         <tr>
-                            <td><button class="block mt-1 w-full"> Renovar</button></td>
+                            <td>#AHGA68</td>
+                            <td>23/09/2022</td>
+                            <td>Jacob Marcus</td>
                         </tr>
-                        
                         <tr>
-                            <td><button class="block mt-1 w-full"> Inspección</button></td>
+                            <td>#AHGA68</td>
+                            <td>23/09/2022</td>
+                            <td>Jacob Marcus</td>
                         </tr>
-                        
+                        <tr>
+                            <td>#AHGA68</td>
+                            <td>23/09/2022</td>
+                            <td>Jacob Marcus</td>
+                        </tr>
+                        <tr>
+                            <td>#AHGA68</td>
+                            <td>23/09/2022</td>
+                            <td>Jacob Marcus</td>
+                        </tr>
+                        <tr>
+                            <td>#AHGA68</td>
+                            <td>23/09/2022</td>
+                            <td>Jacob Marcus</td>
+                        </tr>
+                        <tr>
+                            <td>#AHGA68</td>
+                            <td>23/09/2022</td>
+                            <td>Jacob Marcus</td>
+                        </tr>
+                        <tr>
+                            <td>#AHGA68</td>
+                            <td>23/09/2022</td>
+                            <td>Jacob Marcus</td>
+                        </tr>
+                        <tr>
+                            <td>#AHGA68</td>
+                            <td>23/09/2022</td>
+                            <td>Jacob Marcus</td>
+                        </tr>
                     </tbody>
                 </table>
             </div>
@@ -205,105 +281,23 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        function toggleDropdown(event) {
+            event.preventDefault();
+            const dropdown = event.target.nextElementSibling;
+            dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+        }
+
+        document.addEventListener('click', function(event) {
+            const dropdowns = document.querySelectorAll('.dropdown-menu');
+            dropdowns.forEach(dropdown => {
+                if (!dropdown.contains(event.target) && !dropdown.previousElementSibling.contains(event
+                        .target)) {
+                    dropdown.style.display = 'none';
+                }
+            });
+        });
+    </script>
 </body>
+
 </html>
-
-<!-- resources/views/ejemplo.blade.php -->
-
-<!-- resources/views/ejemplo.blade.php -->
-
-<!-- resources/views/ejemplo.blade.php -->
-
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ejemplo de Blade</title>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-</head>
-<body>
-    <div class="container">
-        @php
-            $mensaje = 'Hola, Mundo!';
-            $valor = 2;
-            $lista = [1, 2, 3, 4, 5];
-            $numero = request('numero', null);
-            $datoExtra = request('datoExtra', null);
-        @endphp
-
-        <h1>{{ $mensaje }}</h1>
-
-        @if($valor === 1)
-            <p>El valor es uno.</p>
-        @elseif($valor === 2)
-            <p>El valor es dos.</p>
-        @else
-            <p>El valor no es uno ni dos.</p>
-        @endif
-
-        @switch($valor)
-            @case(1)
-                <p>Switch: El valor es uno.</p>
-                @break
-            @case(2)
-                <p>Switch: El valor es dos.</p>
-                @break
-            @default
-                <p>Switch: El valor no es uno ni dos.</p>
-        @endswitch
-
-        <h2>Lista de valores:</h2>
-        <ul>
-            @foreach($lista as $item)
-                <li>{{ $item }}</li>
-            @endforeach
-        </ul>
-
-        @php
-            $contador = 0;
-        @endphp
-
-        <h2>Contador While:</h2>
-        @while($contador < 5)
-            <p>Contador: {{ $contador }}</p>
-            @php
-                $contador++;
-            @endphp
-        @endwhile
-
-        <h2>Contador For:</h2>
-        @for($i = 0; $i < 5; $i++)
-            <p>Contador: {{ $i }}</p>
-        @endfor
-
-        <form method="GET" action="">
-            <div class="form-group">
-                <label for="numero">Ingrese un número:</label>
-                <input type="number" class="form-control" id="numero" name="numero" value="{{ old('numero', $numero) }}">
-            </div>
-            <div class="form-group">
-                <label for="datoExtra">Dato adicional:</label>
-                <input type="text" class="form-control" id="datoExtra" name="datoExtra" value="{{ old('datoExtra', $datoExtra) }}">
-            </div>
-            <button type="submit" class="btn btn-primary">Enviar</button>
-        </form>
-
-        @if($numero !== null)
-            <h2>El número ingresado es: {{ $numero }}</h2>
-            @if($numero % 2 == 0)
-                <p>El número {{ $numero }} es par.</p>
-            @else
-                <p>El número {{ $numero }} es impar.</p>
-            @endif
-        @endif
-
-        @if($datoExtra !== null)
-            <h2>El dato adicional ingresado es: {{ $datoExtra }}</h2>
-        @endif
-    </div>
-</body>
-</html>-->
-
-
-

@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-md-9">
                 <div class="card">
-                    <div class="card-header">ListaPropietario {{ $listapropietario->id }}</div>
+                    <div class="card-header">Propietario y su embarcación</div>
                     <div class="card-body">
 
                         <a href="{{ url('/admin/lista-propietarios') }}" title="Back"><button
@@ -23,6 +23,26 @@
                                 onclick="return confirm(&quot;Confirm delete?&quot;)"><i class="fa fa-trash-o"
                                     aria-hidden="true"></i> Borrar</button>
                         </form>
+                            <form method="POST" action="{{ url('admin/imprimir-certificado-registro')}}" accept-charset="UTF-8" class="form-horizontal" enctype="multipart/form-data">
+                                {{ csrf_field() }}
+                                <input type="hidden" name="id" value="{{ $listapropietario->id }}">
+                                <input type="hidden" name="idPropietario" value="{{ $listapropietario->idPropietario }}">
+                                <input type="hidden" name="idArtefacto" value="{{ $listapropietario->idArtefacto }}">
+                                <!--<div class="form-group {{ $errors->has('idPropietario') ? 'has-error' : '' }}">
+                                    <select name="idPropietario" id="idPropietario" value="{{ $listapropietario->idPropietario }}">
+                                        <option value="{{ $listapropietario->idPropietario }}"></option>
+                                    </select>
+                                    {!! $errors->first('idPropietario', '<p class="help-block">:message</p>') !!}
+                                </div>
+                                <div class="form-group {{ $errors->has('idArtefacto') ? 'has-error' : '' }}">
+                                    <select name="idArtefacto" id="idArtefacto">
+                                        <option value="{{ $listapropietario->idArtefacto }}"></option>
+                                    </select>
+                                    {!! $errors->first('idArtefacto', '<p class="help-block">:message</p>') !!}
+                                </div>-->
+                                            <input class="btn btn-primary" type="submit" value="Emitir certificado de seguridad">
+                                </div>
+                            </form>
                         <br />
                         <br />
 

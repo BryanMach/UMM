@@ -11,6 +11,7 @@ use App\Models\Artefacto;
 use App\Models\Cuenca;
 use App\Models\BasesOperativa;
 use App\Models\Certificacione;
+use App\Models\certificado;
 use App\Models\ListaPropietario;
 use App\Models\Material;
 use App\Models\Tipo;
@@ -24,6 +25,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
+use Ramsey\Uuid\Type\Integer;
 
 class PerfilesController extends Controller
 {
@@ -105,7 +107,7 @@ class PerfilesController extends Controller
 
     public function registrar(Request $request)
     {
-
+        $perPage = 25;
         $requestData = $request->all();
         //dd($requestData);
         $cuenca = $request->idCuenca;
@@ -147,13 +149,20 @@ class PerfilesController extends Controller
         $idArtefacto = Artefacto::create($requestArtefacto);
         $requestListaPropietarios = ['idPropietario' => $idPropietario->id, 'idArtefacto' => $idArtefacto->id];
         ListaPropietario::create($requestListaPropietarios);
+
         $requestMotor = [
             'idArtefacto' => $idArtefacto->id, 'tipo' => $requestData['tipoM'], 'marca' => $requestData['marca'], 'numero' => $requestData['numero'],
             'potencia' => $requestData['potencia'], 'nominalelectrica' => $requestData['nominalelectrica']
         ];
         Motore::create($requestMotor);
+        /* 
+     * carga comb es un número con valores
+     * 11,12,13 para vehículos autopropulsados
+     * 21,22,23 para vehículos sin propulsión
+     * 
+     */
         $requestDatoAdicional = [
-            'idArtefacto' => $idArtefacto->id, 'lugar' => $requestData['lugar'], 'mercpelig' => $requestData['mercpelig'],
+            'idArtefacto' => $idArtefacto->id, 'lugar' => $requestData['lugar'], 'mercPelig' => $requestData['mercPelig'],
             'maxPasajeros' => $requestData['maxPasajeros'], 'cargaComb' => $requestData['cargaComb'], 'peso' => $requestData['peso'], 'altura' => $requestData['altura']
         ];
         datosAdicionale::create($requestDatoAdicional);

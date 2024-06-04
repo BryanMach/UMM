@@ -68,10 +68,10 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('admin/datos-adicionales', datosAdicionalesController::class);
     Route::resource('admin/recuperar', RecuperarController::class);
 
-    Route::get('admin/imprimir-certificado-registro', [ArtefactosController::class, 'imprimir_certificado_registro']);
-    Route::get('admin/imprimir-certificado-seguridad', [ArtefactosController::class, 'imprimir_certificado_seguridad']);
-    Route::get('admin/imprimir-certificado-francobordo', [ArtefactosController::class, 'imprimir_certificado_francobordo']);
-    Route::get('admin/imprimir-certificado-arqueo', [ArtefactosController::class, 'imprimir_certificado_arqueo']);
+    Route::post('admin/imprimir-certificado-registro', [PerfilesController::class, 'imprimir_certificado_registro']);
+    Route::post('admin/imprimir-certificado-seguridad', [PerfilesController::class, 'imprimir_certificado_seguridad']);
+    Route::post('admin/imprimir-certificado-francobordo', [PerfilesController::class, 'imprimir_certificado_francobordo']);
+    Route::post('admin/imprimir-certificado-arqueo', [PerfilesController::class, 'imprimir_certificado_arqueo']);
     Route::get('admin/imprimir', [ArtefactosController::class, 'imprimir']);
     Route::get('admin/perf45a', [PerfilesController::class, 'administrador']);
     Route::get('admin/perf45j', [PerfilesController::class, 'jefe']);
@@ -83,7 +83,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('admin/registro', [PerfilesController::class, 'registrar']);
     Route::get('admin/registro/guardarRegistro', [PerfilesController::class, 'guardarRegistro']);
     Route::resource('admin/certificados', certificadosController::class);
+    Route::resource('admin/ubicacion', 'admin\ubicacionController');
 });
 Route::resource('admin/certicados', 'admin\certicadosController');
 Route::resource('admin/certificados', 'admin\certificadosController');
-Route::resource('admin/ubicacion', 'admin\ubicacionController');

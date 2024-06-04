@@ -89,7 +89,11 @@
                     </thead>
                     <tbody>
                         <tr>
+<<<<<<< HEAD
                             <td class="text-center">{{ $certificado->nreg }}</td>
+=======
+                            <td class="text-center">{{ $certificados->nreg }}</td>
+>>>>>>> 707f60b686a5b92c334831ea6ac85d501e7bfb58
                         </tr>
                     </tbody>
                 </table>
@@ -115,6 +119,7 @@
                     </tr>
                     <tr>
                         <td>FECHA DE INSPECCIÓN:</td>
+<<<<<<< HEAD
                         <td colspan="3"><strong>{{ $inspeccion->año }}</strong></td>
                     </tr>
                     <tr>
@@ -124,6 +129,17 @@
                     <tr>
                         <td>BASE DE OPERACIONES:</td>
                         <td colspan="3"><strong>{{ $baseOperativa->nombreBO }}</strong></td>
+=======
+                        <td colspan="3"><strong>{{ inspeccios->año }}</strong></td>
+                    </tr>
+                    <tr>
+                        <td>LUGAR DE INSPECCIÓN:</td>
+                        <td colspan="3"><strong>{{ baseOperativa->nombreBO }}</strong></td>
+                    </tr>
+                    <tr>
+                        <td>BASE DE OPERACIONES:</td>
+                        <td colspan="3"><strong>{{ baseOperativa->nombreBO }}</strong></td>
+>>>>>>> 707f60b686a5b92c334831ea6ac85d501e7bfb58
                     </tr>
                 </tbody>
             </table>
@@ -141,7 +157,11 @@
                 <tbody>
                     <tr>
                         <td>{{ $artefacto->nombre }}</td>
+<<<<<<< HEAD
                         <td>{{ $artefacto->matricula }}</td>
+=======
+                        <td>{{ artefactos->matricula }}</td>
+>>>>>>> 707f60b686a5b92c334831ea6ac85d501e7bfb58
                         <td>.-.</td>
                     </tr>
                 </tbody>
@@ -222,9 +242,15 @@
                 <tbody>
                     <tr>
                         <td>{{ $material->material }}</td>
+<<<<<<< HEAD
                         <td>{{ $datoAdicional->altura }} {{ $datosAdicional->peso }}</td>
                         <td>{{ $datoAdicional->merPeligrosa }}</td>
                         <td>{{ $datoAdicional->NumMaxPasajeros }}</td>
+=======
+                        <td>{{ $datosAdicionales->altura }} {{ $datosAdicionales->peso }}</td>
+                        <td>{{ $datosAdicionales->merPeligrosa }}</td>
+                        <td>{{ $datosAdicionales->NumMaxPasajeros }}</td>
+>>>>>>> 707f60b686a5b92c334831ea6ac85d501e7bfb58
                     </tr>
                 </tbody>
             </table>

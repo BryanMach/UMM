@@ -31,12 +31,12 @@
             @foreach ($basesoperativas as $base)
                 @if ($formMode == 'edit')
                     @if ( $base->id ==  $artefacto->idBaseOperativa )
-                        <option value="{{ $base->id }}" selected>{{ $base->baseOperativa }}</option>
+                        <option value="{{ $base->id }}" selected>{{ $base->cuenca->cuenca }}:{{ $base->baseOperativa }}</option>
                     @else
-                        <option value="{{ $base->id }}">{{ $base->baseOperativa }}</option>
+                        <option value="{{ $base->id }}">{{$base->cuenca->cuenca }}:{{ $base->baseOperativa }}</option>
                     @endif
                 @else
-                    <option value="{{ $base->id }}">{{ $base->baseOperativa }}</option>
+                    <option value="{{ $base->id }}">{{$base->cuenca->cuenca }}:{{ $base->baseOperativa }}</option>
                 @endif
             @endforeach
         </select>
@@ -211,9 +211,69 @@
         {!! $errors->first('maxPasajeros', '<p class="help-block">:message</p>') !!}
 </div>
 <div class="form-group {{ $errors->has('cargaComb') ? 'has-error' : '' }}">
-    <label for="cargaComb" class="control-label">{{ 'Cargacomb' }}</label>
-    <input class="form-control" name="cargaComb" type="number" id="cargaComb"
-        value="{{ isset($datosadicionale->cargaComb) ? $datosadicionale->cargaComb : '' }}">
+    <label for="cargaComb" class="control-label">{{ 'Propulsión y sistema de de combustible' }}</label>
+    <select class="form-control" name="cargaComb" type="number" id="cargaComb">
+        @if ($formMode == 'edit')
+                    @switch {{$datosadicionale->cargaComb}}
+                        @case (11):
+                        <option value="11" selected>Embarcación autopropulsada: Abierto</option>
+                        <option value="12">Embarcación autopropulsada: Cerrado</option>
+                        <option value="13">Embarcación autopropulsada: Tanque</option>
+                        <option value="21">Embarcación sin propulsión: Abierto</option>
+                        <option value="22">Embarcación sin propulsión: Cerrado</option>
+                        <option value="23">Embarcación sin propulsión: Tanque</option>
+                        @break;
+                        @case '12':
+                        <option value="11">Embarcación autopropulsada: Abierto</option>
+                        <option value="12" selected>Embarcación autopropulsada: Cerrado</option>
+                        <option value="13">Embarcación autopropulsada: Tanque</option>
+                        <option value="21">Embarcación sin propulsión: Abierto</option>
+                        <option value="22">Embarcación sin propulsión: Cerrado</option>
+                        <option value="23">Embarcación sin propulsión: Tanque</option>
+                        @break;
+                        @case '13':
+                        <option value="11">Embarcación autopropulsada: Abierto</option>
+                        <option value="12">Embarcación autopropulsada: Cerrado</option>
+                        <option value="13" selected>Embarcación autopropulsada: Tanque</option>
+                        <option value="21">Embarcación sin propulsión: Abierto</option>
+                        <option value="22">Embarcación sin propulsión: Cerrado</option>
+                        <option value="23">Embarcación sin propulsión: Tanque</option>
+                        @break;
+                        @case '21':
+                        <option value="11">Embarcación autopropulsada: Abierto</option>
+                        <option value="12">Embarcación autopropulsada: Cerrado</option>
+                        <option value="13">Embarcación autopropulsada: Tanque</option>
+                        <option value="21" selected>Embarcación sin propulsión: Abierto</option>
+                        <option value="22">Embarcación sin propulsión: Cerrado</option>
+                        <option value="23">Embarcación sin propulsión: Tanque</option>
+                        @break;
+                        @case '22':
+                        <option value="11">Embarcación autopropulsada: Abierto</option>
+                        <option value="12">Embarcación autopropulsada: Cerrado</option>
+                        <option value="13">Embarcación autopropulsada: Tanque</option>
+                        <option value="21">Embarcación sin propulsión: Abierto</option>
+                        <option value="22" selected>Embarcación sin propulsión: Cerrado</option>
+                        <option value="23">Embarcación sin propulsión: Tanque</option>
+                        @break;
+                        @case '23':
+                        <option value="11">Embarcación autopropulsada: Abierto</option>
+                        <option value="12">Embarcación autopropulsada: Cerrado</option>
+                        <option value="13">Embarcación autopropulsada: Tanque</option>
+                        <option value="21">Embarcación sin propulsión: Abierto</option>
+                        <option value="22">Embarcación sin propulsión: Cerrado</option>
+                        <option value="23" selected>Embarcación sin propulsión: Tanque</option>
+                        @break;
+                    
+                    @endswitch;
+                @else
+                    <option value="11">Embarcación autopropulsada: Abierto</option>
+                    <option value="12">Embarcación autopropulsada: Cerrado</option>
+                    <option value="13">Embarcación autopropulsada: Tanque</option>
+                    <option value="21">Embarcación sin propulsión: Abierto</option>
+                    <option value="22">Embarcación sin propulsión: Cerrado</option>
+                    <option value="23">Embarcación sin propulsión: Tanque</option>
+                @endif
+    </select>
     {!! $errors->first('cargaComb', '<p class="help-block">:message</p>') !!}
 </div>
 <div class="form-group {{ $errors->has('peso') ? 'has-error' : '' }}">

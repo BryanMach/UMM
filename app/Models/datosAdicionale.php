@@ -24,6 +24,11 @@ class datosAdicionale extends Model
      * Attributes that should be mass-assignable.
      *
      * @var array
+     * 
+     * carga comb es un número con valores
+     * 11,12,13 para vehículos autopropulsados
+     * 21,22,23 para vehículos sin propulsión
+     * 
      */
     protected $fillable = ['idArtefacto', 'lugar', 'mercPelig', 'maxPasajeros', 'cargaComb', 'peso', 'altura'];
 
