@@ -43,9 +43,9 @@ class Artefacto extends Model
     {
         return $this->hasMany(Motore::class);
     }
-    public function certificaciones()
+    public function certificado()
     {
-        return $this->hasMany(Certificacione::class);
+        return $this->hasMany(certificado::class);
     }
     public function propietario()
     {

@@ -80,41 +80,26 @@
     <!--compact('vista','personal','usuario','perfil'));
         'ci', 'cargo', 'grado', 'nombres', 'apellidos', 'contacto', 'foto', 'descripcion', 'vigencia'
     -->
-    <div class="sidebar">
-        <div class="profile">
-            <img src="https://via.placeholder.com/100" alt="User">
-            <h4>{{$perfil->grado}} {{$perfil->nombres}} {{$perfil->apellidos}}</h4>
-        </div>
-        <a href="#" class="active">Usuario: {{$usuario->usuario}}</a>
-        <div class="table-container">
-            <table class="table table-borderless">
-                    <tr>
-                        <th>CI:</th>
-                        <td>{{$perfil->ci}}</td>
-                    </tr>
-                    <tr>
-                        <th>Cargo:</th>
-                        <td>{{$perfil->cargo}}</td>
-                    </tr>
-                    <tr>
-                        <th>Contacto:</th>
-                        <td>{{$perfil->contacto}}</td>
-                    </tr>
-            </table>
-        </div>
-            <div>
-                    <a class="btn btn-default btn-flat float-right  btn-block "
-                        href="#" onclick="event.preventDefault();
-                        document.getElementById('logout-form').submit();">
-                        <i class="fa fa-fw fa-power-off text-red"></i>
-                        Salir
-                    </a>
-                    <input type="hidden" name="_token" value="wYPQSAtVT40RtK4HcL0s7NqEGk4DAyBtDQJNesfB">
-                    <form id="logout-form" action="http://localhost/rcumm/public/logout" method="POST" style="display: none;">
-                         @CSRF
-                    </form>
-            </div>
-        </div>
+    <div class="col-md-3 sidebar text-center" style="position: fixed;">
+        <img src="{{ asset('images/foto.jpg') }}" alt="Foto de Perfil" class="profile-img">
+        <h3>John David</h3>
+        <p class="role">Rol de Persona</p>
+        <table class="description text-left">
+            <tbody>
+                <tr>
+                    <td>Cargo</td>
+                </tr>
+            </tbody>
+            <tbody>
+                <tr>
+                    <td>CI</td>
+                </tr>
+                <tr>
+                    <td>Contacto</td>
+                </tr>
+            </tbody>
+        </table>
+        <button class="btn btn-outline-secondary mt-4"><i class="fas fa-power-off"></i> Cerrar Sesión</button>
     </div>
     <div class="search-bar">
         <div class="main-content">

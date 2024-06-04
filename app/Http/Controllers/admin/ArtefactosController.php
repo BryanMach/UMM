@@ -151,36 +151,4 @@ class ArtefactosController extends Controller
         $vista = \View::make('admin.perfiles.Jefe', compact('artefactos'))->render();
         return view('admin.perfiles.Jefe', compact('vista','artefactos'));
     }
-    public function imprimir_certificado_registro(){//muestro un pdf
-        /*dd('Probando imprimir certificados');*/
-        $artefactos=Artefacto::all();
-        $vista = \View::make('admin.certificadospdf.certificarregistro', compact('artefactos'))->render();
-        $pdf= \App::make('dompdf.wrapper');
-        $pdf->loadHTML($vista);
-        return $pdf->stream('registro.pdf');
-    }
-    public function imprimir_certificado_seguridad(){//muestro un pdf
-        /*dd('Probando imprimir certificados');*/
-        $artefactos=Artefacto::all();
-        $vista = \View::make('admin.certificadospdf.certificarseguridad', compact('artefactos'))->render();
-        $pdf= \App::make('dompdf.wrapper');
-        $pdf->loadHTML($vista);
-        return $pdf->stream('seguridad.pdf');
-    }
-    public function imprimir_certificado_francobordo(){//muestro un pdf
-        /*dd('Probando imprimir certificados');*/
-        $artefactos=Artefacto::all();
-        $vista = \View::make('admin.certificadospdf.certificarfrancobordo', compact('artefactos'))->render();
-        $pdf= \App::make('dompdf.wrapper');
-        $pdf->loadHTML($vista);
-        return $pdf->stream('francobordo.pdf');
-    }
-    public function imprimir_certificado_arqueo(){//muestro un pdf
-        /*dd('Probando imprimir certificados');*/
-        $artefactos=Artefacto::all();
-        $vista = \View::make('admin.certificadospdf.certificararqueo', compact('artefactos'))->render();
-        $pdf= \App::make('dompdf.wrapper');
-        $pdf->loadHTML($vista);
-        return $pdf->stream('arqueo.pdf');
-    }
 }

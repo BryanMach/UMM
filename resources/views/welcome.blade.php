@@ -758,25 +758,6 @@
 </style>
 
 <body>
-<<<<<<< HEAD
-    <div class="top-half" style="background: #2805a7">
-        <div class="title">Unidad de Marina Mercante</div>
-        <div class="button-container">
-            <!--<a href="http://localhost/rcumm/public/login">Ingresar</a>-->
-
-            @if (Route::has('login'))
-                <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
-                    @auth
-                        <a href="{{ url('/dashboard') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Panel</a>
-                    @else
-                        <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Ingresar</a>
-                    @endauth
-                </div>
-            @endif
-
-        </div>
-        <div class="subtitle">Autoridad dependiente de la armada boliviana</div>
-=======
     <!-- MENU ENCABEZADO -->
     <div class="contenedor-header">
         <header>
@@ -793,14 +774,21 @@
                     <li class="text-center"><a href="#curriculum" onclick="seleccionar()">EMPRESAS CERTIFICADAS</a></li>
                     <li class="text-center"><a href="#contacto" onclick="seleccionar()">CONTACTO</a></li>
                     <li class="text-center"><a href="http://localhost/UMM/public/login"
-                            style="margin-left: 150%">INGRESAR</a></li>
+                            style="margin-left: 150%">@if (Route::has('login'))
+                            <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
+                                @auth
+                                    <a href="{{ url('/dashboard') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Panel</a>
+                                @else
+                                    <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Ingresar</a>
+                                @endauth
+                            </div>
+                        @endif</li>
                 </ul>
             </nav>
             <div class="nav-responsive" onclick="mostrarOcultarMenu()">
                 <i class="fa-solid fa-bars"></i>
             </div>
         </header>
->>>>>>> 4041c237a036f1a3cd251845d0a18a474f897f74
     </div>
 
     <!-- SECCION INICIO -->
@@ -868,63 +856,6 @@
                     </div> --}}
                 </div>
             </div>
-<<<<<<< HEAD
-            
-    <div class="container contenedor-principal" style="background: rgb(250, 250, 250);">
-        <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
-                <h2 id="pg-registrobuques-titulo"></h2>
-                <hr>
-                <p id="pg-registrobuques-contenido" class="justificado"></p>
-                    <div class="container">
-                    <div class="row">
-                        <div class="acordion-manual-header col-12" id="acordion-reg-normal-header">Servicios</div>
-                        <div class="acordion-manual-contenido-show col-12" id="acordion-reg-normal-contenido">
-                            <span id="intro-reg-normal"></span>
-                                <div class="row">
-                                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                                        <button type="button" class="btn btn-success btn-block" id="btn-show-reg-prov">Registro Provisional</button>
-                                    </div>
-                                </div><br>
-                                <div class="row">
-                                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                                        <button type="button" class="btn btn-warning btn-block" id="btn-show-reg-prov-scr">Registro especial</button>
-                                    </div>
-                                </div><br>
-                                <div class="row">
-                                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                                        <button type="button" class="btn btn-danger btn-block" id="btn-show-reg-perm">Registro Permanente</button>
-                                    </div>
-                                </div>
-                                <div class="row acordion-manual-subcontenido" id="reg-normal-container">
-                                    <h4 id="reg-normal-titulo"></h4>
-                                    <hr>
-                                    <div id="reg-normal-contenido"></div>
-                                </div>
-                        </div>
-                        <div class="acordion-manual-header col-12" id="acordion-reg-dual-header">¿Quienes somos?</div>
-                        <div class="acordion-manual-contenido-hide col-12" id="acordion-reg-dual-contenido">
-                            <span id="intro-reg-dual"></span>
-                                <div class="row">
-                                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-                                        <button type="button" class="btn btn-success btn-block" id="btn-show-reg-prov-dual">Registro Provisional Dual</button>
-                                    </div>
-                                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-                                        <button type="button" class="btn btn-danger btn-block" id="btn-show-reg-perm-dual">Registro Permanente Dual</button>
-                                    </div>
-                                </div>
-                                <div class="row acordion-manual-subcontenido" id="reg-dual-container">
-                                    <h4 id="reg-dual-titulo"></h4>
-                                    <hr>
-                                    <div id="reg-dual-contenido"></div>
-                                </div>
-                        </div>
-                        <div class="acordion-manual-header col-12" id="acordion-reg-especial-header">Empresas certificadas</div>
-                        <div class="acordion-manual-contenido-hide col-12" id="acordion-reg-especial-contenido">
-                            <h4 id="reg-especial-titulo"></h4>
-                            <hr>
-                            <div id="reg-especial-contenido"></div>
-=======
         </div>
 
     </section>
@@ -947,7 +878,6 @@
                         {{-- libretas de embarque --}}
                         <div class="conectori">
                             <div class="circuloi"></div>
->>>>>>> 4041c237a036f1a3cd251845d0a18a474f897f74
                         </div>
                     </div>
                 </div>

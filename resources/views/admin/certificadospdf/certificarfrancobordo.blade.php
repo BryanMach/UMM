@@ -90,7 +90,7 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td class="text-center">P-03240271</td>
+                            <td class="text-center">{{ $certificados->nreg }}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -107,16 +107,16 @@
                     <tr class="text-center">
                         <th><strong>NOMBRE DE LA EMBARCACIÓN</strong></th>
                         <th class="align-middle"><strong>MATRICULA</strong></th>
-                        <th><strong>PUERTA DE REGISTRO</strong></th>
+                        <th><strong>PUERTO DE REGISTRO</strong></th>
                         <th><strong>Eslora (L) definida en el Art. 3.3</strong></th>
                     </tr>
                 </thead>
                 <tbody class="text-center">
                     <tr>
-                        <td class="align-middle">SOBERANIA I</td>
-                        <td class="align-middle">.-.</td>
-                        <td>PUERTO BUSCH - SANTA CRUZ</td>
-                        <td class="align-middle">25.00</td>
+                        <td class="align-middle">{{ $artefactos->nombre }}</td>
+                        <td class="align-middle">{{ $artefacto->matricula }}</td>
+                        <td>{{ baseOperativa->nombreBO }}</td>
+                        <td class="align-middle">{{ $artefacto->eslora }}</td>
                     </tr>
                 </tbody>
             </table>

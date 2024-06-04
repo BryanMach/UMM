@@ -20,6 +20,7 @@ class CreateCertificadosTable extends Migration
             $table->integer('nreg')->nullable();
             $table->integer('correlativo')->nullable();
             $table->date('fechaEmision')->nullable();
+            $table->date('fechaAlerta')->nullable();
             $table->date('fechaVencimiento')->nullable();
             $table->foreign('idArtefacto')->references('id')->on('artefactos');
             });

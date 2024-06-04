@@ -18,7 +18,6 @@
 </head>
 
 <body>
-<<<<<<< HEAD
         <div id="app" class="min-h-screen bg-gray-100 dark:bg-gray-900">
         <!--<nav class="navbar navbar-expand-md navbar-light navbar-laravel">-->
             <div class="container">
@@ -62,18 +61,6 @@
                         @endif
                     </ul>
                 </div>
-=======
-    <div id="app" class="min-h-screen bg-gray-100 dark:bg-gray-900">
-        <div class="container">
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav ml-auto">
-                    @if (!Auth::check())
-                        <li><a class="nav-link" href="{{ url('/login') }}">_Ingresar</a></li>
-                        <li><a class="nav-link" href="{{ url('/register') }}">_Registrarse</a></li>
-                    @else
-                    @endif
-                </ul>
->>>>>>> 4041c237a036f1a3cd251845d0a18a474f897f74
             </div>
         </div>
 
