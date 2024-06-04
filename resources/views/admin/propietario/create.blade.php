@@ -7,9 +7,15 @@
                 <div class="card">
                     <div class="card-header">Crear nuevo Propietario</div>
                     <div class="card-body">
-                        <a href="{{ url('/admin/propietario') }}" title="Back"><button class="btn btn-warning btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i> Retroceder</button></a>
-                        <br />
-                        <br />
+                        <!--@php
+                            $l=Auth::user()->id;
+                            //$l=RouteServiceProvider::HOME();
+                            //dd($l);
+                        @endphp-->
+                        <a href="{{ url('/admin/propietario') }}" title="Back"><button class="btn btn-warning btn-sm">
+                            <i class="fa fa-arrow-left" aria-hidden="true"></i> Retroceder</button></a>
+                        <br>
+                        <br>
 
                         @if ($errors->any())
                             <ul class="alert alert-danger">

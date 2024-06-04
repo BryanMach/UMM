@@ -22,6 +22,7 @@ class AuthenticatedSessionController extends Controller
 
     /**
      * Handle an incoming authentication request.
+     * es auí donde se hace la llamada a la función para mostrar un perfil
      */
     public function store(LoginRequest $request): RedirectResponse
     {
@@ -29,7 +30,7 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        return redirect()->intended(RouteServiceProvider::HOME);
+        return redirect()->intended(RouteServiceProvider::HOME());
     }
 
     /**
@@ -37,6 +38,12 @@ class AuthenticatedSessionController extends Controller
      */
     public function destroy(Request $request): RedirectResponse
     {
+        
+        //en esta función se destruye una sesión
+        //con ayuda del token de l a sesión a destruir
+        //pero como era predeterminado no logra
+        //funcionar de la misma forma, asumo que se debe regenerar un
+        //token nuevo lara esta pagina-sesións
         Auth::guard('web')->logout();
 
         $request->session()->invalidate();

@@ -1,9 +1,25 @@
 <div class="form-group {{ $errors->has('idPersonal') ? 'has-error' : '' }}">
-    <label for="idPersonal" class="control-label">{{ 'Personal' }}</label>
+    <label for="idPersonal" class="control-label">{{ 'personal' }}</label>
     <select class="form-control" name="idPersonal" id="idPersonal">
         @foreach ($personas as $persona)
-            <option value="{{ $persona->id }}">
-                {{ $persona->cargo }} {{ $persona->grado }} {{ $persona->nombres }} {{ $persona->apellidos }}</option>
+            @if ($formMode == 'edit')
+                @if ( $persona->id ==  $usuario->idPersonal )
+                    <option value="{{ $persona->id }}" selected>{{ $persona->cargo }}: 
+                {{ $persona->grado }}.
+                {{ $persona->nombres }} 
+                {{ $persona->apellidos }}</option>
+                @else
+                    <option value="{{ $persona->id }}">{{ $persona->cargo }}: 
+                {{ $persona->grado }}.
+                {{ $persona->nombres }} 
+                {{ $persona->apellidos }}</option>
+                @endif
+            @else
+                <option value="{{ $persona->id }}">{{ $persona->cargo }}: 
+                {{ $persona->grado }}.
+                {{ $persona->nombres }} 
+                {{ $persona->apellidos }}</option>
+            @endif
         @endforeach
     </select>
     {!! $errors->first('idPersonal', '<p class="help-block">:message</p>') !!}
@@ -23,12 +39,41 @@
 <div class="form-group {{ $errors->has('nivel') ? 'has-error' : '' }}">
     <label for="nivel" class="control-label">{{ 'Nivel' }}</label>
     <select class="form-control" name="nivel" id="nivel">
-
+        @if ($formMode == 'edit')
+            @switch($usuario->nivel)
+                @case(1)
+                <option value="1"  selected>Administrador</option>
+                <option value="2">Jefe</option>
+                <option value="3">Archivo interno</option>
+                <option value="4">Archivo externo</option> 
+                    @break
+                @case(2)
+                <option value="1">Administrador</option>
+                <option value="2" selected>Jefe</option>
+                <option value="3">Archivo interno</option>
+                <option value="4">Archivo externo</option> 
+                    @break
+                @case(3)
+                <option value="1">Administrador</option>
+                <option value="2">Jefe</option>
+                <option value="3" selected>Archivo interno</option>
+                <option value="4">Archivo externo</option> 
+                    @break
+                @case(4)
+                <option value="1">Administrador</option>
+                <option value="2">Jefe</option>
+                <option value="3">Archivo interno</option>
+                <option value="4" selected>Archivo externo</option> 
+                    @break
+                @default
+                    
+            @endswitch
+        @else
         <option value="1">Administrador</option>
         <option value="2">Jefe</option>
         <option value="3">Archivo interno</option>
-        <option value="4">Archivo externo</option>
-
+        <option value="4">Archivo externo</option> 
+        @endif
     </select>
     {!! $errors->first('nivel', '<p class="help-block">:message</p>') !!}
 </div>

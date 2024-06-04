@@ -42,7 +42,10 @@
                                     @foreach ($usuarios as $item)
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
-                                            <td>{{ $item->idPersonal }}</td>
+                                            <td>{{ $item->personals->cargo }}: 
+                                                {{ $item->personals->grado }}.
+                                                {{ $item->personals->nombres }} 
+                                                {{ $item->personals->apellidos }}</td>
                                             <td>{{ $item->usuario }}</td>
                                             <td>{{ $item->contrasena }}</td>
                                             <td>

@@ -19,16 +19,17 @@ class InspeccionesController extends Controller
     {
         $keyword = $request->get('search');
         $perPage = 25;
-
+        $artefactos = Artefacto::All();
         if (!empty($keyword)) {
-            $inspecciones = Inspeccione::where('idArtefacto', 'LIKE', "%$keyword%")
-                ->orWhere('gestion', 'LIKE', "%$keyword%")
+            $inspecciones = Inspeccione::where('gestion', 'LIKE', "%$keyword%")
+                ->orWhere('jefeinspector', 'LIKE', "%$keyword%")
+                ->orWhere('motivo', 'LIKE', "%$keyword%")
                 ->latest()->paginate($perPage);
         } else {
             $inspecciones = Inspeccione::latest()->paginate($perPage);
         }
 
-        return view('admin.inspecciones.index', compact('inspecciones'));
+        return view('admin.inspecciones.index', compact('inspecciones','artefactos'));
     }
 
     /**
@@ -69,8 +70,9 @@ class InspeccionesController extends Controller
     public function show($id)
     {
         $inspeccione = Inspeccione::findOrFail($id);
+        $artefactos = Artefacto::All();
 
-        return view('admin.inspecciones.show', compact('inspeccione'));
+        return view('admin.inspecciones.show', compact('inspeccione','artefactos'));
     }
 
     /**
@@ -83,8 +85,9 @@ class InspeccionesController extends Controller
     public function edit($id)
     {
         $inspeccione = Inspeccione::findOrFail($id);
+        $artefactos = Artefacto::All();
 
-        return view('admin.inspecciones.edit', compact('inspeccione'));
+        return view('admin.inspecciones.edit', compact('inspeccione','artefactos'));
     }
 
     /**

@@ -26,7 +26,7 @@ class ListaPropietariosController extends Controller
                 ->orWhere('idArtefacto', 'LIKE', "%$keyword%")
                 ->latest()->paginate($perPage);
         } else {
-            $listapropietarios = ListaPropietario::latest()->paginate($perPage);
+            $listapropietarios = ListaPropietario::latest('idPropietario')->paginate($perPage);
         }
 
         return view('admin.lista-propietarios.index', compact('listapropietarios'));

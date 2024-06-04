@@ -87,8 +87,9 @@ class MotoresController extends Controller
     public function edit($id)
     {
         $motore = Motore::findOrFail($id);
+        $artefactos = Artefacto::All();
 
-        return view('admin.motores.edit', compact('motore'));
+        return view('admin.motores.edit', compact('motore', 'artefactos'));
     }
 
     /**

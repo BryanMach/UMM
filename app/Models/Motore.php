@@ -28,6 +28,6 @@ class Motore extends Model
     protected $fillable = ['idArtefacto', 'tipo', 'marca', 'numero', 'potencia', 'nominalelectrica'];
 
     public function artefactos(){
-        return $this->belongsTo(Artefacto::class);
+        return $this->belongsTo(Artefacto::class, 'idArtefacto', 'id');
     }
 }

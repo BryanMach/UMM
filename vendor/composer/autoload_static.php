@@ -597,6 +597,16 @@ class ComposerStaticInitfe33f98a750b8c5a51b30c78bd3fab21
         ),
     );
 
+    public static $prefixesPsr0 = array (
+        'M' => 
+        array (
+            'Milon\\Barcode' => 
+            array (
+                0 => __DIR__ . '/..' . '/milon/barcode/src',
+            ),
+        ),
+    );
+
     public static $classMap = array (
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
@@ -607,6 +617,7 @@ class ComposerStaticInitfe33f98a750b8c5a51b30c78bd3fab21
         'App\\Http\\Controllers\\Auth\\NewPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/NewPasswordController.php',
         'App\\Http\\Controllers\\Auth\\PasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/PasswordController.php',
         'App\\Http\\Controllers\\Auth\\PasswordResetLinkController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/PasswordResetLinkController.php',
+        'App\\Http\\Controllers\\Auth\\PerfilesController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/PerfilesController.php',
         'App\\Http\\Controllers\\Auth\\RegisteredUserController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/RegisteredUserController.php',
         'App\\Http\\Controllers\\Auth\\VerifyEmailController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/VerifyEmailController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
@@ -625,7 +636,9 @@ class ComposerStaticInitfe33f98a750b8c5a51b30c78bd3fab21
         'App\\Http\\Controllers\\admin\\RecuperarController' => __DIR__ . '/../..' . '/app/Http/Controllers/admin/RecuperarController.php',
         'App\\Http\\Controllers\\admin\\TipoController' => __DIR__ . '/../..' . '/app/Http/Controllers/admin/TipoController.php',
         'App\\Http\\Controllers\\admin\\UsuariosController' => __DIR__ . '/../..' . '/app/Http/Controllers/admin/UsuariosController.php',
+        'App\\Http\\Controllers\\admin\\certificadosController' => __DIR__ . '/../..' . '/app/Http/Controllers/admin/certificadosController.php',
         'App\\Http\\Controllers\\admin\\datosAdicionalesController' => __DIR__ . '/../..' . '/app/Http/Controllers/admin/datosAdicionalesController.php',
+        'App\\Http\\Controllers\\admin\\ubicacionController' => __DIR__ . '/../..' . '/app/Http/Controllers/admin/ubicacionController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\Authenticate' => __DIR__ . '/../..' . '/app/Http/Middleware/Authenticate.php',
         'App\\Http\\Middleware\\EncryptCookies' => __DIR__ . '/../..' . '/app/Http/Middleware/EncryptCookies.php',
@@ -653,7 +666,9 @@ class ComposerStaticInitfe33f98a750b8c5a51b30c78bd3fab21
         'App\\Models\\Tipo' => __DIR__ . '/../..' . '/app/Models/Tipo.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
         'App\\Models\\Usuario' => __DIR__ . '/../..' . '/app/Models/Usuario.php',
+        'App\\Models\\certificado' => __DIR__ . '/../..' . '/app/Models/certificado.php',
         'App\\Models\\datosAdicionale' => __DIR__ . '/../..' . '/app/Models/datosAdicionale.php',
+        'App\\Models\\ubicacion' => __DIR__ . '/../..' . '/app/Models/ubicacion.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'App\\Providers\\AuthServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AuthServiceProvider.php',
         'App\\Providers\\BroadcastServiceProvider' => __DIR__ . '/../..' . '/app/Providers/BroadcastServiceProvider.php',
@@ -3446,6 +3461,20 @@ class ComposerStaticInitfe33f98a750b8c5a51b30c78bd3fab21
         'Masterminds\\HTML5\\Serializer\\OutputRules' => __DIR__ . '/..' . '/masterminds/html5/src/HTML5/Serializer/OutputRules.php',
         'Masterminds\\HTML5\\Serializer\\RulesInterface' => __DIR__ . '/..' . '/masterminds/html5/src/HTML5/Serializer/RulesInterface.php',
         'Masterminds\\HTML5\\Serializer\\Traverser' => __DIR__ . '/..' . '/masterminds/html5/src/HTML5/Serializer/Traverser.php',
+        'Milon\\Barcode\\BarcodeServiceProvider' => __DIR__ . '/..' . '/milon/barcode/src/Milon/Barcode/BarcodeServiceProvider.php',
+        'Milon\\Barcode\\DNS1D' => __DIR__ . '/..' . '/milon/barcode/src/Milon/Barcode/DNS1D.php',
+        'Milon\\Barcode\\DNS2D' => __DIR__ . '/..' . '/milon/barcode/src/Milon/Barcode/DNS2D.php',
+        'Milon\\Barcode\\Datamatrix' => __DIR__ . '/..' . '/milon/barcode/src/Milon/Barcode/Datamatrix.php',
+        'Milon\\Barcode\\Facades\\DNS1DFacade' => __DIR__ . '/..' . '/milon/barcode/src/Milon/Barcode/Facades/DNS1DFacade.php',
+        'Milon\\Barcode\\Facades\\DNS2DFacade' => __DIR__ . '/..' . '/milon/barcode/src/Milon/Barcode/Facades/DNS2DFacade.php',
+        'Milon\\Barcode\\GS1_128\\AIData' => __DIR__ . '/..' . '/milon/barcode/src/Milon/Barcode/GS1_128/AIData.php',
+        'Milon\\Barcode\\GS1_128\\GS1128' => __DIR__ . '/..' . '/milon/barcode/src/Milon/Barcode/GS1_128/GS1128.php',
+        'Milon\\Barcode\\GS1_128\\Section' => __DIR__ . '/..' . '/milon/barcode/src/Milon/Barcode/GS1_128/Section.php',
+        'Milon\\Barcode\\GS1_128\\SectionSlicer' => __DIR__ . '/..' . '/milon/barcode/src/Milon/Barcode/GS1_128/SectionSlicer.php',
+        'Milon\\Barcode\\GS1_128\\Subsets' => __DIR__ . '/..' . '/milon/barcode/src/Milon/Barcode/GS1_128/Subsets.php',
+        'Milon\\Barcode\\PDF417' => __DIR__ . '/..' . '/milon/barcode/src/Milon/Barcode/PDF417.php',
+        'Milon\\Barcode\\QRcode' => __DIR__ . '/..' . '/milon/barcode/src/Milon/Barcode/QRcode.php',
+        'Milon\\Barcode\\WrongCheckDigitException' => __DIR__ . '/..' . '/milon/barcode/src/Milon/Barcode/WrongCheckDigitException.php',
         'Mockery\\Adapter\\Phpunit\\MockeryPHPUnitIntegration' => __DIR__ . '/..' . '/mockery/mockery/library/Mockery/Adapter/Phpunit/MockeryPHPUnitIntegration.php',
         'Mockery\\Adapter\\Phpunit\\MockeryPHPUnitIntegrationAssertPostConditions' => __DIR__ . '/..' . '/mockery/mockery/library/Mockery/Adapter/Phpunit/MockeryPHPUnitIntegrationAssertPostConditions.php',
         'Mockery\\Adapter\\Phpunit\\MockeryTestCase' => __DIR__ . '/..' . '/mockery/mockery/library/Mockery/Adapter/Phpunit/MockeryTestCase.php',
@@ -6367,6 +6396,7 @@ class ComposerStaticInitfe33f98a750b8c5a51b30c78bd3fab21
         return \Closure::bind(function () use ($loader) {
             $loader->prefixLengthsPsr4 = ComposerStaticInitfe33f98a750b8c5a51b30c78bd3fab21::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInitfe33f98a750b8c5a51b30c78bd3fab21::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInitfe33f98a750b8c5a51b30c78bd3fab21::$prefixesPsr0;
             $loader->classMap = ComposerStaticInitfe33f98a750b8c5a51b30c78bd3fab21::$classMap;
 
         }, null, ClassLoader::class);

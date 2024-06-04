@@ -42,7 +42,7 @@
                                     @foreach ($motores as $item)
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
-                                            <td>{{ $item->idArtefacto }}</td>
+                                            <td>{{ $item->artefactos->matricula }}</td>
                                             <td>{{ $item->tipo }}</td>
                                             <td>{{ $item->marca }}</td>
                                             <td>
