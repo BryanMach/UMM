@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,91 +12,135 @@
             font-family: Arial, sans-serif;
             background-color: #f8f9fa;
         }
-        .sidebar, .right-sidebar {
+
+        .sidebar {
+            height: 100vh;
+            background: linear-gradient(to bottom, white, rgb(16, 232, 200));
+            padding: 30px;
+            border-right: 1px solid #dee2e6;
+        }
+
+        .profile-img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .sidebar h3 {
+            margin-top: 15px;
+            font-size: 1.75rem;
+            color: #000;
+        }
+
+        .sidebar .role {
+            color: #9370DB;
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+        }
+
+        .sidebar .description {
+            color: #6c757d;
+            font-size: 20px;
+
+        }
+
+        .sidebar,
+        .right-sidebar {
             height: 100vh;
             background-color: #fff;
             border-right: 1px solid #ddd;
             position: fixed;
             top: 0;
         }
-        .sidebar {
-            width: 220px;
-            left: 0;
-        }
+
         .right-sidebar {
             width: 200px;
             right: 0;
             border-left: 1px solid #ddd;
         }
-        .sidebar .profile {
-            text-align: center;
-            padding: 20px;
-        }
-        .sidebar .profile img {
-            border-radius: 50%;
-            width: 100px;
-        }
-        .sidebar .profile h4 {
-            margin-top: 10px;
-        }
-        .sidebar a, .right-sidebar a {
+
+        .sidebar a,
+        .right-sidebar a {
             color: #333;
             display: block;
             padding: 10px 20px;
             text-decoration: none;
         }
-        .sidebar a:hover, .right-sidebar a:hover {
+
+        .sidebar a:hover,
+        .right-sidebar a:hover {
             background-color: #f1f1f1;
         }
-        .sidebar .active {
-            background-color: #e9ecef;
-            font-weight: bold;
-        }
+
         .main-content {
             margin-left: 220px;
             margin-right: 200px;
             padding: 20px;
         }
+
         .search-bar {
             display: flex;
             align-items: center;
-            margin-bottom: 20px;
+            margin-left: 15%;
+            margin-top: 5%;
         }
+
         .search-bar input {
             flex-grow: 1;
             margin-right: 10px;
         }
+
         .table-container {
             background-color: #fff;
             border: 1px solid #ddd;
             padding: 20px;
             border-radius: 5px;
         }
+
         .table-responsive {
             margin-top: 20px;
         }
     </style>
 </head>
+
 <body>
     <!--compact('vista','personal','usuario','perfil'));
         'ci', 'cargo', 'grado', 'nombres', 'apellidos', 'contacto', 'foto', 'descripcion', 'vigencia'
     -->
     <div class="col-md-3 sidebar text-center" style="position: fixed;">
         <img src="{{ asset('images/foto.jpg') }}" alt="Foto de Perfil" class="profile-img">
+<<<<<<< HEAD
+        <h3>{{ $perfil->nombres }} {{ $perfil->apellidos }}</h3>
+        <p class="role">{{ $perfil->grado }}</p>
+=======
         <h3>John David</h3>
         <p class="role">Rol de Persona</p>
+>>>>>>> 707f60b686a5b92c334831ea6ac85d501e7bfb58
         <table class="description text-left">
             <tbody>
                 <tr>
                     <td>Cargo</td>
+<<<<<<< HEAD
+                    <td>{{ $perfil->cargo }}</td>
+=======
+>>>>>>> 707f60b686a5b92c334831ea6ac85d501e7bfb58
                 </tr>
             </tbody>
             <tbody>
                 <tr>
                     <td>CI</td>
+<<<<<<< HEAD
+                    <td>{{ $perfil->ci }}</td>
                 </tr>
                 <tr>
                     <td>Contacto</td>
+                    <td>{{ $perfil->contacto }}</td>
+=======
+                </tr>
+                <tr>
+                    <td>Contacto</td>
+>>>>>>> 707f60b686a5b92c334831ea6ac85d501e7bfb58
                 </tr>
             </tbody>
         </table>
@@ -104,35 +149,35 @@
     <div class="search-bar">
         <div class="main-content">
             <h2>Planilla de personal</h2>
-            <input type="text" class="form-control" placeholder="Buscar">
-        <div class="table-responsive">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>Cargo</th>
-                        <th>Nombre y apellido</th>
-                        <th>Cédula de identidad</th>
-                        <th>Acciones</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($personal as $item)
-                    <tr>
-                        <td>{{ $item->cargo }}</td>
-                        <td>{{ $item->nombres }} {{ $item->apellidos }}</td>
-                        <td>{{ $item->ci }}</td>
-                        <td>
-                            <a href="{{ url('/admin/personal/' . $item->id) }}"
-                                title="Ver Personal"><button class="btn btn-info btn-sm">
-                                    <i class="fa fa-eye" aria-hidden="true"></i> Ver</button></a>
-                            
-                        </td>
-                    </tr>
-                    @endforeach
-                </tbody>
-            </table>
+            {{-- <input type="text" class="form-control" placeholder="Buscar"> --}}
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Cargo</th>
+                            <th>Nombre y apellido</th>
+                            <th>Cédula de identidad</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($personal as $item)
+                            <tr>
+                                <td>{{ $item->cargo }}</td>
+                                <td>{{ $item->nombres }} {{ $item->apellidos }}</td>
+                                <td>{{ $item->ci }}</td>
+                                <td>
+                                    <a href="{{ url('/admin/personal/' . $item->id) }}" title="Ver Personal"><button
+                                            class="btn btn-info btn-sm">
+                                            <i class="fa fa-eye" aria-hidden="true"></i> Ver</button></a>
+
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
         </div>
-    </div>
     </div>
     <div class="right-sidebar">
         <div class="sidebar-header text-center p-3">
@@ -155,6 +200,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
+
 </html>
 
 <!-- resources/views/ejemplo.blade.php -->
@@ -183,30 +229,32 @@
 
         <h1>{{ $mensaje }}</h1>
 
-        @if($valor === 1)
-            <p>El valor es uno.</p>
-        @elseif($valor === 2)
-            <p>El valor es dos.</p>
-        @else
-            <p>El valor no es uno ni dos.</p>
-        @endif
+        @if ($valor === 1)
+<p>El valor es uno.</p>
+@elseif($valor === 2)
+<p>El valor es dos.</p>
+@else
+<p>El valor no es uno ni dos.</p>
+@endif
 
         @switch($valor)
-            @case(1)
-                <p>Switch: El valor es uno.</p>
-                @break
-            @case(2)
-                <p>Switch: El valor es dos.</p>
-                @break
-            @default
-                <p>Switch: El valor no es uno ni dos.</p>
-        @endswitch
+    @case(1)
+        <p>Switch: El valor es uno.</p>
+    @break
+
+    @case(2)
+        <p>Switch: El valor es dos.</p>
+    @break
+
+    @default
+        <p>Switch: El valor no es uno ni dos.</p>
+@endswitch
 
         <h2>Lista de valores:</h2>
         <ul>
-            @foreach($lista as $item)
-                <li>{{ $item }}</li>
-            @endforeach
+            @foreach ($lista as $item)
+<li>{{ $item }}</li>
+@endforeach
         </ul>
 
         @php
@@ -214,17 +262,17 @@
         @endphp
 
         <h2>Contador While:</h2>
-        @while($contador < 5)
-            <p>Contador: {{ $contador }}</p>
+        @while ($contador < 5)
+<p>Contador: {{ $contador }}</p>
             @php
                 $contador++;
             @endphp
-        @endwhile
+@endwhile
 
         <h2>Contador For:</h2>
-        @for($i = 0; $i < 5; $i++)
-            <p>Contador: {{ $i }}</p>
-        @endfor
+        @for ($i = 0; $i < 5; $i++)
+<p>Contador: {{ $i }}</p>
+@endfor
 
         <form method="GET" action="">
             <div class="form-group">
@@ -238,21 +286,18 @@
             <button type="submit" class="btn btn-primary">Enviar</button>
         </form>
 
-        @if($numero !== null)
-            <h2>El número ingresado es: {{ $numero }}</h2>
-            @if($numero % 2 == 0)
-                <p>El número {{ $numero }} es par.</p>
-            @else
-                <p>El número {{ $numero }} es impar.</p>
-            @endif
-        @endif
+        @if ($numero !== null)
+<h2>El número ingresado es: {{ $numero }}</h2>
+            @if ($numero % 2 == 0)
+<p>El número {{ $numero }} es par.</p>
+@else
+<p>El número {{ $numero }} es impar.</p>
+@endif
+@endif
 
-        @if($datoExtra !== null)
-            <h2>El dato adicional ingresado es: {{ $datoExtra }}</h2>
-        @endif
+        @if ($datoExtra !== null)
+<h2>El dato adicional ingresado es: {{ $datoExtra }}</h2>
+@endif
     </div>
 </body>
 </html>-->
-
-
-

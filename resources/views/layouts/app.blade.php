@@ -18,30 +18,34 @@
 </head>
 
 <body>
+<<<<<<< HEAD
+    <div id="app" class="min-h-screen bg-gray-100 dark:bg-gray-900">
+=======
         <div id="app" class="min-h-screen bg-gray-100 dark:bg-gray-900">
+>>>>>>> 707f60b686a5b92c334831ea6ac85d501e7bfb58
         <!--<nav class="navbar navbar-expand-md navbar-light navbar-laravel">-->
-            <div class="container">
-                <!--<a class="navbar-brand" href="{{ url('/') }}">
+        <div class="container">
+            <!--<a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('Unidad de Marina Mercante', 'Unidad de Marina Mercante') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 -->
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <!--<ul class="navbar-nav mr-auto">
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <!-- Left Side Of Navbar -->
+                <!--<ul class="navbar-nav mr-auto">
 
                     </ul>-->
 
-                    <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto">
-                        <!-- Authentication Links -->
-                        @if(!Auth::check())
-                            <li><a class="nav-link" href="{{ url('/login') }}">_Ingresar</a></li>
-                            <li><a class="nav-link" href="{{ url('/register') }}">_Registrarse</a></li>
-                        @else
-                            <!--<li class="nav-item dropdown">
+                <!-- Right Side Of Navbar -->
+                <ul class="navbar-nav ml-auto">
+                    <!-- Authentication Links -->
+                    @if (!Auth::check())
+                        <li><a class="nav-link" href="{{ url('/login') }}">_Ingresar</a></li>
+                        <li><a class="nav-link" href="{{ url('/register') }}">_Registrarse</a></li>
+                    @else
+                        <!--<li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
@@ -58,23 +62,29 @@
                                     </form>
                                 </div>
                             </li>-->
+<<<<<<< HEAD
+                    @endif
+                </ul>
+=======
                         @endif
                     </ul>
                 </div>
+>>>>>>> 707f60b686a5b92c334831ea6ac85d501e7bfb58
             </div>
         </div>
+    </div>
 
 
-        <main class="py-4">
-            {{--ver por que no ome wopermite tener una condicional aqui--}}
-            {{--@dd(Auth::user()->id)--}}
-            {{--@if (Auth::user()->id==0)--}}
-            @extends('adminlte::page')
-            {{--@else
+    <main class="py-4">
+        {{-- ver por que no ome wopermite tener una condicional aqui --}}
+        {{-- @dd(Auth::user()->id) --}}
+        {{-- @if (Auth::user()->id == 0) --}}
+        @extends('adminlte::page')
+        {{-- @else
                 @yield('')
-            @endif--}}
-                
-        </main>
+            @endif --}}
+
+    </main>
     </div>
 
     <!-- Scripts -->

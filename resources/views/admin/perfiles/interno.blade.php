@@ -154,9 +154,8 @@
             background-color: #f1f1f1;
         }
 
-        table caption {
+        h1 {
             caption-side: top;
-            font-weight: bold;
             text-align: center;
             margin-bottom: 0.5em;
         }
@@ -166,29 +165,31 @@
 <body>
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-3 sidebar text-center">
+            <div class="col-md-3 sidebar text-center" style="position: fixed;">
                 <img src="{{ asset('images/foto.jpg') }}" alt="Foto de Perfil" class="profile-img">
-                <h3>John David</h3>
-                <p class="role">Rol de Persona</p>
+                <h3>{{ $perfil->nombres }} {{ $perfil->apellidos }}</h3>
+                <p class="role">{{ $perfil->grado }}</p>
                 <table class="description text-left">
-                    {{-- <caption>Información de Propietarios y Embarcaciones</caption> --}}
                     <tbody>
                         <tr>
                             <td>Cargo</td>
+                            <td>{{ $perfil->cargo }}</td>
                         </tr>
                     </tbody>
                     <tbody>
                         <tr>
                             <td>CI</td>
+                            <td>{{ $perfil->ci }}</td>
                         </tr>
                         <tr>
                             <td>Contacto</td>
+                            <td>{{ $perfil->contacto }}</td>
                         </tr>
                     </tbody>
                 </table>
-                <button class="btn btn-outline-secondary mt-4">Cerrar Sesión</button>
+                <button class="btn btn-outline-secondary mt-4"><i class="fas fa-power-off"></i> Cerrar Sesión</button>
             </div>
-            <div class="col-md-9 main-content">
+            {{-- <div class="col-md-9 main-content" style="margin-left: 25%">
                 <nav class="navbar navbar-expand-lg navbar-light">
                     <div class="collapse navbar-collapse" id="navbarNav">
                         <ul class="navbar-nav mr-auto">
@@ -213,70 +214,89 @@
                         </form>
                     </div>
                 </nav>
-                <table class="table table-bordered mt-4">
-                    {{-- <caption>Información de Propietarios y Embarcaciones</caption> --}}
-                    <thead>
-                        <tr>
-                            <th scope="col">PROPIETARIO</th>
-                            <th scope="col">EMBARCACION</th>
-                            <th scope="col">VIGENCIAS</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>#AHGA68</td>
-                            <td>23/09/2022</td>
-                            <td>Jacob Marcus</td>
-                        </tr>
-                        <tr>
-                            <td>#AHGA68</td>
-                            <td>23/09/2022</td>
-                            <td>Jacob Marcus</td>
-                        </tr>
-                        <tr>
-                            <td>#AHGA68</td>
-                            <td>23/09/2022</td>
-                            <td>Jacob Marcus</td>
-                        </tr>
-                        <tr>
-                            <td>#AHGA68</td>
-                            <td>23/09/2022</td>
-                            <td>Jacob Marcus</td>
-                        </tr>
-                        <tr>
-                            <td>#AHGA68</td>
-                            <td>23/09/2022</td>
-                            <td>Jacob Marcus</td>
-                        </tr>
-                        <tr>
-                            <td>#AHGA68</td>
-                            <td>23/09/2022</td>
-                            <td>Jacob Marcus</td>
-                        </tr>
-                        <tr>
-                            <td>#AHGA68</td>
-                            <td>23/09/2022</td>
-                            <td>Jacob Marcus</td>
-                        </tr>
-                        <tr>
-                            <td>#AHGA68</td>
-                            <td>23/09/2022</td>
-                            <td>Jacob Marcus</td>
-                        </tr>
-                        <tr>
-                            <td>#AHGA68</td>
-                            <td>23/09/2022</td>
-                            <td>Jacob Marcus</td>
-                        </tr>
-                        <tr>
-                            <td>#AHGA68</td>
-                            <td>23/09/2022</td>
-                            <td>Jacob Marcus</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
+                <h1>Cuenca de Lacustre</h1>
+                <div style="overflow-y: auto; max-height: 400px;">
+                    <table class="table table-bordered mt-4" style="width: 100%;">
+                        <thead>
+                            <tr>
+                                <th scope="col">PROPIETARIO</th>
+                                <th scope="col">EMBARCACION</th>
+                                <th scope="col">VIGENCIAS</th>
+                                <th scope="col">ACCIONES</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($listaL as $item)
+                                <tr>
+                                    <td>{{ $item->propietarios->nombre }} {{ $item->propietarios->identificador }}</td>
+                                    <td>{{ $item->artefactos->nombre }}-{{ $item->artefactos->matricula }}-{{ $item->certificado->nreg }}
+                                    </td>
+                                    <td>{{ $item->certificado->fechaVencimiento }}</td>
+                                    <td><button><i class="fas fa-edit"></i></button> <button><i
+                                                class="fas fa-eye"></i></button>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+                <h1>Cuenca del Amazonas</h1>
+                <div style="overflow-y: auto; max-height: 400px;">
+                    <table class="table table-bordered mt-4" style="width: 100%;">
+
+                        <thead>
+                            <tr>
+                                <th scope="col">PROPIETARIO</th>
+                                <th scope="col">EMBARCACION</th>
+                                <th scope="col">VIGENCIAS</th>
+                                <th scope="col">ACCIONES</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($listaA as $item)
+                                <tr>
+                                    <td>{{ $item->propietarios->nombre }} {{ $item->propietarios->identificador }}
+                                    </td>
+                                    <td>{{ $item->artefactos->nombre }}-{{ $item->artefactos->matricula }}-{{ $item->certificado->nreg }}
+                                    </td>
+                                    <td>{{ $item->certificado->fechaVencimiento }}</td>
+                                    <td><button><i class="fas fa-edit"></i></button> <button><i
+                                                class="fas fa-eye"></i></button>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+                <h1>Cuenca De la Plata</h1>
+                {{--  <div style="overflow-y: auto; max-height: 400px;">
+                    <table class="table table-bordered mt-4" style="width: 100%;">
+                        <thead>
+                            <tr>
+                                <th scope="col">PROPIETARIO</th>
+                                <th scope="col">EMBARCACION</th>
+                                <th scope="col">VIGENCIAS</th>
+                                <th scope="col">ACCIONES</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($listaP as $item)
+                                <tr>
+                                    <td>{{ $item->propietarios->nombre }} {{ $item->propietarios->identificador }}
+                                    </td>
+                                    <td>{{ $item->artefactos->nombre }}-{{ $item->artefactos->matricula }}-{{ $item->certificado->nreg }}
+                                    </td>
+                                    <td>{{ $item->certificado->fechaVencimiento }}</td>
+                                    <td><button><i class="fas fa-edit"></i></button> <button><i
+                                                class="fas fa-eye"></i></button>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div> --}}
+        </div> --}}
+    </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
