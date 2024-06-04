@@ -110,41 +110,30 @@
     -->
     <div class="col-md-3 sidebar text-center" style="position: fixed;">
         <img src="{{ asset('images/foto.jpg') }}" alt="Foto de Perfil" class="profile-img">
-<<<<<<< HEAD
         <h3>{{ $perfil->nombres }} {{ $perfil->apellidos }}</h3>
         <p class="role">{{ $perfil->grado }}</p>
-=======
-        <h3>John David</h3>
-        <p class="role">Rol de Persona</p>
->>>>>>> 707f60b686a5b92c334831ea6ac85d501e7bfb58
         <table class="description text-left">
             <tbody>
                 <tr>
                     <td>Cargo</td>
-<<<<<<< HEAD
                     <td>{{ $perfil->cargo }}</td>
-=======
->>>>>>> 707f60b686a5b92c334831ea6ac85d501e7bfb58
                 </tr>
             </tbody>
             <tbody>
                 <tr>
                     <td>CI</td>
-<<<<<<< HEAD
                     <td>{{ $perfil->ci }}</td>
                 </tr>
                 <tr>
                     <td>Contacto</td>
                     <td>{{ $perfil->contacto }}</td>
-=======
-                </tr>
-                <tr>
-                    <td>Contacto</td>
->>>>>>> 707f60b686a5b92c334831ea6ac85d501e7bfb58
                 </tr>
             </tbody>
         </table>
-        <button class="btn btn-outline-secondary mt-4"><i class="fas fa-power-off"></i> Cerrar Sesión</button>
+        <form action="{{ route('logout') }}" method="POST">
+            @csrf
+            <button class="btn btn-outline-secondary mt-4"><i class="fas fa-power-off"></i> Cerrar Sesión</button>
+        </form>
     </div>
     <div class="search-bar">
         <div class="main-content">
