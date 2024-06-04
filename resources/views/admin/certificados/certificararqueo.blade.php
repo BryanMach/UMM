@@ -84,7 +84,7 @@
 
         .arqueo-tabla thead td,
         .arqueo-tabla tbody td {
-            padding: 4px 10px;
+            padding: 8px 20px;
         }
 
         .arqueo-tabla thead strong,
