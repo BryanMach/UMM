@@ -34,7 +34,12 @@ use App\Http\Controllers\Auth\PerfilesController;
 Route::get('/', function () {
     return view('welcome');
 });
-
+Route::get('/externo', function () {
+    return view('externo');
+});
+Route::get('/interno', function () {
+    return view('interno');
+});
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
@@ -45,8 +50,8 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
-Route::group(['middleware'=> ['auth']], function () {
+require __DIR__ . '/auth.php';
+Route::group(['middleware' => ['auth']], function () {
     Route::resource('admin/personal', PersonalController::class);
     Route::resource('admin/material', MaterialController::class);
     Route::resource('admin/tipo', TipoController::class);
@@ -62,6 +67,7 @@ Route::group(['middleware'=> ['auth']], function () {
     Route::resource('admin/motores', MotoresController::class);
     Route::resource('admin/datos-adicionales', datosAdicionalesController::class);
     Route::resource('admin/recuperar', RecuperarController::class);
+<<<<<<< HEAD
 
     Route::get('admin/imprimir-certificado-registro',[ArtefactosController::class,'imprimir_certificado_registro']);
     Route::get('admin/imprimir-certificado-seguridad',[ArtefactosController::class,'imprimir_certificado_seguridad']);
@@ -77,8 +83,19 @@ Route::group(['middleware'=> ['auth']], function () {
     Route::post('admin/registro/guardarRegistro',[PerfilesController::class,'guardarRegistro']);
     Route::get('admin/registro',[PerfilesController::class,'registrar']);
     Route::get('admin/registro/guardarRegistro',[PerfilesController::class,'guardarRegistro']);
+=======
+    Route::get('admin/imprimir-certificado-registro', [ArtefactosController::class, 'imprimir_certificado_registro']);
+    Route::get('admin/imprimir-certificado-seguridad', [ArtefactosController::class, 'imprimir_certificado_seguridad']);
+    Route::get('admin/imprimir-certificado-francobordo', [ArtefactosController::class, 'imprimir_certificado_francobordo']);
+    Route::get('admin/imprimir-certificado-arqueo', [ArtefactosController::class, 'imprimir_certificado_arqueo']);
+    Route::get('admin/imprimir', [ArtefactosController::class, 'imprimir']);
+    Route::resource('admin/perfil', PerfilesController::class);
+>>>>>>> 4041c237a036f1a3cd251845d0a18a474f897f74
     Route::resource('admin/certificados', certificadosController::class);
 });
 Route::resource('admin/certicados', 'admin\certicadosController');
 Route::resource('admin/certificados', 'admin\certificadosController');
+<<<<<<< HEAD
 Route::resource('admin/ubicacion', 'admin\ubicacionController');
+=======
+>>>>>>> 4041c237a036f1a3cd251845d0a18a474f897f74
