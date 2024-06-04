@@ -175,16 +175,6 @@ class PerfilesController extends Controller
         return redirect('admin/perf45r')->with('flash_message', 'Nuevo registro exitoso!!!');
     }
     // Definir función para agregar tiempo a una fecha y devolverla en formato dd/mm/aaaa
-    function operarTiempo($fechaActual, $tiempoAdicional) {
-        $nuevaFechaTimestamp = strtotime($tiempoAdicional, strtotime($fechaActual));
-        return date('d/m/Y', $nuevaFechaTimestamp);
-    }
-
-    // Definir función para convertir una fecha a formato literal
-    function tiempoLiteral($fecha) {
-        $fechaTimestamp = strtotime($fecha);
-        return strftime('%d de %B de %Y', $fechaTimestamp);
-    }
     public function imprimir_certificado_registro(Request $request){//muestro un pdf
         $requestData = $request->all();
         //dd($requestData);
@@ -205,6 +195,7 @@ class PerfilesController extends Controller
         $numero=$numeroc['numero'];
         $numero=$numero+1;
         $aux['numero']=$numero;
+        //$numeroc->update($aux);
         $fechaActual=date('m/d/Y');
         $fechaActualTimestamp = strtotime($fechaActual);
         $nuevaFechaTimestamp = strtotime('+5 years', $fechaActualTimestamp);
@@ -212,12 +203,9 @@ class PerfilesController extends Controller
         //dd('Fechats: '.$fechaVencimiento);
         $fechaAlertaTimestamp = strtotime('-6 months', $nuevaFechaTimestamp);
         $fechaAlerta = date('m/d/Y', $fechaAlertaTimestamp);
-        dd('Fechats'.$fechaAlerta);
+        //dd('Fechats'.$fechaAlerta);
         //dd($fechaVencimiento);
-        $requestCertificado = ['idArtefactos'=>$requestData['idArtefacto'],'tipoC'=>'1',
-        'nreg'=>$numero,'correlativo'=>null,'fechaEmision'=>$fechaActual,'fechaVecimiento'=>$fechaVencimiento];
-
-        $numeroc->update($aux);
+        
         //Proceso para añadir un certificado
         //'idArtefactos', 'tipoC', 'nreg','correlativo', 'fechaEmision', 'fechaVecimiento'
         /*
@@ -231,9 +219,11 @@ class PerfilesController extends Controller
      * dot min=6
      * 
      */
-        
-        certificado::create($requestCertificado);
-        $vista = \View::make('admin.certificadospdf.certificarregistro', compact('tipo','material','artefacto','basesoperativa','cuenca','certificacion'))->render();
+        $requestCertificado = ['idArtefactos'=>$requestData['idArtefacto'],'tipoC'=>'1',
+            'nreg'=>$numero,'correlativo'=>null,'fechaEmision'=>$fechaActual,'fechaAlerta'=>$fechaAlerta,'fechaVecimiento'=>$fechaVencimiento];
+
+        $certificacion = certificado::create($requestCertificado);
+        $vista = \View::make('admin.certificadospdf.certificarregistro', compact('propietario','tipo','material','artefacto','basesoperativa','cuenca','certificacion'))->render();
         $pdf= \App::make('dompdf.wrapper');
         $pdf->loadHTML($vista);
         return $pdf->stream('registro.pdf');

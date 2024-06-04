@@ -214,8 +214,8 @@
     <label for="cargaComb" class="control-label">{{ 'Propulsión y sistema de de combustible' }}</label>
     <select class="form-control" name="cargaComb" type="number" id="cargaComb">
         @if ($formMode == 'edit')
-                    @switch {{$datosadicionale->cargaComb}}
-                        @case (11):
+                    @switch ($datosadicionale->cargaComb)
+                        @case (11)                        
                         <option value="11" selected>Embarcación autopropulsada: Abierto</option>
                         <option value="12">Embarcación autopropulsada: Cerrado</option>
                         <option value="13">Embarcación autopropulsada: Tanque</option>
@@ -223,7 +223,7 @@
                         <option value="22">Embarcación sin propulsión: Cerrado</option>
                         <option value="23">Embarcación sin propulsión: Tanque</option>
                         @break;
-                        @case '12':
+                        @case (12)
                         <option value="11">Embarcación autopropulsada: Abierto</option>
                         <option value="12" selected>Embarcación autopropulsada: Cerrado</option>
                         <option value="13">Embarcación autopropulsada: Tanque</option>
@@ -231,7 +231,7 @@
                         <option value="22">Embarcación sin propulsión: Cerrado</option>
                         <option value="23">Embarcación sin propulsión: Tanque</option>
                         @break;
-                        @case '13':
+                        @case (13)
                         <option value="11">Embarcación autopropulsada: Abierto</option>
                         <option value="12">Embarcación autopropulsada: Cerrado</option>
                         <option value="13" selected>Embarcación autopropulsada: Tanque</option>
@@ -239,7 +239,7 @@
                         <option value="22">Embarcación sin propulsión: Cerrado</option>
                         <option value="23">Embarcación sin propulsión: Tanque</option>
                         @break;
-                        @case '21':
+                        @case (21)
                         <option value="11">Embarcación autopropulsada: Abierto</option>
                         <option value="12">Embarcación autopropulsada: Cerrado</option>
                         <option value="13">Embarcación autopropulsada: Tanque</option>
@@ -247,7 +247,7 @@
                         <option value="22">Embarcación sin propulsión: Cerrado</option>
                         <option value="23">Embarcación sin propulsión: Tanque</option>
                         @break;
-                        @case '22':
+                        @case (22)
                         <option value="11">Embarcación autopropulsada: Abierto</option>
                         <option value="12">Embarcación autopropulsada: Cerrado</option>
                         <option value="13">Embarcación autopropulsada: Tanque</option>
@@ -255,7 +255,7 @@
                         <option value="22" selected>Embarcación sin propulsión: Cerrado</option>
                         <option value="23">Embarcación sin propulsión: Tanque</option>
                         @break;
-                        @case '23':
+                        @case (23)
                         <option value="11">Embarcación autopropulsada: Abierto</option>
                         <option value="12">Embarcación autopropulsada: Cerrado</option>
                         <option value="13">Embarcación autopropulsada: Tanque</option>
