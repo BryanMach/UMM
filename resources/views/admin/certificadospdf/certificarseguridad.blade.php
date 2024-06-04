@@ -89,7 +89,7 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td class="text-center">P-03240271</td>
+                            <td class="text-center">{{ $certificados->nreg }}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -107,7 +107,7 @@
                 <tbody class="APropietario">
                     <tr>
                         <td>PROPIETARIO (S):</td>
-                        <td colspan="3"> <strong>ADMINISTRACION DE SERVICIOS PORTUARIOS-BOLIVIA (ASPB)</strong> </td>
+                        <td colspan="3"> <strong>{{ $propietario->nombre }}</strong> </td>
                     </tr>
                     <tr>
                         <td>ANTERIOR PROPIETARIO:</td>
@@ -115,15 +115,15 @@
                     </tr>
                     <tr>
                         <td>FECHA DE INSPECCIÓN:</td>
-                        <td colspan="3"><strong>21 DE MARZO DEL 2024</strong></td>
+                        <td colspan="3"><strong>{{ inspeccios->año }}</strong></td>
                     </tr>
                     <tr>
                         <td>LUGAR DE INSPECCIÓN:</td>
-                        <td colspan="3"><strong>PUERTO BUSCH - SANTA CRUZ</strong></td>
+                        <td colspan="3"><strong>{{ baseOperativa->nombreBO }}</strong></td>
                     </tr>
                     <tr>
                         <td>BASE DE OPERACIONES:</td>
-                        <td colspan="3"><strong>PUERTO BUSCH - SANTA CRUZ</strong></td>
+                        <td colspan="3"><strong>{{ baseOperativa->nombreBO }}</strong></td>
                     </tr>
                 </tbody>
             </table>
@@ -140,8 +140,8 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td>SOBERANIA I</td>
-                        <td>.-.</td>
+                        <td>{{ $artefacto->nombre }}</td>
+                        <td>{{ artefactos->matricula }}</td>
                         <td>.-.</td>
                     </tr>
                 </tbody>
@@ -158,9 +158,9 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td>PONTON FLOTANTE</td>
-                        <td>ARTEFACTO NAVAL</td>
-                        <td>2023</td>
+                        <td>{{ $artefacto->servicio }}</td>
+                        <td>{{ $tipo->tipo }}</td>
+                        <td>{{ $artefacto->año }}</td>
                     </tr>
                 </tbody>
             </table>
@@ -179,11 +179,11 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td>25.00<br>MTS.</td>
-                        <td>10.00<br>MTS.</td>
-                        <td>2.00<br>MTS.</td>
-                        <td>98.26<br>UNIDAD DE REGISTRO</td>
-                        <td>81.98<br>UNIDAD DE REGISTRO</td>
+                        <td>{{ $artefacto->eslora }}<br>MTS.</td>
+                        <td>{{ $artefacto->manga }}<br>MTS.</td>
+                        <td>{{ $artefacto->puntal }}<br>MTS.</td>
+                        <td>{{ $artefacto->trb }}<br>UNIDAD DE REGISTRO</td>
+                        <td>{{ $artefacto->trn }}<br>UNIDAD DE REGISTRO</td>
                         <td>2.75<br>mm</td>
                     </tr>
                 </tbody>
@@ -201,9 +201,9 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td> .-. </td>
-                        <td>.-.</td>
-                        <td> .-. </td>
+                        <td>{{ $motor->tipo }} {{ $motor->marca }}</td>
+                        <td>{{ $motor->numero }}</td>
+                        <td>{{ $motor->potencia }}</td>
                         <td> .-. </td>
                     </tr>
                 </tbody>
@@ -221,10 +221,10 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td>ACERO</td>
-                        <td>.-.</td>
-                        <td>SI</td>
-                        <td>6</td>
+                        <td>{{ $material->material }}</td>
+                        <td>{{ $datosAdicionales->altura }} {{ $datosAdicionales->peso }}</td>
+                        <td>{{ $datosAdicionales->merPeligrosa }}</td>
+                        <td>{{ $datosAdicionales->NumMaxPasajeros }}</td>
                     </tr>
                 </tbody>
             </table>

@@ -116,7 +116,7 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td class="text-center">P-03240271</td>
+                            <td class="text-center">{{ $certificados->nreg }}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -137,10 +137,10 @@
                         <th>AÑO DE CONSTRUCCIÓN</th>
                     </tr>
                     <tr class="text-center">
-                        <td>SOBERANIA I</td>
-                        <td></td>
-                        <td>PUERTO BUSCH - SANTA CRUZ</td>
-                        <td>2023</td>
+                        <td>{{ $artefacto->nombre }}</td>
+                        <td>{{ $artefacto->matricula }}</td>
+                        <td>{{ baseOperativa->nombreBO }}</td>
+                        <td>{{ $artefacto->año }}</td>
                     </tr>
                 </tbody>
             </table>
@@ -160,9 +160,9 @@
                 </thead>
                 <tbody class="text-center">
                     <tr>
-                        <td>25,00</td>
-                        <td>10,00</td>
-                        <td>2,00</td>
+                        <td>{{ $artefacto->eslora }}</td>
+                        <td>{{ $artefacto->manga }}</td>
+                        <td>{{ $artefacto->puntal }}</td>
                     </tr>
                 </tbody>
             </table>
@@ -176,13 +176,13 @@
                 <thead>
                     <tr>
                         <td><strong>ARQUEO BRUTO</strong></td>
-                        <td>99,26 <strong>TRB</strong></td>
+                        <td>{{ $artefacto->trb }}<strong>TRB</strong></td>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                         <td><strong>ARQUEO NETO</strong></td>
-                        <td>61,98 <strong>TRN</strong></td>
+                        <td>{{ $artefacto->trn }}<strong>TRN</strong></td>
                     </tr>
                 </tbody>
             </table>
@@ -193,7 +193,7 @@
             <p>Se certifica que los arqueos de esta embarcación han sido determinados de acuerdo con las disposiciones
                 del Reglamento Nacional de Arqueo para Buques, Embarcaciones y Artefactos Navales, aprobadas mediante
                 RM. 736.</p>
-            <p class="text-left"><strong>EXPEDIDO EN:</strong> PUERTO BUSCH - SANTA CRUZ <strong class="fecha">
+            <p class="text-left"><strong>EXPEDIDO EN:</strong>{{ baseOperativa->nombreBO }}<strong class="fecha">
                     FECHA:</strong> 21 DE
                 MARZO DE 2024</p>
             <p>El suscrito Jefe de la Unidad de Marina Mercante declara que esta debidamente autorizado para expedir el
