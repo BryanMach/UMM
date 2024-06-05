@@ -18,11 +18,7 @@
 </head>
 
 <body>
-<<<<<<< HEAD
-    <div id="app" class="min-h-screen bg-gray-100 dark:bg-gray-900">
-=======
         <div id="app" class="min-h-screen bg-gray-100 dark:bg-gray-900">
->>>>>>> 707f60b686a5b92c334831ea6ac85d501e7bfb58
         <!--<nav class="navbar navbar-expand-md navbar-light navbar-laravel">-->
         <div class="container">
             <!--<a class="navbar-brand" href="{{ url('/') }}">
@@ -62,30 +58,23 @@
                                     </form>
                                 </div>
                             </li>-->
-<<<<<<< HEAD
-                    @endif
-                </ul>
-=======
                         @endif
                     </ul>
                 </div>
->>>>>>> 707f60b686a5b92c334831ea6ac85d501e7bfb58
             </div>
         </div>
-    </div>
 
 
     <main class="py-4">
         {{-- ver por que no ome wopermite tener una condicional aqui --}}
         {{-- @dd(Auth::user()->id) --}}
-        {{-- @if (Auth::user()->id == 0) --}}
-        @extends('adminlte::page')
-        {{-- @else
-                @yield('')
-            @endif --}}
-
+            {{-- @if (Auth::user()->id != 1)
+                extends('adminlte::page')
+            @else
+                yield('content')
+            @endif--}}
+            @extends('adminlte::page')
     </main>
-    </div>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>

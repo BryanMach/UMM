@@ -167,7 +167,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-3 sidebar text-center">
-                <img src="{{ asset('images/foto.jpg') }}" alt="Foto de Perfil" class="profile-img">
+                <img src="{{ asset('images/'.$perfil->foto) }}" onerror="this.src='{{ asset('images/Usericono.png') }}'" class="profile-img">
                 <h3>{{ $perfil->nombres }} {{ $perfil->apellidos }}</h3>
                 <p class="role">{{ $perfil->grado }}</p>
                 <table class="description text-left">
@@ -195,13 +195,7 @@
                     <div class="collapse navbar-collapse" id="navbarNav">
                         <ul class="navbar-nav mr-auto">
                             <li class="nav-item">
-                                <a class="nav-link" href="#" onclick="toggleDropdown(event)">Registro<i
-                                        class="fas fa-caret-down"></i></a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="#">Provicional</a></li>
-                                    <li><a href="#">Especial</a></li>
-                                    <li><a href="#">Permanente</a></li>
-                                </ul>
+                                <a class="nav-link" href="registro">Registro nuevo</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="#">Renovación</a>
@@ -219,62 +213,48 @@
                     {{-- <caption>Información de Propietarios y Embarcaciones</caption> --}}
                     <thead>
                         <tr>
-                            <th scope="col">PROPIETARIO</th>
-                            <th scope="col">EMBARCACION</th>
-                            <th scope="col">VIGENCIAS</th>
+                            <th>Nº</th>
+                            <th>CI</th>
+                            <th>Propietario</th>
+                            <th>Artefacto</th>
+                            <th>Opciones</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>#AHGA68</td>
-                            <td>23/09/2022</td>
-                            <td>Jacob Marcus</td>
-                        </tr>
-                        <tr>
-                            <td>#AHGA68</td>
-                            <td>23/09/2022</td>
-                            <td>Jacob Marcus</td>
-                        </tr>
-                        <tr>
-                            <td>#AHGA68</td>
-                            <td>23/09/2022</td>
-                            <td>Jacob Marcus</td>
-                        </tr>
-                        <tr>
-                            <td>#AHGA68</td>
-                            <td>23/09/2022</td>
-                            <td>Jacob Marcus</td>
-                        </tr>
-                        <tr>
-                            <td>#AHGA68</td>
-                            <td>23/09/2022</td>
-                            <td>Jacob Marcus</td>
-                        </tr>
-                        <tr>
-                            <td>#AHGA68</td>
-                            <td>23/09/2022</td>
-                            <td>Jacob Marcus</td>
-                        </tr>
-                        <tr>
-                            <td>#AHGA68</td>
-                            <td>23/09/2022</td>
-                            <td>Jacob Marcus</td>
-                        </tr>
-                        <tr>
-                            <td>#AHGA68</td>
-                            <td>23/09/2022</td>
-                            <td>Jacob Marcus</td>
-                        </tr>
-                        <tr>
-                            <td>#AHGA68</td>
-                            <td>23/09/2022</td>
-                            <td>Jacob Marcus</td>
-                        </tr>
-                        <tr>
-                            <td>#AHGA68</td>
-                            <td>23/09/2022</td>
-                            <td>Jacob Marcus</td>
-                        </tr>
+                        @foreach ($listapropietarios as $item)
+                                        <tr>
+                                            <td>{{ $loop->iteration }}</td>
+                                            
+                                                <td><a
+                                                    href="{{ url('/admin/propietario/' . $item->idPropietario) }}">{{ $item->propietarios->identificador }}</a>
+                                                </td>
+                                                <td> {{ $item->propietarios->nombre }}</td>
+                                            
+                                                <td><a href="{{ url('/admin/artefactos/' . $item->idArtefacto) }}">{{ $item->artefactos->matricula }}
+                                                    {{ $item->artefactos->nombre }}</a>
+                                                </td>
+                                            <td>
+                                                <a href="{{ url('/admin/lista-propietarios/' . $item->id) }}"
+                                                    title="Ver ListaPropietario"><button class="btn btn-info btn-sm"><i
+                                                            class="fa fa-eye" aria-hidden="true"></i> Ver</button></a>
+                                                <a href="{{ url('/admin/lista-propietarios/' . $item->id . '/edit') }}"
+                                                    title="Editar ListaPropietario"><button
+                                                        class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o"
+                                                            aria-hidden="true"></i> Editar</button></a>
+
+                                                <form method="POST"
+                                                    action="{{ url('/admin/lista-propietarios' . '/' . $item->id) }}"
+                                                    accept-charset="UTF-8" style="display:inline">
+                                                    {{ method_field('DELETE') }}
+                                                    {{ csrf_field() }}
+                                                    <button type="submit" class="btn btn-danger btn-sm"
+                                                        title="Borrar ListaPropietario"
+                                                        onclick="return confirm(&quot;Confirm delete?&quot;)"><i
+                                                            class="fa fa-trash-o" aria-hidden="true"></i> Borrar</button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    @endforeach
                     </tbody>
                 </table>
             </div>

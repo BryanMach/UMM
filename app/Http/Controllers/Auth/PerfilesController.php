@@ -99,9 +99,10 @@ class PerfilesController extends Controller
         $personal = Personal::All();
         $basesoperativas = BasesOperativa::All();
         $cuencas = Cuenca::All();
+        $listapropietarios = ListaPropietario::where('idUsuario','and','id');
         if ($usuario->nivel == 4) {
-            $vista = \View::make('admin.perfiles.externo', compact('personal', 'usuario', 'perfil', 'basesoperativas', 'cuencas'))->render();
-            return view('admin.perfiles.externo', compact('vista', 'personal', 'usuario', 'perfil', 'basesoperativas', 'cuencas'));
+            $vista = \View::make('admin.perfiles.externo', compact('listapropietarios','personal', 'usuario', 'perfil', 'basesoperativas', 'cuencas'))->render();
+            return view('admin.perfiles.externo', compact('vista', 'listapropietarios', 'personal', 'usuario', 'perfil', 'basesoperativas', 'cuencas'));
         }
     }
 

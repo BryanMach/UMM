@@ -47,7 +47,7 @@ class ProfileController extends Controller
         ]);
 
         $user = $request->user();
-
+        dd("en destroy");
         Auth::logout();
 
         $user->delete();
