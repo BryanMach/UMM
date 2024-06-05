@@ -226,6 +226,7 @@
                     </thead>
                     <tbody>
                         @foreach ($listapropietarios as $item)
+                        {{--@dd($listapropietarios)--}}
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
                                             

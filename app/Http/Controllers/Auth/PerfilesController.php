@@ -26,6 +26,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Ramsey\Uuid\Type\Integer;
+use Carbon\Carbon;
+
 
 class PerfilesController extends Controller
 {
@@ -99,7 +101,8 @@ class PerfilesController extends Controller
         $personal = Personal::All();
         $basesoperativas = BasesOperativa::All();
         $cuencas = Cuenca::All();
-        $listapropietarios = ListaPropietario::where('idUsuario','and','id');
+        //$listapropietarios = ListaPropietario::where('idUsuario','and','id');
+        $listapropietarios = ListaPropietario::latest('idPropietario')->paginate(25);;
         if ($usuario->nivel == 4) {
             $vista = \View::make('admin.perfiles.externo', compact('listapropietarios','personal', 'usuario', 'perfil', 'basesoperativas', 'cuencas'))->render();
             return view('admin.perfiles.externo', compact('vista', 'listapropietarios', 'personal', 'usuario', 'perfil', 'basesoperativas', 'cuencas'));
@@ -177,17 +180,22 @@ class PerfilesController extends Controller
     public function imprimir_certificado_registro(Request $request)
     { //muestro un pdf
         $requestData = $request->all();
-        //dd($requestData);
         //$cuenca=$request->idCuenca;
         //protected $fillable = ['idUsuarios', 'idBaseOperativa', 'matricula', 'nombre', 'idTipo', 'idMaterial',
         //'eslora', 'manga', 'puntal', 'francobordo', 'propulsion', 'construccion', 'trn', 'trb', 'servicio', 'asociacion', 'observaciones'];
         $baseoperativa = $request->idBaseOperativa;
-        $propietario = Personal::findOrFail($requestData['idPropietario']);
+        $propietario = Propietario::findOrFail($requestData['idPropietario']);
+        //dd($propietario);
         $artefacto = Artefacto::findOrFail($requestData['idArtefacto']);
+        $inspeccion = Inspeccione::findOrFail($requestData['idArtefacto']);
         $tipo = Tipo::findOrFail($artefacto['idTipo']);
         $material = Material::findOrFail($artefacto['idMaterial']);
         //$usuario = Usuario::findOrFail(Auth::user()->id);
+        //$id=$artefacto['idBaseOperativa'];
         $basesoperativa = BasesOperativa::findOrFail($artefacto['idBaseOperativa']);
+        $motor = Motore::findOrFail($artefacto['idBaseOperativa']);
+        $datoAdicional = datosAdicionale::findOrFail($artefacto['idBaseOperativa']);
+        //dd($basesoperativa);
         $cuenca = Cuenca::findOrFail($basesoperativa['idCuenca']);
         //Proceso para añadir 1 al control de numeros de registro por cuenca
         $numeroc = Certificacione::findOrFail($cuenca['id']);
@@ -196,13 +204,14 @@ class PerfilesController extends Controller
         $numero = $numero + 1;
         $aux['numero'] = $numero;
         //$numeroc->update($aux);
-        $fechaActual = date('m/d/Y');
+        $fechaActual = date('m-d-Y');
         $fechaActualTimestamp = strtotime($fechaActual);
+        $fechaActual = date('Y-m-d');
         $nuevaFechaTimestamp = strtotime('+5 years', $fechaActualTimestamp);
-        $fechaVencimiento = date('m/d/Y', $nuevaFechaTimestamp);
+        $fechaVencimiento = date('Y-m-d', $nuevaFechaTimestamp);
         //dd('Fechats: '.$fechaVencimiento);
         $fechaAlertaTimestamp = strtotime('-6 months', $nuevaFechaTimestamp);
-        $fechaAlerta = date('m/d/Y', $fechaAlertaTimestamp);
+        $fechaAlerta = date('Y-m-d', $fechaAlertaTimestamp);
         //dd('Fechats'.$fechaAlerta);
         //dd($fechaVencimiento);
 
@@ -220,15 +229,82 @@ class PerfilesController extends Controller
      * 
      */
         $requestCertificado = [
-            'idArtefactos' => $requestData['idArtefacto'], 'tipoC' => '1',
-            'nreg' => $numero, 'correlativo' => null, 'fechaEmision' => $fechaActual, 'fechaAlerta' => $fechaAlerta, 'fechaVecimiento' => $fechaVencimiento
+            'idArtefacto' => $requestData['idArtefacto'], 'tipoC' => '1',
+            'nreg' => $numero, 'correlativo' => $requestData['correlativo'], 'fechaEmision' => $fechaActual, 'fechaAlerta' => $fechaAlerta, 'fechaVencimiento' => $fechaVencimiento
         ];
-
+        //dd($requestCertificado);
         $certificacion = certificado::create($requestCertificado);
-        $vista = \View::make('admin.certificadospdf.certificarregistro', compact('propietario', 'tipo', 'material', 'artefacto', 'basesoperativa', 'cuenca', 'certificacion'))->render();
+        $certificacion['fechaEmision'] = $this->mostrarFechaFormateada($certificacion['fechaEmision']);
+        $certificacion['fechaVencimiento'] = $this->mostrarFechaFormateada($certificacion['fechaVencimiento']);
+        ($certificacion['fechaVencimiento']);
+        $vista = \View::make('admin.certificadospdf.certificarregistro', compact('propietario', 'tipo', 'material', 'artefacto', 'basesoperativa', 'cuenca',
+        'certificacion','inspeccion','motor', 'datoAdicional'))->render();
         $pdf = \App::make('dompdf.wrapper');
         $pdf->loadHTML($vista);
-        return $pdf->stream('registro.pdf');
+        return $pdf->stream('registro'.$requestCertificado['nreg'].'.pdf');
+    }
+    
+    public function mostrarFechaFormateada($fecha) {
+    $dia=Carbon::parse($fecha)->format('d');
+    $mes=Carbon::parse($fecha)->format('m');
+    $año=Carbon::parse($fecha)->format('Y');
+    
+    switch ($mes) {
+        case '01':
+            # code...
+            $mes='ENERO';
+            break;
+        case '02':
+            # code...
+            $mes='FEBRERO';
+            break;
+        case '03':
+            # code...
+            $mes='MARZO';
+            break;
+        case '04':
+            # code...
+            $mes='ABRIL';
+            break;
+        case '05':
+            # code...
+            $mes='MAYO';
+        break;
+        case '06':
+            # code...
+            $mes='JUNIO';
+            break;
+        case '07':
+            # code...
+            $mes='JULIO';
+            break;
+        case '08':
+            # code...
+            $mes='AGOSTO';
+            break;
+        case '09':
+            # code...
+            $mes='SEPTIEMBRE';
+            break;
+        case '10':
+            # code...
+            $mes='OCTUBRE';
+        break;
+        case '11':
+            # code...
+            $mes='NOVIEMBRE';
+            break;
+        case '12':
+            # code...
+            $mes='DICIEMBRE';
+        break;
+        default:
+            # code...
+            break;
+    }
+
+    $fechaFormateada = $dia.' DE '.$mes.' DE '.$año;
+    return $fechaFormateada;
     }
     public function imprimir_certificado_seguridad()
     { //muestro un pdf

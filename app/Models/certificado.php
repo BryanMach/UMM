@@ -34,7 +34,7 @@ class certificado extends Model
      * dot min=6
      * 
      */
-    protected $fillable = ['idArtefactos', 'tipoC', 'nreg','correlativo', 'fechaEmision', 'fechaAlerta', 'fechaVecimiento'];
+    protected $fillable = ['idArtefacto', 'tipoC', 'nreg','correlativo', 'fechaEmision', 'fechaAlerta', 'fechaVencimiento'];
 
     public function artefactos(){
         return $this->belongsTo(Artefacto::class,'idArtefactos','id');

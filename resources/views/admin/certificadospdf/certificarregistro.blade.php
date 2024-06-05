@@ -81,11 +81,27 @@
                     </thead>
                     <tbody>
                         <tr>
-<<<<<<< HEAD
-                            <td class="text-center">{{ $certificado->nreg }}</td>
-=======
-                            <td class="text-center">{{ $certificados->nreg }}</td>
->>>>>>> 707f60b686a5b92c334831ea6ac85d501e7bfb58
+                            @php
+                                switch ($basesoperativa->idCuenca) {
+                                    case '1':
+                                        # code....
+                                        $d='A';
+                                        break;
+                                    case '2':
+                                        # code...
+                                        $d='P';
+                                        break;
+                                    case '3':
+                                        # code...
+                                        $d='L';
+                                        break;
+                                    default:
+                                        # code...
+                                        $d='N';
+                                        break;
+                                }
+                            @endphp
+                            <td class="text-center">{{$d}}-{{ $certificacion->nreg }}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -109,27 +125,16 @@
                     </tr>
                     <tr>
                         <td>FECHA DE INSPECCIÓN:</td>
-<<<<<<< HEAD
-                        <td colspan="3"><strong>{{ $inspeccion->año }}</strong></td>
+                        <td colspan="3"><strong>{{ $certificacion->fechaEmision }}</strong></td>
                     </tr>
                     <tr>
                         <td>LUGAR DE INSPECCIÓN:</td>
-                        <td colspan="3"><strong>{{ $baseOperativa->nombreBO }}</strong></td>
+                        
+                        <td colspan="3"><strong>{{ $basesoperativa->baseOperativa }}</strong></td>
                     </tr>
                     <tr>
                         <td>BASE DE OPERACIONES:</td>
-                        <td colspan="3"><strong>{{ $baseOperativa->nombreBO }}</strong></td>
-=======
-                        <td colspan="3"><strong>{{ inspeccios->año }}</strong></td>
-                    </tr>
-                    <tr>
-                        <td>LUGAR DE INSPECCIÓN:</td>
-                        <td colspan="3"><strong>{{ baseOperativa->nombreBO }}</strong></td>
-                    </tr>
-                    <tr>
-                        <td>BASE DE OPERACIONES:</td>
-                        <td colspan="3"><strong>{{ baseOperativa->nombreBO }}</strong></td>
->>>>>>> 707f60b686a5b92c334831ea6ac85d501e7bfb58
+                        <td colspan="3"><strong>{{ $basesoperativa->baseOperativa }}</strong></td>
                     </tr>
                 </tbody>
             </table>
@@ -147,12 +152,8 @@
                 <tbody>
                     <tr>
                         <td>{{ $artefacto->nombre }}</td>
-<<<<<<< HEAD
                         <td>{{ $artefacto->matricula }}</td>
-=======
-                        <td>{{ artefactos->matricula }}</td>
->>>>>>> 707f60b686a5b92c334831ea6ac85d501e7bfb58
-                        <td>{{}}</td>
+                        <td></td>
                     </tr>
                 </tbody>
             </table>
@@ -170,7 +171,7 @@
                     <tr>
                         <td>{{ $artefacto->servicio }}</td>
                         <td>{{ $tipo->tipo }}</td>
-                        <td>{{ $artefacto->año }}</td>
+                        <td>{{ $artefacto->construccion }}</td>
                     </tr>
                 </tbody>
             </table>
@@ -214,7 +215,7 @@
                         <td>{{ $motor->tipo }} {{ $motor->marca }}</td>
                         <td>{{ $motor->numero }}</td>
                         <td>{{ $motor->potencia }}</td>
-                        <td> .-. </td>
+                        <td> {{ $motor->nominalelectrica	 }} </td>
                     </tr>
                 </tbody>
             </table>
@@ -224,7 +225,7 @@
                 <thead>
                     <tr>
                         <th><strong>MATERIAL DEL<br> CASCO</strong></th>
-                        <th><strong>PESO Y ALTURA<br> DE CUBIERTA</strong></th>
+                        <th><strong>PESO Y ALTURA<br> DE CUBERTADA</strong></th>
                         <th><strong>MERCANCÍAS<br> PELIGROSAS</strong></th>
                         <th><strong>NÚMERO MÁXIMO<br> DE PASAJEROS</strong></th>
                     </tr>
@@ -232,15 +233,9 @@
                 <tbody>
                     <tr>
                         <td>{{ $material->material }}</td>
-<<<<<<< HEAD
-                        <td>{{ $datoAdicional->altura }} {{ $datoAdicional->peso }}</td>
-                        <td>{{ $datoAdicional->merPeligrosa }}</td>
-                        <td>{{ $datoAdicional->NumMaxPasajeros }}</td>
-=======
-                        <td>{{ $datosAdicionales->altura }} {{ $datosAdicionales->peso }}</td>
-                        <td>{{ $datosAdicionales->merPeligrosa }}</td>
-                        <td>{{ $datosAdicionales->NumMaxPasajeros }}</td>
->>>>>>> 707f60b686a5b92c334831ea6ac85d501e7bfb58
+                        <td>{{ $datoAdicional->altura }} MTS. con {{ $datoAdicional->peso }} KGS.</td>
+                        <td>{{ $datoAdicional->mercPelig }}</td>
+                        <td>{{ $datoAdicional->maxPasajeros }}</td>
                     </tr>
                 </tbody>
             </table>
@@ -254,10 +249,10 @@
                 EMBARCACIONES Y ARTEFACTOS NAVALES.
                 <br>EL PRESENTE CERTIFICADO ES VÁLIDO POR CINCO AÑOS, CONFORME AL DECRETO SUPREMO N° 3073, A
                 PARTIR DEL:
-                {{ $certificado->fechaEmision }}
+                {{ $certificacion->fechaEmision }}
             </p>
             <p class="text-right"><strong>LUGAR Y FECHA:</strong> {{ $datoAdicional->lugar }},
-                {{ $certificado->fechaEmision }}</p>
+                {{ $certificacion->fechaEmision }}</p>
         </div>
     </div>
 
