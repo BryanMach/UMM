@@ -188,7 +188,11 @@
                         </tr>
                     </tbody>
                 </table>
-                <button class="btn btn-outline-secondary mt-4">Cerrar Sesión</button>
+                <form action="{{ route('logout') }}" method="POST">
+                    @csrf
+                    <button class="btn btn-outline-secondary mt-4"><i class="fas fa-power-off"></i>
+                        Cerrar Sesión</button>
+                </form>
             </div>
             <div class="col-md-9 main-content">
                 <nav class="navbar navbar-expand-lg navbar-light">

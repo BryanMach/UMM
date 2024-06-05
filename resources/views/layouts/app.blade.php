@@ -18,7 +18,7 @@
 </head>
 
 <body>
-        <div id="app" class="min-h-screen bg-gray-100 dark:bg-gray-900">
+    <div id="app" class="min-h-screen bg-gray-100 dark:bg-gray-900">
         <!--<nav class="navbar navbar-expand-md navbar-light navbar-laravel">-->
         <div class="container">
             <!--<a class="navbar-brand" href="{{ url('/') }}">
@@ -58,11 +58,12 @@
                                     </form>
                                 </div>
                             </li>-->
-                        @endif
-                    </ul>
-                </div>
+                    @endif
+                </ul>
             </div>
         </div>
+    </div>
+    </div>
 
 
     <main class="py-4">

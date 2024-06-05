@@ -174,28 +174,29 @@ class PerfilesController extends Controller
         return redirect('admin/perf45r')->with('flash_message', 'Nuevo registro exitoso!!!');
     }
     // Definir función para agregar tiempo a una fecha y devolverla en formato dd/mm/aaaa
-    public function imprimir_certificado_registro(Request $request){//muestro un pdf
+    public function imprimir_certificado_registro(Request $request)
+    { //muestro un pdf
         $requestData = $request->all();
         //dd($requestData);
         //$cuenca=$request->idCuenca;
         //protected $fillable = ['idUsuarios', 'idBaseOperativa', 'matricula', 'nombre', 'idTipo', 'idMaterial',
         //'eslora', 'manga', 'puntal', 'francobordo', 'propulsion', 'construccion', 'trn', 'trb', 'servicio', 'asociacion', 'observaciones'];
-        $baseoperativa=$request->idBaseOperativa;
+        $baseoperativa = $request->idBaseOperativa;
         $propietario = Personal::findOrFail($requestData['idPropietario']);
-        $artefacto=Artefacto::findOrFail($requestData['idArtefacto']);
+        $artefacto = Artefacto::findOrFail($requestData['idArtefacto']);
         $tipo = Tipo::findOrFail($artefacto['idTipo']);
         $material = Material::findOrFail($artefacto['idMaterial']);
         //$usuario = Usuario::findOrFail(Auth::user()->id);
         $basesoperativa = BasesOperativa::findOrFail($artefacto['idBaseOperativa']);
         $cuenca = Cuenca::findOrFail($basesoperativa['idCuenca']);
         //Proceso para añadir 1 al control de numeros de registro por cuenca
-        $numeroc =Certificacione::findOrFail($cuenca['id']);
-        $aux= $numeroc;
-        $numero=$numeroc['numero'];
-        $numero=$numero+1;
-        $aux['numero']=$numero;
+        $numeroc = Certificacione::findOrFail($cuenca['id']);
+        $aux = $numeroc;
+        $numero = $numeroc['numero'];
+        $numero = $numero + 1;
+        $aux['numero'] = $numero;
         //$numeroc->update($aux);
-        $fechaActual=date('m/d/Y');
+        $fechaActual = date('m/d/Y');
         $fechaActualTimestamp = strtotime($fechaActual);
         $nuevaFechaTimestamp = strtotime('+5 years', $fechaActualTimestamp);
         $fechaVencimiento = date('m/d/Y', $nuevaFechaTimestamp);
@@ -204,7 +205,7 @@ class PerfilesController extends Controller
         $fechaAlerta = date('m/d/Y', $fechaAlertaTimestamp);
         //dd('Fechats'.$fechaAlerta);
         //dd($fechaVencimiento);
-        
+
         //Proceso para añadir un certificado
         //'idArtefactos', 'tipoC', 'nreg','correlativo', 'fechaEmision', 'fechaVecimiento'
         /*
@@ -218,36 +219,41 @@ class PerfilesController extends Controller
      * dot min=6
      * 
      */
-        $requestCertificado = ['idArtefactos'=>$requestData['idArtefacto'],'tipoC'=>'1',
-            'nreg'=>$numero,'correlativo'=>null,'fechaEmision'=>$fechaActual,'fechaAlerta'=>$fechaAlerta,'fechaVecimiento'=>$fechaVencimiento];
+        $requestCertificado = [
+            'idArtefactos' => $requestData['idArtefacto'], 'tipoC' => '1',
+            'nreg' => $numero, 'correlativo' => null, 'fechaEmision' => $fechaActual, 'fechaAlerta' => $fechaAlerta, 'fechaVecimiento' => $fechaVencimiento
+        ];
 
         $certificacion = certificado::create($requestCertificado);
-        $vista = \View::make('admin.certificadospdf.certificarregistro', compact('propietario','tipo','material','artefacto','basesoperativa','cuenca','certificacion'))->render();
-        $pdf= \App::make('dompdf.wrapper');
+        $vista = \View::make('admin.certificadospdf.certificarregistro', compact('propietario', 'tipo', 'material', 'artefacto', 'basesoperativa', 'cuenca', 'certificacion'))->render();
+        $pdf = \App::make('dompdf.wrapper');
         $pdf->loadHTML($vista);
         return $pdf->stream('registro.pdf');
     }
-    public function imprimir_certificado_seguridad(){//muestro un pdf
+    public function imprimir_certificado_seguridad()
+    { //muestro un pdf
         /*dd('Probando imprimir certificados');*/
-        $artefactos=Artefacto::all();
+        $artefactos = Artefacto::all();
         $vista = \View::make('admin.certificadospdf.certificarseguridad', compact('artefactos'))->render();
-        $pdf= \App::make('dompdf.wrapper');
+        $pdf = \App::make('dompdf.wrapper');
         $pdf->loadHTML($vista);
         return $pdf->stream('seguridad.pdf');
     }
-    public function imprimir_certificado_francobordo(){//muestro un pdf
+    public function imprimir_certificado_francobordo()
+    { //muestro un pdf
         /*dd('Probando imprimir certificados');*/
-        $artefactos=Artefacto::all();
+        $artefactos = Artefacto::all();
         $vista = \View::make('admin.certificadospdf.certificarfrancobordo', compact('artefactos'))->render();
-        $pdf= \App::make('dompdf.wrapper');
+        $pdf = \App::make('dompdf.wrapper');
         $pdf->loadHTML($vista);
         return $pdf->stream('francobordo.pdf');
     }
-    public function imprimir_certificado_arqueo(){//muestro un pdf
+    public function imprimir_certificado_arqueo()
+    { //muestro un pdf
         /*dd('Probando imprimir certificados');*/
-        $artefactos=Artefacto::all();
+        $artefactos = Artefacto::all();
         $vista = \View::make('admin.certificadospdf.certificararqueo', compact('artefactos'))->render();
-        $pdf= \App::make('dompdf.wrapper');
+        $pdf = \App::make('dompdf.wrapper');
         $pdf->loadHTML($vista);
         return $pdf->stream('arqueo.pdf');
     }
