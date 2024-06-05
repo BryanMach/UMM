@@ -99,7 +99,7 @@
     @if (Auth::user()->id != 1)
         <div class="right-sidebar">
             <div class="sidebar-header text-center p-3">
-                <h4>Registros de personal</h4>
+                <h4>Registros de personal </h4>
             </div>
             <div class="sidebar-content">
                 <a href="personal">Personal</a>
