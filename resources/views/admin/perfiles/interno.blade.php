@@ -193,7 +193,7 @@
                         Cerrar Sesión</button>
                 </form>
             </div>
-            {{-- <div class="col-md-9 main-content" style="margin-left: 25%">
+            <div class="col-md-9 main-content" style="margin-left: 25%">
                 <nav class="navbar navbar-expand-lg navbar-light">
                     <div class="collapse navbar-collapse" id="navbarNav">
                         <ul class="navbar-nav mr-auto">
@@ -257,6 +257,7 @@
                             </tr>
                         </thead>
                         <tbody>
+                            {{-- crear las diferentes listas para las cuencas --}}
                             @foreach ($listaA as $item)
                                 <tr>
                                     <td>{{ $item->propietarios->nombre }} {{ $item->propietarios->identificador }}
@@ -273,7 +274,7 @@
                     </table>
                 </div>
                 <h1>Cuenca De la Plata</h1>
-                {{--  <div style="overflow-y: auto; max-height: 400px;">
+                <div style="overflow-y: auto; max-height: 400px;">
                     <table class="table table-bordered mt-4" style="width: 100%;">
                         <thead>
                             <tr>
@@ -298,9 +299,9 @@
                             @endforeach
                         </tbody>
                     </table>
-                </div> --}}
-        </div> --}}
-    </div>
+                </div>
+            </div>
+        </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>

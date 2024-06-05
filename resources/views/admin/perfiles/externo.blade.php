@@ -229,56 +229,16 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>#AHGA68</td>
-                            <td>23/09/2022</td>
-                            <td>Jacob Marcus</td>
-                        </tr>
-                        <tr>
-                            <td>#AHGA68</td>
-                            <td>23/09/2022</td>
-                            <td>Jacob Marcus</td>
-                        </tr>
-                        <tr>
-                            <td>#AHGA68</td>
-                            <td>23/09/2022</td>
-                            <td>Jacob Marcus</td>
-                        </tr>
-                        <tr>
-                            <td>#AHGA68</td>
-                            <td>23/09/2022</td>
-                            <td>Jacob Marcus</td>
-                        </tr>
-                        <tr>
-                            <td>#AHGA68</td>
-                            <td>23/09/2022</td>
-                            <td>Jacob Marcus</td>
-                        </tr>
-                        <tr>
-                            <td>#AHGA68</td>
-                            <td>23/09/2022</td>
-                            <td>Jacob Marcus</td>
-                        </tr>
-                        <tr>
-                            <td>#AHGA68</td>
-                            <td>23/09/2022</td>
-                            <td>Jacob Marcus</td>
-                        </tr>
-                        <tr>
-                            <td>#AHGA68</td>
-                            <td>23/09/2022</td>
-                            <td>Jacob Marcus</td>
-                        </tr>
-                        <tr>
-                            <td>#AHGA68</td>
-                            <td>23/09/2022</td>
-                            <td>Jacob Marcus</td>
-                        </tr>
-                        <tr>
-                            <td>#AHGA68</td>
-                            <td>23/09/2022</td>
-                            <td>Jacob Marcus</td>
-                        </tr>
+                        {{-- crear la lista para el usuario externo --}}
+                        @foreach ($externo as $item)
+                            <tr>
+                                <td>{{ $item->propietarios->nombre }} {{ $item->propietarios->identificador }}
+                                </td>
+                                <td>{{ $item->artefactos->nombre }}-{{ $item->artefactos->matricula }}
+                                </td>
+                                <td>{{ $item->certificado->fechaVencimiento }}</td>
+                            </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>
