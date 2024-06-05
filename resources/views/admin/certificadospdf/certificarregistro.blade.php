@@ -85,23 +85,23 @@
                                 switch ($basesoperativa->idCuenca) {
                                     case '1':
                                         # code....
-                                        $d='A';
+                                        $d = 'A';
                                         break;
                                     case '2':
                                         # code...
-                                        $d='P';
+                                        $d = 'P';
                                         break;
                                     case '3':
                                         # code...
-                                        $d='L';
+                                        $d = 'L';
                                         break;
                                     default:
                                         # code...
-                                        $d='N';
+                                        $d = 'N';
                                         break;
                                 }
                             @endphp
-                            <td class="text-center">{{$d}}-{{ $certificacion->nreg }}</td>
+                            <td class="text-center">{{ $d }}-{{ $certificacion->nreg }}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -129,7 +129,7 @@
                     </tr>
                     <tr>
                         <td>LUGAR DE INSPECCIÓN:</td>
-                        
+
                         <td colspan="3"><strong>{{ $basesoperativa->baseOperativa }}</strong></td>
                     </tr>
                     <tr>
@@ -215,7 +215,7 @@
                         <td>{{ $motor->tipo }} {{ $motor->marca }}</td>
                         <td>{{ $motor->numero }}</td>
                         <td>{{ $motor->potencia }}</td>
-                        <td> {{ $motor->nominalelectrica	 }} </td>
+                        <td> {{ $motor->nominalelectrica }} </td>
                     </tr>
                 </tbody>
             </table>

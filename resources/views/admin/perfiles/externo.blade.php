@@ -167,7 +167,8 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-3 sidebar text-center">
-                <img src="{{ asset('images/'.$perfil->foto) }}" onerror="this.src='{{ asset('images/Usericono.png') }}'" class="profile-img">
+                <img src="{{ asset('images/' . $perfil->foto) }}"
+                    onerror="this.src='{{ asset('images/Usericono.png') }}'" class="profile-img">
                 <h3>{{ $perfil->nombres }} {{ $perfil->apellidos }}</h3>
                 <p class="role">{{ $perfil->grado }}</p>
                 <table class="description text-left">
@@ -202,7 +203,7 @@
                                 <a class="nav-link" href="registro">Registro nuevo</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Renovación</a>
+                                <a class="nav-link" href="renovar">Renovación</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="#">Corrección</a>
@@ -226,40 +227,48 @@
                     </thead>
                     <tbody>
                         @foreach ($listapropietarios as $item)
-                        {{--@dd($listapropietarios)--}}
-                                        <tr>
-                                            <td>{{ $loop->iteration }}</td>
-                                            
-                                                <td><a
-                                                    href="{{ url('/admin/propietario/' . $item->idPropietario) }}">{{ $item->propietarios->identificador }}</a>
-                                                </td>
-                                                <td> {{ $item->propietarios->nombre }}</td>
-                                            
-                                                <td><a href="{{ url('/admin/artefactos/' . $item->idArtefacto) }}">{{ $item->artefactos->matricula }}
-                                                    {{ $item->artefactos->nombre }}</a>
-                                                </td>
-                                            <td>
-                                                <a href="{{ url('/admin/lista-propietarios/' . $item->id) }}"
-                                                    title="Ver ListaPropietario"><button class="btn btn-info btn-sm"><i
-                                                            class="fa fa-eye" aria-hidden="true"></i> Ver</button></a>
-                                                <a href="{{ url('/admin/lista-propietarios/' . $item->id . '/edit') }}"
-                                                    title="Editar ListaPropietario"><button
-                                                        class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o"
-                                                            aria-hidden="true"></i> Editar</button></a>
+                            {{-- @dd($listapropietarios) --}}
+                            <tr>
+                                <td>{{ $loop->iteration }}</td>
 
-                                                <form method="POST"
-                                                    action="{{ url('/admin/lista-propietarios' . '/' . $item->id) }}"
-                                                    accept-charset="UTF-8" style="display:inline">
-                                                    {{ method_field('DELETE') }}
-                                                    {{ csrf_field() }}
-                                                    <button type="submit" class="btn btn-danger btn-sm"
-                                                        title="Borrar ListaPropietario"
-                                                        onclick="return confirm(&quot;Confirm delete?&quot;)"><i
-                                                            class="fa fa-trash-o" aria-hidden="true"></i> Borrar</button>
-                                                </form>
-                                            </td>
-                                        </tr>
-                                    @endforeach
+                                <td><a
+                                        href="{{ url('/admin/propietario/' . $item->idPropietario) }}">{{ $item->propietarios->identificador }}</a>
+                                </td>
+                                <td> {{ $item->propietarios->nombre }}</td>
+
+                                <td><a href="{{ url('/admin/artefactos/' . $item->idArtefacto) }}">{{ $item->artefactos->matricula }}
+                                        {{ $item->artefactos->nombre }}</a>
+                                </td>
+                                <td>
+                                    <a href="{{ url('/admin/lista-propietarios/' . $item->id) }}"
+                                        title="Ver ListaPropietario"><button class="btn btn-info btn-sm"><i
+                                                class="fa fa-eye" aria-hidden="true"></i> Ver</button></a>
+                                    <a href="{{ url('/admin/lista-propietarios/' . $item->id . '/edit') }}"
+                                        title="Editar ListaPropietario"><button class="btn btn-primary btn-sm"><i
+                                                class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                            Editar</button></a>
+                                    {{--  <form method="POST" action="{{ url('/dashboard') }}" accept-charset="UTF-8"
+                                        style="display:inline">
+                                        {{ csrf_field() }}
+                                        <input type="hidden" name="nivel" value="{{ $usuario->nivel }}">
+                                        <button type="submit" class="btn btn-primary btn-sm"
+                                            title="Ver ListaPropietario"><i class="fa fa-trash-o"
+                                                aria-hidden="true"></i>Editar</button>
+                                    </form> --}}
+
+                                    <form method="POST"
+                                        action="{{ url('/admin/lista-propietarios' . '/' . $item->id) }}"
+                                        accept-charset="UTF-8" style="display:inline">
+                                        {{ method_field('DELETE') }}
+                                        {{ csrf_field() }}
+                                        <button type="submit" class="btn btn-danger btn-sm"
+                                            title="Borrar ListaPropietario"
+                                            onclick="return confirm(&quot;Confirm delete?&quot;)"><i
+                                                class="fa fa-trash-o" aria-hidden="true"></i> Borrar</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>
