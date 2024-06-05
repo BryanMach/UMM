@@ -90,11 +90,27 @@
                     </thead>
                     <tbody>
                         <tr>
-<<<<<<< HEAD
-                            <td class="text-center">{{ $certificado->nreg }}</td>
-=======
-                            <td class="text-center">{{ $certificados->nreg }}</td>
->>>>>>> 707f60b686a5b92c334831ea6ac85d501e7bfb58
+                            @php
+                                switch ($basesoperativa->idCuenca) {
+                                    case '1':
+                                        # code....
+                                        $d='A';
+                                        break;
+                                    case '2':
+                                        # code...
+                                        $d='P';
+                                        break;
+                                    case '3':
+                                        # code...
+                                        $d='L';
+                                        break;
+                                    default:
+                                        # code...
+                                        $d='N';
+                                        break;
+                                }
+                            @endphp
+                            <td class="text-center">{{$d}}-{{ $certificacion->nreg }}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -117,15 +133,9 @@
                 </thead>
                 <tbody class="text-center">
                     <tr>
-<<<<<<< HEAD
                         <td class="align-middle">{{ $artefacto->nombre }}</td>
                         <td class="align-middle">{{ $artefacto->matricula }}</td>
-                        <td>{{ $baseOperativa->nombreBO }}</td>
-=======
-                        <td class="align-middle">{{ $artefactos->nombre }}</td>
-                        <td class="align-middle">{{ $artefacto->matricula }}</td>
-                        <td>{{ baseOperativa->nombreBO }}</td>
->>>>>>> 707f60b686a5b92c334831ea6ac85d501e7bfb58
+                        <td>{{ $basesoperativa->baseOperativa }}</td>
                         <td class="align-middle">{{ $artefacto->eslora }}</td>
                     </tr>
                 </tbody>
@@ -142,13 +152,25 @@
                     </tr>
                     <tr>
                         <td>Embarcación nueva ( )</td>
-                        <td>Embarcación Autopropulsada ( )</td>
-                        <td>Tanque ( )</td>
+                        @if ($datoAdicional->cargaComb < 20)
+                            <td>Embarcación Autopropulsada (X)</td>
+                        @else
+                            <td>Embarcación Autopropulsada ( )</td>
+                        @endif
+                        @if ($datoAdicional->cargaComb == 11)
+                            <td>Tanque (X)</td>
+                        @else
+                            <td>Tanque ( )</td>
+                        @endif
                     </tr>
                     <tr>
                         <td></td>
                         <td></td>
-                        <td>Cerrada ( X )</td>
+                        @if ($datoAdicional->cargaComb == 12)
+                            <td>Cerrada (X)</td>
+                        @else
+                            <td>Cerrada ( )</td>
+                        @endif
                     </tr>
                     <tr>
                         <td></td>
@@ -158,28 +180,48 @@
                     <tr>
                         <td></td>
                         <td></td>
-                        <td>Abierta ( )</td>
+                        @if ($datoAdicional->cargaComb == 13)
+                            <td>Abierta (X)</td>
+                        @else
+                            <td>Abierta ( )</td>
+                        @endif
                     </tr>
                     <tr>
                         <td>Embarcación existente ( X )</td>
-                        <td>Embarcación Sin Propulsión ( X )</td>
-                        <td>Tanque ( )</td>
+                        @if ($datoAdicional->cargaComb > 20)
+                            <td>Embarcación Sin Propulsión (X)</td>
+                        @else
+                            <td>Embarcación Sin Propulsión ( )</td>
+                        @endif
+                        @if ($datoAdicional->cargaComb == 21)
+                            <td>Tanque (X)</td>
+                        @else
+                            <td>Tanque ( )</td>
+                        @endif
                     </tr>
                     <tr>
                         <td></td>
                         <td></td>
-                        <td>Cerrada ( )</td>
+                        @if ($datoAdicional->cargaComb == 22)
+                            <td>Cerrada (X)</td>
+                        @else
+                            <td>Cerrada ( )</td>
+                        @endif
                     </tr>
                     <tr>
                         <td></td>
                         <td></td>
-                        <td>Abierta ( )</td>
+                        @if ($datoAdicional->cargaComb == 23)
+                            <td>Abierta (X)</td>
+                        @else
+                            <td>Abierta ( )</td>
+                        @endif
                     </tr>
                 </tbody>
             </table>
         </div>
 
-        <p class="small-text">Francobordo asignado (FB) medido desde la línea de cubierta 243,75 mm</p>
+        <p class="small-text">Francobordo asignado (FB) medido desde la línea de cubierta {{ $artefacto->francobordo }} mm</p>
         <div>
 
 
@@ -194,11 +236,11 @@
                 asignado y marcado
                 de acuerdo con lo dispuesto en el “Reglamento Nacional para la Asignación de Francobordo”, aprobado por
                 RM. 736. <br>
-                Este certificado, es emitido el <strong>{{ $certificado->fechaEmision }}</strong>, es válido hasta el
-                <strong>{{ $certificado->fechaVecimiento }}</strong><br>
+                Este certificado, es emitido el <strong>{{ $certificacion->fechaEmision }}</strong>, es válido hasta el
+                <strong>{{ $certificacion->fechaVencimiento }}</strong><br>
 
                 Expedido en:
-                {{ $certificado->fechaEmision }}
+                {{ $datoAdicional->lugar}}, {{ $certificacion->fechaEmision }}
             </p>
         </div>
     </div>

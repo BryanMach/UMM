@@ -195,7 +195,7 @@
                         <td>{{ $artefacto->puntal }}<br>MTS.</td>
                         <td>{{ $artefacto->trb }}<br>UNIDAD DE REGISTRO</td>
                         <td>{{ $artefacto->trn }}<br>UNIDAD DE REGISTRO</td>
-                        <td>2.75<br>mm</td>
+                        <td>{{ $artefacto->francobordo }}<br>mm</td>
                     </tr>
                 </tbody>
             </table>
@@ -225,7 +225,7 @@
                 <thead>
                     <tr>
                         <th><strong>MATERIAL DEL<br> CASCO</strong></th>
-                        <th><strong>PESO Y ALTURA<br> DE CUBERTADA</strong></th>
+                        <th><strong>PESO Y ALTURA<br> DE CUBIERTA</strong></th>
                         <th><strong>MERCANCÍAS<br> PELIGROSAS</strong></th>
                         <th><strong>NÚMERO MÁXIMO<br> DE PASAJEROS</strong></th>
                     </tr>

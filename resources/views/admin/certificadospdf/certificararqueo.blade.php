@@ -99,7 +99,8 @@
 </head>
 
 <body>
-
+{{-- 'propietario', 'tipo', 'material', 'artefacto', 'basesoperativa', 'cuenca',
+        'certificacion','inspeccion','motor', 'datoAdicional' --}}
     <div>
         <div class="header">
             <h4 class="fuente"><strong>ESTADO PLURINACIONAL DE BOLIVIA</strong></h4>
@@ -116,11 +117,27 @@
                     </thead>
                     <tbody>
                         <tr>
-<<<<<<< HEAD
-                            <td class="text-center">{{ $certificado->nreg }}</td>
-=======
-                            <td class="text-center">{{ $certificados->nreg }}</td>
->>>>>>> 707f60b686a5b92c334831ea6ac85d501e7bfb58
+                            @php
+                                switch ($basesoperativa->idCuenca) {
+                                    case '1':
+                                        # code....
+                                        $d='A';
+                                        break;
+                                    case '2':
+                                        # code...
+                                        $d='P';
+                                        break;
+                                    case '3':
+                                        # code...
+                                        $d='L';
+                                        break;
+                                    default:
+                                        # code...
+                                        $d='N';
+                                        break;
+                                }
+                            @endphp
+                            <td class="text-center">{{$d}}-{{ $certificacion->nreg }}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -143,11 +160,7 @@
                     <tr class="text-center">
                         <td>{{ $artefacto->nombre }}</td>
                         <td>{{ $artefacto->matricula }}</td>
-<<<<<<< HEAD
                         <td>{{ $baseOperativa->nombreBO }}</td>
-=======
-                        <td>{{ baseOperativa->nombreBO }}</td>
->>>>>>> 707f60b686a5b92c334831ea6ac85d501e7bfb58
                         <td>{{ $artefacto->año }}</td>
                     </tr>
                 </tbody>
@@ -201,14 +214,8 @@
             <p>Se certifica que los arqueos de esta embarcación han sido determinados de acuerdo con las disposiciones
                 del Reglamento Nacional de Arqueo para Buques, Embarcaciones y Artefactos Navales, aprobadas mediante
                 RM. 736.</p>
-<<<<<<< HEAD
             <p class="text-left"><strong>EXPEDIDO EN:</strong>{{ $baseOperativa->nombreBO }}<strong class="fecha">
-                    FECHA:</strong>{{ $certificado->fechaEmision }}</p>
-=======
-            <p class="text-left"><strong>EXPEDIDO EN:</strong>{{ baseOperativa->nombreBO }}<strong class="fecha">
-                    FECHA:</strong> 21 DE
-                MARZO DE 2024</p>
->>>>>>> 707f60b686a5b92c334831ea6ac85d501e7bfb58
+                    FECHA:</strong>{{ $certificacion->fechaEmision }}</p>
             <p>El suscrito Jefe de la Unidad de Marina Mercante declara que esta debidamente autorizado para expedir el
                 presente Certificado.</p>
     </div>

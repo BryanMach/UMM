@@ -80,6 +80,10 @@
             <h6 class="fuente"><strong>DIRECCIÓN GENERAL DE INTERESES MARÍTIMOS, FLUVIALES, LACUSTRES Y DE MARINA
                     MERCANTE</strong>
             </h6>
+            {{-- 
+                'propietario', 'tipo', 'material', 'artefacto', 'basesoperativa', 'cuenca',
+                'certificacion','inspeccion','motor', 'datoAdicional'
+                --}}
             <div>
                 <table align="right" border=3>
                     <thead>
@@ -89,11 +93,27 @@
                     </thead>
                     <tbody>
                         <tr>
-<<<<<<< HEAD
-                            <td class="text-center">{{ $certificado->nreg }}</td>
-=======
-                            <td class="text-center">{{ $certificados->nreg }}</td>
->>>>>>> 707f60b686a5b92c334831ea6ac85d501e7bfb58
+                            @php
+                            switch ($basesoperativa->idCuenca) {
+                                case '1':
+                                    # code....
+                                    $d='A';
+                                    break;
+                                case '2':
+                                    # code...
+                                    $d='P';
+                                    break;
+                                case '3':
+                                    # code...
+                                    $d='L';
+                                    break;
+                                default:
+                                    # code...
+                                    $d='N';
+                                    break;
+                            }
+                        @endphp
+                        <td class="text-center">{{$d}}-{{ $certificacion->nreg }}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -109,37 +129,26 @@
         <div class="text-center">
             <table class="text-center">
                 <tbody class="APropietario">
-                    <tr>
+                    <tr class="APropietario">
                         <td>PROPIETARIO (S):</td>
                         <td colspan="3"> <strong>{{ $propietario->nombre }}</strong> </td>
                     </tr>
-                    <tr>
+                    <tr class="APropietario">
                         <td>ANTERIOR PROPIETARIO:</td>
                         <td colspan="3"></td>
                     </tr>
                     <tr>
                         <td>FECHA DE INSPECCIÓN:</td>
-<<<<<<< HEAD
-                        <td colspan="3"><strong>{{ $inspeccion->año }}</strong></td>
+                        <td colspan="3"><strong>{{ $certificacion->fechaEmision }}</strong></td>
                     </tr>
                     <tr>
                         <td>LUGAR DE INSPECCIÓN:</td>
-                        <td colspan="3"><strong>{{ $baseOperativa->nombreBO }}</strong></td>
+                        
+                        <td colspan="3"><strong>{{ $basesoperativa->baseOperativa }}</strong></td>
                     </tr>
                     <tr>
                         <td>BASE DE OPERACIONES:</td>
-                        <td colspan="3"><strong>{{ $baseOperativa->nombreBO }}</strong></td>
-=======
-                        <td colspan="3"><strong>{{ inspeccios->año }}</strong></td>
-                    </tr>
-                    <tr>
-                        <td>LUGAR DE INSPECCIÓN:</td>
-                        <td colspan="3"><strong>{{ baseOperativa->nombreBO }}</strong></td>
-                    </tr>
-                    <tr>
-                        <td>BASE DE OPERACIONES:</td>
-                        <td colspan="3"><strong>{{ baseOperativa->nombreBO }}</strong></td>
->>>>>>> 707f60b686a5b92c334831ea6ac85d501e7bfb58
+                        <td colspan="3"><strong>{{ $basesoperativa->baseOperativa }}</strong></td>
                     </tr>
                 </tbody>
             </table>
@@ -157,12 +166,8 @@
                 <tbody>
                     <tr>
                         <td>{{ $artefacto->nombre }}</td>
-<<<<<<< HEAD
                         <td>{{ $artefacto->matricula }}</td>
-=======
-                        <td>{{ artefactos->matricula }}</td>
->>>>>>> 707f60b686a5b92c334831ea6ac85d501e7bfb58
-                        <td>.-.</td>
+                        <td></td>
                     </tr>
                 </tbody>
             </table>
@@ -180,7 +185,7 @@
                     <tr>
                         <td>{{ $artefacto->servicio }}</td>
                         <td>{{ $tipo->tipo }}</td>
-                        <td>{{ $artefacto->año }}</td>
+                        <td>{{ $artefacto->construccion }}</td>
                     </tr>
                 </tbody>
             </table>
@@ -204,7 +209,7 @@
                         <td>{{ $artefacto->puntal }}<br>MTS.</td>
                         <td>{{ $artefacto->trb }}<br>UNIDAD DE REGISTRO</td>
                         <td>{{ $artefacto->trn }}<br>UNIDAD DE REGISTRO</td>
-                        <td>2.75<br>mm</td>
+                        <td>{{ $artefacto->francobordo }}<br>mm</td>
                     </tr>
                 </tbody>
             </table>
@@ -224,7 +229,7 @@
                         <td>{{ $motor->tipo }} {{ $motor->marca }}</td>
                         <td>{{ $motor->numero }}</td>
                         <td>{{ $motor->potencia }}</td>
-                        <td> .-. </td>
+                        <td> {{ $motor->nominalelectrica	 }} </td>
                     </tr>
                 </tbody>
             </table>
@@ -242,15 +247,9 @@
                 <tbody>
                     <tr>
                         <td>{{ $material->material }}</td>
-<<<<<<< HEAD
-                        <td>{{ $datoAdicional->altura }} {{ $datosAdicional->peso }}</td>
-                        <td>{{ $datoAdicional->merPeligrosa }}</td>
-                        <td>{{ $datoAdicional->NumMaxPasajeros }}</td>
-=======
-                        <td>{{ $datosAdicionales->altura }} {{ $datosAdicionales->peso }}</td>
-                        <td>{{ $datosAdicionales->merPeligrosa }}</td>
-                        <td>{{ $datosAdicionales->NumMaxPasajeros }}</td>
->>>>>>> 707f60b686a5b92c334831ea6ac85d501e7bfb58
+                        <td>{{ $datoAdicional->altura }} MTS. con {{ $datoAdicional->peso }} KGS.</td>
+                        <td>{{ $datoAdicional->mercPelig }}</td>
+                        <td>{{ $datoAdicional->maxPasajeros }}</td>
                     </tr>
                 </tbody>
             </table>
@@ -266,12 +265,12 @@
                 <br>EL PRESENTE CERTIFICADO ES VÁLIDO POR <strong>CINCO AÑOS</strong>, CONFORME AL DECRETO SUPREMO N°
                 3073, A
                 PARTIR DEL:
-                {{ $certificado->fechaEmision }} <br>
+                {{ $certificacion->fechaEmision }} <br>
                 DEBIENDO SOMETERSE A LAS INSPECCIONES ANUALES OBLIGATORIAS EN LAS FECHAS ESTABLECIDAS POR LA AUTORIDAD
                 COMPETENTE.
             </p>
             <p class="text-right"><strong>LUGAR Y FECHA:</strong> {{ $datoAdicional->lugar }},
-                {{ $certificado->fechaEmision }}</p>
+                {{ $certificacion->fechaEmision }}</p>
         </div>
     </div>
 
