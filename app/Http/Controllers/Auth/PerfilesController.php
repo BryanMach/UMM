@@ -87,9 +87,26 @@ class PerfilesController extends Controller
         $usuario = Usuario::findOrFail($idusuario);
         $perfil = Personal::findOrFail($usuario->idPersonal);
         $persona = Personal::All();
+        $listaL = ListaPropietario::join('artefactos', 'lista_propietarios.idArtefacto', '=', 'artefactos.id')
+                    ->join('bases_operativas', 'artefactos.idBaseOperativa', '=', 'bases_operativas.id')
+                    ->where('bases_operativas.idCuenca', 3)
+                    ->select('lista_propietarios.*')
+                    ->get();
+                    $listaP = ListaPropietario::join('artefactos', 'lista_propietarios.idArtefacto', '=', 'artefactos.id')
+                    ->join('bases_operativas', 'artefactos.idBaseOperativa', '=', 'bases_operativas.id')
+                    ->where('bases_operativas.idCuenca', 2)
+                    ->select('lista_propietarios.*')
+                    ->get();
+                    
+                    $listaA = ListaPropietario::join('artefactos', 'lista_propietarios.idArtefacto', '=', 'artefactos.id')
+                    ->join('bases_operativas', 'artefactos.idBaseOperativa', '=', 'bases_operativas.id')
+                    ->where('bases_operativas.idCuenca', 1)
+                    ->select('lista_propietarios.*')
+                    ->get();
+                    $nivel = $usuario['nivel'];
         if ($usuario->nivel == 3) {
-            $vista = \View::make('admin.perfiles.interno', compact('persona', 'usuario', 'perfil'))->render();
-            return view('admin.perfiles.interno', compact('vista', 'persona', 'usuario', 'perfil'));
+            $vista = \View::make('admin.perfiles.interno', compact('persona', 'usuario', 'perfil','listaL','listaP','listaA'))->render();
+            return view('admin.perfiles.interno', compact('vista', 'persona', 'usuario', 'perfil','listaL','listaP','listaA'));
         }
     }
     public function registrador(request $request)
@@ -189,6 +206,55 @@ class PerfilesController extends Controller
         $usuario = Usuario::findOrFail(Auth::user()->id);
         $nivel = $usuario['nivel'];
         return view('admin.registros.edit', compact('propietario','motore','datosadicionale','inspeccione','documentacione','tipos', 'materiales', 'personas', 'usuarios', 'artefacto', 'basesoperativas', 'cuencas', 'certificacion','nivel'));
+    }
+    public function guardarRenovacion(Request $request)
+    {
+        /*
+        $usuario = Usuario::findOrFail($id);
+        $usuario->update($requestData);
+        */
+        $Usuario = Usuario::findOrFail(Auth::user()->id);
+        $requestData = $request->all();
+        $requestPropietario = ['nombre' => $requestData['nombre'], 'tipo' => $requestData['tipo'], 'identificador' => $requestData['identificador'], 'FechaIni' => $requestData['FechaIni']];
+        dd($requestPropietario);
+        //cabe resaltar que en la siguiente linea
+        //obtengo todos los campos del reciente registro
+        //y me es tan ffácil sacar la id con un ->id
+        $idPropietario = Propietario::findOrFail(Auth::user()->id);
+        $idPropietario = Propietario::create($requestPropietario);
+        //$idPropietario=Propietario::latest()->first();
+        $requestArtefacto = [
+            'idUsuarios' => $Usuario->id, 'idBaseOperativa' => $requestData['idBaseOperativa'], 'matricula' => $requestData['matricula'], 'nombre' => $requestData['nombreA'], 'idTipo' => $requestData['idTipo'], 'idMaterial' => $requestData['idMaterial'],
+            'eslora' => $requestData['eslora'], 'manga' => $requestData['manga'], 'puntal' => $requestData['puntal'],
+            'francobordo' => $requestData['francobordo'], 'propulsion' => $requestData['propulsion'], 'construccion' => $requestData['construccion'], 'trn' => $requestData['trn'], 'trb' => $requestData['trb'],
+            'servicio' => $requestData['servicio'], 'asociacion' => $requestData['asociacion'], 'observaciones' => $requestData['observaciones']
+        ];
+        $idArtefacto = Artefacto::create($requestArtefacto);
+        $requestListaPropietarios = ['idPropietario' => $idPropietario->id, 'idArtefacto' => $idArtefacto->id];
+        ListaPropietario::create($requestListaPropietarios);
+
+        $requestMotor = [
+            'idArtefacto' => $idArtefacto->id, 'tipo' => $requestData['tipoM'], 'marca' => $requestData['marca'], 'numero' => $requestData['numero'],
+            'potencia' => $requestData['potencia'], 'nominalelectrica' => $requestData['nominalelectrica']
+        ];
+        Motore::create($requestMotor);
+        /*
+     *
+     * carga comb es un número con valores
+     * 11,12,13 para vehículos autopropulsados
+     * 21,22,23 para vehículos sin propulsión
+     *
+     */
+        $requestDatoAdicional = [
+            'idArtefacto' => $idArtefacto->id, 'lugar' => $requestData['lugar'], 'mercPelig' => $requestData['mercPelig'],
+            'maxPasajeros' => $requestData['maxPasajeros'], 'cargaComb' => $requestData['cargaComb'], 'peso' => $requestData['peso'], 'altura' => $requestData['altura']
+        ];
+        datosAdicionale::create($requestDatoAdicional);
+        $requestInspeccion = ['idArtefacto' => $idArtefacto->id, 'gestion' => $requestData['gestion'], 'jefeinspector' => $requestData['jefeinspector'], 'motivo' => $requestData['motivo']];
+        Inspeccione::create($requestInspeccion);
+        $requestDocumentacion = ['idArtefacto' => $idArtefacto->id, 'directorio' => $requestData['directorio']];
+        Documentacione::create($requestDocumentacion);
+        return redirect('admin/perf45r')->with('flash_message', 'Nuevo registro exitoso!!!');
     }
     /*
     Aqui recibo todos los datos para todas las tablas de parte del  registrador
