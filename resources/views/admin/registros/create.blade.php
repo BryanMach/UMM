@@ -1,30 +1,151 @@
-<!--<!DOCTYPE html>
-<html lang="{{ app()->getLocale() }}">
+@extends('layouts.app')
+<style>
+body {
+        font-family: Arial, sans-serif;
+        background-color: #f8f9fa;
+    }
 
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    .sidebar {
+        height: 100vh;
+        background: linear-gradient(to bottom, white, rgb(16, 232, 200));
+        padding: 30px;
+        border-right: 1px solid #dee2e6;
+    }
 
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+    .profile-img {
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        object-fit: cover;
+    }
 
-    <title>{{ config('Unidad de marina mercante', 'Unidad de Marina Mercante') }}</title>
+    .sidebar h3 {
+        margin-top: 15px;
+        font-size: 1.75rem;
+        color: #000;
+    }
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-</head>
+    .sidebar .role {
+        color: #9370DB;
+        font-size: 1.1rem;
+        margin-bottom: 20px;
+    }
 
-<body>
-<div id="app" class="min-h-screen bg-gray-100 dark:bg-gray-900">
-    <div class="container">
-            
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                
-                <ul class="navbar-nav ml-auto">
-                    
-                    </ul>
-                </div>-->
+    .sidebar .description {
+        color: #6c757d;
+        font-size: 20px;
+
+    }
+
+    .sidebar,
+    .right-sidebar {
+        height: 100vh;
+        background-color: #fff;
+        border-right: 1px solid #ddd;
+        position: fixed;
+        top: 0;
+    }
+
+    .right-sidebar {
+        width: 200px;
+        right: 0;
+        border-left: 1px solid #ddd;
+    }
+
+    .sidebar a,
+    .right-sidebar a {
+        color: #333;
+        display: block;
+        padding: 10px 20px;
+        text-decoration: none;
+    }
+
+    .sidebar a:hover,
+    .right-sidebar a:hover {
+        background-color: #f1f1f1;
+    }
+
+    .main-content {
+        margin-left: 220px;
+        margin-right: 200px;
+        padding: 20px;
+    }
+
+    .search-bar {
+        display: flex;
+        align-items: center;
+        margin-left: 15%;
+        margin-top: 5%;
+    }
+
+    .search-bar input {
+        flex-grow: 1;
+        margin-right: 10px;
+    }
+
+    .table-container {
+        background-color: #fff;
+        border: 1px solid #ddd;
+        padding: 20px;
+        border-radius: 5px;
+    }
+
+    .table-responsive {
+        margin-top: 20px;
+    }
+</style>
+@if($nivel == 2)
+    <div class="right-sidebar">
+        <div class="sidebar-header text-center p-3">
+            <h4>Registros de personal </h4>
+        </div>
+        <div class="sidebar-content">
+            <a href="personal">Personal</a>
+            <a href="usuarios">Usuarios</a>
+            <a href="bases-operativas" class="active">Bases de operaciones</a>
+            <h5 class="px-3 pt-3">Registros de embarcaciones</h5>
+            <a href="propietario">Propietarios</a>
+            <a href="artefactos">Artefactos</a>
+            <a href="lista-propietarios">Listas de propietarios de embarcaciones</a>
+            <a href="imprimir">Certificaciones</a>
+            <a href="imprimir">Alertas de Vencimiento</a>
+        </div>
+    </div>
+@endif
+@if($nivel == 3)
+    <div class="right-sidebar">
+        <div class="sidebar-header text-center p-3">
+            <h4>Registros de personal </h4>
+        </div>
+        <div class="sidebar-content">
+            <a href="personal">Personal</a>
+            <a href="usuarios">Usuarios</a>
+            <a href="bases-operativas" class="active">Bases de operaciones</a>
+            <h5 class="px-3 pt-3">Registros de embarcaciones</h5>
+            <a href="propietario">Propietarios</a>
+            <a href="artefactos">Artefactos</a>
+            <a href="lista-propietarios">Listas de propietarios de embarcaciones</a>
+            <a href="imprimir">Certificaciones</a>
+            <a href="imprimir">Alertas de Vencimiento</a>
+        </div>
+    </div>
+@else
+    <div class="right-sidebar">
+        <div class="sidebar-header text-center p-3">
+            <h4>Registros de personal </h4>
+        </div>
+        <div class="sidebar-content">
+            <a href="personal">Personal</a>
+            <a href="usuarios">Usuarios</a>
+            <a href="bases-operativas" class="active">Bases de operaciones</a>
+            <h5 class="px-3 pt-3">Registros de embarcaciones</h5>
+            <a href="propietario">Propietarios</a>
+            <a href="artefactos">Artefactos</a>
+            <a href="lista-propietarios">Listas de propietarios de embarcaciones</a>
+            <a href="imprimir">Certificaciones</a>
+        </div>
+    </div>
+@endif
 @section('content')
     <div class="container">
         <div class="row">
@@ -71,9 +192,8 @@
     <main class="py-4">
         {{-- ver por que no ome wopermite tener una condicional aqui --}}
         {{-- @dd(Auth::user()->id) --}}
-        {{-- @if (Auth::user()->id == 0) --}}
-        @extends('adminlte::page')
-        {{-- @else
+        {{-- @if (Auth::user()->id == 0)
+        @else
                 @yield('')
             @endif --}}
 
