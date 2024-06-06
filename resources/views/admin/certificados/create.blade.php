@@ -1,4 +1,5 @@
-  @if ($nivel == 2)
+  @extends('layouts.app')
+@if ($nivel == 2)
       <div class="right-sidebar">
           <div class="sidebar-header text-center p-3">
               <h4>Registros de personal </h4>
