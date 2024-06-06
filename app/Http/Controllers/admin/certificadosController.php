@@ -7,6 +7,8 @@ use App\Http\Requests;
 
 use App\Models\certificado;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Models\Usuario;
 
 class certificadosController extends Controller
 {
@@ -19,6 +21,8 @@ class certificadosController extends Controller
     {
         $keyword = $request->get('search');
         $perPage = 25;
+        $usuario = Usuario::findOrFail(Auth::user()->id);
+        $nivel = $usuario['nivel'];
 
         if (!empty($keyword)) {
             $certificados = certificado::where('tipo', 'LIKE', "%$keyword%")
@@ -31,7 +35,7 @@ class certificadosController extends Controller
             $certificados = certificado::latest()->paginate($perPage);
         }
 
-        return view('admin.certificados.index', compact('certificados'));
+        return view('admin.certificados.index', compact('certificados', 'nivel'));
     }
 
     /**
@@ -41,7 +45,9 @@ class certificadosController extends Controller
      */
     public function create()
     {
-        return view('admin.certificados.create');
+        $usuario = Usuario::findOrFail(Auth::user()->id);
+        $nivel = $usuario['nivel'];
+        return view('admin.certificados.create', compact('nivel'));
     }
 
     /**
@@ -53,9 +59,9 @@ class certificadosController extends Controller
      */
     public function store(Request $request)
     {
-        
+
         $requestData = $request->all();
-        
+
         certificado::create($requestData);
 
         return redirect('admin/certificados')->with('flash_message', 'certificado added!');
@@ -71,8 +77,10 @@ class certificadosController extends Controller
     public function show($id)
     {
         $certificado = certificado::findOrFail($id);
+        $usuario = Usuario::findOrFail(Auth::user()->id);
+        $nivel = $usuario['nivel'];
 
-        return view('admin.certificados.show', compact('certificado'));
+        return view('admin.certificados.show', compact('certificado', 'nivel'));
     }
 
     /**
@@ -85,8 +93,10 @@ class certificadosController extends Controller
     public function edit($id)
     {
         $certificado = certificado::findOrFail($id);
+        $usuario = Usuario::findOrFail(Auth::user()->id);
+        $nivel = $usuario['nivel'];
 
-        return view('admin.certificados.edit', compact('certificado'));
+        return view('admin.certificados.edit', compact('certificado', 'nivel'));
     }
 
     /**
@@ -99,9 +109,9 @@ class certificadosController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
+
         $requestData = $request->all();
-        
+
         $certificado = certificado::findOrFail($id);
         $certificado->update($requestData);
 

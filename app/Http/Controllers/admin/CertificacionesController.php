@@ -8,6 +8,8 @@ use App\Http\Requests;
 use App\Models\Certificacione;
 use App\Models\Cuenca;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Models\Usuario;
 
 class CertificacionesController extends Controller
 {
@@ -20,6 +22,8 @@ class CertificacionesController extends Controller
     {
         $keyword = $request->get('search');
         $perPage = 25;
+        $usuario = Usuario::findOrFail(Auth::user()->id);
+        $nivel = $usuario['nivel'];
 
         if (!empty($keyword)) {
             $certificaciones = Certificacione::where('idCuenca', 'LIKE', "%$keyword%")
@@ -29,7 +33,7 @@ class CertificacionesController extends Controller
             $certificaciones = Certificacione::latest()->paginate($perPage);
         }
 
-        return view('admin.certificaciones.index', compact('certificaciones'));
+        return view('admin.certificaciones.index', compact('certificaciones', 'nivel'));
     }
 
     /**
@@ -40,7 +44,9 @@ class CertificacionesController extends Controller
     public function create()
     {
         $cuencas = Cuenca::All();
-        return view('admin.certificaciones.create', compact('cuencas'));
+        $usuario = Usuario::findOrFail(Auth::user()->id);
+        $nivel = $usuario['nivel'];
+        return view('admin.certificaciones.create', compact('cuencas', 'nivel'));
     }
 
     /**
@@ -70,8 +76,10 @@ class CertificacionesController extends Controller
     public function show($id)
     {
         $certificacione = Certificacione::findOrFail($id);
+        $usuario = Usuario::findOrFail(Auth::user()->id);
+        $nivel = $usuario['nivel'];
 
-        return view('admin.certificaciones.show', compact('certificacione'));
+        return view('admin.certificaciones.show', compact('certificacione', 'nivel'));
     }
 
     /**
@@ -84,8 +92,10 @@ class CertificacionesController extends Controller
     public function edit($id)
     {
         $certificacione = Certificacione::findOrFail($id);
+        $usuario = Usuario::findOrFail(Auth::user()->id);
+        $nivel = $usuario['nivel'];
 
-        return view('admin.certificaciones.edit', compact('certificacione'));
+        return view('admin.certificaciones.edit', compact('certificacione', 'nivel'));
     }
 
     /**

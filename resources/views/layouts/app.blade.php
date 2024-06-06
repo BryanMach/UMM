@@ -95,8 +95,7 @@
         </div>
     </div>
     </div>
-    @dd($nivel)
-    @if (Auth::user()->id != 1)
+    @if ($nivel != 1)
         <div class="right-sidebar">
             <div class="sidebar-header text-center p-3">
                 <h4>Registros de personal </h4>

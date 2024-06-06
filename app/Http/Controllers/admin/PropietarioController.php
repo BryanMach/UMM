@@ -7,6 +7,8 @@ use App\Http\Requests;
 use App\Models\Artefacto;
 use App\Models\Propietario;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Models\Usuario;
 
 class PropietarioController extends Controller
 {
@@ -19,6 +21,8 @@ class PropietarioController extends Controller
     {
         $keyword = $request->get('search');
         $perPage = 25;
+        $usuario = Usuario::findOrFail(Auth::user()->id);
+        $nivel = $usuario['nivel'];
 
         if (!empty($keyword)) {
             $propietario = Propietario::where('nombre', 'LIKE', "%$keyword%")
@@ -30,7 +34,7 @@ class PropietarioController extends Controller
             $propietario = Propietario::latest()->paginate($perPage);
         }
 
-        return view('admin.propietario.index', compact('propietario'));
+        return view('admin.propietario.index', compact('propietario', 'nivel'));
     }
 
     /**
@@ -40,7 +44,9 @@ class PropietarioController extends Controller
      */
     public function create()
     {
-        return view('admin.propietario.create');
+        $usuario = Usuario::findOrFail(Auth::user()->id);
+        $nivel = $usuario['nivel'];
+        return view('admin.propietario.create', compact('nivel'));
     }
 
     /**
@@ -52,15 +58,15 @@ class PropietarioController extends Controller
      */
     public function store(Request $request)
     {
-        
+
         $requestData = $request->all();
         //$request->get('idUsuarios');
         //$dato=$requestData;
-        $dato=Artefacto::latest()->first();
+        $dato = Artefacto::latest()->first();
         dd($dato);
 
         Propietario::create($requestData);
-        
+
         //$id=Propietario::all();
 
         return redirect('admin/propietario')->with('flash_message', 'Propietario agregado!!!');
@@ -76,8 +82,10 @@ class PropietarioController extends Controller
     public function show($id)
     {
         $propietario = Propietario::findOrFail($id);
+        $usuario = Usuario::findOrFail(Auth::user()->id);
+        $nivel = $usuario['nivel'];
 
-        return view('admin.propietario.show', compact('propietario'));
+        return view('admin.propietario.show', compact('propietario', 'nivel'));
     }
 
     /**
@@ -90,8 +98,10 @@ class PropietarioController extends Controller
     public function edit($id)
     {
         $propietario = Propietario::findOrFail($id);
+        $usuario = Usuario::findOrFail(Auth::user()->id);
+        $nivel = $usuario['nivel'];
 
-        return view('admin.propietario.edit', compact('propietario'));
+        return view('admin.propietario.edit', compact('propietario', 'nivel'));
     }
 
     /**
@@ -104,9 +114,9 @@ class PropietarioController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
+
         $requestData = $request->all();
-        
+
         $propietario = Propietario::findOrFail($id);
         $propietario->update($requestData);
 

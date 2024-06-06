@@ -8,6 +8,8 @@ use App\Models\Artefacto;
 use App\Models\ListaPropietario;
 use App\Models\Propietario;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Models\Usuario;
 
 class ListaPropietariosController extends Controller
 {
@@ -20,6 +22,8 @@ class ListaPropietariosController extends Controller
     {
         $keyword = $request->get('search');
         $perPage = 25;
+        $usuario = Usuario::findOrFail(Auth::user()->id);
+        $nivel = $usuario['nivel'];
 
         if (!empty($keyword)) {
             $listapropietarios = ListaPropietario::where('idPropietario', 'LIKE', "%$keyword%")
@@ -29,7 +33,7 @@ class ListaPropietariosController extends Controller
             $listapropietarios = ListaPropietario::latest('idPropietario')->paginate($perPage);
         }
 
-        return view('admin.lista-propietarios.index', compact('listapropietarios'));
+        return view('admin.lista-propietarios.index', compact('listapropietarios', 'nivel'));
     }
 
     /**
@@ -41,7 +45,9 @@ class ListaPropietariosController extends Controller
     {
         $propietarios = Propietario::All();
         $artefactos = Artefacto::All();
-        return view('admin.lista-propietarios.create', compact('propietarios', 'artefactos'));
+        $usuario = Usuario::findOrFail(Auth::user()->id);
+        $nivel = $usuario['nivel'];
+        return view('admin.lista-propietarios.create', compact('propietarios', 'artefactos', 'nivel'));
     }
 
     /**
@@ -71,8 +77,10 @@ class ListaPropietariosController extends Controller
     public function show($id)
     {
         $listapropietario = ListaPropietario::findOrFail($id);
+        $usuario = Usuario::findOrFail(Auth::user()->id);
+        $nivel = $usuario['nivel'];
 
-        return view('admin.lista-propietarios.show', compact('listapropietario'));
+        return view('admin.lista-propietarios.show', compact('listapropietario', 'nivel'));
     }
 
     /**
@@ -85,8 +93,10 @@ class ListaPropietariosController extends Controller
     public function edit($id)
     {
         $listapropietario = ListaPropietario::findOrFail($id);
+        $usuario = Usuario::findOrFail(Auth::user()->id);
+        $nivel = $usuario['nivel'];
 
-        return view('admin.lista-propietarios.edit', compact('listapropietario'));
+        return view('admin.lista-propietarios.edit', compact('listapropietario', 'nivel'));
     }
 
     /**

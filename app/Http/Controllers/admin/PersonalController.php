@@ -7,6 +7,8 @@ use App\Http\Requests;
 
 use App\Models\Personal;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Models\Usuario;
 
 class PersonalController extends Controller
 {
@@ -19,6 +21,8 @@ class PersonalController extends Controller
     {
         $keyword = $request->get('search');
         $perPage = 25;
+        $usuario = Usuario::findOrFail(Auth::user()->id);
+        $nivel = $usuario['nivel'];
 
         if (!empty($keyword)) {
             $personal = Personal::where('ci', 'LIKE', "%$keyword%")
@@ -35,7 +39,7 @@ class PersonalController extends Controller
             $personal = Personal::latest()->paginate($perPage);
         }
 
-        return view('admin.personal.index', compact('personal'));
+        return view('admin.personal.index', compact('personal', 'nivel'));
     }
 
     /**
@@ -45,8 +49,10 @@ class PersonalController extends Controller
      */
     public function create()
     {
+        $usuario = Usuario::findOrFail(Auth::user()->id);
+        $nivel = $usuario['nivel'];
 
-        return view('admin.personal.create');
+        return view('admin.personal.create', compact('nivel'));
     }
 
     /**
@@ -79,8 +85,10 @@ class PersonalController extends Controller
     public function show($id)
     {
         $personal = Personal::findOrFail($id);
+        $usuario = Usuario::findOrFail(Auth::user()->id);
+        $nivel = $usuario['nivel'];
 
-        return view('admin.personal.show', compact('personal'));
+        return view('admin.personal.show', compact('personal', 'nivel'));
     }
 
     /**
@@ -93,8 +101,10 @@ class PersonalController extends Controller
     public function edit($id)
     {
         $personal = Personal::findOrFail($id);
+        $usuario = Usuario::findOrFail(Auth::user()->id);
+        $nivel = $usuario['nivel'];
 
-        return view('admin.personal.edit', compact('personal'));
+        return view('admin.personal.edit', compact('personal', 'nivel'));
     }
 
     /**

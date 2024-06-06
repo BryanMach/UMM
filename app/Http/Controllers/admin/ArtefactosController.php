@@ -11,6 +11,8 @@ use App\Models\Material;
 use App\Models\Tipo;
 use Illuminate\Http\Request;
 use App\Models\Usuario;
+use Illuminate\Support\Facades\Auth;
+
 
 class ArtefactosController extends Controller
 {
@@ -23,6 +25,8 @@ class ArtefactosController extends Controller
     {
         $keyword = $request->get('search');
         $perPage = 25;
+        $usuario = Usuario::findOrFail(Auth::user()->id);
+        $nivel = $usuario['nivel'];
 
         if (!empty($keyword)) {
             $artefactos = Artefacto::where('matricula', 'LIKE', "%$keyword%")
@@ -47,7 +51,7 @@ class ArtefactosController extends Controller
             $artefactos = Artefacto::with('usuarios')->latest()->paginate($perPage);
         }
 
-        return view('admin.artefactos.index', compact('artefactos'));
+        return view('admin.artefactos.index', compact('artefactos', 'nivel'));
     }
 
     /**
@@ -61,7 +65,9 @@ class ArtefactosController extends Controller
         $usuarios = Usuario::All();
         $tipos = Tipo::All();
         $materiales = Material::All();
-        return view('admin.artefactos.create', compact('basesoperativas', 'tipos', 'usuarios', 'materiales'));
+        $usuario = Usuario::findOrFail(Auth::user()->id);
+        $nivel = $usuario['nivel'];
+        return view('admin.artefactos.create', compact('basesoperativas', 'tipos', 'usuarios', 'materiales', 'nivel'));
     }
 
     /**
@@ -91,8 +97,10 @@ class ArtefactosController extends Controller
     public function show($id)
     {
         $artefacto = Artefacto::findOrFail($id);
+        $usuario = Usuario::findOrFail(Auth::user()->id);
+        $nivel = $usuario['nivel'];
 
-        return view('admin.artefactos.show', compact('artefacto'));
+        return view('admin.artefactos.show', compact('artefacto , nivel'));
     }
 
     /**
@@ -109,8 +117,10 @@ class ArtefactosController extends Controller
         $usuarios = Usuario::All();
         $tipos = Tipo::All();
         $materiales = Material::All();
+        $usuario = Usuario::findOrFail(Auth::user()->id);
+        $nivel = $usuario['nivel'];
 
-        return view('admin.artefactos.edit', compact('artefacto','basesoperativas', 'tipos', 'usuarios', 'materiales'));
+        return view('admin.artefactos.edit', compact('artefacto', 'basesoperativas', 'tipos', 'usuarios', 'materiales', 'nivel'));
     }
 
     /**
@@ -145,10 +155,11 @@ class ArtefactosController extends Controller
 
         return redirect('admin/artefactos')->with('flash_message', 'Artefacto borrado!');
     }
-    public function imprimir(){//con esto muestro una página
+    public function imprimir()
+    { //con esto muestro una página
         /*dd('Probando imprimir certificados');*/
-        $artefactos=Artefacto::all();
+        $artefactos = Artefacto::all();
         $vista = \View::make('admin.perfiles.Jefe', compact('artefactos'))->render();
-        return view('admin.perfiles.Jefe', compact('vista','artefactos'));
+        return view('admin.perfiles.Jefe', compact('vista', 'artefactos'));
     }
 }

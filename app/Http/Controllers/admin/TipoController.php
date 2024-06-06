@@ -7,6 +7,8 @@ use App\Http\Requests;
 
 use App\Models\Tipo;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Models\Usuario;
 
 class TipoController extends Controller
 {
@@ -19,6 +21,8 @@ class TipoController extends Controller
     {
         $keyword = $request->get('search');
         $perPage = 25;
+        $usuario = Usuario::findOrFail(Auth::user()->id);
+        $nivel = $usuario['nivel'];
 
         if (!empty($keyword)) {
             $tipo = Tipo::where('tipo', 'LIKE', "%$keyword%")
@@ -27,7 +31,7 @@ class TipoController extends Controller
             $tipo = Tipo::latest()->paginate($perPage);
         }
 
-        return view('admin.tipo.index', compact('tipo'));
+        return view('admin.tipo.index', compact('tipo', 'nivel'));
     }
 
     /**
@@ -37,7 +41,9 @@ class TipoController extends Controller
      */
     public function create()
     {
-        return view('admin.tipo.create');
+        $usuario = Usuario::findOrFail(Auth::user()->id);
+        $nivel = $usuario['nivel'];
+        return view('admin.tipo.create', compact('nivel'));
     }
 
     /**
@@ -49,9 +55,9 @@ class TipoController extends Controller
      */
     public function store(Request $request)
     {
-        
+
         $requestData = $request->all();
-        
+
         Tipo::create($requestData);
 
         return redirect('admin/tipo')->with('flash_message', 'Tipo agregado!!!');
@@ -67,8 +73,10 @@ class TipoController extends Controller
     public function show($id)
     {
         $tipo = Tipo::findOrFail($id);
+        $usuario = Usuario::findOrFail(Auth::user()->id);
+        $nivel = $usuario['nivel'];
 
-        return view('admin.tipo.show', compact('tipo'));
+        return view('admin.tipo.show', compact('tipo', 'nivel'));
     }
 
     /**
@@ -81,8 +89,10 @@ class TipoController extends Controller
     public function edit($id)
     {
         $tipo = Tipo::findOrFail($id);
+        $usuario = Usuario::findOrFail(Auth::user()->id);
+        $nivel = $usuario['nivel'];
 
-        return view('admin.tipo.edit', compact('tipo'));
+        return view('admin.tipo.edit', compact('tipo', 'nivel'));
     }
 
     /**
@@ -95,9 +105,9 @@ class TipoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
+
         $requestData = $request->all();
-        
+
         $tipo = Tipo::findOrFail($id);
         $tipo->update($requestData);
 

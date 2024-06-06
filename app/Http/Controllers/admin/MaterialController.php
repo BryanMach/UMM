@@ -7,6 +7,8 @@ use App\Http\Requests;
 
 use App\Models\Material;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Models\Usuario;
 
 class MaterialController extends Controller
 {
@@ -19,6 +21,8 @@ class MaterialController extends Controller
     {
         $keyword = $request->get('search');
         $perPage = 25;
+        $usuario = Usuario::findOrFail(Auth::user()->id);
+        $nivel = $usuario['nivel'];
         if (!empty($keyword)) {
             $material = Material::where('material', 'LIKE', "%$keyword%")
                 ->latest()->paginate($perPage);
@@ -26,7 +30,7 @@ class MaterialController extends Controller
             $material = Material::latest()->paginate($perPage);
         }
 
-        return view('admin.material.index', compact('material'));
+        return view('admin.material.index', compact('material', 'nivel'));
     }
 
     /**
@@ -36,7 +40,9 @@ class MaterialController extends Controller
      */
     public function create()
     {
-        return view('admin.material.create');
+        $usuario = Usuario::findOrFail(Auth::user()->id);
+        $nivel = $usuario['nivel'];
+        return view('admin.material.create', compact('nivel'));
     }
 
     /**
@@ -48,9 +54,9 @@ class MaterialController extends Controller
      */
     public function store(Request $request)
     {
-        
+
         $requestData = $request->all();
-        
+
         Material::create($requestData);
 
         return redirect('admin/material')->with('flash_message', 'Material agregado!!!');
@@ -66,8 +72,10 @@ class MaterialController extends Controller
     public function show($id)
     {
         $material = Material::findOrFail($id);
+        $usuario = Usuario::findOrFail(Auth::user()->id);
+        $nivel = $usuario['nivel'];
 
-        return view('admin.material.show', compact('material'));
+        return view('admin.material.show', compact('material', 'nivel'));
     }
 
     /**
@@ -80,8 +88,10 @@ class MaterialController extends Controller
     public function edit($id)
     {
         $material = Material::findOrFail($id);
+        $usuario = Usuario::findOrFail(Auth::user()->id);
+        $nivel = $usuario['nivel'];
 
-        return view('admin.material.edit', compact('material'));
+        return view('admin.material.edit', compact('material', 'nivel'));
     }
 
     /**
@@ -94,9 +104,9 @@ class MaterialController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
+
         $requestData = $request->all();
-        
+
         $material = Material::findOrFail($id);
         $material->update($requestData);
 

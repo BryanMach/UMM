@@ -24,6 +24,8 @@ class UsuariosController extends Controller
     {
         $keyword = $request->get('search');
         $perPage = 25;
+        $usuario = Usuario::findOrFail(Auth::user()->id);
+        $nivel = $usuario['nivel'];
         $personas = Personal::all();
         if (!empty($keyword)) {
             $usuarios = Usuario::where('idPersonal', 'LIKE', "%$keyword%")
@@ -35,7 +37,7 @@ class UsuariosController extends Controller
             $usuarios = Usuario::latest()->paginate($perPage);
         }
 
-        return view('admin.usuarios.index', compact('usuarios','personas'));
+        return view('admin.usuarios.index', compact('usuarios', 'personas', 'nivel'));
     }
 
     /**
@@ -46,7 +48,9 @@ class UsuariosController extends Controller
     public function create()
     {
         $personas = Personal::All();
-        return view('admin.usuarios.create', compact('personas'));
+        $usuario = Usuario::findOrFail(Auth::user()->id);
+        $nivel = $usuario['nivel'];
+        return view('admin.usuarios.create', compact('personas', 'nivel'));
     }
 
     /**
@@ -77,7 +81,7 @@ class UsuariosController extends Controller
         */
         $user = User::create([
             'name' => $request->usuario,
-            'email' => $request->usuario.'@usuario',
+            'email' => $request->usuario . '@usuario',
             'password' => Hash::make($request->contrasena),
             /*'password'=> $request->password,*/
         ]);
@@ -98,8 +102,10 @@ class UsuariosController extends Controller
     public function show($id)
     {
         $usuario = Usuario::findOrFail($id);
+        $usuario = Usuario::findOrFail(Auth::user()->id);
+        $nivel = $usuario['nivel'];
 
-        return view('admin.usuarios.show', compact('usuario'));
+        return view('admin.usuarios.show', compact('usuario', 'nivel'));
     }
 
     /**
@@ -113,8 +119,10 @@ class UsuariosController extends Controller
     {
         $personas = Personal::All();
         $usuario = Usuario::findOrFail($id);
+        $usuario = Usuario::findOrFail(Auth::user()->id);
+        $nivel = $usuario['nivel'];
 
-        return view('admin.usuarios.edit', compact('usuario','personas'));
+        return view('admin.usuarios.edit', compact('usuario', 'personas', 'nivel'));
     }
 
     /**

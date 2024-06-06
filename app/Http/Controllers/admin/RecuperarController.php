@@ -7,6 +7,8 @@ use App\Http\Requests;
 
 use App\Models\Recuperar;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Models\Usuario;
 
 class RecuperarController extends Controller
 {
@@ -19,6 +21,8 @@ class RecuperarController extends Controller
     {
         $keyword = $request->get('search');
         $perPage = 25;
+        $usuario = Usuario::findOrFail(Auth::user()->id);
+        $nivel = $usuario['nivel'];
 
         if (!empty($keyword)) {
             $recuperar = Recuperar::where('idUsuario', 'LIKE', "%$keyword%")
@@ -33,7 +37,7 @@ class RecuperarController extends Controller
             $recuperar = Recuperar::latest()->paginate($perPage);
         }
 
-        return view('admin.recuperar.index', compact('recuperar'));
+        return view('admin.recuperar.index', compact('recuperar', 'nivel'));
     }
 
     /**
@@ -43,7 +47,9 @@ class RecuperarController extends Controller
      */
     public function create()
     {
-        return view('admin.recuperar.create');
+        $usuario = Usuario::findOrFail(Auth::user()->id);
+        $nivel = $usuario['nivel'];
+        return view('admin.recuperar.create', compact('nivel'));
     }
 
     /**
@@ -55,9 +61,9 @@ class RecuperarController extends Controller
      */
     public function store(Request $request)
     {
-        
+
         $requestData = $request->all();
-        
+
         Recuperar::create($requestData);
 
         return redirect('admin/recuperar')->with('flash_message', 'Recuperar agregado!!!');
@@ -73,8 +79,10 @@ class RecuperarController extends Controller
     public function show($id)
     {
         $recuperar = Recuperar::findOrFail($id);
+        $usuario = Usuario::findOrFail(Auth::user()->id);
+        $nivel = $usuario['nivel'];
 
-        return view('admin.recuperar.show', compact('recuperar'));
+        return view('admin.recuperar.show', compact('recuperar', 'nivel'));
     }
 
     /**
@@ -87,8 +95,10 @@ class RecuperarController extends Controller
     public function edit($id)
     {
         $recuperar = Recuperar::findOrFail($id);
+        $usuario = Usuario::findOrFail(Auth::user()->id);
+        $nivel = $usuario['nivel'];
 
-        return view('admin.recuperar.edit', compact('recuperar'));
+        return view('admin.recuperar.edit', compact('recuperar', 'nivel'));
     }
 
     /**
@@ -101,9 +111,9 @@ class RecuperarController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
+
         $requestData = $request->all();
-        
+
         $recuperar = Recuperar::findOrFail($id);
         $recuperar->update($requestData);
 

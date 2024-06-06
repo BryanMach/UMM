@@ -7,6 +7,8 @@ use App\Http\Requests;
 
 use App\Models\Cuenca;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Models\Usuario;
 
 class CuencaController extends Controller
 {
@@ -19,6 +21,8 @@ class CuencaController extends Controller
     {
         $keyword = $request->get('search');
         $perPage = 25;
+        $usuario = Usuario::findOrFail(Auth::user()->id);
+        $nivel = $usuario['nivel'];
 
         if (!empty($keyword)) {
             $cuenca = Cuenca::where('cuenca', 'LIKE', "%$keyword%")
@@ -27,7 +31,7 @@ class CuencaController extends Controller
             $cuenca = Cuenca::latest()->paginate($perPage);
         }
 
-        return view('admin.cuenca.index', compact('cuenca'));
+        return view('admin.cuenca.index', compact('cuenca', 'nivel'));
     }
 
     /**
@@ -37,7 +41,9 @@ class CuencaController extends Controller
      */
     public function create()
     {
-        return view('admin.cuenca.create');
+        $usuario = Usuario::findOrFail(Auth::user()->id);
+        $nivel = $usuario['nivel'];
+        return view('admin.cuenca.create', compact('nivel'));
     }
 
     /**
@@ -49,9 +55,9 @@ class CuencaController extends Controller
      */
     public function store(Request $request)
     {
-        
+
         $requestData = $request->all();
-        
+
         Cuenca::create($requestData);
 
         return redirect('admin/cuenca')->with('flash_message', 'Cuenca agregado!!!');
@@ -67,8 +73,9 @@ class CuencaController extends Controller
     public function show($id)
     {
         $cuenca = Cuenca::findOrFail($id);
-
-        return view('admin.cuenca.show', compact('cuenca'));
+        $usuario = Usuario::findOrFail(Auth::user()->id);
+        $nivel = $usuario['nivel'];
+        return view('admin.cuenca.show', compact('cuenca', 'nivel'));
     }
 
     /**
@@ -81,8 +88,10 @@ class CuencaController extends Controller
     public function edit($id)
     {
         $cuenca = Cuenca::findOrFail($id);
+        $usuario = Usuario::findOrFail(Auth::user()->id);
+        $nivel = $usuario['nivel'];
 
-        return view('admin.cuenca.edit', compact('cuenca'));
+        return view('admin.cuenca.edit', compact('cuenca', 'nivel'));
     }
 
     /**
@@ -95,9 +104,9 @@ class CuencaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
+
         $requestData = $request->all();
-        
+
         $cuenca = Cuenca::findOrFail($id);
         $cuenca->update($requestData);
 

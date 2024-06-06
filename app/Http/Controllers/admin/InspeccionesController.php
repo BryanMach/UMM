@@ -7,6 +7,8 @@ use App\Http\Requests;
 use App\Models\Artefacto;
 use App\Models\Inspeccione;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Models\Usuario;
 
 class InspeccionesController extends Controller
 {
@@ -19,6 +21,8 @@ class InspeccionesController extends Controller
     {
         $keyword = $request->get('search');
         $perPage = 25;
+        $usuario = Usuario::findOrFail(Auth::user()->id);
+        $nivel = $usuario['nivel'];
         $artefactos = Artefacto::All();
         if (!empty($keyword)) {
             $inspecciones = Inspeccione::where('gestion', 'LIKE', "%$keyword%")
@@ -29,7 +33,7 @@ class InspeccionesController extends Controller
             $inspecciones = Inspeccione::latest()->paginate($perPage);
         }
 
-        return view('admin.inspecciones.index', compact('inspecciones','artefactos'));
+        return view('admin.inspecciones.index', compact('inspecciones', 'artefactos', 'nivel'));
     }
 
     /**
@@ -40,7 +44,9 @@ class InspeccionesController extends Controller
     public function create()
     {
         $artefactos = Artefacto::All();
-        return view('admin.inspecciones.create', compact('artefactos'));
+        $usuario = Usuario::findOrFail(Auth::user()->id);
+        $nivel = $usuario['nivel'];
+        return view('admin.inspecciones.create', compact('artefactos', 'nivel'));
     }
 
     /**
@@ -71,8 +77,10 @@ class InspeccionesController extends Controller
     {
         $inspeccione = Inspeccione::findOrFail($id);
         $artefactos = Artefacto::All();
+        $usuario = Usuario::findOrFail(Auth::user()->id);
+        $nivel = $usuario['nivel'];
 
-        return view('admin.inspecciones.show', compact('inspeccione','artefactos'));
+        return view('admin.inspecciones.show', compact('inspeccione', 'artefactos', 'nivel'));
     }
 
     /**
@@ -86,8 +94,10 @@ class InspeccionesController extends Controller
     {
         $inspeccione = Inspeccione::findOrFail($id);
         $artefactos = Artefacto::All();
+        $usuario = Usuario::findOrFail(Auth::user()->id);
+        $nivel = $usuario['nivel'];
 
-        return view('admin.inspecciones.edit', compact('inspeccione','artefactos'));
+        return view('admin.inspecciones.edit', compact('inspeccione', 'artefactos', 'nivel'));
     }
 
     /**

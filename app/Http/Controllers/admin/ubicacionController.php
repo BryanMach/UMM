@@ -7,6 +7,8 @@ use App\Http\Requests;
 
 use App\Models\ubicacion;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Models\Usuario;
 
 class ubicacionController extends Controller
 {
@@ -19,6 +21,8 @@ class ubicacionController extends Controller
     {
         $keyword = $request->get('search');
         $perPage = 25;
+        $usuario = Usuario::findOrFail(Auth::user()->id);
+        $nivel = $usuario['nivel'];
 
         if (!empty($keyword)) {
             $ubicacion = ubicacion::where('idUsuario', 'LIKE', "%$keyword%")
@@ -29,7 +33,7 @@ class ubicacionController extends Controller
             $ubicacion = ubicacion::latest()->paginate($perPage);
         }
 
-        return view('admin.ubicacion.index', compact('ubicacion'));
+        return view('admin.ubicacion.index', compact('ubicacion', 'nivel'));
     }
 
     /**
@@ -39,7 +43,9 @@ class ubicacionController extends Controller
      */
     public function create()
     {
-        return view('admin.ubicacion.create');
+        $usuario = Usuario::findOrFail(Auth::user()->id);
+        $nivel = $usuario['nivel'];
+        return view('admin.ubicacion.create', compact('nivel'));
     }
 
     /**
@@ -51,9 +57,9 @@ class ubicacionController extends Controller
      */
     public function store(Request $request)
     {
-        
+
         $requestData = $request->all();
-        
+
         ubicacion::create($requestData);
 
         return redirect('admin/ubicacion')->with('flash_message', 'ubicacion added!');
@@ -69,8 +75,10 @@ class ubicacionController extends Controller
     public function show($id)
     {
         $ubicacion = ubicacion::findOrFail($id);
+        $usuario = Usuario::findOrFail(Auth::user()->id);
+        $nivel = $usuario['nivel'];
 
-        return view('admin.ubicacion.show', compact('ubicacion'));
+        return view('admin.ubicacion.show', compact('ubicacion', 'nivel'));
     }
 
     /**
@@ -83,8 +91,10 @@ class ubicacionController extends Controller
     public function edit($id)
     {
         $ubicacion = ubicacion::findOrFail($id);
+        $usuario = Usuario::findOrFail(Auth::user()->id);
+        $nivel = $usuario['nivel'];
 
-        return view('admin.ubicacion.edit', compact('ubicacion'));
+        return view('admin.ubicacion.edit', compact('ubicacion', 'nivel'));
     }
 
     /**
@@ -97,9 +107,9 @@ class ubicacionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
+
         $requestData = $request->all();
-        
+
         $ubicacion = ubicacion::findOrFail($id);
         $ubicacion->update($requestData);
 

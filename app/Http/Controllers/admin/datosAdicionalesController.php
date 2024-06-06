@@ -7,6 +7,8 @@ use App\Http\Requests;
 use App\Models\Artefacto;
 use App\Models\datosAdicionale;
 use Illuminate\Http\Request;
+use App\Models\Usuario;
+use Illuminate\Support\Facades\Auth;
 
 class datosAdicionalesController extends Controller
 {
@@ -19,6 +21,8 @@ class datosAdicionalesController extends Controller
     {
         $keyword = $request->get('search');
         $perPage = 25;
+        $usuario = Usuario::findOrFail(Auth::user()->id);
+        $nivel = $usuario['nivel'];
 
         if (!empty($keyword)) {
             $datosadicionales = datosAdicionale::where('idArtefacto', 'LIKE', "%$keyword%")
@@ -33,7 +37,7 @@ class datosAdicionalesController extends Controller
             $datosadicionales = datosAdicionale::latest()->paginate($perPage);
         }
 
-        return view('admin.datos-adicionales.index', compact('datosadicionales'));
+        return view('admin.datos-adicionales.index', compact('datosadicionales', 'nivel'));
     }
 
     /**
@@ -44,7 +48,9 @@ class datosAdicionalesController extends Controller
     public function create()
     {
         $artefactos = Artefacto::All();
-        return view('admin.datos-adicionales.create', compact('artefactos'));
+        $usuario = Usuario::findOrFail(Auth::user()->id);
+        $nivel = $usuario['nivel'];
+        return view('admin.datos-adicionales.create', compact('artefactos', 'nivel'));
     }
 
     /**
@@ -74,8 +80,10 @@ class datosAdicionalesController extends Controller
     public function show($id)
     {
         $datosadicionale = datosAdicionale::findOrFail($id);
+        $usuario = Usuario::findOrFail(Auth::user()->id);
+        $nivel = $usuario['nivel'];
 
-        return view('admin.datos-adicionales.show', compact('datosadicionale'));
+        return view('admin.datos-adicionales.show', compact('datosadicionale', 'nivel'));
     }
 
     /**
@@ -88,8 +96,10 @@ class datosAdicionalesController extends Controller
     public function edit($id)
     {
         $datosadicionale = datosAdicionale::findOrFail($id);
+        $usuario = Usuario::findOrFail(Auth::user()->id);
+        $nivel = $usuario['nivel'];
 
-        return view('admin.datos-adicionales.edit', compact('datosadicionale'));
+        return view('admin.datos-adicionales.edit', compact('datosadicionale', 'nivel'));
     }
 
     /**

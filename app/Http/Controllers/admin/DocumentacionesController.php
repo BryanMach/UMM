@@ -7,6 +7,8 @@ use App\Http\Requests;
 use App\Models\Artefacto;
 use App\Models\Documentacione;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Models\Usuario;
 
 class DocumentacionesController extends Controller
 {
@@ -19,6 +21,8 @@ class DocumentacionesController extends Controller
     {
         $keyword = $request->get('search');
         $perPage = 25;
+        $usuario = Usuario::findOrFail(Auth::user()->id);
+        $nivel = $usuario['nivel'];
 
         if (!empty($keyword)) {
             $documentaciones = Documentacione::where('idArtefacto', 'LIKE', "%$keyword%")
@@ -28,7 +32,7 @@ class DocumentacionesController extends Controller
             $documentaciones = Documentacione::latest()->paginate($perPage);
         }
 
-        return view('admin.documentaciones.index', compact('documentaciones'));
+        return view('admin.documentaciones.index', compact('documentaciones', 'nivel'));
     }
 
     /**
@@ -39,7 +43,9 @@ class DocumentacionesController extends Controller
     public function create()
     {
         $artefactos = Artefacto::All();
-        return view('admin.documentaciones.create', compact('artefactos'));
+        $usuario = Usuario::findOrFail(Auth::user()->id);
+        $nivel = $usuario['nivel'];
+        return view('admin.documentaciones.create', compact('artefactos', 'nivel'));
     }
 
     /**
@@ -72,8 +78,10 @@ class DocumentacionesController extends Controller
     public function show($id)
     {
         $documentacione = Documentacione::findOrFail($id);
+        $usuario = Usuario::findOrFail(Auth::user()->id);
+        $nivel = $usuario['nivel'];
 
-        return view('admin.documentaciones.show', compact('documentacione'));
+        return view('admin.documentaciones.show', compact('documentacione', 'nivel'));
     }
 
     /**
@@ -86,8 +94,10 @@ class DocumentacionesController extends Controller
     public function edit($id)
     {
         $documentacione = Documentacione::findOrFail($id);
+        $usuario = Usuario::findOrFail(Auth::user()->id);
+        $nivel = $usuario['nivel'];
 
-        return view('admin.documentaciones.edit', compact('documentacione'));
+        return view('admin.documentaciones.edit', compact('documentacione', 'nivel'));
     }
 
     /**

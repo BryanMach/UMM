@@ -7,6 +7,8 @@ use App\Http\Requests;
 use App\Models\Artefacto;
 use App\Models\Motore;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Models\Usuario;
 
 class MotoresController extends Controller
 {
@@ -19,6 +21,8 @@ class MotoresController extends Controller
     {
         $keyword = $request->get('search');
         $perPage = 25;
+        $usuario = Usuario::findOrFail(Auth::user()->id);
+        $nivel = $usuario['nivel'];
 
         if (!empty($keyword)) {
             $motores = Motore::where('idArtefacto', 'LIKE', "%$keyword%")
@@ -32,7 +36,7 @@ class MotoresController extends Controller
             $motores = Motore::latest()->paginate($perPage);
         }
 
-        return view('admin.motores.index', compact('motores'));
+        return view('admin.motores.index', compact('motores', 'nivel'));
     }
 
     /**
@@ -43,7 +47,9 @@ class MotoresController extends Controller
     public function create()
     {
         $artefactos = Artefacto::All();
-        return view('admin.motores.create', compact('artefactos'));
+        $usuario = Usuario::findOrFail(Auth::user()->id);
+        $nivel = $usuario['nivel'];
+        return view('admin.motores.create', compact('artefactos', 'nivel'));
     }
 
     /**
@@ -73,8 +79,10 @@ class MotoresController extends Controller
     public function show($id)
     {
         $motore = Motore::findOrFail($id);
+        $usuario = Usuario::findOrFail(Auth::user()->id);
+        $nivel = $usuario['nivel'];
 
-        return view('admin.motores.show', compact('motore'));
+        return view('admin.motores.show', compact('motore', 'nivel'));
     }
 
     /**
@@ -88,8 +96,10 @@ class MotoresController extends Controller
     {
         $motore = Motore::findOrFail($id);
         $artefactos = Artefacto::All();
+        $usuario = Usuario::findOrFail(Auth::user()->id);
+        $nivel = $usuario['nivel'];
 
-        return view('admin.motores.edit', compact('motore', 'artefactos'));
+        return view('admin.motores.edit', compact('motore', 'artefactos', 'nivel'));
     }
 
     /**

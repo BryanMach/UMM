@@ -8,6 +8,8 @@ use App\Http\Requests;
 use App\Models\BasesOperativa;
 use App\Models\Cuenca;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Models\Usuario;
 
 class BasesOperativasController extends Controller
 {
@@ -20,19 +22,21 @@ class BasesOperativasController extends Controller
     {
         $keyword = $request->get('search');
         $perPage = 25;
+        $usuario = Usuario::findOrFail(Auth::user()->id);
+        $nivel = $usuario['nivel'];
         if (!empty($keyword)) {
             switch ($keyword):
                 case "Lacustre":
-                    $keyword="3";
+                    $keyword = "3";
                     break;
                 case "De la Plata":
-                    $keyword="2";
+                    $keyword = "2";
                     break;
                 case "Amazónica":
-                    $keyword="1";
+                    $keyword = "1";
                     break;
                 case "Amazonica":
-                    $keyword="1";
+                    $keyword = "1";
                     break;
                 default:
                     break;
@@ -54,7 +58,7 @@ class BasesOperativasController extends Controller
             $basesoperativas = BasesOperativa::with('cuenca')->latest("idCuenca")->latest("baseOperativa")->paginate($perPage);
         }
 
-        return view('admin.bases-operativas.index', compact('basesoperativas'));
+        return view('admin.bases-operativas.index', compact('basesoperativas', 'nivel'));
     }
 
     /**
@@ -65,7 +69,9 @@ class BasesOperativasController extends Controller
     public function create()
     {
         $cuencas = Cuenca::All();
-        return view('admin.bases-operativas.create',compact('cuencas'));
+        $usuario = Usuario::findOrFail(Auth::user()->id);
+        $nivel = $usuario['nivel'];
+        return view('admin.bases-operativas.create', compact('cuencas', 'nivel'));
     }
 
     /**
@@ -77,9 +83,9 @@ class BasesOperativasController extends Controller
      */
     public function store(Request $request)
     {
-        
+
         $requestData = $request->all();
-        
+
         BasesOperativa::create($requestData);
 
         return redirect('admin/bases-operativas')->with('flash_message', 'Base operativa agregada!!!');
@@ -95,7 +101,9 @@ class BasesOperativasController extends Controller
     public function show($id)
     {
         $basesoperativa = BasesOperativa::findOrFail($id);
-        return view('admin.bases-operativas.show', compact('basesoperativa'));
+        $usuario = Usuario::findOrFail(Auth::user()->id);
+        $nivel = $usuario['nivel'];
+        return view('admin.bases-operativas.show', compact('basesoperativa', 'nivel'));
     }
 
     /**
@@ -109,7 +117,9 @@ class BasesOperativasController extends Controller
     {
         $basesoperativa = BasesOperativa::findOrFail($id);
         $cuencas = Cuenca::All();
-        return view('admin.bases-operativas.edit', compact('basesoperativa', 'cuencas'));
+        $usuario = Usuario::findOrFail(Auth::user()->id);
+        $nivel = $usuario['nivel'];
+        return view('admin.bases-operativas.edit', compact('basesoperativa', 'cuencas', 'nivel'));
     }
 
     /**
@@ -122,9 +132,9 @@ class BasesOperativasController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
+
         $requestData = $request->all();
-        
+
         $basesoperativa = BasesOperativa::findOrFail($id);
         $basesoperativa->update($requestData);
 
