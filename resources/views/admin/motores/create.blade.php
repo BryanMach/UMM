@@ -12,9 +12,9 @@
              <a href="propietario">Propietarios</a>
              <a href="artefactos">Artefactos</a>
              <a href="lista-propietarios">Listas de propietarios de embarcaciones</a>
-             <a href="imprimir">Certificaciones</a>
-             <a href="imprimir">Alertas de Vencimiento</a>
-             <a href="dashboard">Modo Administrador</a>
+             {{-- <a href="imprimir">Certificaciones</a> --}}
+             {{-- <a href="imprimir">Alertas de Vencimiento</a> --}}
+             {{-- <a href="dashboard">Modo Administrador</a> --}}
          </div>
      </div>
  @else
@@ -28,9 +28,9 @@
              <a href="propietario">Propietarios</a>
              <a href="artefactos">Artefactos</a>
              <a href="lista-propietarios">Listas de propietarios de embarcaciones</a>
-             <a href="imprimir">Certificaciones</a>
-             <a href="imprimir">Alertas de Vencimiento</a>
-             <a href="dashboard">Modo Administrador</a>
+             {{-- <a href="imprimir">Certificaciones</a> --}}
+             {{-- <a href="imprimir">Alertas de Vencimiento</a> --}}
+             {{-- <a href="dashboard">Modo Administrador</a> --}}
          </div>
      </div>
  @endif
