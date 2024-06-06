@@ -95,7 +95,7 @@
         </div>
     </div>
     </div>
-    @if ($nivel != 1)
+    @if ($nivel == 2)
         <div class="right-sidebar">
             <div class="sidebar-header text-center p-3">
                 <h4>Registros de personal </h4>
@@ -110,25 +110,41 @@
                 <a href="lista-propietarios">Listas de propietarios de embarcaciones</a>
                 <a href="imprimir">Certificaciones</a>
                 <a href="imprimir">Alertas de Vencimiento</a>
-                <a href="dashboard">Modo Administrador</a>
             </div>
         </div>
-    @else
-        <div class="right-sidebar">
-            <div class="sidebar-header text-center p-3">
-                <h4>Registros de personal</h4>
+        @if ($nivel == 3)
+            <div class="right-sidebar">
+                <div class="sidebar-header text-center p-3">
+                    <h4>Registros de personal</h4>
+                </div>
+                <div class="sidebar-content">
+                    <a href="bases-operativas" class="active">Bases de operaciones</a>
+                    <h5 class="px-3 pt-3">Registros de embarcaciones</h5>
+                    <a href="propietario">Propietarios</a>
+                    <a href="artefactos">Artefactos</a>
+                    <a href="lista-propietarios">Listas de propietarios de embarcaciones</a>
+                    <a href="imprimir">Certificaciones</a>
+                    <a href="imprimir">Alertas de Vencimiento</a>
+
+                </div>
             </div>
-            <div class="sidebar-content">
-                <a href="bases-operativas" class="active">Bases de operaciones</a>
-                <h5 class="px-3 pt-3">Registros de embarcaciones</h5>
-                <a href="propietario">Propietarios</a>
-                <a href="artefactos">Artefactos</a>
-                <a href="lista-propietarios">Listas de propietarios de embarcaciones</a>
-                <a href="imprimir">Certificaciones</a>
-                <a href="imprimir">Alertas de Vencimiento</a>
-                <a href="dashboard">Modo Administrador</a>
+        @else
+            <div class="right-sidebar">
+                <div class="sidebar-header text-center p-3">
+                    <h4>Registros de personal</h4>
+                </div>
+                <div class="sidebar-content">
+                    <a href="bases-operativas" class="active">Bases de operaciones</a>
+                    <h5 class="px-3 pt-3">Registros de embarcaciones</h5>
+                    <a href="propietario">Propietarios</a>
+                    <a href="artefactos">Artefactos</a>
+                    <a href="lista-propietarios">Listas de propietarios de embarcaciones</a>
+                    <a href="imprimir">Certificaciones</a>
+                    <a href="imprimir">Alertas de Vencimiento</a>
+
+                </div>
             </div>
-        </div>
+        @endif
     @endif
 
     <main class="py-4">
