@@ -163,10 +163,7 @@
                       <div class="table-responsive">
                           <table class="table">
                               <tbody>
-                                  <tr>
-                                      <th>ID</th>
-                                      <td>{{ $listapropietario->id }}</td>
-                                  </tr>
+
                                   <tr>
                                       <th> IdPropietario </th>
                                       <td> {{ $listapropietario->idPropietario }} </td>

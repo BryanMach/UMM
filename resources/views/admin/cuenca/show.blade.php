@@ -160,10 +160,7 @@
                       <div class="table-responsive">
                           <table class="table">
                               <tbody>
-                                  <tr>
-                                      <th>ID</th>
-                                      <td>{{ $cuenca->id }}</td>
-                                  </tr>
+
                                   <tr>
                                       <th> Cuenca </th>
                                       <td> {{ $cuenca->cuenca }} </td>

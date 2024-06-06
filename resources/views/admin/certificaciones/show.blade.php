@@ -161,10 +161,7 @@
                       <div class="table-responsive">
                           <table class="table">
                               <tbody>
-                                  <tr>
-                                      <th>ID</th>
-                                      <td>{{ $certificacione->id }}</td>
-                                  </tr>
+
                                   <tr>
                                       <th> IdCuenca </th>
                                       <td> {{ $certificacione->idCuenca }} </td>
