@@ -54,7 +54,6 @@ class UsuariosController extends Controller
     }
     public function asignar_usuario(Request $request)
     {
-        dd($request);
         $personas = Personal::All();
         $usuario = Usuario::findOrFail(Auth::user()->id);
         $nivel = $usuario['nivel'];

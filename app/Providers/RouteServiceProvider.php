@@ -24,32 +24,37 @@ class RouteServiceProvider extends ServiceProvider
      * pero se hace la llamada desde AutenticatedSessionController
      */
     public const HOME = 'dashboard';
-    public static function HOME(){
+    public static function HOME()
+    {
         //el objetivo es crear 4 opciones para cada nivel de usuario siendo admin=dashboard
         //con estas consultas tendremos la información para esto y la carga de datos
-        $user=User::All();
-        $usuario=Usuario::findOrFail(Auth::user()->id);
-        $personal=Personal::All();//me parece que este no es necesario aqui, sino en el controlador de perfiles
-        
-        switch($usuario->nivel){
+        $user = User::All();
+        $usuario = Usuario::findOrFail(Auth::user()->id);
+        $personal = Personal::All(); //me parece que este no es necesario aqui, sino en el controlador de perfiles
+        //$HOME1 = '#';
+        /* if ($usuario->personals->vigencia == 1) */
+        switch ($usuario->nivel) {
             case 1:
                 $HOME1 = 'admin/perf45a';
-            break;
+                break;
             case 2:
                 $HOME1 = 'admin/perf45j';
-            break;
+                break;
             case 3:
                 $HOME1 = '/admin/perf45i';
                 //$HOME1 = 'admin/perf45a';
-            break;
+                break;
             case 4:
                 $HOME1 = 'admin/perf45r';
-            break;
+                break;
             default:
                 $HOME1 = '/';
-            break;
+                break;
         }
-        
+        /*  else {
+            $HOME1 = '#';
+        }
+ */
         /*if(Auth::user()->id==1){
             //if($usuario->nivel==1)
             dd($usuario->nivel, 'dentro de home'); //para verificar que realmente está leiendo al usuario
