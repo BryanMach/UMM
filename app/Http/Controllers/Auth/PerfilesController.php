@@ -107,10 +107,11 @@ class PerfilesController extends Controller
                     ->where('usuarios.id', $usuario->id)
                     ->select('lista_propietarios.*')
                     ->get();
+                    $nivel = $usuario['nivel'];
         //$listapropietarios = ListaPropietario::latest('idPropietario')->paginate(25);;
         if ($usuario->nivel == 4) {
-            $vista = \View::make('admin.perfiles.externo', compact('listapropietarios','personal', 'usuario', 'perfil', 'basesoperativas', 'cuencas'))->render();
-            return view('admin.perfiles.externo', compact('vista', 'listapropietarios', 'personal', 'usuario', 'perfil', 'basesoperativas', 'cuencas'));
+            $vista = \View::make('admin.perfiles.externo', compact('listapropietarios','personal', 'usuario', 'perfil', 'basesoperativas', 'cuencas','nivel'))->render();
+            return view('admin.perfiles.externo', compact('vista', 'listapropietarios', 'personal', 'usuario', 'perfil', 'basesoperativas', 'cuencas','nivel'));
         }
     }
 
@@ -132,8 +133,9 @@ class PerfilesController extends Controller
         $cuencas = Cuenca::All();
         $certificacion = Certificacione::All();
         //Usuario::create($requestData);
-
-        return view('admin.registros.create', compact('tipos', 'materiales', 'personas', 'usuarios', 'artefactos', 'basesoperativas', 'cuencas', 'certificacion'));
+        $usuario = Usuario::findOrFail(Auth::user()->id);
+        $nivel = $usuario['nivel'];
+        return view('admin.registros.create', compact('tipos', 'materiales', 'personas', 'usuarios', 'artefactos', 'basesoperativas', 'cuencas', 'certificacion','nivel'));
     }
     public function renovar(Request $request)
     {
@@ -184,7 +186,9 @@ class PerfilesController extends Controller
         $usuario = Usuario::findOrFail($id);
         $usuario->update($requestData);
         */
-        return view('admin.registros.edit', compact('propietario','motore','datosadicionale','inspeccione','documentacione','tipos', 'materiales', 'personas', 'usuarios', 'artefacto', 'basesoperativas', 'cuencas', 'certificacion'));
+        $usuario = Usuario::findOrFail(Auth::user()->id);
+        $nivel = $usuario['nivel'];
+        return view('admin.registros.edit', compact('propietario','motore','datosadicionale','inspeccione','documentacione','tipos', 'materiales', 'personas', 'usuarios', 'artefacto', 'basesoperativas', 'cuencas', 'certificacion','nivel'));
     }
     /*
     Aqui recibo todos los datos para todas las tablas de parte del  registrador
