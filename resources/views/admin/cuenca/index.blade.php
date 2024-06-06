@@ -139,6 +139,24 @@
               <div class="card">
                   <div class="card-header">Cuenca</div>
                   <div class="card-body">
+                      @switch($nivel)
+                          @case(3)
+                              <a href="{{ url('/admin/perf45i') }}" title="Back"><button class="btn btn-warning btn-sm">
+                                      <i class="fa fa-arrow-left" aria-hidden="true"></i> Volver</button></a>
+                          @break
+
+                          @case(2)
+                              <a href="{{ url('/admin/perf45j') }}" title="Back"><button class="btn btn-warning btn-sm">
+                                      <i class="fa fa-arrow-left" aria-hidden="true"></i> Volver</button></a>
+                          @break
+
+                          @case(4)
+                              <a href="{{ url('/admin/perf45r') }}" title="Back"><button class="btn btn-warning btn-sm">
+                                      <i class="fa fa-arrow-left" aria-hidden="true"></i> Volver</button></a>
+                          @break
+
+                          @default
+                      @endswitch
                       <a href="{{ url('/admin/cuenca/create') }}" class="btn btn-success btn-sm"
                           title="Agregar nuevo Cuenca">
                           <i class="fa fa-plus" aria-hidden="true"></i> Agregar
@@ -182,7 +200,8 @@
                                                           class="fa fa-pencil-square-o" aria-hidden="true"></i>
                                                       Editar</button></a>
 
-                                              <form method="POST" action="{{ url('/admin/cuenca' . '/' . $item->id) }}"
+                                              <form method="POST"
+                                                  action="{{ url('/admin/cuenca' . '/' . $item->id) }}"
                                                   accept-charset="UTF-8" style="display:inline">
                                                   {{ method_field('DELETE') }}
                                                   {{ csrf_field() }}

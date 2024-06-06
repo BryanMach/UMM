@@ -152,6 +152,24 @@
               <div class="card">
                   <div class="card-header">Recuperar</div>
                   <div class="card-body">
+                      @switch($nivel)
+                          @case(3)
+                              <a href="{{ url('/admin/perf45i') }}" title="Back"><button class="btn btn-warning btn-sm">
+                                      <i class="fa fa-arrow-left" aria-hidden="true"></i> Volver</button></a>
+                          @break
+
+                          @case(2)
+                              <a href="{{ url('/admin/perf45j') }}" title="Back"><button class="btn btn-warning btn-sm">
+                                      <i class="fa fa-arrow-left" aria-hidden="true"></i> Volver</button></a>
+                          @break
+
+                          @case(4)
+                              <a href="{{ url('/admin/perf45r') }}" title="Back"><button class="btn btn-warning btn-sm">
+                                      <i class="fa fa-arrow-left" aria-hidden="true"></i> Volver</button></a>
+                          @break
+
+                          @default
+                      @endswitch
                       <a href="{{ url('/admin/recuperar/create') }}" class="btn btn-success btn-sm"
                           title="Agregar nuevo Recuperar">
                           <i class="fa fa-plus" aria-hidden="true"></i> Agregar
