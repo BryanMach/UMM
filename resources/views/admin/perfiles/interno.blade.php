@@ -233,9 +233,9 @@
                             @foreach ($listaL as $item)
                                 <tr>
                                     <td>{{ $item->propietarios->nombre }} {{ $item->propietarios->identificador }}</td>
-                                    <td>{{ $item->artefactos->nombre }}-{{ $item->artefactos->matricula }}-{{-- $item->certificado->nreg --}}
+                                    <td>{{ $item->artefactos->nombre }}-{{ $item->artefactos->matricula }}-{{ $item->artefactos->certificado->nreg }}
                                     </td>
-                                    <td>{{-- $item->certificado->fechaVencimiento --}}</td>
+                                    <td>{{ $item->artefactos->certificado->fechaVencimiento }}</td>
                                     <td><button><i class="fas fa-edit"></i></button> <button><i
                                                 class="fas fa-eye"></i></button>
                                     </td>
@@ -257,14 +257,14 @@
                             </tr>
                         </thead>
                         <tbody>
-                            {{-- crear las diferentes listas para las cuencas --}}
+                            
                             @foreach ($listaA as $item)
                                 <tr>
                                     <td>{{ $item->propietarios->nombre }} {{ $item->propietarios->identificador }}
                                     </td>
-                                    <td>{{ $item->artefactos->nombre }}-{{ $item->artefactos->matricula }}-{{-- $item->certificado->nreg --}}
+                                    <td>{{ $item->artefactos->nombre }}-{{ $item->artefactos->matricula }}-{{ $item->artefactos->certificado->nreg }}
                                     </td>
-                                    <td>{{-- $item->certificado->fechaVencimiento --}}</td>
+                                    <td>{{ $item->artefactos->certificado->fechaVencimiento }}</td>
                                     <td><button><i class="fas fa-edit"></i></button> <button><i
                                                 class="fas fa-eye"></i></button>
                                     </td>
@@ -289,9 +289,9 @@
                                 <tr>
                                     <td>{{ $item->propietarios->nombre }} {{ $item->propietarios->identificador }}
                                     </td>
-                                    <td>{{ $item->artefactos->nombre }}-{{ $item->artefactos->matricula }}-{{-- $item->certificado->nreg --}}
-                                    </td>
-                                    <td>{{-- $item->certificado->fechaVencimiento --}}</td>
+                                    <td>{{ $item->artefactos->nombre }}-{{ $item->artefactos->matricula }}-{{ $item->artefactos->certificado->nreg }}
+                                  </td>
+                                    <td>{{ $item->artefactos->certificado->fechaVencimiento }}</td>
                                     <td><button><i class="fas fa-edit"></i></button> <button><i
                                                 class="fas fa-eye"></i></button>
                                     </td>
