@@ -89,7 +89,7 @@ class PerfilesController extends Controller
         $persona = Personal::All();
         $listaL = ListaPropietario::join('artefactos', 'lista_propietarios.idArtefacto', '=', 'artefactos.id')
                     ->join('bases_operativas', 'artefactos.idBaseOperativa', '=', 'bases_operativas.id')
-                    
+                    ->join('certificados', 'certificados.idArtefacto', '=', 'artefactos.id')
                     ->where('bases_operativas.idCuenca', 3)
                     ->select('lista_propietarios.*')
                     ->get();
