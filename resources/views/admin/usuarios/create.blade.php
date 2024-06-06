@@ -1,77 +1,92 @@
- @extends('layouts.app')
- @if (Auth::user()->id != 1)
-     <div class="right-sidebar">
-         <div class="sidebar-header text-center p-3">
-             <h4>Registros de personal</h4>
-         </div>
-         <div class="sidebar-content">
-             <a href="personal">Personal</a>
-             <a href="usuarios">Usuarios</a>
-             <a href="bases-operativas" class="active">Bases de operaciones</a>
-             <h5 class="px-3 pt-3">Registros de embarcaciones</h5>
-             <a href="propietario">Propietarios</a>
-             <a href="artefactos">Artefactos</a>
-             <a href="lista-propietarios">Listas de propietarios de embarcaciones</a>
-             <a href="imprimir">Certificaciones</a>
-             <a href="imprimir">Alertas de Vencimiento</a>
-             <a href="dashboard">Modo Administrador</a>
-         </div>
-     </div>
- @else
-     <div class="right-sidebar">
-         <div class="sidebar-header text-center p-3">
-             <h4>Registros de personal</h4>
-         </div>
-         <div class="sidebar-content">
-             <a href="bases-operativas" class="active">Bases de operaciones</a>
-             <h5 class="px-3 pt-3">Registros de embarcaciones</h5>
-             <a href="propietario">Propietarios</a>
-             <a href="artefactos">Artefactos</a>
-             <a href="lista-propietarios">Listas de propietarios de embarcaciones</a>
-             <a href="imprimir">Certificaciones</a>
-             <a href="imprimir">Alertas de Vencimiento</a>
-             <a href="dashboard">Modo Administrador</a>
-         </div>
-     </div>
- @endif
+  @if ($nivel == 2)
+      <div class="right-sidebar">
+          <div class="sidebar-header text-center p-3">
+              <h4>Registros de personal </h4>
+          </div>
+          <div class="sidebar-content">
+              <a href="personal">Personal</a>
+              <a href="usuarios">Usuarios</a>
+              <a href="bases-operativas" class="active">Bases de operaciones</a>
+              <h5 class="px-3 pt-3">Registros de embarcaciones</h5>
+              <a href="propietario">Propietarios</a>
+              <a href="artefactos">Artefactos</a>
+              <a href="lista-propietarios">Listas de propietarios de embarcaciones</a>
+              <a href="imprimir">Certificaciones</a>
+              <a href="imprimir">Alertas de Vencimiento</a>
+          </div>
+      </div>
+      @if ($nivel == 3)
+          <div class="right-sidebar">
+              <div class="sidebar-header text-center p-3">
+                  <h4>Registros de personal</h4>
+              </div>
+              <div class="sidebar-content">
+                  <a href="bases-operativas" class="active">Bases de operaciones</a>
+                  <h5 class="px-3 pt-3">Registros de embarcaciones</h5>
+                  <a href="propietario">Propietarios</a>
+                  <a href="artefactos">Artefactos</a>
+                  <a href="lista-propietarios">Listas de propietarios de embarcaciones</a>
+                  <a href="imprimir">Certificaciones</a>
+                  <a href="imprimir">Alertas de Vencimiento</a>
 
- @section('content')
-     <div class="container">
-         <div class="row">
-             <div class="col-md-9">
-                 <div class="card">
-                     <div class="card-header">Datos del nuevo Usuario</div>
-                     <div class="card-body">
-                         <a href="{{ url('/admin/usuarios') }}" title="Back"><button class="btn btn-warning btn-sm"><i
-                                     class="fa fa-arrow-left" aria-hidden="true"></i> Retroceder</button></a>
-                         <a href="{{ url('/admin/usuarios') }}" title="Back"><button class="btn btn-warning btn-sm"><i
-                                     class="fa fa-arrow-left" aria-hidden="true"></i> Inicio</button></a>
-                         <a href="{{ url('/admin/usuarios') }}" title="Back"><button class="btn btn-warning btn-sm"><i
-                                     class="fa fa-arrow-left" aria-hidden="true"></i> Siguiente</button></a>
-                         <a href="{{ url('/admin/usuarios') }}" title="Back"><button class="btn btn-warning btn-sm"><i
-                                     class="fa fa-arrow-left" aria-hidden="true"></i> Certificar</button></a>
-                         <br />
-                         <br />
+              </div>
+          </div>
+      @else
+          <div class="right-sidebar">
+              <div class="sidebar-header text-center p-3">
+                  <h4>Registros de personal</h4>
+              </div>
+              <div class="sidebar-content">
+                  <a href="bases-operativas" class="active">Bases de operaciones</a>
+                  <h5 class="px-3 pt-3">Registros de embarcaciones</h5>
+                  <a href="propietario">Propietarios</a>
+                  <a href="artefactos">Artefactos</a>
+                  <a href="lista-propietarios">Listas de propietarios de embarcaciones</a>
+                  <a href="imprimir">Certificaciones</a>
+                  <a href="imprimir">Alertas de Vencimiento</a>
 
-                         @if ($errors->any())
-                             <ul class="alert alert-danger">
-                                 @foreach ($errors->all() as $error)
-                                     <li>{{ $error }}</li>
-                                 @endforeach
-                             </ul>
-                         @endif
+              </div>
+          </div>
+      @endif
+  @endif
 
-                         <form method="POST" action="{{ url('/admin/usuarios') }}" accept-charset="UTF-8"
-                             class="form-horizontal" enctype="multipart/form-data">
-                             {{ csrf_field() }}
+  @section('content')
+      <div class="container">
+          <div class="row">
+              <div class="col-md-9">
+                  <div class="card">
+                      <div class="card-header">Datos del nuevo Usuario</div>
+                      <div class="card-body">
+                          <a href="{{ url('/admin/usuarios') }}" title="Back"><button class="btn btn-warning btn-sm"><i
+                                      class="fa fa-arrow-left" aria-hidden="true"></i> Retroceder</button></a>
+                          <a href="{{ url('/admin/usuarios') }}" title="Back"><button class="btn btn-warning btn-sm"><i
+                                      class="fa fa-arrow-left" aria-hidden="true"></i> Inicio</button></a>
+                          <a href="{{ url('/admin/usuarios') }}" title="Back"><button class="btn btn-warning btn-sm"><i
+                                      class="fa fa-arrow-left" aria-hidden="true"></i> Siguiente</button></a>
+                          <a href="{{ url('/admin/usuarios') }}" title="Back"><button class="btn btn-warning btn-sm"><i
+                                      class="fa fa-arrow-left" aria-hidden="true"></i> Certificar</button></a>
+                          <br />
+                          <br />
 
-                             @include ('admin.usuarios.form', ['formMode' => 'create'])
+                          @if ($errors->any())
+                              <ul class="alert alert-danger">
+                                  @foreach ($errors->all() as $error)
+                                      <li>{{ $error }}</li>
+                                  @endforeach
+                              </ul>
+                          @endif
 
-                         </form>
+                          <form method="POST" action="{{ url('/admin/usuarios') }}" accept-charset="UTF-8"
+                              class="form-horizontal" enctype="multipart/form-data">
+                              {{ csrf_field() }}
 
-                     </div>
-                 </div>
-             </div>
-         </div>
-     </div>
- @endsection
+                              @include ('admin.usuarios.form', ['formMode' => 'create'])
+
+                          </form>
+
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  @endsection
