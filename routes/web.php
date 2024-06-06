@@ -18,6 +18,7 @@ use App\Http\Controllers\admin\MotoresController;
 use App\Http\Controllers\admin\datosAdicionalesController;
 use App\Http\Controllers\admin\RecuperarController;
 use App\Http\Controllers\admin\certificadosController;
+use App\Http\Controllers\admin\ubicacionController;
 use App\Http\Controllers\Auth\PerfilesController;
 
 /*
@@ -67,6 +68,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('admin/motores', MotoresController::class);
     Route::resource('admin/datos-adicionales', datosAdicionalesController::class);
     Route::resource('admin/recuperar', RecuperarController::class);
+    Route::resource('admin/ubicacion', ubicacionController::class);
 
     Route::post('admin/imprimir-certificado-registro', [PerfilesController::class, 'imprimir_certificado_registro']);
     Route::post('admin/imprimir-certificado-seguridad', [PerfilesController::class, 'imprimir_certificado_seguridad']);
@@ -77,13 +79,19 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('admin/perf45j', [PerfilesController::class, 'jefe']);
     Route::get('admin/perf45i', [PerfilesController::class, 'interno']);
     Route::get('admin/perf45r', [PerfilesController::class, 'registrador']);
-    //Route::resource('admin/registro', PerfilesController::class);
+    //Rutas para registrar
     Route::post('admin/registro', [PerfilesController::class, 'registrar']);
     Route::post('admin/registro/guardarRegistro', [PerfilesController::class, 'guardarRegistro']);
     Route::get('admin/registro', [PerfilesController::class, 'registrar']);
     Route::get('admin/registro/guardarRegistro', [PerfilesController::class, 'guardarRegistro']);
+    //Rutas para renovar
+    Route::post('admin/renovar', [PerfilesController::class, 'renovar']);
+    Route::post('admin/renovar/guardarRenovacion', [PerfilesController::class, 'guardarRenovacion']);
+    //Rutas para corregir
+    Route::post('admin/corregir', [PerfilesController::class, 'corregir']);
+    Route::post('admin/corregir/guardarCorrección', [PerfilesController::class, 'guardarCorrección']);
+    //Rutas para certificar
     Route::resource('admin/certificados', certificadosController::class);
-    Route::resource('admin/ubicacion', 'admin\ubicacionController');
 });
 Route::resource('admin/certicados', 'admin\certicadosController');
 Route::resource('admin/certificados', 'admin\certificadosController');

@@ -243,20 +243,20 @@
                                     <a href="{{ url('/admin/lista-propietarios/' . $item->id) }}"
                                         title="Ver ListaPropietario"><button class="btn btn-info btn-sm"><i
                                                 class="fa fa-eye" aria-hidden="true"></i> Ver</button></a>
-                                    <a href="{{ url('/admin/lista-propietarios/' . $item->id . '/edit') }}"
+                                    {{-- <a href="{{ url('/admin/lista-propietarios/' . $item->id . '/edit') }}"
                                         title="Editar ListaPropietario"><button class="btn btn-primary btn-sm"><i
                                                 class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                                            Editar</button></a>
-                                    {{--  <form method="POST" action="{{ url('/dashboard') }}" accept-charset="UTF-8"
-                                        style="display:inline">
-                                        {{ csrf_field() }}
-                                        <input type="hidden" name="nivel" value="{{ $usuario->nivel }}">
-                                        <button type="submit" class="btn btn-primary btn-sm"
-                                            title="Ver ListaPropietario"><i class="fa fa-trash-o"
-                                                aria-hidden="true"></i>Editar</button>
-                                    </form> --}}
+                                            Editar</button></a> --}}
+                                        <form method="POST" action="{{ url('/admin/corregir') }}" accept-charset="UTF-8"
+                                            style="display:inline">
+                                            {{ csrf_field() }}
+                                            <input type="hidden" name="id" value="{{ $item->id }}">
+                                            <button type="submit" class="btn btn-primary btn-sm"
+                                                title="Corregir registro"><i class="fa fa-trash-o"
+                                                aria-hidden="true"></i>Corregir</button>
+                                        </form>
 
-                                    <form method="POST"
+                                    {{--<form method="POST"
                                         action="{{ url('/admin/lista-propietarios' . '/' . $item->id) }}"
                                         accept-charset="UTF-8" style="display:inline">
                                         {{ method_field('DELETE') }}
@@ -265,7 +265,7 @@
                                             title="Borrar ListaPropietario"
                                             onclick="return confirm(&quot;Confirm delete?&quot;)"><i
                                                 class="fa fa-trash-o" aria-hidden="true"></i> Borrar</button>
-                                    </form>
+                                    </form> --}}
                                 </td>
                             </tr>
                         @endforeach

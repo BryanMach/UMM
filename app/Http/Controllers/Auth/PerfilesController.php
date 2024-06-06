@@ -102,7 +102,12 @@ class PerfilesController extends Controller
         $basesoperativas = BasesOperativa::All();
         $cuencas = Cuenca::All();
         //$listapropietarios = ListaPropietario::where('idUsuario','and','id');
-        $listapropietarios = ListaPropietario::latest('idPropietario')->paginate(25);;
+        $listapropietarios = ListaPropietario::join('artefactos', 'lista_propietarios.idArtefacto', '=', 'artefactos.id')
+                    ->join('usuarios', 'artefactos.idUsuarios', '=', 'usuarios.id')
+                    ->where('usuarios.id', $usuario->id)
+                    ->select('lista_propietarios.*')
+                    ->get();
+        //$listapropietarios = ListaPropietario::latest('idPropietario')->paginate(25);;
         if ($usuario->nivel == 4) {
             $vista = \View::make('admin.perfiles.externo', compact('listapropietarios','personal', 'usuario', 'perfil', 'basesoperativas', 'cuencas'))->render();
             return view('admin.perfiles.externo', compact('vista', 'listapropietarios', 'personal', 'usuario', 'perfil', 'basesoperativas', 'cuencas'));
@@ -129,6 +134,57 @@ class PerfilesController extends Controller
         //Usuario::create($requestData);
 
         return view('admin.registros.create', compact('tipos', 'materiales', 'personas', 'usuarios', 'artefactos', 'basesoperativas', 'cuencas', 'certificacion'));
+    }
+    public function renovar(Request $request)
+    {
+        $perPage = 25;
+        $requestData = $request->all();
+        //dd($requestData['id']);
+        $cuenca = $request->idCuenca;
+        $baseoperativa = $request->idBaseOperativa;
+        $personas = Personal::All();
+        $tipos = Tipo::All();
+        $materiales = Material::All();
+        $usuarios = Usuario::All();
+        //$usuario = Usuario::findOrFail(Auth::user()->id);
+        $listapropietarios = ListaPropietario::findOrFail($requestData['id']);
+        $artefactos = Artefacto::findOrFail($listapropietarios['idArtefacto']);
+        $propietarios = Propietario::findOrFail($listapropietarios['idPropietario']);
+        $basesoperativas = BasesOperativa::All();
+        $cuencas = Cuenca::All();
+        $certificacion = Certificacione::All();
+        //Usuario::create($requestData);
+
+        return view('admin.registros.create', compact('tipos', 'materiales', 'personas', 'usuarios', 'artefactos', 'basesoperativas', 'cuencas', 'certificacion'));
+    }
+    public function corregir(Request $request)
+    {
+        $perPage = 25;
+        $requestData = $request->all();
+        //dd($requestData);
+        $cuenca = $request->idCuenca;
+        $baseoperativa = $request->idBaseOperativa;
+        $personas = Personal::All();
+        $tipos = Tipo::All();
+        $materiales = Material::All();
+        $usuarios = Usuario::All();
+        //$usuario = Usuario::findOrFail(Auth::user()->id);
+        $listapropietarios = ListaPropietario::findOrFail($requestData['id']);
+        $artefacto = Artefacto::findOrFail($listapropietarios['idArtefacto']);
+        $propietario = Propietario::findOrFail($listapropietarios['idPropietario']);
+        $motore = Motore::findOrFail($listapropietarios['idPropietario']);
+        $datosadicionale = datosAdicionale::findOrFail($listapropietarios['idPropietario']);
+        $inspeccione = Inspeccione::findOrFail($listapropietarios['idPropietario']);
+        $documentacione =Documentacione::findOrFail($listapropietarios['idPropietario']);
+        $basesoperativas = BasesOperativa::All();
+        $cuencas = Cuenca::All();
+        $certificacion = Certificacione::All();
+        //Usuario::create($requestData);
+        /*
+        $usuario = Usuario::findOrFail($id);
+        $usuario->update($requestData);
+        */
+        return view('admin.registros.edit', compact('propietario','motore','datosadicionale','inspeccione','documentacione','tipos', 'materiales', 'personas', 'usuarios', 'artefacto', 'basesoperativas', 'cuencas', 'certificacion'));
     }
     /*
     Aqui recibo todos los datos para todas las tablas de parte del  registrador
@@ -159,11 +215,12 @@ class PerfilesController extends Controller
             'potencia' => $requestData['potencia'], 'nominalelectrica' => $requestData['nominalelectrica']
         ];
         Motore::create($requestMotor);
-        /* 
+        /*
+     *
      * carga comb es un número con valores
      * 11,12,13 para vehículos autopropulsados
      * 21,22,23 para vehículos sin propulsión
-     * 
+     *
      */
         $requestDatoAdicional = [
             'idArtefacto' => $idArtefacto->id, 'lugar' => $requestData['lugar'], 'mercPelig' => $requestData['mercPelig'],
@@ -232,6 +289,21 @@ class PerfilesController extends Controller
             'nreg' => $numero, 'correlativo' => $requestData['correlativo'], 'fechaEmision' => $fechaActual, 'fechaAlerta' => $fechaAlerta, 'fechaVencimiento' => $fechaVencimiento
         ];
         $certificacion = certificado::create($requestCertificado);
+        /*
+        array:5 [▼ // app\Http\Controllers\admin\ubicacionController.php:114
+  "_method" => "PATCH"
+  "_token" => "8Y9tRL35bV6eLwWP8o0SK9vYB87hqy9GuHxWeyHT"
+  "idUsuario" => "1"
+  "idCuenca" => "1"
+  "idBaseOperativa" => "2"
+]
+        */
+        //dd('num:'.$numeroc);
+        //"num:{"id":2,"created_at":"2024-05-16T16:27:39.000000Z","updated_at":"2024-05-16T16:27:39.000000Z","idCuenca":2,"numero":1}" 
+        //dd('aux:'.$aux);
+        //"aux:{"id":2,"created_at":"2024-05-16T16:27:39.000000Z","updated_at":"2024-05-16T16:27:39.000000Z","idCuenca":2,"numero":1}"
+        $aux=["numero"=>$numero];
+        $numeroc->update($aux);
         $certificacion['fechaEmision'] = $this->mostrarFechaFormateada($certificacion['fechaEmision']);
         $certificacion['fechaVencimiento'] = $this->mostrarFechaFormateada($fechaVencimiento);
         //dd('fechaEmision'.$certificacion['fechaEmision'].'fechaVencimiento'.$certificacion['fechaVencimiento']);
@@ -329,7 +401,7 @@ class PerfilesController extends Controller
         $numeroc = Certificacione::findOrFail($cuenca['id']);
         $aux = $numeroc;
         $numero = $numeroc['numero'];
-        $numero = $numero + 1;
+        //$numero = $numero + 1;
         $aux['numero'] = $numero;
         $fechaActual = date('Y-m-d');
         $fechaActualTimestamp = strtotime($fechaActual);
@@ -391,7 +463,7 @@ class PerfilesController extends Controller
        $numeroc = Certificacione::findOrFail($cuenca['id']);
        $aux = $numeroc;
        $numero = $numeroc['numero'];
-       $numero = $numero + 1;
+       //$numero = $numero + 1;
        $aux['numero'] = $numero;
        //$numeroc->update($aux);
        $fechaActual = date('Y-m-d');
@@ -453,7 +525,7 @@ class PerfilesController extends Controller
         $numeroc = Certificacione::findOrFail($cuenca['id']);
         $aux = $numeroc;
         $numero = $numeroc['numero'];
-        $numero = $numero + 1;
+        //$numero = $numero + 1;
         $aux['numero'] = $numero;
         $fechaActual = date('Y-m-d');
         $fechaActualTimestamp = strtotime($fechaActual);

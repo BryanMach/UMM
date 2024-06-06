@@ -215,7 +215,7 @@
     <select class="form-control" name="cargaComb" type="number" id="cargaComb">
         @if ($formMode == 'edit')
                     @switch ($datosadicionale->cargaComb)
-                        @case (11)                        
+                        @case (11)
                         <option value="11" selected>Embarcación autopropulsada: Abierto</option>
                         <option value="12">Embarcación autopropulsada: Cerrado</option>
                         <option value="13">Embarcación autopropulsada: Tanque</option>
