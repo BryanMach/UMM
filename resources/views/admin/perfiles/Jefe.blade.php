@@ -159,7 +159,17 @@
                                     <a href="{{ url('/admin/personal/' . $item->id) }}" title="Ver Personal"><button
                                             class="btn btn-info btn-sm">
                                             <i class="fa fa-eye" aria-hidden="true"></i> Ver</button></a>
-
+                                            <!--<form method="POST"
+                                                  action="{{ url('/admin/usuario') }}"                                                 accept-charset="UTF-8" style="display:inline">
+                                                  {{ csrf_field() }}
+                                                  <input type="hiden" name="" id="" value="{{ asset($item->id) }}">
+                                                  <button type="submit" class="btn btn-info btn-sm"
+                                                      title="Asignar usuario"><i
+                                                          class="fa fa-trash-o" aria-hidden="true"></i> Asignar usuario</button>
+                                              </form>
+                                            <a href="{{ url('/admin/usuario/' . $item->id) }}" title="Ver Personal"><button
+                                                class="btn btn-info btn-sm">
+                                                <i class="fa fa-eye" aria-hidden="true"></i> Asignar usuario</button></a>-->
                                 </td>
                             </tr>
                         @endforeach

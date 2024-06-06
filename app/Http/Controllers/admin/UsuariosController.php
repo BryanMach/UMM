@@ -52,7 +52,14 @@ class UsuariosController extends Controller
         $nivel = $usuario['nivel'];
         return view('admin.usuarios.create', compact('personas', 'nivel'));
     }
-
+    public function asignar_usuario(Request $request)
+    {
+        dd($request);
+        $personas = Personal::All();
+        $usuario = Usuario::findOrFail(Auth::user()->id);
+        $nivel = $usuario['nivel'];
+        return view('admin.usuarios.create', compact('personas', 'nivel'));
+    }
     /**
      * Store a newly created resource in storage.
      *
