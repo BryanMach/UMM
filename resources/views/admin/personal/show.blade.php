@@ -161,10 +161,6 @@
                           <table class="table">
                               <tbody>
                                   <tr>
-                                      <th>ID</th>
-                                      <td>{{ $personal->id }}</td>
-                                  </tr>
-                                  <tr>
                                       <th> Ci </th>
                                       <td> {{ $personal->ci }} </td>
                                   </tr>

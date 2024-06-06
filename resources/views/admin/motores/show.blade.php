@@ -161,10 +161,6 @@
                           <table class="table">
                               <tbody>
                                   <tr>
-                                      <th>ID</th>
-                                      <td>{{ $motore->id }}</td>
-                                  </tr>
-                                  <tr>
                                       <th> IdArtefacto </th>
                                       <td> {{ $motore->idArtefacto }} </td>
                                   </tr>

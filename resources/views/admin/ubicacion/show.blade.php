@@ -160,20 +160,17 @@
                       <div class="table-responsive">
                           <table class="table">
                               <tbody>
+
                                   <tr>
-                                      <th>ID</th>
-                                      <td>{{ $ubicacion->id }}</td>
-                                  </tr>
-                                  <tr>
-                                      <th> IdUsuario </th>
+                                      <th> Usuario </th>
                                       <td> {{ $ubicacion->idUsuario }} </td>
                                   </tr>
                                   <tr>
-                                      <th> IdCuenca </th>
+                                      <th> Cuenca </th>
                                       <td> {{ $ubicacion->idCuenca }} </td>
                                   </tr>
                                   <tr>
-                                      <th> IdBaseOperativa </th>
+                                      <th> Base Operativa </th>
                                       <td> {{ $ubicacion->idBaseOperativa }} </td>
                                   </tr>
                               </tbody>

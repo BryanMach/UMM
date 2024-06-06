@@ -160,10 +160,7 @@
                       <div class="table-responsive">
                           <table class="table">
                               <tbody>
-                                  <tr>
-                                      <th>ID</th>
-                                      <td>{{ $usuario->id }}</td>
-                                  </tr>
+
                                   <tr>
                                       <th> Personal </th>
                                       <td> <a href="{{ url('/admin/personal/' . $usuario->idPersonal) }}">{{ $usuario->personals->nombres }}

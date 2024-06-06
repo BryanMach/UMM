@@ -160,10 +160,7 @@
                       <div class="table-responsive">
                           <table class="table">
                               <tbody>
-                                  <tr>
-                                      <th>ID</th>
-                                      <td>{{ $material->id }}</td>
-                                  </tr>
+
                                   <tr>
                                       <th> Material </th>
                                       <td> {{ $material->material }} </td>

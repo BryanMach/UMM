@@ -160,10 +160,7 @@
                       <div class="table-responsive">
                           <table class="table">
                               <tbody>
-                                  <tr>
-                                      <th>ID</th>
-                                      <td>{{ $recuperar->id }}</td>
-                                  </tr>
+
                                   <tr>
                                       <th> IdUsuario </th>
                                       <td> {{ $recuperar->idUsuario }} </td>
