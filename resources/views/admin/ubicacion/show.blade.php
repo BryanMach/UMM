@@ -100,13 +100,13 @@
               <h4>Registros de personal </h4>
           </div>
           <div class="sidebar-content">
-              <a href="personal">Personal</a>
-              <a href="usuarios">Usuarios</a>
-              <a href="bases-operativas" class="active">Bases de operaciones</a>
+              <a href="{{ url('/admin/personal') }}">Personal</a>
+              <a href="{{ url('/admin/usuarios') }}">Usuarios</a>
+              <a href="{{ url('/admin/bases-operativas') }}" class="active">Bases de operaciones</a>
               <h5 class="px-3 pt-3">Registros de embarcaciones</h5>
-              <a href="propietario">Propietarios</a>
-              <a href="artefactos">Artefactos</a>
-              <a href="lista-propietarios">Listas de propietarios de embarcaciones</a>
+              <a href="{{ url('/admin/propietario') }}">Propietarios</a>
+              <a href="{{ url('/admin/artefactos') }}">Artefactos</a>
+              <a href="{{ url('/admin/lista-propietarios') }}">Listas de propietarios de embarcaciones</a>
               {{-- <a href="imprimir">Certificaciones</a> --}}
               {{-- <a href="imprimir">Alertas de Vencimiento</a> --}}
           </div>
@@ -116,9 +116,9 @@
       <div class="right-sidebar">
           <div class="sidebar-content">
               <h5 class="px-3 pt-3">Registros de embarcaciones</h5>
-              <a href="propietario">Propietarios</a>
-              <a href="artefactos">Artefactos</a>
-              <a href="lista-propietarios">Listas de propietarios de embarcaciones</a>
+              <a href="{{ url('/admin/propietario') }}">Propietarios</a>
+              <a href="{{ url('/admin/artefactos') }}">Artefactos</a>
+              <a href="{{ url('/admin/lista-propietarios') }}">Listas de propietarios de embarcaciones</a>
               {{-- <a href="imprimir">Certificaciones</a> --}}
               {{-- <a href="imprimir">Alertas de Vencimiento</a> --}}
           </div>
@@ -127,9 +127,9 @@
       <div class="right-sidebar">
           <div class="sidebar-content">
               <h5 class="px-3 pt-3">Registros de embarcaciones</h5>
-              <a href="propietario">Propietarios</a>
-              <a href="artefactos">Artefactos</a>
-              <a href="lista-propietarios">Listas de propietarios de embarcaciones</a>
+              <a href="{{ url('/admin/propietario') }}">Propietarios</a>
+              <a href="{{ url('/admin/artefactos') }}">Artefactos</a>
+              <a href="{{ url('/admin/artefactos') }}">Listas de propietarios de embarcaciones</a>
           </div>
       </div>
   @endif @section('content')

@@ -100,13 +100,13 @@
               <h4>Registros de personal </h4>
           </div>
           <div class="sidebar-content">
-              <a href="personal">Personal</a>
-              <a href="usuarios">Usuarios</a>
-              <a href="bases-operativas" class="active">Bases de operaciones</a>
+              <a href="{{ url('/admin/personal') }}">Personal</a>
+              <a href="{{ url('/admin/usuarios') }}">Usuarios</a>
+              <a href="{{ url('/admin/bases-operativas') }}" class="active">Bases de operaciones</a>
               <h5 class="px-3 pt-3">Registros de embarcaciones</h5>
-              <a href="propietario">Propietarios</a>
-              <a href="artefactos">Artefactos</a>
-              <a href="lista-propietarios">Listas de propietarios de embarcaciones</a>
+              <a href="{{ url('/admin/propietario') }}">Propietarios</a>
+              <a href="{{ url('/admin/artefactos') }}">Artefactos</a>
+              <a href="{{ url('/admin/lista-propietarios') }}">Listas de propietarios de embarcaciones</a>
               {{-- <a href="imprimir">Certificaciones</a> --}}
               {{-- <a href="imprimir">Alertas de Vencimiento</a> --}}
           </div>
@@ -116,9 +116,9 @@
       <div class="right-sidebar">
           <div class="sidebar-content">
               <h5 class="px-3 pt-3">Registros de embarcaciones</h5>
-              <a href="propietario">Propietarios</a>
-              <a href="artefactos">Artefactos</a>
-              <a href="lista-propietarios">Listas de propietarios de embarcaciones</a>
+              <a href="{{ url('/admin/propietario') }}">Propietarios</a>
+              <a href="{{ url('/admin/artefactos') }}">Artefactos</a>
+              <a href="{{ url('/admin/lista-propietarios') }}">Listas de propietarios de embarcaciones</a>
               {{-- <a href="imprimir">Certificaciones</a> --}}
               {{-- <a href="imprimir">Alertas de Vencimiento</a> --}}
           </div>
@@ -127,9 +127,9 @@
       <div class="right-sidebar">
           <div class="sidebar-content">
               <h5 class="px-3 pt-3">Registros de embarcaciones</h5>
-              <a href="propietario">Propietarios</a>
-              <a href="artefactos">Artefactos</a>
-              <a href="lista-propietarios">Listas de propietarios de embarcaciones</a>
+              <a href="{{ url('/admin/propietario') }}">Propietarios</a>
+              <a href="{{ url('/admin/artefactos') }}">Artefactos</a>
+              <a href="{{ url('/admin/artefactos') }}">Listas de propietarios de embarcaciones</a>
           </div>
       </div>
   @endif @section('content')
@@ -165,13 +165,28 @@
                               <tbody>
 
                                   <tr>
-                                      <th> IdPropietario </th>
-                                      <td> {{ $listapropietario->idPropietario }} </td>
+                                      <th> Nombre del Propietario </th>
+                                        <td>Nombres: {{ $listapropietario->propietarios->nombre }}
+                                        </td>
                                   </tr>
                                   <tr>
-                                      <th> IdArtefacto </th>
-                                      <td> {{ $listapropietario->idArtefacto }} </td>
+                                    <th>@if ($listapropietario->propietarios->tipo==0)
+                                        Cédula de Identidad del 
+                                    @else
+                                        SEPREC del 
+                                    @endif
+                                    Propietario </th>
+                                      <td>{{ $listapropietario->propietarios->identificador }}
+                                      </td>
+                                </tr>
+                                  <tr>
+                                      <th> Nombre del Artefacto </th>
+                                      <td>{{ $listapropietario->artefactos->nombre }}</td>
                                   </tr>
+                                  <tr>
+                                    <th> Matrícula del Artefacto </th>
+                                    <td>{{ $listapropietario->artefactos->matricula }}</td>
+                                </tr>
                                   <tr>
                                       <td>
                                           <form method="POST" action="{{ url('admin/imprimir-certificado-registro') }}"
