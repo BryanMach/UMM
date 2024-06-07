@@ -107,8 +107,8 @@
               <a href="propietario">Propietarios</a>
               <a href="artefactos">Artefactos</a>
               <a href="lista-propietarios">Listas de propietarios de embarcaciones</a>
-              <a href="imprimir">Certificaciones</a>
-              <a href="imprimir">Alertas de Vencimiento</a>
+              {{-- <a href="imprimir">Certificaciones</a> --}}
+              {{-- <a href="imprimir">Alertas de Vencimiento</a> --}}
           </div>
       </div>
   @endif
@@ -119,8 +119,8 @@
               <a href="propietario">Propietarios</a>
               <a href="artefactos">Artefactos</a>
               <a href="lista-propietarios">Listas de propietarios de embarcaciones</a>
-              <a href="imprimir">Certificaciones</a>
-              <a href="imprimir">Alertas de Vencimiento</a>
+              {{-- <a href="imprimir">Certificaciones</a> --}}
+              {{-- <a href="imprimir">Alertas de Vencimiento</a> --}}
           </div>
       </div>
   @else
@@ -143,6 +143,24 @@
                           title="Agregar nuevo Artefacto">
                           <i class="fa fa-plus" aria-hidden="true"></i> Agregar
                       </a>
+                      @switch($nivel)
+                          @case(3)
+                              <a href="{{ url('/admin/perf45i') }}" title="Back"><button class="btn btn-warning btn-sm">
+                                      <i class="fa fa-arrow-left" aria-hidden="true"></i> Volver</button></a>
+                          @break
+
+                          @case(2)
+                              <a href="{{ url('/admin/perf45j') }}" title="Back"><button class="btn btn-warning btn-sm">
+                                      <i class="fa fa-arrow-left" aria-hidden="true"></i> Volver</button></a>
+                          @break
+
+                          @case(4)
+                              <a href="{{ url('/admin/perf45r') }}" title="Back"><button class="btn btn-warning btn-sm">
+                                      <i class="fa fa-arrow-left" aria-hidden="true"></i> Volver</button></a>
+                          @break
+
+                          @default
+                      @endswitch
 
                       <form method="GET" action="{{ url('/admin/artefactos') }}" accept-charset="UTF-8"
                           class="form-inline my-2 my-lg-0 float-right" role="search">

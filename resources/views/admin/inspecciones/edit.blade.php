@@ -107,8 +107,8 @@
               <a href="propietario">Propietarios</a>
               <a href="artefactos">Artefactos</a>
               <a href="lista-propietarios">Listas de propietarios de embarcaciones</a>
-              <a href="imprimir">Certificaciones</a>
-              <a href="imprimir">Alertas de Vencimiento</a>
+              {{-- <a href="imprimir">Certificaciones</a> --}}
+              {{-- <a href="imprimir">Alertas de Vencimiento</a> --}}
           </div>
       </div>
   @endif
@@ -119,8 +119,8 @@
               <a href="propietario">Propietarios</a>
               <a href="artefactos">Artefactos</a>
               <a href="lista-propietarios">Listas de propietarios de embarcaciones</a>
-              <a href="imprimir">Certificaciones</a>
-              <a href="imprimir">Alertas de Vencimiento</a>
+              {{-- <a href="imprimir">Certificaciones</a> --}}
+              {{-- <a href="imprimir">Alertas de Vencimiento</a> --}}
           </div>
       </div>
   @else

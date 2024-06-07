@@ -198,13 +198,7 @@
                     <div class="collapse navbar-collapse" id="navbarNav">
                         <ul class="navbar-nav mr-auto">
                             <li class="nav-item">
-                                <a class="nav-link" href="#" onclick="toggleDropdown(event)">Registro<i
-                                        class="fas fa-caret-down"></i></a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="#">Provicional</a></li>
-                                    <li><a href="#">Especial</a></li>
-                                    <li><a href="#">Permanente</a></li>
-                                </ul>
+                                <a class="nav-link" href="registro">Registro nuevo</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="#">Renovación</a>
@@ -257,7 +251,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            
+
                             @foreach ($listaA as $item)
                                 <tr>
                                     <td>{{ $item->propietarios->nombre }} {{ $item->propietarios->identificador }}
@@ -290,7 +284,7 @@
                                     <td>{{ $item->propietarios->nombre }} {{ $item->propietarios->identificador }}
                                     </td>
                                     <td>{{ $item->artefactos->nombre }}-{{ $item->artefactos->matricula }}
-                                  </td>
+                                    </td>
                                     <td></td>
                                     <td><button><i class="fas fa-edit"></i></button> <button><i
                                                 class="fas fa-eye"></i></button>
