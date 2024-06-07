@@ -212,7 +212,8 @@
                                                   title="Editar ListaPropietario"><button
                                                       class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o"
                                                           aria-hidden="true"></i> Editar</button></a>
-
+                                            
+                                                          {{-- @if($nivel) --}}
                                               <form method="POST"
                                                   action="{{ url('/admin/lista-propietarios' . '/' . $item->id) }}"
                                                   accept-charset="UTF-8" style="display:inline">

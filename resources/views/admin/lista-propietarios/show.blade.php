@@ -148,7 +148,8 @@
                       <a href="{{ url('/admin/lista-propietarios/' . $listapropietario->id . '/edit') }}"
                           title="Editar ListaPropietario"><button class="btn btn-primary btn-sm"><i
                                   class="fa fa-pencil-square-o" aria-hidden="true"></i> Editar</button></a>
-
+                                  {{-- @dd($nivel); --}}
+                                  @if($nivel!=4)
                       <form method="POST" action="{{ url('admin/listapropietarios' . '/' . $listapropietario->id) }}"
                           accept-charset="UTF-8" style="display:inline">
                           {{ method_field('DELETE') }}
@@ -157,7 +158,7 @@
                               onclick="return confirm(&quot;Confirm delete?&quot;)"><i class="fa fa-trash-o"
                                   aria-hidden="true"></i> Borrar</button>
                       </form>
-
+                      @endif
                       </form>
                       <br />
                       <br />

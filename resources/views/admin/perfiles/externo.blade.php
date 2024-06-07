@@ -202,11 +202,12 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="registro">Registro nuevo</a>
                             </li>
-                            <li class="nav-item">
+                            {{--   .........  --}}
+                            {{-- <li class="nav-item">
                                 <form method="POST" action="{{ url('/admin/renovar') }}" accept-charset="UTF-8"
                           class="form-inline my-2 my-lg-0 float-right" role="search">
                           <div class="input-group">
-                              <input type="text" class="form-control" name="search" placeholder="Buscar..."
+                              <input type="text" class="form-control" name="search" placeholder="M-######"
                                   value="{{ request('search') }}">
                               <span class="input-group-append">
                                   <button class="btn btn-secondary" type="submit" title="Corregir registro">
@@ -221,7 +222,7 @@
                                 <form method="POST" action="{{ url('/admin/corregir') }}" accept-charset="UTF-8"
                           class="form-inline my-2 my-lg-0 float-right" role="search">
                           <div class="input-group">
-                              <input type="text" class="form-control" name="search" placeholder="Buscar..."
+                              <input type="text" class="form-control" name="search" placeholder="M-######"
                                   value="{{ request('search') }}">
                               <span class="input-group-append">
                                   <button class="btn btn-secondary" type="submit">
@@ -229,7 +230,7 @@
                                   </button>
                               </span>
                           </div>
-                      </form>
+                      </form> --}}
                                 {{-- <a class="nav-link" href="#">Corrección</a> --}}
                             </li>
                         </ul>

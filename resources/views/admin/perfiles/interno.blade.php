@@ -201,16 +201,16 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="registro">Registro nuevo</a>
                             </li>
-                            <li class="nav-item">
+                            {{-- <li class="nav-item">
                                 <a class="nav-link" href="#">Renovación</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="#">Corrección</a>
-                            </li>
+                            </li> --}}
                         </ul>
-                        <form class="form-inline my-2 my-lg-0">
+                        {{-- <form class="form-inline my-2 my-lg-0">
                             <input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Buscar">
-                        </form>
+                        </form> --}}
                     </div>
                 </nav>
                 <h1>Cuenca de Lacustre</h1>
@@ -220,7 +220,7 @@
                             <tr>
                                 <th scope="col">PROPIETARIO</th>
                                 <th scope="col">EMBARCACION</th>
-                                <th scope="col">VIGENCIAS</th>
+                                {{-- <th scope="col">VIGENCIAS</th> --}}
                                 <th scope="col">ACCIONES</th>
                             </tr>
                         </thead>
@@ -230,9 +230,10 @@
                                     <td>{{ $item->propietarios->nombre }} {{ $item->propietarios->identificador }}</td>
                                     <td>{{ $item->artefactos->nombre }}-{{ $item->artefactos->matricula }}
                                     </td>
-                                    <td></td>
-                                    <td><button><i class="fas fa-edit"></i></button> <button><i
-                                                class="fas fa-eye"></i></button>
+                                    {{-- <td></td> --}}
+                                    <td><a href="{{ url('/admin/lista-propietarios/' . $item->id) }}"
+                                        title="Ver ListaPropietario"><button class="btn btn-info btn-sm"><i
+                                                class="fa fa-eye" aria-hidden="true"></i> Ver</button></a>
                                     </td>
                                 </tr>
                             @endforeach
@@ -247,7 +248,7 @@
                             <tr>
                                 <th scope="col">PROPIETARIO</th>
                                 <th scope="col">EMBARCACION</th>
-                                <th scope="col">VIGENCIAS</th>
+                                {{-- <th scope="col">VIGENCIAS</th> --}}
                                 <th scope="col">ACCIONES</th>
                             </tr>
                         </thead>
@@ -259,9 +260,10 @@
                                     </td>
                                     <td>{{ $item->artefactos->nombre }}-{{ $item->artefactos->matricula }}
                                     </td>
-                                    <td></td>
-                                    <td><button><i class="fas fa-edit"></i></button> <button><i
-                                                class="fas fa-eye"></i></button>
+                                    {{-- <td></td> --}}
+                                    <td><a href="{{ url('/admin/lista-propietarios/' . $item->id) }}"
+                                        title="Ver ListaPropietario"><button class="btn btn-info btn-sm"><i
+                                                class="fa fa-eye" aria-hidden="true"></i> Ver</button></a>
                                     </td>
                                 </tr>
                             @endforeach
@@ -275,7 +277,7 @@
                             <tr>
                                 <th scope="col">PROPIETARIO</th>
                                 <th scope="col">EMBARCACION</th>
-                                <th scope="col">VIGENCIAS</th>
+                                {{-- <th scope="col">VIGENCIAS</th> --}}
                                 <th scope="col">ACCIONES</th>
                             </tr>
                         </thead>
@@ -286,9 +288,10 @@
                                     </td>
                                     <td>{{ $item->artefactos->nombre }}-{{ $item->artefactos->matricula }}
                                     </td>
-                                    <td></td>
-                                    <td><button><i class="fas fa-edit"></i></button> <button><i
-                                                class="fas fa-eye"></i></button>
+                                    {{-- <td></td> --}}
+                                    <td><a href="{{ url('/admin/lista-propietarios/' . $item->id) }}"
+                                        title="Ver ListaPropietario"><button class="btn btn-info btn-sm"><i
+                                                class="fa fa-eye" aria-hidden="true"></i> Ver</button></a>
                                     </td>
                                 </tr>
                             @endforeach

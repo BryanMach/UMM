@@ -35,12 +35,7 @@ use App\Http\Controllers\Auth\PerfilesController;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/externo', function () {
-    return view('externo');
-});
-Route::get('/interno', function () {
-    return view('interno');
-});
+Route::get('/', [PerfilesController::class, 'bienvenida']);
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
@@ -53,6 +48,13 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__ . '/auth.php';
 Route::group(['middleware' => ['auth']], function () {
+    Route::get('/externo', function () {
+        return view('externo');
+    });
+    Route::get('/interno', function () {
+        return view('interno');
+    });
+
     Route::resource('admin/personal', PersonalController::class);
     Route::resource('admin/material', MaterialController::class);
     Route::resource('admin/tipo', TipoController::class);
