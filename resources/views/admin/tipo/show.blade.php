@@ -94,7 +94,7 @@
           margin-top: 20px;
       }
   </style>
-  @if ($nivel == 2)
+   @if ($nivel == 2)
       <div class="right-sidebar">
           <div class="sidebar-header text-center p-3">
               <h4>Registros de personal </h4>
@@ -123,7 +123,8 @@
               {{-- <a href="imprimir">Alertas de Vencimiento</a> --}}
           </div>
       </div>
-  @else
+    @endif
+    @if($nivel == 4)
       <div class="right-sidebar">
           <div class="sidebar-content">
               <h5 class="px-3 pt-3">Registros de embarcaciones</h5>
@@ -132,7 +133,8 @@
               <a href="{{ url('/admin/artefactos') }}">Listas de propietarios de embarcaciones</a>
           </div>
       </div>
-  @endif @section('content')
+  @endif
+ @section('content')
   <div class="container">
       <div class="row">
 

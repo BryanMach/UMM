@@ -138,8 +138,12 @@
         value="{{ isset($artefacto->observaciones) ? $artefacto->observaciones : '' }}">
     {!! $errors->first('observaciones', '<p class="help-block">:message</p>') !!}
 </div>
-
-
+<div class="form-group {{ $errors->has('fotoA') ? 'has-error' : '' }}">
+    <label for="fotoA" class="control-label">{{ 'Foto' }}</label>
+    <input class="form-control" name="fotoA" type="file" id="fotoA"
+        value="{{ isset($artefacto->fotoA) ? $artefacto->fotoA : '' }}">
+    {!! $errors->first('fotoA', '<p class="help-block">:message</p>') !!}
+</div>
 <div class="form-group">
     <input class="btn btn-primary" type="submit" value="{{ $formMode === 'edit' ? 'Actualizar' : 'Añadir' }}">
 </div>

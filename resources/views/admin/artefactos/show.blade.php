@@ -94,7 +94,7 @@
           margin-top: 20px;
       }
   </style>
-  @if ($nivel == 2)
+   @if ($nivel == 2)
       <div class="right-sidebar">
           <div class="sidebar-header text-center p-3">
               <h4>Registros de personal </h4>
@@ -123,7 +123,8 @@
               {{-- <a href="imprimir">Alertas de Vencimiento</a> --}}
           </div>
       </div>
-  @else
+    @endif
+    @if($nivel == 4)
       <div class="right-sidebar">
           <div class="sidebar-content">
               <h5 class="px-3 pt-3">Registros de embarcaciones</h5>
@@ -132,7 +133,8 @@
               <a href="{{ url('/admin/artefactos') }}">Listas de propietarios de embarcaciones</a>
           </div>
       </div>
-  @endif @section('content')
+  @endif
+ @section('content')
   <div class="container">
       <div class="row">
           <div class="col-md-9">
@@ -145,7 +147,7 @@
                       <a href="{{ url('/admin/artefactos/' . $artefacto->id . '/edit') }}"
                           title="Editar Artefacto"><button class="btn btn-primary btn-sm"><i
                                   class="fa fa-pencil-square-o" aria-hidden="true"></i> Editar</button></a>
-
+                                  @if($nivel!=4)
                       <form method="POST" action="{{ url('admin/artefactos' . '/' . $artefacto->id) }}"
                           accept-charset="UTF-8" style="display:inline">
                           {{ method_field('DELETE') }}
@@ -154,6 +156,7 @@
                               onclick="return confirm(&quot;Confirm delete?&quot;)"><i class="fa fa-trash-o"
                                   aria-hidden="true"></i> Borrar</button>
                       </form>
+                      @endif
                       <br />
                       <br />
 
@@ -228,6 +231,12 @@
                                   <tr>
                                       <th> Observaciones </th>
                                       <td> {{ $artefacto->observaciones }} </td>
+                                  </tr>
+                                  <tr>
+                                    <th> Foto </th>
+                                      <td> <img src="{{ asset('storage/uploads/') . $artefacto->fotoA }}" onerror="this.src='{{ asset('images/barcodefecto.png') }}'" class="profile-img">
+                                      </td>
+                    
                                   </tr>
                               </tbody>
                           </table>

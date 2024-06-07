@@ -203,15 +203,37 @@
                                 <a class="nav-link" href="registro">Registro nuevo</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="renovar">Renovación</a>
+                                <form method="POST" action="{{ url('/admin/renovar') }}" accept-charset="UTF-8"
+                          class="form-inline my-2 my-lg-0 float-right" role="search">
+                          <div class="input-group">
+                              <input type="text" class="form-control" name="search" placeholder="Buscar..."
+                                  value="{{ request('search') }}">
+                              <span class="input-group-append">
+                                  <button class="btn btn-secondary" type="submit" title="Corregir registro">
+                                    Renovación
+                                  </button>
+                              </span>
+                          </div>
+                      </form>
+                                 
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Corrección</a>
+                                <form method="POST" action="{{ url('/admin/corregir') }}" accept-charset="UTF-8"
+                          class="form-inline my-2 my-lg-0 float-right" role="search">
+                          <div class="input-group">
+                              <input type="text" class="form-control" name="search" placeholder="Buscar..."
+                                  value="{{ request('search') }}">
+                              <span class="input-group-append">
+                                  <button class="btn btn-secondary" type="submit">
+                                    Corrección
+                                  </button>
+                              </span>
+                          </div>
+                      </form>
+                                {{-- <a class="nav-link" href="#">Corrección</a> --}}
                             </li>
                         </ul>
-                        <form class="form-inline my-2 my-lg-0">
-                            <input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Buscar">
-                        </form>
+                        
                     </div>
                 </nav>
                 <table class="table table-bordered mt-4">

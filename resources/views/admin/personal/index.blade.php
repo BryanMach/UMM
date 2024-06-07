@@ -123,7 +123,8 @@
               {{-- <a href="imprimir">Alertas de Vencimiento</a> --}}
           </div>
       </div>
-  @else
+    @endif
+    @if($nivel == 4)
       <div class="right-sidebar">
           <div class="sidebar-content">
               <h5 class="px-3 pt-3">Registros de embarcaciones</h5>
@@ -140,7 +141,7 @@
                   <div class="card-header">Personal</div>
                   <div class="card-body">
 
-                      @switch($nivel)
+                        @switch($nivel)
                           @case(3)
                               <a href="{{ url('/admin/perf45i') }}" title="Back"><button class="btn btn-warning btn-sm">
                                       <i class="fa fa-arrow-left" aria-hidden="true"></i> Volver</button></a>
@@ -152,7 +153,7 @@
                           @break
 
                           @case(4)
-                              <a href="{{ url('/admin/perf45r') }}" title="Back"><button class="btn btn-warning btn-sm">
+                              <a href="{{ url('/admin/perf45r') }}" title="Retornar"><button class="btn btn-warning btn-sm">
                                       <i class="fa fa-arrow-left" aria-hidden="true"></i> Volver</button></a>
                           @break
 

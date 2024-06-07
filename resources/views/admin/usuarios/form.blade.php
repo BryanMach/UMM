@@ -26,8 +26,8 @@
 </div>
 <div class="form-group {{ $errors->has('usuario') ? 'has-error' : '' }}">
     <label for="usuario" class="control-label">{{ 'Usuario' }}</label>
-    <input class="form-control" name="usuario" type="text" id="usuario"
-        value="{{ isset($usuario->usuario) ? $usuario->usuario : '' }}">
+    <input class="form-control" name="usuario" type="text" id="usuario" min="8"
+    value="{{ isset($usuario->usuario) ? $usuario->usuario : '' }}">
     {!! $errors->first('usuario', '<p class="help-block">:message</p>') !!}
 </div>
 <div class="form-group {{ $errors->has('contrasena') ? 'has-error' : '' }}">
@@ -41,35 +41,34 @@
     <select class="form-control" name="nivel" id="nivel">
         @if ($formMode == 'edit')
             @switch($usuario->nivel)
-                @case(1)
+                {{-- @case(1)
                 <option value="1"  selected>Administrador</option>
                 <option value="2">Jefe</option>
                 <option value="3">Archivo interno</option>
                 <option value="4">Archivo externo</option> 
-                    @break
+                    @break --}}
                 @case(2)
-                <option value="1">Administrador</option>
+                {{-- <option value="1">Administrador</option> --}}
                 <option value="2" selected>Jefe</option>
                 <option value="3">Archivo interno</option>
                 <option value="4">Archivo externo</option> 
                     @break
                 @case(3)
-                <option value="1">Administrador</option>
+                {{-- <option value="1">Administrador</option> --}}
                 <option value="2">Jefe</option>
                 <option value="3" selected>Archivo interno</option>
                 <option value="4">Archivo externo</option> 
                     @break
                 @case(4)
-                <option value="1">Administrador</option>
+                {{-- <option value="1">Administrador</option> --}}
                 <option value="2">Jefe</option>
                 <option value="3">Archivo interno</option>
                 <option value="4" selected>Archivo externo</option> 
                     @break
-                @default
                     
             @endswitch
         @else
-        <option value="1">Administrador</option>
+        {{-- <option value="1">Administrador</option> --}}
         <option value="2">Jefe</option>
         <option value="3">Archivo interno</option>
         <option value="4">Archivo externo</option> 

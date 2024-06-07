@@ -54,7 +54,6 @@ class UsuariosController extends Controller
     }
     public function asignar_usuario(Request $request)
     {
-        dd($request);
         $personas = Personal::All();
         $usuario = Usuario::findOrFail(Auth::user()->id);
         $nivel = $usuario['nivel'];
@@ -86,9 +85,20 @@ class UsuariosController extends Controller
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
         */
-        $user = User::create([
+        switch($request->nivel){
+            case '2':
+                $email = $request->usuario . '@jefe';
+                break;
+                case '3':
+                    $email = $request->usuario . '@interno';
+                    break;
+                    case '4':
+                        $email = $request->usuario . '@externo';
+                        break;
+        }
+        User::create([
             'name' => $request->usuario,
-            'email' => $request->usuario . '@usuario',
+            'email' => $email,
             'password' => Hash::make($request->contrasena),
             /*'password'=> $request->password,*/
         ]);

@@ -94,7 +94,7 @@
           margin-top: 20px;
       }
   </style>
-  @if ($nivel == 2)
+   @if ($nivel == 2)
       <div class="right-sidebar">
           <div class="sidebar-header text-center p-3">
               <h4>Registros de personal </h4>
@@ -123,7 +123,8 @@
               {{-- <a href="imprimir">Alertas de Vencimiento</a> --}}
           </div>
       </div>
-  @else
+    @endif
+    @if($nivel == 4)
       <div class="right-sidebar">
           <div class="sidebar-content">
               <h5 class="px-3 pt-3">Registros de embarcaciones</h5>
@@ -132,14 +133,15 @@
               <a href="{{ url('/admin/artefactos') }}">Listas de propietarios de embarcaciones</a>
           </div>
       </div>
-  @endif @section('content')
+  @endif
+ @section('content')
   <div class="container">
       <div class="row">
           <div class="col-md-9">
               <div class="card">
                   <div class="card-header">Usuarios</div>
                   <div class="card-body">
-                      @switch($nivel)
+                        @switch($nivel)
                           @case(3)
                               <a href="{{ url('/admin/perf45i') }}" title="Back"><button class="btn btn-warning btn-sm">
                                       <i class="fa fa-arrow-left" aria-hidden="true"></i> Volver</button></a>
@@ -151,7 +153,7 @@
                           @break
 
                           @case(4)
-                              <a href="{{ url('/admin/perf45r') }}" title="Back"><button class="btn btn-warning btn-sm">
+                              <a href="{{ url('/admin/perf45r') }}" title="Retornar"><button class="btn btn-warning btn-sm">
                                       <i class="fa fa-arrow-left" aria-hidden="true"></i> Volver</button></a>
                           @break
 
@@ -184,6 +186,7 @@
                                       <th>Nº</th>
                                       <th>Personal</th>
                                       <th>Usuario</th>
+                                      <th>Rol</th>
                                       <th>Contraseña</th>
                                       <th>Opciones</th>
                                   </tr>
@@ -196,7 +199,31 @@
                                               {{ $item->personals->grado }}.
                                               {{ $item->personals->nombres }}
                                               {{ $item->personals->apellidos }}</td>
+                                              @php
+                                                  $n='';
+                                              @endphp
+                                              @switch($item->nivel)
+                                                  @case(2)
+                                                  @php
+                                                  $n='Jefe';
+                                              @endphp
+                                                      @break
+                                                  @case(3)
+                                                  @php
+                                                  $n='Archivo interno';
+                                              @endphp
+                                                      @break
+                                                @case(4)
+                                                @php
+                                                $n='Archivo externo';
+                                            @endphp
+                                                      @break
+                                                  @default
+                                                      
+                                              @endswitch
+                                              
                                           <td>{{ $item->usuario }}</td>
+                                          <td>{{ $n }}</td>
                                           <td>{{ $item->contrasena }}</td>
                                           <td>
                                               <a href="{{ url('/admin/usuarios/' . $item->id) }}"
