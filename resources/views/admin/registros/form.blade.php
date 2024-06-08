@@ -98,11 +98,128 @@
         {!! $errors->first('idMaterial', '<p class="help-block">:message</p>') !!}
     </div>
 
+<<<<<<< HEAD
     <div class="form-group {{ $errors->has('eslora') ? 'has-error' : '' }}">
         <label for="eslora" class="control-label">{{ 'Eslora' }}</label>
         <input class="form-control" name="eslora" type="decimal" id="eslora"
             value="{{ isset($artefacto->eslora) ? $artefacto->eslora : '' }}">
         {!! $errors->first('eslora', '<p class="help-block">:message</p>') !!}
+=======
+<div class="form-group {{ $errors->has('eslora') ? 'has-error' : '' }}">
+    <label for="eslora" class="control-label">{{ 'Eslora' }}</label>
+    <input class="form-control" name="eslora" type="decimal" id="eslora" pattern="[0-9]*"
+    inputmode="number" required
+        value="{{ isset($artefacto->eslora) ? $artefacto->eslora : '' }}">
+    {!! $errors->first('eslora', '<p class="help-block">:message</p>') !!}
+</div>
+<div class="form-group {{ $errors->has('manga') ? 'has-error' : '' }}">
+    <label for="manga" class="control-label">{{ 'Manga' }}</label>
+    <input class="form-control" name="manga" type="decimal" id="manga" pattern="[0-9]*"
+    inputmode="number" required
+        value="{{ isset($artefacto->manga) ? $artefacto->manga : '' }}">
+    {!! $errors->first('manga', '<p class="help-block">:message</p>') !!}
+</div>
+<div class="form-group {{ $errors->has('puntal') ? 'has-error' : '' }}">
+    <label for="puntal" class="control-label">{{ 'Puntal' }}</label>
+    <input class="form-control" name="puntal" type="decimal" id="puntal" pattern="[0-9]*"
+    inputmode="number" required
+        value="{{ isset($artefacto->puntal) ? $artefacto->puntal : '' }}">
+    {!! $errors->first('puntal', '<p class="help-block">:message</p>') !!}
+</div>
+<div class="form-group {{ $errors->has('francobordo') ? 'has-error' : '' }}">
+    <label for="francobordo" class="control-label">{{ 'Francobordo' }}</label>
+    <input class="form-control" name="francobordo" type="decimal" id="francobordo" pattern="[0-9]*"
+    inputmode="number" required
+        value="{{ isset($artefacto->francobordo) ? $artefacto->francobordo : '' }}">
+    {!! $errors->first('francobordo', '<p class="help-block">:message</p>') !!}
+</div>
+<div class="form-group {{ $errors->has('propulsion') ? 'has-error' : '' }}">
+    <label for="propulsion" class="control-label">{{ 'Propulsion' }}</label>
+    <input class="form-control" name="propulsion" type="text" id="propulsion"
+        value="{{ isset($artefacto->propulsion) ? $artefacto->propulsion : '' }}">
+    {!! $errors->first('propulsion', '<p class="help-block">:message</p>') !!}
+</div>
+<div class="form-group {{ $errors->has('construccion') ? 'has-error' : '' }}">
+    <label for="construccion" class="control-label">{{ 'Construccion' }}</label>
+    <input class="form-control" name="construccion" type="text" id="construccion"
+        value="{{ isset($artefacto->construccion) ? $artefacto->construccion : '' }}">
+    {!! $errors->first('construccion', '<p class="help-block">:message</p>') !!}
+</div>
+<div class="form-group {{ $errors->has('trn') ? 'has-error' : '' }}">
+    <label for="trn" class="control-label">{{ 'Trn' }}</label>
+    <input class="form-control" name="trn" type="decimal" id="trn" pattern="[0-9]*"
+    inputmode="number" required
+        value="{{ isset($artefacto->trn) ? $artefacto->trn : '' }}">
+    {!! $errors->first('trn', '<p class="help-block">:message</p>') !!}
+</div>
+<div class="form-group {{ $errors->has('trb') ? 'has-error' : '' }}">
+    <label for="trb" class="control-label">{{ 'Trb' }}</label>
+    <input class="form-control" name="trb" type="decimal" id="trb" pattern="[0-9]*"
+    inputmode="number" required
+        value="{{ isset($artefacto->trb) ? $artefacto->trb : '' }}">
+    {!! $errors->first('trb', '<p class="help-block">:message</p>') !!}
+</div>
+<div class="form-group {{ $errors->has('servicio') ? 'has-error' : '' }}">
+    <label for="servicio" class="control-label">{{ 'Servicio' }}</label>
+    <input class="form-control" name="servicio" type="text" id="servicio"
+        value="{{ isset($artefacto->servicio) ? $artefacto->servicio : '' }}">
+    {!! $errors->first('servicio', '<p class="help-block">:message</p>') !!}
+</div>
+<div class="form-group {{ $errors->has('asociacion') ? 'has-error' : '' }}">
+    <label for="asociacion" class="control-label">{{ 'Asociacion' }}</label>
+    <input class="form-control" name="asociacion" type="text" id="asociacion"
+        value="{{ isset($artefacto->asociacion) ? $artefacto->asociacion : '' }}">
+    {!! $errors->first('asociacion', '<p class="help-block">:message</p>') !!}
+</div>
+<div class="form-group {{ $errors->has('observaciones') ? 'has-error' : '' }}">
+    <label for="observaciones" class="control-label">{{ 'Observaciones' }}</label>
+    <input class="form-control" name="observaciones" type="text" id="observaciones"
+        value="{{ isset($artefacto->observaciones) ? $artefacto->observaciones : '' }}">
+    {!! $errors->first('observaciones', '<p class="help-block">:message</p>') !!}
+</div>
+<h2>Detalles del motor</h2>
+<div class="form-group {{ $errors->has('tipoM') ? 'has-error' : '' }}">
+    <label for="tipoM" class="control-label">{{ 'Tipo de motor' }}</label>
+    <input class="form-control" name="tipoM" type="text" id="tipoM"
+        value="{{ isset($motore->tipo) ? $motore->tipo : '' }}">
+    {!! $errors->first('tipoM', '<p class="help-block">:message</p>') !!}
+</div>
+<div class="form-group {{ $errors->has('marca') ? 'has-error' : '' }}">
+    <label for="marca" class="control-label">{{ 'Marca del motor' }}</label>
+    <input class="form-control" name="marca" type="text" id="marca"
+        value="{{ isset($motore->marca) ? $motore->marca : '' }}">
+    {!! $errors->first('marca', '<p class="help-block">:message</p>') !!}
+</div>
+<div class="form-group {{ $errors->has('numero') ? 'has-error' : '' }}">
+    <label for="numero" class="control-label">{{ 'Numero del motor' }}</label>
+    <input class="form-control" name="numero" type="text" id="numero"
+        value="{{ isset($motore->numero) ? $motore->numero : '' }}">
+    {!! $errors->first('numero', '<p class="help-block">:message</p>') !!}
+</div>
+<div class="form-group {{ $errors->has('potencia') ? 'has-error' : '' }}">
+    <label for="potencia" class="control-label">{{ 'Potencia HP' }}</label>
+    <input class="form-control" name="potencia" type="text" id="potencia"
+        value="{{ isset($motore->potencia) ? $motore->potencia : '' }}">
+    {!! $errors->first('potencia', '<p class="help-block">:message</p>') !!}
+</div>
+<div class="form-group {{ $errors->has('nominalelectrica') ? 'has-error' : '' }}">
+    <label for="nominalelectrica" class="control-label">{{ 'Potencia nominal electrica W' }}</label>
+    <input class="form-control" name="nominalelectrica" type="text" id="nominalelectrica"
+        value="{{ isset($motore->nominalelectrica) ? $motore->nominalelectrica : '' }}">
+    {!! $errors->first('nominalelectrica', '<p class="help-block">:message</p>') !!}
+</div>
+<h2>Datos extras</h2>
+<div class="form-group {{ $errors->has('lugar') ? 'has-error' : '' }}">
+    <label for="lugar" class="control-label">{{ 'Lugar de inspección (Incluya departamento)' }}</label>
+    <input class="form-control" name="lugar" type="text" id="lugar"
+        value="{{ isset($datosadicionale->lugar) ? $datosadicionale->lugar : '' }}">
+    {!! $errors->first('lugar', '<p class="help-block">:message</p>') !!}
+</div>
+<div class="form-group {{ $errors->has('mercPelig') ? 'has-error' : ''}}">
+    <label for="mercPelig" class="control-label">{{ '¿Trasporta mercancias peligrosas?' }}</label>
+    <div class="radio">
+        <label><input name="mercPelig" type="radio" value="Si" {{ (isset($propietario) && 'Si' == $propietario->mercPelig) ? 'checked' : '' }}> Si</label>
+>>>>>>> 3d0358b39a49682b648a4f2cab9c7347cca15138
     </div>
     <div class="form-group {{ $errors->has('manga') ? 'has-error' : '' }}">
         <label for="manga" class="control-label">{{ 'Manga' }}</label>
@@ -273,6 +390,7 @@
                         <option value="21">Embarcación sin propulsión: Abierto</option>
                         <option value="22">Embarcación sin propulsión: Cerrado</option>
                         <option value="23" selected>Embarcación sin propulsión: Tanque</option>
+<<<<<<< HEAD
                     @break;
                 @endswitch;
             @else
@@ -327,3 +445,60 @@
     <div class="form-group">
         <input class="btn btn-primary" type="submit" value="{{ $formMode === 'edit' ? 'Actualizar' : 'Añadir' }}">
     </div>
+=======
+                        @break;
+                    
+                    @endswitch;
+                @else
+                    <option value="11">Embarcación autopropulsada: Abierto</option>
+                    <option value="12">Embarcación autopropulsada: Cerrado</option>
+                    <option value="13">Embarcación autopropulsada: Tanque</option>
+                    <option value="21">Embarcación sin propulsión: Abierto</option>
+                    <option value="22">Embarcación sin propulsión: Cerrado</option>
+                    <option value="23">Embarcación sin propulsión: Tanque</option>
+                @endif
+    </select>
+    {!! $errors->first('cargaComb', '<p class="help-block">:message</p>') !!}
+</div>
+<div class="form-group {{ $errors->has('peso') ? 'has-error' : '' }}">
+    <label for="peso" class="control-label">{{ 'Peso Kg' }}</label>
+    <input class="form-control" name="peso" type="number" id="peso"
+        value="{{ isset($datosadicionale->peso) ? $datosadicionale->peso : '' }}">
+    {!! $errors->first('peso', '<p class="help-block">:message</p>') !!}
+</div>
+<div class="form-group {{ $errors->has('altura') ? 'has-error' : '' }}">
+    <label for="altura" class="control-label">{{ 'Altura (m)' }}</label>
+    <input class="form-control" name="altura" type="number" id="altura"
+        value="{{ isset($datosadicionale->altura) ? $datosadicionale->altura : '' }}">
+    {!! $errors->first('altura', '<p class="help-block">:message</p>') !!}
+</div>
+<h2>Inspecciones</h2>
+<div class="form-group {{ $errors->has('gestion') ? 'has-error' : '' }}">
+    <label for="gestion" class="control-label">{{ 'Gestion en la que se realiza la inspección' }}</label>
+    <input class="form-control" name="gestion" type="text" id="gestion"
+        value="{{ isset($inspeccione->gestion) ? $inspeccione->gestion : '' }}">
+    {!! $errors->first('gestion', '<p class="help-block">:message</p>') !!}
+</div>
+<div class="form-group {{ $errors->has('jefeinspector') ? 'has-error' : '' }}">
+    <label for="jefeinspector" class="control-label">{{ 'Jefe de inspección' }}</label>
+    <input class="form-control" name="jefeinspector" type="text" id="jefeinspector"
+        value="{{ isset($inspeccione->jefeinspector) ? $inspeccione->jefeinspector : '' }}">
+    {!! $errors->first('jefeinspector', '<p class="help-block">:message</p>') !!}
+</div>
+<div class="form-group {{ $errors->has('motivo') ? 'has-error' : '' }}">
+    <label for="motivo" class="control-label">{{ 'Motivo de la inspección' }}</label>
+    <input class="form-control" name="motivo" type="text" id="motivo"
+        value="{{ isset($inspeccione->motivo) ? $inspeccione->motivo : '' }}">
+    {!! $errors->first('motivo', '<p class="help-block">:message</p>') !!}
+</div>
+<h2>Documentación</h2>
+<div class="form-group {{ $errors->has('directorio') ? 'has-error' : '' }}">
+    <label for="directorio" class="control-label">{{ 'Documentos escaneados de este registro (PDF)' }}</label>
+    <input class="form-control" name="directorio" type="file" id="directorio"
+        value="{{ isset($documentacione->directorio) ? $documentacione->directorio : '' }}">
+    {!! $errors->first('directorio', '<p class="help-block">:message</p>') !!}
+</div>
+<div class="form-group">
+    <input class="btn btn-primary" type="submit" value="{{ $formMode === 'edit' ? 'Actualizar' : 'Añadir' }}">
+</div>
+>>>>>>> 3d0358b39a49682b648a4f2cab9c7347cca15138

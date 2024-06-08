@@ -25,9 +25,15 @@
     {!! $errors->first('idPersonal', '<p class="help-block">:message</p>') !!}
 </div>
 <div class="form-group {{ $errors->has('usuario') ? 'has-error' : '' }}">
+<<<<<<< HEAD
     <label for="usuario" class="control-label">{{ 'USUARIO' }}</label>
     <input class="form-control" name="usuario" type="text" id="usuario"
         value="{{ isset($usuario->usuario) ? $usuario->usuario : '' }}">
+=======
+    <label for="usuario" class="control-label">{{ 'Usuario' }}</label>
+    <input class="form-control" name="usuario" type="text" id="usuario" min="8"
+    value="{{ isset($usuario->usuario) ? $usuario->usuario : '' }}">
+>>>>>>> 3d0358b39a49682b648a4f2cab9c7347cca15138
     {!! $errors->first('usuario', '<p class="help-block">:message</p>') !!}
 </div>
 <div class="form-group {{ $errors->has('contrasena') ? 'has-error' : '' }}">
@@ -41,6 +47,7 @@
     <select class="form-control" name="nivel" id="nivel">
         @if ($formMode == 'edit')
             @switch($usuario->nivel)
+<<<<<<< HEAD
                 @case(1)
                     <option value="1" selected>ADMINISTRADOR</option>
                     <option value="2">JEFE</option>
@@ -76,6 +83,39 @@
             <option value="2">JEFE</option>
             <option value="3">ARCHIVO INTERNO</option>
             <option value="4">ARCHIVO EXTERNO</option>
+=======
+                {{-- @case(1)
+                <option value="1"  selected>Administrador</option>
+                <option value="2">Jefe</option>
+                <option value="3">Archivo interno</option>
+                <option value="4">Archivo externo</option> 
+                    @break --}}
+                @case(2)
+                {{-- <option value="1">Administrador</option> --}}
+                <option value="2" selected>Jefe</option>
+                <option value="3">Archivo interno</option>
+                <option value="4">Archivo externo</option> 
+                    @break
+                @case(3)
+                {{-- <option value="1">Administrador</option> --}}
+                <option value="2">Jefe</option>
+                <option value="3" selected>Archivo interno</option>
+                <option value="4">Archivo externo</option> 
+                    @break
+                @case(4)
+                {{-- <option value="1">Administrador</option> --}}
+                <option value="2">Jefe</option>
+                <option value="3">Archivo interno</option>
+                <option value="4" selected>Archivo externo</option> 
+                    @break
+                    
+            @endswitch
+        @else
+        {{-- <option value="1">Administrador</option> --}}
+        <option value="2">Jefe</option>
+        <option value="3">Archivo interno</option>
+        <option value="4">Archivo externo</option> 
+>>>>>>> 3d0358b39a49682b648a4f2cab9c7347cca15138
         @endif
     </select>
     {!! $errors->first('nivel', '<p class="help-block">:message</p>') !!}

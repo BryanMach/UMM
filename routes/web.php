@@ -35,12 +35,7 @@ use App\Http\Controllers\Auth\PerfilesController;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/externo', function () {
-    return view('externo');
-});
-Route::get('/interno', function () {
-    return view('interno');
-});
+Route::get('/', [PerfilesController::class, 'bienvenida']);
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
@@ -53,6 +48,13 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__ . '/auth.php';
 Route::group(['middleware' => ['auth']], function () {
+    Route::get('/externo', function () {
+        return view('externo');
+    });
+    Route::get('/interno', function () {
+        return view('interno');
+    });
+
     Route::resource('admin/personal', PersonalController::class);
     Route::resource('admin/material', MaterialController::class);
     Route::resource('admin/tipo', TipoController::class);
@@ -79,7 +81,11 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('admin/perf45j', [PerfilesController::class, 'jefe']);
     Route::get('admin/perf45i', [PerfilesController::class, 'interno']);
     Route::get('admin/perf45r', [PerfilesController::class, 'registrador']);
+<<<<<<< HEAD
     Route::post('admin/asignar', [UsuariosController::class, 'asignar_usuario']);
+=======
+    Route::post('admin/usuarios/asignar', [UsuariosController::class, 'asignar_usuario']);
+>>>>>>> 3d0358b39a49682b648a4f2cab9c7347cca15138
     //Rutas para registrar
     Route::post('admin/registro', [PerfilesController::class, 'registrar']);
     Route::post('admin/registro/guardarRegistro', [PerfilesController::class, 'guardarRegistro']);

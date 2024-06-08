@@ -771,7 +771,7 @@
                 <ul>
                     <li class="text-center"><a href="#sobremi" onclick="seleccionar()">QUIENES SOMOS</a></li>
                     <li class="text-center"><a href="#skills" onclick="seleccionar()">SERVICIOS</a></li>
-                    <li class="text-center"><a href="#curriculum" onclick="seleccionar()">EMPRESAS CERTIFICADAS</a></li>
+                    <li class="text-center"><a href="#curriculum" onclick="seleccionar()">EMBARCACIONES CERTIFICADAS</a></li>
                     <li class="text-center"><a href="#contacto" onclick="seleccionar()">CONTACTO</a></li>
                     <li class="text-center"><a href="http://localhost/UMM/public/login" style="margin-left: 150%">
                             @if (Route::has('login'))
@@ -912,41 +912,24 @@
     <!-- SECCION CURRICULUM -->
     <section class="skills" id="curriculum">
         <div class="contenido-seccion">
-            <h2>Empresas certificadas</h2>
+            <h2>Embarcaciones certificadas</h2>
             <table class="table table-md table-dark text-center">
                 <thead>
                     <tr>
-                        <th scope="col">Empresa</th>
-                        <th scope="col">Lugar</th>
-                        <th scope="col">Contacto</th>
+                        <th scope="col">Embarcacion</th>
+                        <th scope="col">Matricula</th>
+                        <th scope="col">Cuenca</th>
                     </tr>
                 </thead>
                 <tbody>
+                    
+                    @foreach ($artefactos as $artefacto)
                     <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
+                        <th scope="row">{{ $artefacto->nombre }}</th>
+                        <td>{{ $artefacto->matricula }}</td>
+                        <td>{{ $artefacto->baseoperativa->cuenca->cuenca }}</td>
                     </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">3</th>
-                        <td>Larry</td>
-                        <td>the Bird</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">3</th>
-                        <td>Larry</td>
-                        <td>the Bird</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">3</th>
-                        <td>Larry</td>
-                        <td>the Bird</td>
-                    </tr>
+                    @endforeach
                 </tbody>
             </table>
 
@@ -959,7 +942,7 @@
         <div class="contenido-seccion">
             <h2>CONTACTO</h2>
             <div class="fila">
-                <!-- Mapa -->
+                <!-- Mapa:'ci', 'cargo', 'grado', 'nombres', 'apellidos', 'contacto', 'foto', 'descripcion', 'vigencia' -->
                 <div class="col">
                     <div><img src="{{ asset('images/foto.jpg') }}" alt=""
                             style="width: 250px; border: 15px solid rgba(127, 71, 7, 0.893);"></div>
@@ -967,19 +950,19 @@
                         <ul>
                             <li>
                                 <i class="fas fa-address-card"></i>
-                                Nombre del de la foto
+                                Señor: {{ $jefe->grado }} {{ $jefe->nombres }} {{ $jefe->apellidos }}
                             </li>
                             <li>
                                 <i class="fas fa-portrait"></i>
-                                Cargo del de la foto
+                                Desempeñandose dentro de la Unidad de Marina Mercante como: {{ $jefe->cargo }} de Unidad
                             </li>
                             <li>
                                 <i class="fa-solid fa-mobile-screen"></i>
-                                Numero de contacto
+                                Contacto: {{ $jefe->contacto }}
                             </li>
                             <li>
-                                <i class="fa-solid fa-envelope"></i>
-                                Email: cw@example.com
+                                {{-- <i class="fa-solid fa-envelope"></i> --}}
+                                  {{ $jefe->descripcion }}
                             </li>
                         </ul>
                     </div>

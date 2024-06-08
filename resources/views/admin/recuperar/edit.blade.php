@@ -100,6 +100,7 @@
               <h4>REGISTROS DEL PERSONAL </h4>
           </div>
           <div class="sidebar-content">
+<<<<<<< HEAD
               <a href="personal">PERSONAL</a>
               <a href="usuarios">USUARIOS</a>
               <a href="bases-operativas" class="active">BASES DE OPERACIONES</a>
@@ -107,6 +108,15 @@
               <a href="propietario">PROPIETARIOS</a>
               <a href="artefactos">ARTEFACTOS NAVALES</a>
               <a href="lista-propietarios">LISTAS DE PROPIETARIOS DE EMBARCACIONES</a>
+=======
+              <a href="{{ url('/admin/personal') }}">Personal</a>
+              <a href="{{ url('/admin/usuarios') }}">Usuarios</a>
+              <a href="{{ url('/admin/bases-operativas') }}" class="active">Bases de operaciones</a>
+              <h5 class="px-3 pt-3">Registros de embarcaciones</h5>
+              <a href="{{ url('/admin/propietario') }}">Propietarios</a>
+              <a href="{{ url('/admin/artefactos') }}">Artefactos</a>
+              <a href="{{ url('/admin/lista-propietarios') }}">Listas de propietarios de embarcaciones</a>
+>>>>>>> 3d0358b39a49682b648a4f2cab9c7347cca15138
               {{-- <a href="imprimir">Certificaciones</a> --}}
               {{-- <a href="imprimir">Alertas de Vencimiento</a> --}}
           </div>
@@ -115,10 +125,17 @@
   @if ($nivel == 3)
       <div class="right-sidebar">
           <div class="sidebar-content">
+<<<<<<< HEAD
               <h5 class="px-3 pt-3">REGISTROS DE EMBARCACIONES</h5>
               <a href="propietario">PROPIETARIOS</a>
               <a href="artefactos">ARTEFACTOS NAVALES</a>
               <a href="lista-propietarios">LISTAS DE PROPIETARIOS DE EMBARCACIONES</a>
+=======
+              <h5 class="px-3 pt-3">Registros de embarcaciones</h5>
+              <a href="{{ url('/admin/propietario') }}">Propietarios</a>
+              <a href="{{ url('/admin/artefactos') }}">Artefactos</a>
+              <a href="{{ url('/admin/lista-propietarios') }}">Listas de propietarios de embarcaciones</a>
+>>>>>>> 3d0358b39a49682b648a4f2cab9c7347cca15138
               {{-- <a href="imprimir">Certificaciones</a> --}}
               {{-- <a href="imprimir">Alertas de Vencimiento</a> --}}
           </div>
@@ -126,10 +143,17 @@
   @else
       <div class="right-sidebar">
           <div class="sidebar-content">
+<<<<<<< HEAD
               <h5 class="px-3 pt-3">REGISTROS DE EMBARCACIONES</h5>
               <a href="propietario">PROPIETARIOS</a>
               <a href="artefactos">ARTEFACTOS NAVALES</a>
               <a href="lista-propietarios">LISTAS DE PROPIETARIOS DE EMBARCACIONES</a>
+=======
+              <h5 class="px-3 pt-3">Registros de embarcaciones</h5>
+              <a href="{{ url('/admin/propietario') }}">Propietarios</a>
+              <a href="{{ url('/admin/artefactos') }}">Artefactos</a>
+              <a href="{{ url('/admin/artefactos') }}">Listas de propietarios de embarcaciones</a>
+>>>>>>> 3d0358b39a49682b648a4f2cab9c7347cca15138
           </div>
       </div>
   @endif@section('content')

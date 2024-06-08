@@ -94,12 +94,13 @@
           margin-top: 20px;
       }
   </style>
-  @if ($nivel == 2)
+   @if ($nivel == 2)
       <div class="right-sidebar">
           <div class="sidebar-header text-center p-3">
               <h4>REGISTRO DE PERSONAL </h4>
           </div>
           <div class="sidebar-content">
+<<<<<<< HEAD
               <a href="personal">PERSONAL</a>
               <a href="usuarios">USUARIOS</a>
               <a href="bases-operativas" class="active">BASES DE OPERACIONES</a>
@@ -107,6 +108,15 @@
               <a href="propietario">PROPIETARIOS</a>
               <a href="artefactos">ARTEFACTOS</a>
               <a href="lista-propietarios">LISTAS DE PROPIETARIOS DE EMBARCACIONES</a>
+=======
+              <a href="{{ url('/admin/personal') }}">Personal</a>
+              <a href="{{ url('/admin/usuarios') }}">Usuarios</a>
+              <a href="{{ url('/admin/bases-operativas') }}" class="active">Bases de operaciones</a>
+              <h5 class="px-3 pt-3">Registros de embarcaciones</h5>
+              <a href="{{ url('/admin/propietario') }}">Propietarios</a>
+              <a href="{{ url('/admin/artefactos') }}">Artefactos</a>
+              <a href="{{ url('/admin/lista-propietarios') }}">Listas de propietarios de embarcaciones</a>
+>>>>>>> 3d0358b39a49682b648a4f2cab9c7347cca15138
               {{-- <a href="imprimir">Certificaciones</a> --}}
               {{-- <a href="imprimir">Alertas de Vencimiento</a> --}}
           </div>
@@ -115,29 +125,45 @@
   @if ($nivel == 3)
       <div class="right-sidebar">
           <div class="sidebar-content">
+<<<<<<< HEAD
               <h5 class="px-3 pt-3">REGISTROS DE EMBARCACIONES</h5>
               <a href="propietario">PROPIETARIOS</a>
               <a href="artefactos">ARTEFACTOS</a>
               <a href="lista-propietarios">LISTAS DE PROPIETARIOS DE EMBARCAIONES</a>
+=======
+              <h5 class="px-3 pt-3">Registros de embarcaciones</h5>
+              <a href="{{ url('/admin/propietario') }}">Propietarios</a>
+              <a href="{{ url('/admin/artefactos') }}">Artefactos</a>
+              <a href="{{ url('/admin/lista-propietarios') }}">Listas de propietarios de embarcaciones</a>
+>>>>>>> 3d0358b39a49682b648a4f2cab9c7347cca15138
               {{-- <a href="imprimir">Certificaciones</a> --}}
               {{-- <a href="imprimir">Alertas de Vencimiento</a> --}}
           </div>
       </div>
-  @else
+    @endif
+    @if($nivel == 4)
       <div class="right-sidebar">
           <div class="sidebar-content">
+<<<<<<< HEAD
               <h5 class="px-3 pt-3">REGISTROS DE EMBARCACIONES</h5>
               <a href="propietario">PROPIETARIOS</a>
               <a href="artefactos">ARTEFACTOS</a>
               <a href="lista-propietarios">LISTAS DE PROPIETARIOS DE EMBARCAIONES</a>
+=======
+              <h5 class="px-3 pt-3">Registros de embarcaciones</h5>
+              <a href="{{ url('/admin/propietario') }}">Propietarios</a>
+              <a href="{{ url('/admin/artefactos') }}">Artefactos</a>
+              <a href="{{ url('/admin/artefactos') }}">Listas de propietarios de embarcaciones</a>
+>>>>>>> 3d0358b39a49682b648a4f2cab9c7347cca15138
           </div>
       </div>
-  @endif @section('content')
+  @endif
+ @section('content')
   <div class="container">
       <div class="row">
           <div class="col-md-9">
               <div class="card">
-                  <div class="card-header">Artefacto {{ $artefacto->id }}</div>
+                  <div class="card-header">Artefacto</div>
                   <div class="card-body">
 
                       <a href="{{ url('/admin/artefactos') }}" title="Back"><button class="btn btn-warning btn-sm"><i
@@ -145,7 +171,7 @@
                       <a href="{{ url('/admin/artefactos/' . $artefacto->id . '/edit') }}"
                           title="Editar Artefacto"><button class="btn btn-primary btn-sm"><i
                                   class="fa fa-pencil-square-o" aria-hidden="true"></i> Editar</button></a>
-
+                                  @if($nivel!=4)
                       <form method="POST" action="{{ url('admin/artefactos' . '/' . $artefacto->id) }}"
                           accept-charset="UTF-8" style="display:inline">
                           {{ method_field('DELETE') }}
@@ -154,6 +180,7 @@
                               onclick="return confirm(&quot;Confirm delete?&quot;)"><i class="fa fa-trash-o"
                                   aria-hidden="true"></i> Borrar</button>
                       </form>
+                      @endif
                       <br />
                       <br />
 
@@ -228,6 +255,12 @@
                                   <tr>
                                       <th> OBSERVACIONES </th>
                                       <td> {{ $artefacto->observaciones }} </td>
+                                  </tr>
+                                  <tr>
+                                    <th> Foto </th>
+                                      <td> <img src="{{ asset('storage/uploads/') . $artefacto->fotoA }}" onerror="this.src='{{ asset('images/barcodefecto.png') }}'" class="profile-img">
+                                      </td>
+                    
                                   </tr>
                               </tbody>
                           </table>

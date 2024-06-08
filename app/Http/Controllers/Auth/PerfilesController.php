@@ -37,24 +37,14 @@ class PerfilesController extends Controller
      *
      * @return \Illuminate\View\View
      */
-    public function index(request $request)
+    public function bienvenida()
     {
-        $idusuario = Auth::user()->id;
-        $usuario = Usuario::findOrFail($idusuario);
-        switch ($usuario->nivel) {
-            case 1:
-                return $this->administrador($request);
-                break;
-            case 2:
-                return $this->jefe($request);
-                break;
-            case 3:
-                return $this->interno($request);
-                break;
-            case 4:
-                return $this->registrador($request);
-                break;
-        }
+        $artefactos = Artefacto::join('lista_propietarios', 'lista_propietarios.idArtefacto', '=', 'artefactos.id')
+                    ->select('artefactos.*')
+                    ->get();
+                    $bases = BasesOperativa::all();
+                    $jefe = Personal::findOrFail(3);
+                    return view('welcome', compact('artefactos','bases','jefe'));
     }
     public function administrador(request $request)
     {
@@ -89,7 +79,6 @@ class PerfilesController extends Controller
         $persona = Personal::All();
         $listaL = ListaPropietario::join('artefactos', 'lista_propietarios.idArtefacto', '=', 'artefactos.id')
                     ->join('bases_operativas', 'artefactos.idBaseOperativa', '=', 'bases_operativas.id')
-                    ->join('certificados', 'certificados.idArtefacto', '=', 'artefactos.id')
                     ->where('bases_operativas.idCuenca', 3)
                     ->select('lista_propietarios.*')
                     ->get();

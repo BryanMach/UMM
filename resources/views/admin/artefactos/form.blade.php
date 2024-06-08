@@ -72,6 +72,7 @@
         {!! $errors->first('idMaterial', '<p class="help-block">:message</p>') !!}
     </div>
 
+<<<<<<< HEAD
     <div class="form-group {{ $errors->has('eslora') ? 'has-error' : '' }}">
         <label for="eslora" class="control-label">{{ 'ESLORA' }}</label>
         <input class="form-control" name="eslora" type="decimal" id="eslora"
@@ -143,3 +144,80 @@
     <div class="form-group">
         <input class="btn btn-primary" type="submit" value="{{ $formMode === 'edit' ? 'Actualizar' : 'Añadir' }}">
     </div>
+=======
+<div class="form-group {{ $errors->has('eslora') ? 'has-error' : '' }}">
+    <label for="eslora" class="control-label">{{ 'Eslora' }}</label>
+    <input class="form-control" name="eslora" type="decimal" id="eslora"
+        value="{{ isset($artefacto->eslora) ? $artefacto->eslora : '' }}">
+    {!! $errors->first('eslora', '<p class="help-block">:message</p>') !!}
+</div>
+<div class="form-group {{ $errors->has('manga') ? 'has-error' : '' }}">
+    <label for="manga" class="control-label">{{ 'Manga' }}</label>
+    <input class="form-control" name="manga" type="decimal" id="manga"
+        value="{{ isset($artefacto->manga) ? $artefacto->manga : '' }}">
+    {!! $errors->first('manga', '<p class="help-block">:message</p>') !!}
+</div>
+<div class="form-group {{ $errors->has('puntal') ? 'has-error' : '' }}">
+    <label for="puntal" class="control-label">{{ 'Puntal' }}</label>
+    <input class="form-control" name="puntal" type="decimal" id="puntal"
+        value="{{ isset($artefacto->puntal) ? $artefacto->puntal : '' }}">
+    {!! $errors->first('puntal', '<p class="help-block">:message</p>') !!}
+</div>
+<div class="form-group {{ $errors->has('francobordo') ? 'has-error' : '' }}">
+    <label for="francobordo" class="control-label">{{ 'Francobordo' }}</label>
+    <input class="form-control" name="francobordo" type="decimal" id="francobordo"
+        value="{{ isset($artefacto->francobordo) ? $artefacto->francobordo : '' }}">
+    {!! $errors->first('francobordo', '<p class="help-block">:message</p>') !!}
+</div>
+<div class="form-group {{ $errors->has('propulsion') ? 'has-error' : '' }}">
+    <label for="propulsion" class="control-label">{{ 'Propulsion' }}</label>
+    <input class="form-control" name="propulsion" type="text" id="propulsion"
+        value="{{ isset($artefacto->propulsion) ? $artefacto->propulsion : '' }}">
+    {!! $errors->first('propulsion', '<p class="help-block">:message</p>') !!}
+</div>
+<div class="form-group {{ $errors->has('construccion') ? 'has-error' : '' }}">
+    <label for="construccion" class="control-label">{{ 'Construccion' }}</label>
+    <input class="form-control" name="construccion" type="text" id="construccion"
+        value="{{ isset($artefacto->construccion) ? $artefacto->construccion : '' }}">
+    {!! $errors->first('construccion', '<p class="help-block">:message</p>') !!}
+</div>
+<div class="form-group {{ $errors->has('trn') ? 'has-error' : '' }}">
+    <label for="trn" class="control-label">{{ 'Trn' }}</label>
+    <input class="form-control" name="trn" type="decimal" id="trn"
+        value="{{ isset($artefacto->trn) ? $artefacto->trn : '' }}">
+    {!! $errors->first('trn', '<p class="help-block">:message</p>') !!}
+</div>
+<div class="form-group {{ $errors->has('trb') ? 'has-error' : '' }}">
+    <label for="trb" class="control-label">{{ 'Trb' }}</label>
+    <input class="form-control" name="trb" type="decimal" id="trb"
+        value="{{ isset($artefacto->trb) ? $artefacto->trb : '' }}">
+    {!! $errors->first('trb', '<p class="help-block">:message</p>') !!}
+</div>
+<div class="form-group {{ $errors->has('servicio') ? 'has-error' : '' }}">
+    <label for="servicio" class="control-label">{{ 'Servicio' }}</label>
+    <input class="form-control" name="servicio" type="text" id="servicio"
+        value="{{ isset($artefacto->servicio) ? $artefacto->servicio : '' }}">
+    {!! $errors->first('servicio', '<p class="help-block">:message</p>') !!}
+</div>
+<div class="form-group {{ $errors->has('asociacion') ? 'has-error' : '' }}">
+    <label for="asociacion" class="control-label">{{ 'Asociacion' }}</label>
+    <input class="form-control" name="asociacion" type="text" id="asociacion"
+        value="{{ isset($artefacto->asociacion) ? $artefacto->asociacion : '' }}">
+    {!! $errors->first('asociacion', '<p class="help-block">:message</p>') !!}
+</div>
+<div class="form-group {{ $errors->has('observaciones') ? 'has-error' : '' }}">
+    <label for="observaciones" class="control-label">{{ 'Observaciones' }}</label>
+    <input class="form-control" name="observaciones" type="text" id="observaciones"
+        value="{{ isset($artefacto->observaciones) ? $artefacto->observaciones : '' }}">
+    {!! $errors->first('observaciones', '<p class="help-block">:message</p>') !!}
+</div>
+<div class="form-group {{ $errors->has('fotoA') ? 'has-error' : '' }}">
+    <label for="fotoA" class="control-label">{{ 'Foto' }}</label>
+    <input class="form-control" name="fotoA" type="file" id="fotoA"
+        value="{{ isset($artefacto->fotoA) ? $artefacto->fotoA : '' }}">
+    {!! $errors->first('fotoA', '<p class="help-block">:message</p>') !!}
+</div>
+<div class="form-group">
+    <input class="btn btn-primary" type="submit" value="{{ $formMode === 'edit' ? 'Actualizar' : 'Añadir' }}">
+</div>
+>>>>>>> 3d0358b39a49682b648a4f2cab9c7347cca15138
