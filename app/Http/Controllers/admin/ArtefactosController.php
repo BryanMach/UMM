@@ -39,7 +39,7 @@ class ArtefactosController extends Controller
                 ->orWhere('construccion', 'LIKE', "%$keyword%")
                 ->orWhere('trn', 'LIKE', "%$keyword%")
                 ->orWhere('trb', 'LIKE', "%$keyword%")
-                ->orWhere('servicio', 'LIKE', "%$keyword%")
+                ->orWhere('idServicio', 'LIKE', "%$keyword%")
                 ->orWhere('asociacion', 'LIKE', "%$keyword%")
                 ->orWhere('observaciones', 'LIKE', "%$keyword%")
                 ->orWhere('idBaseOperativa', 'LIKE', "%$keyword%")

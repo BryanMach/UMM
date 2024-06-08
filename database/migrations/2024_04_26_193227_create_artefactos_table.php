@@ -29,13 +29,15 @@ class CreateArtefactosTable extends Migration
             $table->string('construccion')->nullable();
             $table->double('trn')->nullable();
             $table->double('trb')->nullable();
-            $table->string('servicio')->nullable();
+            $table->string('idServicio')->nullable();
             $table->string('asociacion')->nullable();
+            $table->string('fotoA')->nullable();
             $table->string('observaciones')->nullable();
             $table->foreign('idUsuarios')->references('id')->on('usuarios');
             $table->foreign('idBaseOperativa')->references('id')->on('bases_operativas');
             $table->foreign('idTipo')->references('id')->on('tipos');
             $table->foreign('idMaterial')->references('id')->on('materials');
+            $table->foreign('idServicio')->references('id')->on('servicios');
             });
     }
 
