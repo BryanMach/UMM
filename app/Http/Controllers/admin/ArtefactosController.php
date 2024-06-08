@@ -100,7 +100,7 @@ class ArtefactosController extends Controller
         $usuario = Usuario::findOrFail(Auth::user()->id);
         $nivel = $usuario['nivel'];
 
-        return view('admin.artefactos.show', compact('artefacto , nivel'));
+        return view('admin.artefactos.show', compact('artefacto', 'nivel'));
     }
 
     /**

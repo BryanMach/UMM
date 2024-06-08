@@ -1,5 +1,5 @@
 <div class="form-group {{ $errors->has('idPropietario') ? 'has-error' : '' }}">
-    <label for="idPropietario" class="control-label">{{ 'Lista de propietarios' }}</label>
+    <label for="idPropietario" class="control-label">{{ 'LISTA DE PROPIETARIOS' }}</label>
     <select class="form-control" name="idPropietario" id="idPropietario">
         @foreach ($propietarios as $propietario)
             <option value="{{ $propietario->id }}">
@@ -9,7 +9,7 @@
     {!! $errors->first('idPropietario', '<p class="help-block">:message</p>') !!}
 </div>
 <div class="form-group {{ $errors->has('idArtefacto') ? 'has-error' : '' }}">
-    <label for="idArtefacto" class="control-label">{{ 'Artefacto' }}</label>
+    <label for="idArtefacto" class="control-label">{{ 'ARTEFACTO NAVAL' }}</label>
     <select class="form-control" name="idArtefacto" id="idArtefacto">
         @foreach ($artefactos as $artefacto)
             <option value="{{ $artefacto->id }}">{{ $artefacto->matricula }}</option>

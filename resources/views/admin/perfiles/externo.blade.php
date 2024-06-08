@@ -174,7 +174,7 @@
                 <table class="description text-left">
                     <tbody>
                         <tr>
-                            <td>Cargo</td>
+                            <td>CARGO</td>
                             <td>{{ $perfil->cargo }}</td>
                         </tr>
                     </tbody>
@@ -184,7 +184,7 @@
                             <td>{{ $perfil->ci }}</td>
                         </tr>
                         <tr>
-                            <td>Contacto</td>
+                            <td>CONTACTO</td>
                             <td>{{ $perfil->contacto }}</td>
                         </tr>
                     </tbody>
@@ -192,7 +192,7 @@
                 <form action="{{ route('logout') }}" method="POST">
                     @csrf
                     <button class="btn btn-outline-secondary mt-4"><i class="fas fa-power-off"></i>
-                        Cerrar Sesión</button>
+                        CERRAR SESION</button>
                 </form>
             </div>
             <div class="col-md-9 main-content">
@@ -220,9 +220,9 @@
                         <tr>
                             <th>Nº</th>
                             <th>CI</th>
-                            <th>Propietario</th>
-                            <th>Artefacto</th>
-                            <th>Opciones</th>
+                            <th>PROPIETARIO</th>
+                            <th>ARTEFACTO NAVAL</th>
+                            <th>OPCIONES</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -247,16 +247,16 @@
                                         title="Editar ListaPropietario"><button class="btn btn-primary btn-sm"><i
                                                 class="fa fa-pencil-square-o" aria-hidden="true"></i>
                                             Editar</button></a> --}}
-                                        <form method="POST" action="{{ url('/admin/corregir') }}" accept-charset="UTF-8"
-                                            style="display:inline">
-                                            {{ csrf_field() }}
-                                            <input type="hidden" name="id" value="{{ $item->id }}">
-                                            <button type="submit" class="btn btn-primary btn-sm"
-                                                title="Corregir registro"><i class="fa fa-trash-o"
+                                    <form method="POST" action="{{ url('/admin/corregir') }}" accept-charset="UTF-8"
+                                        style="display:inline">
+                                        {{ csrf_field() }}
+                                        <input type="hidden" name="id" value="{{ $item->id }}">
+                                        <button type="submit" class="btn btn-primary btn-sm"
+                                            title="Corregir registro"><i class="fa fa-trash-o"
                                                 aria-hidden="true"></i>Corregir</button>
-                                        </form>
+                                    </form>
 
-                                    {{--<form method="POST"
+                                    {{-- <form method="POST"
                                         action="{{ url('/admin/lista-propietarios' . '/' . $item->id) }}"
                                         accept-charset="UTF-8" style="display:inline">
                                         {{ method_field('DELETE') }}

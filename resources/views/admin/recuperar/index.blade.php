@@ -97,16 +97,16 @@
   @if ($nivel == 2)
       <div class="right-sidebar">
           <div class="sidebar-header text-center p-3">
-              <h4>Registros de personal </h4>
+              <h4>REGISTROS DEL PERSONAL </h4>
           </div>
           <div class="sidebar-content">
-              <a href="personal">Personal</a>
-              <a href="usuarios">Usuarios</a>
-              <a href="bases-operativas" class="active">Bases de operaciones</a>
-              <h5 class="px-3 pt-3">Registros de embarcaciones</h5>
-              <a href="propietario">Propietarios</a>
-              <a href="artefactos">Artefactos</a>
-              <a href="lista-propietarios">Listas de propietarios de embarcaciones</a>
+              <a href="personal">PERSONAL</a>
+              <a href="usuarios">USUARIOS</a>
+              <a href="bases-operativas" class="active">BASES DE OPERACIONES</a>
+              <h5 class="px-3 pt-3">REGISTROS DE EMBARCAIONES</h5>
+              <a href="propietario">PROPIETARIOS</a>
+              <a href="artefactos">ARTEFACTOS NAVALES</a>
+              <a href="lista-propietarios">LISTAS DE PROPIETARIOS DE EMBARCACIONES</a>
               {{-- <a href="imprimir">Certificaciones</a> --}}
               {{-- <a href="imprimir">Alertas de Vencimiento</a> --}}
           </div>
@@ -115,16 +115,16 @@
   @if ($nivel == 3)
       <div class="right-sidebar">
           <div class="sidebar-header text-center p-3">
-              <h4>Registros de personal </h4>
+              <h4>REGISTROS DEL PERSONAL </h4>
           </div>
           <div class="sidebar-content">
-              <a href="personal">Personal</a>
-              <a href="usuarios">Usuarios</a>
-              <a href="bases-operativas" class="active">Bases de operaciones</a>
-              <h5 class="px-3 pt-3">Registros de embarcaciones</h5>
-              <a href="propietario">Propietarios</a>
-              <a href="artefactos">Artefactos</a>
-              <a href="lista-propietarios">Listas de propietarios de embarcaciones</a>
+              <a href="personal">PERSONAL</a>
+              <a href="usuarios">USUARIOS</a>
+              <a href="bases-operativas" class="active">BASES DE OPERACIONES</a>
+              <h5 class="px-3 pt-3">REGISTROS DE EMBARCAIONES</h5>
+              <a href="propietario">PROPIETARIOS</a>
+              <a href="artefactos">ARTEFACTOS NAVALES</a>
+              <a href="lista-propietarios">LISTAS DE PROPIETARIOS DE EMBARCACIONES</a>
               {{-- <a href="imprimir">Certificaciones</a> --}}
               {{-- <a href="imprimir">Alertas de Vencimiento</a> --}}
           </div>
@@ -132,16 +132,16 @@
   @else
       <div class="right-sidebar">
           <div class="sidebar-header text-center p-3">
-              <h4>Registros de personal </h4>
+              <h4>REGISTROS DEL PERSONAL </h4>
           </div>
           <div class="sidebar-content">
-              <a href="personal">Personal</a>
-              <a href="usuarios">Usuarios</a>
-              <a href="bases-operativas" class="active">Bases de operaciones</a>
-              <h5 class="px-3 pt-3">Registros de embarcaciones</h5>
-              <a href="propietario">Propietarios</a>
-              <a href="artefactos">Artefactos</a>
-              <a href="lista-propietarios">Listas de propietarios de embarcaciones</a>
+              <a href="personal">PERSONAL</a>
+              <a href="usuarios">USUARIOS</a>
+              <a href="bases-operativas" class="active">BASES DE OPERACIONES</a>
+              <h5 class="px-3 pt-3">REGISTROS DE EMBARCACIONES</h5>
+              <a href="propietario">PROPIETARIOS</a>
+              <a href="artefactos">ARTEFACTOS</a>
+              <a href="lista-propietarios">LISTAS DE PROPIETARIOS DE EMBARCACIONES</a>
               {{-- <a href="imprimir">Certificaciones</a> --}}
           </div>
       </div>
@@ -150,7 +150,7 @@
       <div class="row">
           <div class="col-md-9">
               <div class="card">
-                  <div class="card-header">Recuperar</div>
+                  <div class="card-header">RECUPERAR</div>
                   <div class="card-body">
                       @switch($nivel)
                           @case(3)
@@ -195,10 +195,10 @@
                               <thead>
                                   <tr>
                                       <th>Nº</th>
-                                      <th>Usuarios</th>
-                                      <th>Tabla</th>
-                                      <th>Posicion</th>
-                                      <th>Opciones</th>
+                                      <th>USUARIOS</th>
+                                      <th>TABLA</th>
+                                      <th>POSICION</th>
+                                      <th>OPCIONES</th>
                                   </tr>
                               </thead>
                               <tbody>

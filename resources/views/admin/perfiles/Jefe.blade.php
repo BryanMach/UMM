@@ -115,7 +115,7 @@
         <table class="description text-left">
             <tbody>
                 <tr>
-                    <td>Cargo</td>
+                    <td>CARGO</td>
                     <td>{{ $perfil->cargo }}</td>
                 </tr>
             </tbody>
@@ -125,7 +125,7 @@
                     <td>{{ $perfil->ci }}</td>
                 </tr>
                 <tr>
-                    <td>Contacto</td>
+                    <td>CONTACTO</td>
                     <td>{{ $perfil->contacto }}</td>
                 </tr>
             </tbody>
@@ -137,16 +137,16 @@
     </div>
     <div class="search-bar">
         <div class="main-content">
-            <h2>Planilla de personal</h2>
+            <h2>PLANILLA DEL PERSONAL</h2>
             {{-- <input type="text" class="form-control" placeholder="Buscar"> --}}
             <div class="table-responsive">
                 <table class="table">
                     <thead>
                         <tr>
-                            <th>Cargo</th>
-                            <th>Nombre y apellido</th>
-                            <th>Cédula de identidad</th>
-                            <th>Acciones</th>
+                            <th>CARGO</th>
+                            <th>NOMBRE Y APELLIDO</th>
+                            <th>CEDULA DE IDENTIDAD</th>
+                            <th>OPCIONES</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -159,7 +159,7 @@
                                     <a href="{{ url('/admin/personal/' . $item->id) }}" title="Ver Personal"><button
                                             class="btn btn-info btn-sm">
                                             <i class="fa fa-eye" aria-hidden="true"></i> Ver</button></a>
-                                            <!--<form method="POST"
+                                    <!--<form method="POST"
                                                   action="{{ url('/admin/usuario') }}"                                                 accept-charset="UTF-8" style="display:inline">
                                                   {{ csrf_field() }}
                                                   <input type="hiden" name="" id="" value="{{ asset($item->id) }}">
@@ -180,16 +180,16 @@
     </div>
     <div class="right-sidebar">
         <div class="sidebar-header text-center p-3">
-            <h4>Registros de personal</h4>
+            <h4>REGISTROS DEL PERSONAL</h4>
         </div>
         <div class="sidebar-content">
-            <a href="personal">Personal</a>
-            <a href="usuarios">Usuarios</a>
-            <a href="bases-operativas" class="active">Bases de operaciones</a>
-            <h5 class="px-3 pt-3">Registros de embarcaciones</h5>
-            <a href="propietario">Propietarios</a>
-            <a href="artefactos">Artefactos</a>
-            <a href="lista-propietarios">Listas de propietarios de embarcaciones</a>
+            <a href="personal">PERSONAL</a>
+            <a href="usuarios">USUARIOS</a>
+            <a href="bases-operativas" class="active">BASES DE OPERACIONES</a>
+            <h5 class="px-3 pt-3">REGISTROS DE EMBARCACIONES</h5>
+            <a href="propietario">PROPIETARIOS</a>
+            <a href="artefactos">ARTEFACTOS NAVALES</a>
+            <a href="lista-propietarios">LISTAS DE PROPIETARIOS DE EMBARCACIONES</a>
             {{-- {{-- <a href="imprimir">Certificaciones</a> --}}
             {{-- <a href="imprimir">Alertas de Vencimiento</a> --}}
             {{-- <a href="dashboard">Modo Administrador</a> --}}

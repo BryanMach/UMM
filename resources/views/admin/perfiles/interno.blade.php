@@ -172,7 +172,7 @@
                 <table class="description text-left">
                     <tbody>
                         <tr>
-                            <td>Cargo</td>
+                            <td>CARGO</td>
                             <td>{{ $perfil->cargo }}</td>
                         </tr>
                     </tbody>
@@ -182,7 +182,7 @@
                             <td>{{ $perfil->ci }}</td>
                         </tr>
                         <tr>
-                            <td>Contacto</td>
+                            <td>CONTACTO</td>
                             <td>{{ $perfil->contacto }}</td>
                         </tr>
                     </tbody>

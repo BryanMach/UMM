@@ -97,16 +97,16 @@
   @if ($nivel == 2)
       <div class="right-sidebar">
           <div class="sidebar-header text-center p-3">
-              <h4>Registros de personal </h4>
+              <h4>REGISTRO DE PERSONAL </h4>
           </div>
           <div class="sidebar-content">
-              <a href="personal">Personal</a>
-              <a href="usuarios">Usuarios</a>
-              <a href="bases-operativas" class="active">Bases de operaciones</a>
-              <h5 class="px-3 pt-3">Registros de embarcaciones</h5>
-              <a href="propietario">Propietarios</a>
-              <a href="artefactos">Artefactos</a>
-              <a href="lista-propietarios">Listas de propietarios de embarcaciones</a>
+              <a href="personal">PERSONAL</a>
+              <a href="usuarios">USUARIOS</a>
+              <a href="bases-operativas" class="active">BASES DE OPERACIONES</a>
+              <h5 class="px-3 pt-3">REGISTRO DE EMBARCACIONES</h5>
+              <a href="propietario">PROPIETARIOS</a>
+              <a href="artefactos">ARTEFACTOS</a>
+              <a href="lista-propietarios">LISTAS DE PROPIETARIOS DE EMBARCACIONES</a>
               {{-- <a href="imprimir">Certificaciones</a> --}}
               {{-- <a href="imprimir">Alertas de Vencimiento</a> --}}
           </div>
@@ -115,10 +115,10 @@
   @if ($nivel == 3)
       <div class="right-sidebar">
           <div class="sidebar-content">
-              <h5 class="px-3 pt-3">Registros de embarcaciones</h5>
-              <a href="propietario">Propietarios</a>
-              <a href="artefactos">Artefactos</a>
-              <a href="lista-propietarios">Listas de propietarios de embarcaciones</a>
+              <h5 class="px-3 pt-3">REGISTROS DE EMBARCACIONES</h5>
+              <a href="propietario">PROPIETARIOS</a>
+              <a href="artefactos">ARTEFACTOS</a>
+              <a href="lista-propietarios">LISTAS DE PROPIETARIOS DE EMBARCAIONES</a>
               {{-- <a href="imprimir">Certificaciones</a> --}}
               {{-- <a href="imprimir">Alertas de Vencimiento</a> --}}
           </div>
@@ -126,10 +126,10 @@
   @else
       <div class="right-sidebar">
           <div class="sidebar-content">
-              <h5 class="px-3 pt-3">Registros de embarcaciones</h5>
-              <a href="propietario">Propietarios</a>
-              <a href="artefactos">Artefactos</a>
-              <a href="lista-propietarios">Listas de propietarios de embarcaciones</a>
+              <h5 class="px-3 pt-3">REGISTROS DE EMBARCACIONES</h5>
+              <a href="propietario">PROPIETARIOS</a>
+              <a href="artefactos">ARTEFACTOS</a>
+              <a href="lista-propietarios">LISTAS DE PROPIETARIOS DE EMBARCAIONES</a>
           </div>
       </div>
   @endif @section('content')
@@ -162,51 +162,51 @@
                               <tbody>
 
                                   <tr>
-                                      <th> Usuarios </th>
+                                      <th> USUARIOS </th>
                                       <td> {{ $artefacto->usuarios->usuario }} </td>
                                   </tr>
                                   <tr>
-                                      <th> Base operativa </th>
+                                      <th>BASE DE OPERACIONES</th>
                                       <td> {{ $artefacto->baseoperativa->baseOperativa }} </td>
                                   </tr>
                                   <tr>
-                                      <th> Matricula </th>
+                                      <th> MATRICULA </th>
                                       <td> {{ $artefacto->matricula }} </td>
                                   </tr>
                                   <tr>
-                                      <th> Nombre </th>
+                                      <th> NOMBRE </th>
                                       <td> {{ $artefacto->nombre }} </td>
                                   </tr>
                                   <tr>
-                                      <th> Tipo </th>
+                                      <th> TIPO </th>
                                       <td> {{ $artefacto->tipo->tipo }} </td>
                                   </tr>
                                   <tr>
-                                      <th> Material </th>
+                                      <th> MATERIAL </th>
                                       <td> {{ $artefacto->material->material }} </td>
                                   </tr>
                                   <tr>
-                                      <th> Eslora </th>
+                                      <th> ESLORA </th>
                                       <td> {{ $artefacto->eslora }} </td>
                                   </tr>
                                   <tr>
-                                      <th> Manga </th>
+                                      <th> MANGA </th>
                                       <td> {{ $artefacto->manga }} </td>
                                   </tr>
                                   <tr>
-                                      <th> Puntal </th>
+                                      <th> PUNTAL </th>
                                       <td> {{ $artefacto->puntal }} </td>
                                   </tr>
                                   <tr>
-                                      <th> Francobordo </th>
+                                      <th> FRANCOBORDO </th>
                                       <td> {{ $artefacto->francobordo }} </td>
                                   </tr>
                                   <tr>
-                                      <th> Propulsion </th>
+                                      <th> PROPULSION </th>
                                       <td> {{ $artefacto->propulsion }} </td>
                                   </tr>
                                   <tr>
-                                      <th> Construccion </th>
+                                      <th> CONSTRUCCION </th>
                                       <td> {{ $artefacto->construccion }} </td>
                                   </tr>
                                   <tr>
@@ -218,15 +218,15 @@
                                       <td> {{ $artefacto->trb }} </td>
                                   </tr>
                                   <tr>
-                                      <th> Servicio </th>
+                                      <th> SERVICIO </th>
                                       <td> {{ $artefacto->servicio }} </td>
                                   </tr>
                                   <tr>
-                                      <th> Asociacion </th>
+                                      <th> ASOCIACION </th>
                                       <td> {{ $artefacto->asociacion }} </td>
                                   </tr>
                                   <tr>
-                                      <th> Observaciones </th>
+                                      <th> OBSERVACIONES </th>
                                       <td> {{ $artefacto->observaciones }} </td>
                                   </tr>
                               </tbody>

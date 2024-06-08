@@ -97,16 +97,16 @@
   @if ($nivel == 2)
       <div class="right-sidebar">
           <div class="sidebar-header text-center p-3">
-              <h4>Registros de personal </h4>
+              <h4>REGISTRO DE PERSONAL </h4>
           </div>
           <div class="sidebar-content">
-              <a href="personal">Personal</a>
-              <a href="usuarios">Usuarios</a>
-              <a href="bases-operativas" class="active">Bases de operaciones</a>
-              <h5 class="px-3 pt-3">Registros de embarcaciones</h5>
-              <a href="propietario">Propietarios</a>
-              <a href="artefactos">Artefactos</a>
-              <a href="lista-propietarios">Listas de propietarios de embarcaciones</a>
+              <a href="personal">PERSONAL</a>
+              <a href="usuarios">USUARIOS</a>
+              <a href="bases-operativas" class="active">BASES DE OPERACIONES</a>
+              <h5 class="px-3 pt-3">REGISTRO DE EMBARCACIONES</h5>
+              <a href="propietario">PROPIETARIOS</a>
+              <a href="artefactos">ARTEFACTOS</a>
+              <a href="lista-propietarios">LISTAS DE PROPIETARIOS DE EMBARCACIONES</a>
               {{-- <a href="imprimir">Certificaciones</a> --}}
               {{-- <a href="imprimir">Alertas de Vencimiento</a> --}}
           </div>
@@ -115,10 +115,10 @@
   @if ($nivel == 3)
       <div class="right-sidebar">
           <div class="sidebar-content">
-              <h5 class="px-3 pt-3">Registros de embarcaciones</h5>
-              <a href="propietario">Propietarios</a>
-              <a href="artefactos">Artefactos</a>
-              <a href="lista-propietarios">Listas de propietarios de embarcaciones</a>
+              <h5 class="px-3 pt-3">REGISTROS DE EMBARCACIONES</h5>
+              <a href="propietario">PROPIETARIOS</a>
+              <a href="artefactos">ARTEFACTOS</a>
+              <a href="lista-propietarios">LISTAS DE PROPIETARIOS DE EMBARCAIONES</a>
               {{-- <a href="imprimir">Certificaciones</a> --}}
               {{-- <a href="imprimir">Alertas de Vencimiento</a> --}}
           </div>
@@ -126,10 +126,10 @@
   @else
       <div class="right-sidebar">
           <div class="sidebar-content">
-              <h5 class="px-3 pt-3">Registros de embarcaciones</h5>
-              <a href="propietario">Propietarios</a>
-              <a href="artefactos">Artefactos</a>
-              <a href="lista-propietarios">Listas de propietarios de embarcaciones</a>
+              <h5 class="px-3 pt-3">REGISTROS DE EMBARCACIONES</h5>
+              <a href="propietario">PROPIETARIOS</a>
+              <a href="artefactos">ARTEFACTOS</a>
+              <a href="lista-propietarios">LISTAS DE PROPIETARIOS DE EMBARCAIONES</a>
           </div>
       </div>
   @endif @section('content')
@@ -137,7 +137,7 @@
       <div class="row">
           <div class="col-md-9">
               <div class="card">
-                  <div class="card-header">Personal</div>
+                  <div class="card-header">PERSONAL</div>
                   <div class="card-body">
 
                       @switch($nivel)
@@ -158,6 +158,7 @@
 
                           @default
                       @endswitch
+
                       <a href="{{ url('/admin/personal/create') }}" class="btn btn-success btn-sm"
                           title="Agregar nuevo Personal">
                           <i class="fa fa-plus" aria-hidden="true"></i> Agregar
@@ -185,9 +186,9 @@
                                   <tr>
                                       <th>Nº</th>
                                       <th>CI</th>
-                                      <th>Cargo</th>
-                                      <th>Grado</th>
-                                      <th>Opciones</th>
+                                      <th>CARGO</th>
+                                      <th>GRADO</th>
+                                      <th>OPCIONES</th>
                                   </tr>
                               </thead>
                               <tbody>
