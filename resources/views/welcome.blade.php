@@ -501,6 +501,31 @@
         display: block;
     }
 
+    .imagen-seccion {
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    .imagen-seccion img {
+        max-width: 80%;
+        height: auto;
+        border-radius: 10px;
+        /* Ajusta el radio del borde según tu preferencia */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        /* Agrega sombra a la imagen */
+    }
+
+    .grafico-seccion {
+        margin-top: 20px;
+        text-align: center;
+    }
+
+    #graficoTorta {
+        max-width: 900px;
+        margin: 0 auto;
+    }
+
+
     .portfolio .galeria .proyecto .overlay {
         position: absolute;
         top: 0;
@@ -771,7 +796,8 @@
                 <ul>
                     <li class="text-center"><a href="#sobremi" onclick="seleccionar()">QUIENES SOMOS</a></li>
                     <li class="text-center"><a href="#skills" onclick="seleccionar()">SERVICIOS</a></li>
-                    <li class="text-center"><a href="#curriculum" onclick="seleccionar()">EMBARCACIONES CERTIFICADAS</a></li>
+                    <li class="text-center"><a href="#curriculum" onclick="seleccionar()">EMBARCACIONES CERTIFICADAS</a>
+                    </li>
                     <li class="text-center"><a href="#contacto" onclick="seleccionar()">CONTACTO</a></li>
                     <li class="text-center"><a href="http://localhost/UMM/public/login" style="margin-left: 150%">
                             @if (Route::has('login'))
@@ -831,17 +857,6 @@
                             <div class="circuloi"></div>
                         </div>
                     </div>
-                    {{--  <div class="item izq">
-                        <h4>Arte y Multimedia</h4>
-                        <span class="casa">Universidad de Oxford</span>
-                        <span class="fecha">2005 - 2008</span>
-                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quis, cumque repellat, tempora
-                            recusandae aliquam nemo esse natus impedit, nostrum temporibus veritatis eaque soluta
-                            aperiam id repudiandae fugiat deserunt! Explicabo, veritatis?</p>
-                        <div class="conectori">
-                            <div class="circuloi"></div>
-                        </div>
-                    </div> --}}
                 </div>
 
                 <div class="col derecha">
@@ -853,19 +868,11 @@
                             <div class="circulod"></div>
                         </div>
                     </div>
-                    {{--   <div class="item der">
-                        <h4>Front Developer</h4>
-                        <span class="casa">Nombre de Compañía</span>
-                        <span class="fecha">2005 - 2008</span>
-                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quis, cumque repellat, tempora
-                            recusandae aliquam nemo esse natus impedit, nostrum temporibus veritatis eaque soluta
-                            aperiam id repudiandae fugiat deserunt! Explicabo, veritatis?</p>
-                        <div class="conectord">
-                            <div class="circulod"></div>
-                        </div>
-                    </div> --}}
                 </div>
             </div>
+        </div>
+        <div class="imagen-seccion">
+            <img src="{{ asset('images/esquema.jpg') }}" alt="Descripción de la imagen">
         </div>
     </section>
 
@@ -922,19 +929,21 @@
                     </tr>
                 </thead>
                 <tbody>
-                    
+
                     @foreach ($artefactos as $artefacto)
-                    <tr>
-                        <th scope="row">{{ $artefacto->nombre }}</th>
-                        <td>{{ $artefacto->matricula }}</td>
-                        <td>{{ $artefacto->baseoperativa->cuenca->cuenca }}</td>
-                    </tr>
+                        <tr>
+                            <th scope="row">{{ $artefacto->nombre }}</th>
+                            <td>{{ $artefacto->matricula }}</td>
+                            <td>{{ $artefacto->baseoperativa->cuenca->cuenca }}</td>
+                        </tr>
                     @endforeach
                 </tbody>
             </table>
 
         </div>
-
+        <div class="grafico-seccion">
+            <canvas id="graficoTorta" width="500" height="500"></canvas>
+        </div>
     </section>
 
     <!-- SECCION CONTACTO -->
@@ -954,7 +963,8 @@
                             </li>
                             <li>
                                 <i class="fas fa-portrait"></i>
-                                Desempeñandose dentro de la Unidad de Marina Mercante como: {{ $jefe->cargo }} de Unidad
+                                Desempeñandose dentro de la Unidad de Marina Mercante como: {{ $jefe->cargo }} de
+                                Unidad
                             </li>
                             <li>
                                 <i class="fa-solid fa-mobile-screen"></i>
@@ -962,7 +972,7 @@
                             </li>
                             <li>
                                 {{-- <i class="fa-solid fa-envelope"></i> --}}
-                                  {{ $jefe->descripcion }}
+                                {{ $jefe->descripcion }}
                             </li>
                         </ul>
                     </div>
@@ -1045,6 +1055,48 @@
             };
         });
     </script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var ctx = document.getElementById('graficoTorta').getContext('2d');
+            var graficoTorta = new Chart(ctx, {
+                type: 'pie',
+                data: {
+                    labels: ['Cuenca Amazonas', 'Cuenca De la plata', 'Cuenca Lacustre'],
+                    datasets: [{
+                        data: [10, 20, 30], // valores
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.2)',
+                            'rgba(54, 162, 235, 0.2)',
+                            'rgba(255, 206, 86, 0.2)'
+                        ],
+                        borderColor: [
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(255, 206, 86, 1)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(tooltipItem) {
+                                    return tooltipItem.label + ': ' + tooltipItem.raw;
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+
 </body>
 
 </html>

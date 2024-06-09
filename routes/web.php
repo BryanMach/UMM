@@ -81,11 +81,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('admin/perf45j', [PerfilesController::class, 'jefe']);
     Route::get('admin/perf45i', [PerfilesController::class, 'interno']);
     Route::get('admin/perf45r', [PerfilesController::class, 'registrador']);
-<<<<<<< HEAD
-    Route::post('admin/asignar', [UsuariosController::class, 'asignar_usuario']);
-=======
     Route::post('admin/usuarios/asignar', [UsuariosController::class, 'asignar_usuario']);
->>>>>>> 3d0358b39a49682b648a4f2cab9c7347cca15138
     //Rutas para registrar
     Route::post('admin/registro', [PerfilesController::class, 'registrar']);
     Route::post('admin/registro/guardarRegistro', [PerfilesController::class, 'guardarRegistro']);
