@@ -202,10 +202,81 @@
                               </tbody>
                           </table>
                       </div>
-
-                  </div>
-              </div>
-          </div>
-      </div>
-  </div>
+                      <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <th>USUARIOS ASIGNADOS A ESTE PERSONAL</th>
+                                <tr>
+                                    <th>NIVEL</th>
+                                    <th>USUARIO</th>
+                                    <th>CONTRASEÑA</th>
+                                    <th>OPCIONES</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    
+                                    @foreach ($usuarios as $item)
+                                      <tr>
+                                              @php
+                                                  $n='';
+                                              @endphp
+                                              @switch($item->nivel)
+                                                  @case(2)
+                                                  @php
+                                                  $n='Jefe';
+                                              @endphp
+                                                      @break
+                                                  @case(3)
+                                                  @php
+                                                  $n='Archivo interno';
+                                              @endphp
+                                                      @break
+                                                @case(4)
+                                                @php
+                                                $n='Archivo externo';
+                                            @endphp
+                                                      @break
+                                                  @default
+                                                      
+                                              @endswitch
+                                            <td>{{ $n }}</td>
+                                            <td>
+                                                @foreach($acc as $ac)
+                                                    @if ($ac->id == $item->id)
+                                                        {{ $ac->email }}
+                                                    @endif
+                                                @endforeach
+                                            </td>
+                                            <td>{{ $item->contrasena }}</td>
+                                            <td>
+                                                <a href="{{ url('/admin/usuarios/' . $item->id) }}"
+                                                    title="Ver Usuario"><button class="btn btn-info btn-sm"><i
+                                                            class="fa fa-eye" aria-hidden="true"></i> VER</button></a>
+                                                <a href="{{ url('/admin/usuarios/' . $item->id . '/edit') }}"
+                                                    title="Editar Usuario"><button class="btn btn-primary btn-sm"><i
+                                                            class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                                        Editar</button></a> 
+                                                <form method="POST"
+                                                    action="{{ url('/admin/usuarios' . '/' . $item->id) }}"
+                                                    accept-charset="UTF-8" style="display:inline">
+                                                    {{ method_field('DELETE') }}
+                                                    {{ csrf_field() }}
+                                                    <button type="submit" class="btn btn-danger btn-sm"
+                                                        title="Borrar Usuario"
+                                                        onclick="return confirm(&quot;Confirm delete?&quot;)"><i
+                                                            class="fa fa-trash-o" aria-hidden="true"></i> Borrar</button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 @endsection

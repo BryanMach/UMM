@@ -9,6 +9,7 @@ use App\Models\Personal;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Usuario;
+use App\Models\User;
 use App\Models\cargo;
 class PersonalController extends Controller
 {
@@ -88,7 +89,9 @@ class PersonalController extends Controller
         $usuario = Usuario::findOrFail(Auth::user()->id);
         $nivel = $usuario['nivel'];
         $cargos = cargo::findOrFail($personal['idCargo']);
-        return view('admin.personal.show', compact('personal', 'nivel','cargos'));
+        $usuarios = $personal->usuarios;
+        $acc = User::all();
+        return view('admin.personal.show', compact('personal', 'nivel','cargos','usuarios','acc'));
     }
 
     /**
