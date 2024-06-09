@@ -945,33 +945,37 @@
     <section id="contacto" class="contacto">
         <div class="contenido-seccion">
             <h2>CONTACTO</h2>
+            @foreach($jefe as $item)
             <div class="fila">
                 <!-- Mapa:'ci', 'cargo', 'grado', 'nombres', 'apellidos', 'contacto', 'foto', 'descripcion', 'vigencia' -->
                 <div class="col">
                     <div><img src="{{ asset('images/foto.jpg') }}" alt=""
                             style="width: 250px; border: 15px solid rgba(127, 71, 7, 0.893);"></div>
                     <div class="info">
+                        
                         <ul>
                             <li>
                                 <i class="fas fa-address-card"></i>
-                                Señor: {{ $jefe->grado }} {{ $jefe->nombres }} {{ $jefe->apellidos }}
+                                Señor: {{ $item->grado }} {{ $item->nombres }} {{ $item->apellidos }}
                             </li>
                             <li>
                                 <i class="fas fa-portrait"></i>
-                                Desempeñandose dentro de la Unidad de Marina Mercante como: {{ $jefe->cargo->cargo }} de Unidad
+                                Desempeñandose dentro de la Unidad de Marina Mercante como: {{ $item->cargo->cargo }} de Unidad
                             </li>
                             <li>
                                 <i class="fa-solid fa-mobile-screen"></i>
-                                Contacto: {{ $jefe->contacto }}
+                                Contacto: {{ $item->contacto }}
                             </li>
                             <li>
                                 {{-- <i class="fa-solid fa-envelope"></i> --}}
-                                  {{ $jefe->descripcion }}
+                                  {{ $item->descripcion }}
                             </li>
                         </ul>
+                        
                     </div>
                 </div>
             </div>
+            @endforeach
         </div>
     </section>
 
