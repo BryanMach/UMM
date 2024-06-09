@@ -39,7 +39,7 @@ class ArtefactosController extends Controller
                 ->orWhere('construccion', 'LIKE', "%$keyword%")
                 ->orWhere('trn', 'LIKE', "%$keyword%")
                 ->orWhere('trb', 'LIKE', "%$keyword%")
-                ->orWhere('servicio', 'LIKE', "%$keyword%")
+                ->orWhere('idServicio', 'LIKE', "%$keyword%")
                 ->orWhere('asociacion', 'LIKE', "%$keyword%")
                 ->orWhere('observaciones', 'LIKE', "%$keyword%")
                 ->orWhere('idBaseOperativa', 'LIKE', "%$keyword%")
@@ -100,11 +100,7 @@ class ArtefactosController extends Controller
         $usuario = Usuario::findOrFail(Auth::user()->id);
         $nivel = $usuario['nivel'];
 
-<<<<<<< HEAD
-        return view('admin.artefactos.show', compact('artefacto', 'nivel'));
-=======
         return view('admin.artefactos.show', compact('artefacto' , 'nivel'));
->>>>>>> 3d0358b39a49682b648a4f2cab9c7347cca15138
     }
 
     /**

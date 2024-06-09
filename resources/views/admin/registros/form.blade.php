@@ -98,13 +98,6 @@
         {!! $errors->first('idMaterial', '<p class="help-block">:message</p>') !!}
     </div>
 
-<<<<<<< HEAD
-    <div class="form-group {{ $errors->has('eslora') ? 'has-error' : '' }}">
-        <label for="eslora" class="control-label">{{ 'Eslora' }}</label>
-        <input class="form-control" name="eslora" type="decimal" id="eslora"
-            value="{{ isset($artefacto->eslora) ? $artefacto->eslora : '' }}">
-        {!! $errors->first('eslora', '<p class="help-block">:message</p>') !!}
-=======
 <div class="form-group {{ $errors->has('eslora') ? 'has-error' : '' }}">
     <label for="eslora" class="control-label">{{ 'Eslora' }}</label>
     <input class="form-control" name="eslora" type="decimal" id="eslora" pattern="[0-9]*"
@@ -219,7 +212,6 @@
     <label for="mercPelig" class="control-label">{{ '¿Trasporta mercancias peligrosas?' }}</label>
     <div class="radio">
         <label><input name="mercPelig" type="radio" value="Si" {{ (isset($propietario) && 'Si' == $propietario->mercPelig) ? 'checked' : '' }}> Si</label>
->>>>>>> 3d0358b39a49682b648a4f2cab9c7347cca15138
     </div>
     <div class="form-group {{ $errors->has('manga') ? 'has-error' : '' }}">
         <label for="manga" class="control-label">{{ 'Manga' }}</label>
@@ -390,7 +382,6 @@
                         <option value="21">Embarcación sin propulsión: Abierto</option>
                         <option value="22">Embarcación sin propulsión: Cerrado</option>
                         <option value="23" selected>Embarcación sin propulsión: Tanque</option>
-<<<<<<< HEAD
                     @break;
                 @endswitch;
             @else
@@ -445,60 +436,3 @@
     <div class="form-group">
         <input class="btn btn-primary" type="submit" value="{{ $formMode === 'edit' ? 'Actualizar' : 'Añadir' }}">
     </div>
-=======
-                        @break;
-                    
-                    @endswitch;
-                @else
-                    <option value="11">Embarcación autopropulsada: Abierto</option>
-                    <option value="12">Embarcación autopropulsada: Cerrado</option>
-                    <option value="13">Embarcación autopropulsada: Tanque</option>
-                    <option value="21">Embarcación sin propulsión: Abierto</option>
-                    <option value="22">Embarcación sin propulsión: Cerrado</option>
-                    <option value="23">Embarcación sin propulsión: Tanque</option>
-                @endif
-    </select>
-    {!! $errors->first('cargaComb', '<p class="help-block">:message</p>') !!}
-</div>
-<div class="form-group {{ $errors->has('peso') ? 'has-error' : '' }}">
-    <label for="peso" class="control-label">{{ 'Peso Kg' }}</label>
-    <input class="form-control" name="peso" type="number" id="peso"
-        value="{{ isset($datosadicionale->peso) ? $datosadicionale->peso : '' }}">
-    {!! $errors->first('peso', '<p class="help-block">:message</p>') !!}
-</div>
-<div class="form-group {{ $errors->has('altura') ? 'has-error' : '' }}">
-    <label for="altura" class="control-label">{{ 'Altura (m)' }}</label>
-    <input class="form-control" name="altura" type="number" id="altura"
-        value="{{ isset($datosadicionale->altura) ? $datosadicionale->altura : '' }}">
-    {!! $errors->first('altura', '<p class="help-block">:message</p>') !!}
-</div>
-<h2>Inspecciones</h2>
-<div class="form-group {{ $errors->has('gestion') ? 'has-error' : '' }}">
-    <label for="gestion" class="control-label">{{ 'Gestion en la que se realiza la inspección' }}</label>
-    <input class="form-control" name="gestion" type="text" id="gestion"
-        value="{{ isset($inspeccione->gestion) ? $inspeccione->gestion : '' }}">
-    {!! $errors->first('gestion', '<p class="help-block">:message</p>') !!}
-</div>
-<div class="form-group {{ $errors->has('jefeinspector') ? 'has-error' : '' }}">
-    <label for="jefeinspector" class="control-label">{{ 'Jefe de inspección' }}</label>
-    <input class="form-control" name="jefeinspector" type="text" id="jefeinspector"
-        value="{{ isset($inspeccione->jefeinspector) ? $inspeccione->jefeinspector : '' }}">
-    {!! $errors->first('jefeinspector', '<p class="help-block">:message</p>') !!}
-</div>
-<div class="form-group {{ $errors->has('motivo') ? 'has-error' : '' }}">
-    <label for="motivo" class="control-label">{{ 'Motivo de la inspección' }}</label>
-    <input class="form-control" name="motivo" type="text" id="motivo"
-        value="{{ isset($inspeccione->motivo) ? $inspeccione->motivo : '' }}">
-    {!! $errors->first('motivo', '<p class="help-block">:message</p>') !!}
-</div>
-<h2>Documentación</h2>
-<div class="form-group {{ $errors->has('directorio') ? 'has-error' : '' }}">
-    <label for="directorio" class="control-label">{{ 'Documentos escaneados de este registro (PDF)' }}</label>
-    <input class="form-control" name="directorio" type="file" id="directorio"
-        value="{{ isset($documentacione->directorio) ? $documentacione->directorio : '' }}">
-    {!! $errors->first('directorio', '<p class="help-block">:message</p>') !!}
-</div>
-<div class="form-group">
-    <input class="btn btn-primary" type="submit" value="{{ $formMode === 'edit' ? 'Actualizar' : 'Añadir' }}">
-</div>
->>>>>>> 3d0358b39a49682b648a4f2cab9c7347cca15138

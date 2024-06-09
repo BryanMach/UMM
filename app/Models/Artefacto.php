@@ -25,7 +25,7 @@ class Artefacto extends Model
      *
      * @var array
      */
-    protected $fillable = ['idUsuarios', 'idBaseOperativa', 'matricula', 'nombre', 'idTipo', 'idMaterial', 'eslora', 'manga', 'puntal', 'francobordo', 'propulsion', 'construccion', 'trn', 'trb', 'servicio', 'asociacion', 'observaciones'];
+    protected $fillable = ['idUsuarios', 'idBaseOperativa', 'matricula', 'nombre', 'idTipo', 'idMaterial', 'eslora', 'manga', 'puntal', 'francobordo', 'propulsion', 'construccion', 'trn', 'trb', 'idServicio', 'asociacion', 'fotoA', 'observaciones'];
 
     public function documentos()
     {
@@ -66,5 +66,9 @@ class Artefacto extends Model
     public function tipo()
     {
         return $this->belongsTo(Tipo::class, 'idTipo', 'id');
+    }
+    public function servicio()
+    {
+        return $this->belongsTo(servicio::class, 'idServicio', 'id');
     }
 }
