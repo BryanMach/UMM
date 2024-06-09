@@ -123,7 +123,7 @@
     <div class="form-group {{ $errors->has('servicio') ? 'has-error' : '' }}">
         <label for="servicio" class="control-label">{{ 'SERVICIO' }}</label>
         <input class="form-control" name="servicio" type="text" id="servicio"
-            value="{{ isset($artefacto->servicio) ? $artefacto->servicio : '' }}">
+            value="{{ isset($artefacto->servicio->servicio) ? $artefacto->servicio->servicio : '' }}">
         {!! $errors->first('servicio', '<p class="help-block">:message</p>') !!}
     </div>
     <div class="form-group {{ $errors->has('asociacion') ? 'has-error' : '' }}">

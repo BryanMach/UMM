@@ -126,7 +126,7 @@
 @else
     <div class="right-sidebar">
         <div class="sidebar-content">
-            <h5 class="px-3 pt-3">REGISTROS DE EMBARCAIONES</h5>
+            <h5 class="px-3 pt-3">REGISTROS DE EMBARCACIONES</h5>
             <a href="propietario">PROPIETARIOS</a>
             <a href="artefactos">ARTEFACTOS NAVALES</a>
             <a href="lista-propietarios">LISTAS DE PROPIETARIOS DE EMBARCACIONES</a>

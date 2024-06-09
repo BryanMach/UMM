@@ -117,7 +117,7 @@
             <tbody>
                 <tr>
                     <td>CARGO</td>
-                    <td>{{ $perfil->cargo }}</td>
+                    <td>{{ $perfil->cargo->cargo }}</td>
                 </tr>
             </tbody>
             <tbody>
@@ -153,7 +153,7 @@
                     <tbody>
                         @foreach ($personal as $item)
                             <tr>
-                                <td>{{ $item->cargo }}</td>
+                                <td>{{ $item->cargo->cargo }}</td>
                                 <td>{{ $item->nombres }} {{ $item->apellidos }}</td>
                                 <td>{{ $item->ci }}</td>
                                 <td>

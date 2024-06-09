@@ -123,7 +123,7 @@
             </div>
             <h4 class="fuente"><strong>CERTIFICADO NACIONAL DE ARQUEO</strong></h4>
             <p class="text-left">Expedido en virtud de las disposiciones del Reglamento Nacional de Arqueo para Buques,
-                Embarcaciones y
+             EMBARCACIONES y
                 Artefactos Navales.</p>
         </div>
 

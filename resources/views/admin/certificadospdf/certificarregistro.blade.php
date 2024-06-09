@@ -169,7 +169,7 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td>{{ $artefacto->servicio }}</td>
+                        <td>{{ $artefacto->servicio->servicio }}</td>
                         <td>{{ $tipo->tipo }}</td>
                         <td>{{ $artefacto->construccion }}</td>
                     </tr>
@@ -246,7 +246,7 @@
                 QUE LA EMBARCACIÓN, A LA FECHA DE REGISTRO CUMPLE CON LAS EXIGENCIAS DEL D.S. 12884 "LEY DE NAVEGACIÓN
                 MARÍTIMA, FLUVIAL Y LACUSTRE" CAPÍTULO II, REGISTRO Y MATRÍCULA DE EMBARCACIONES Y CON LAS
                 PRESCRIPCIONES PERTINENTES DE LA R.M. 0736 QUE APRUEBA EL REGLAMENTO DE REGISTRO DE BUQUES,
-                EMBARCACIONES Y ARTEFACTOS NAVALES.
+             EMBARCACIONES Y ARTEFACTOS NAVALES.
                 <br>EL PRESENTE CERTIFICADO ES VÁLIDO POR CINCO AÑOS, CONFORME AL DECRETO SUPREMO N° 3073, A
                 PARTIR DEL:
                 {{ $certificacion->fechaEmision }}

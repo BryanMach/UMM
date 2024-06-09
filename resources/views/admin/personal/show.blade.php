@@ -1,4 +1,4 @@
-  @extends('layouts.app')
+@extends('layouts.app')
   <style>
       body {
           font-family: Arial, sans-serif;
@@ -118,7 +118,7 @@
               <h5 class="px-3 pt-3">REGISTROS DE EMBARCACIONES</h5>
               <a href="propietario">PROPIETARIOS</a>
               <a href="artefactos">ARTEFACTOS</a>
-              <a href="lista-propietarios">LISTAS DE PROPIETARIOS DE EMBARCAIONES</a>
+              <a href="lista-propietarios">LISTAS DE PROPIETARIOS DE EMBARCACIONES</a>
               {{-- <a href="imprimir">Certificaciones</a> --}}
               {{-- <a href="imprimir">Alertas de Vencimiento</a> --}}
           </div>
@@ -130,7 +130,7 @@
               <h5 class="px-3 pt-3">REGISTROS DE EMBARCACIONES</h5>
               <a href="propietario">PROPIETARIOS</a>
               <a href="artefactos">ARTEFACTOS</a>
-              <a href="lista-propietarios">LISTAS DE PROPIETARIOS DE EMBARCAIONES</a>
+              <a href="lista-propietarios">LISTAS DE PROPIETARIOS DE EMBARCACIONES</a>
           </div>
       </div>
   @endif
@@ -139,14 +139,14 @@
       <div class="row">
           <div class="col-md-9">
               <div class="card">
-                  <div class="card-header">PERSONAL {{ $personal->id }}</div>
+                  <div class="card-header">PERSONAL</div>
                   <div class="card-body">
 
                       <a href="{{ url('/admin/personal') }}" title="Back"><button class="btn btn-warning btn-sm"><i
-                                  class="fa fa-arrow-left" aria-hidden="true"></i> Retroceder</button></a>
+                                  class="fa fa-arrow-left" aria-hidden="true"></i> VOLVER</button></a>
                       <a href="{{ url('/admin/personal/' . $personal->id . '/edit') }}" title="Editar Personal"><button
                               class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                              Editar</button></a>
+                              EDITAR</button></a>
 
                       <form method="POST" action="{{ url('admin/personal' . '/' . $personal->id) }}"
                           accept-charset="UTF-8" style="display:inline">
@@ -154,7 +154,7 @@
                           {{ csrf_field() }}
                           <button type="submit" class="btn btn-danger btn-sm" title="Borrar Personal"
                               onclick="return confirm(&quot;Confirm delete?&quot;)"><i class="fa fa-trash-o"
-                                  aria-hidden="true"></i> Borrar</button>
+                                  aria-hidden="true"></i> BORRAR</button>
                       </form>
                       <br />
                       <br />
@@ -168,7 +168,7 @@
                                   </tr>
                                   <tr>
                                       <th> CARGO </th>
-                                      <td> {{ $personal->cargo }} </td>
+                                      <td> {{ $personal->cargo->cargo }} </td>
                                   </tr>
                                   <tr>
                                       <th> GRADO </th>

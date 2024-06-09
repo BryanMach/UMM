@@ -16,7 +16,7 @@ class CreatePersonalsTable extends Migration
             $table->increments('id');
             $table->timestamps();
             $table->string('ci')->nullable();
-            $table->string('cargo')->nullable();
+            $table->integer('idCargo')->unsigned();
             $table->string('grado')->nullable();
             $table->string('nombres')->nullable();
             $table->string('apellidos')->nullable();
@@ -24,6 +24,9 @@ class CreatePersonalsTable extends Migration
             $table->string('foto')->nullable();
             $table->string('descripcion')->nullable();
             $table->boolean('vigencia')->nullable();
+            $table->string('email')->nullable();
+            $table->string('telefono')->nullable();
+            $table->foreign('idCargo')->references('id')->on('cargos');
             });
     }
 

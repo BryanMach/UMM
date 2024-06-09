@@ -25,8 +25,12 @@ class Personal extends Model
      *
      * @var array
      */
-    protected $fillable = ['ci', 'cargo', 'grado', 'nombres', 'apellidos', 'contacto', 'foto', 'descripcion', 'vigencia'];
+    protected $fillable = ['ci', 'idCargo', 'grado', 'nombres', 'apellidos', 'contacto', 'foto', 'descripcion', 'vigencia','email','telefono'];
     public function usuarios(){
         return $this->hasMany(Usuario::class);
+    }
+    public function cargo()
+    {
+        return $this->belongsTo(cargo::class, 'idCargo', 'id');
     }
 }

@@ -24,7 +24,7 @@
          </div>
          <div class="sidebar-content">
              <a href="bases-operativas" class="active">BASES DE OPERACIONES</a>
-             <h5 class="px-3 pt-3">REGISTROS DE EMBARCAIONES</h5>
+             <h5 class="px-3 pt-3">REGISTROS DE EMBARCACIONES</h5>
              <a href="propietario">PROPIETARIOS</a>
              <a href="artefactos">ARTEFACTOS NAVALES</a>
              <a href="lista-propietarios">LISTAS DE PROPIETARIOS DE EMBARCACIONES</a>
@@ -43,7 +43,7 @@
                      <div class="card-header">Crear nuevo Motor</div>
                      <div class="card-body">
                          <a href="{{ url('/admin/motores') }}" title="Back"><button class="btn btn-warning btn-sm"><i
-                                     class="fa fa-arrow-left" aria-hidden="true"></i> Retroceder</button></a>
+                                     class="fa fa-arrow-left" aria-hidden="true"></i> VOLVER</button></a>
                          <br />
                          <br />
 

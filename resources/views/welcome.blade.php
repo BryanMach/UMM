@@ -809,7 +809,7 @@
                 La Unidad de Marina Mercante como autoridad marítima
                 a nivel nacional, responsable de la regulación del personal
                 mercante, realiza el control, inspección y registro de
-                embarcaciones, buques y otros artefactos navales.
+             EMBARCACIONES, buques y otros artefactos navales.
 
             </h2>
         </div>
@@ -895,7 +895,7 @@
                     <div class="item der">
                         <span class="casa">Certificaciones</span><br>
                         <p>La unidad marina mercante es la entidad responsable de realizar el registro de buques,
-                            embarcaciones y artefactos navales, emitiendo los correspondientes Certificados de Registro
+                         EMBARCACIONES y artefactos navales, emitiendo los correspondientes Certificados de Registro
                             y Estatutarios en el ámbito nacional e internacional. Asi mismo emite certificados
                             Estatutarios de
                             cese de bandera, privilegios marítimos, libretas de embarco y otros de conformidad a
@@ -954,7 +954,7 @@
                             </li>
                             <li>
                                 <i class="fas fa-portrait"></i>
-                                Desempeñandose dentro de la Unidad de Marina Mercante como: {{ $jefe->cargo }} de Unidad
+                                Desempeñandose dentro de la Unidad de Marina Mercante como: {{ $jefe->cargo->cargo }} de Unidad
                             </li>
                             <li>
                                 <i class="fa-solid fa-mobile-screen"></i>

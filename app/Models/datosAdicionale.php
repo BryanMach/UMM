@@ -30,7 +30,7 @@ class datosAdicionale extends Model
      * 21,22,23 para vehículos sin propulsión
      * 
      */
-    protected $fillable = ['idArtefacto', 'lugar', 'mercPelig', 'maxPasajeros', 'cargaComb', 'peso', 'altura'];
+    protected $fillable = ['idArtefacto', 'lugar', 'mercPelig', 'maxPasajeros', 'cargaComb', 'peso', 'altura','obraviva','obramuerta'];
 
     public function artefactos(){
         return $this->belongsTo(Artefacto::class);
