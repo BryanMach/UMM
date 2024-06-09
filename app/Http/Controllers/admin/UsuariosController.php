@@ -36,8 +36,8 @@ class UsuariosController extends Controller
         } else {
             $usuarios = Usuario::latest()->paginate($perPage);
         }
-
-        return view('admin.usuarios.index', compact('usuarios', 'personas', 'nivel'));
+        $acc = User::all();
+        return view('admin.usuarios.index', compact('usuarios', 'personas', 'nivel','acc'));
     }
 
     /**
