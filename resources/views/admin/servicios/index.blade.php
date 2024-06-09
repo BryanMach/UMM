@@ -15,7 +15,7 @@
 
                         <form method="GET" action="{{ url('/admin/servicios') }}" accept-charset="UTF-8" class="form-inline my-2 my-lg-0 float-right" role="search">
                             <div class="input-group">
-                                <input type="text" class="form-control" name="search" placeholder="Search..." value="{{ request('search') }}">
+                                <input type="text" class="form-control" name="search" placeholder="BUSCAR..." value="{{ request('search') }}">
                                 <span class="input-group-append">
                                     <button class="btn btn-secondary" type="submit">
                                         <i class="fa fa-search"></i>
@@ -37,7 +37,7 @@
                                 @foreach($servicios as $item)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $item->servicio }}</td>
+                                        <td>{{ $item->servicio->servicio }}</td>
                                         <td>
                                             <a href="{{ url('/admin/servicios/' . $item->id) }}" title="View servicio"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
                                             <a href="{{ url('/admin/servicios/' . $item->id . '/edit') }}" title="Edit servicio"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>

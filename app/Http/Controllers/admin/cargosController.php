@@ -4,10 +4,10 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
-
+use App\Models\Usuario;
 use App\Models\cargo;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Auth;
 class cargosController extends Controller
 {
     /**
@@ -19,7 +19,8 @@ class cargosController extends Controller
     {
         $keyword = $request->get('search');
         $perPage = 25;
-
+        $usuario = Usuario::findOrFail(Auth::user()->id);
+        $nivel = $usuario['nivel'];
         if (!empty($keyword)) {
             $cargos = cargo::where('cargo', 'LIKE', "%$keyword%")
                 ->latest()->paginate($perPage);
@@ -27,7 +28,7 @@ class cargosController extends Controller
             $cargos = cargo::latest()->paginate($perPage);
         }
 
-        return view('admin.cargos.index', compact('cargos'));
+        return view('admin.cargos.index', compact('cargos','nivel'));
     }
 
     /**
@@ -37,7 +38,9 @@ class cargosController extends Controller
      */
     public function create()
     {
-        return view('admin.cargos.create');
+        $usuario = Usuario::findOrFail(Auth::user()->id);
+        $nivel = $usuario['nivel'];
+        return view('admin.cargos.create',compact('nivel'));
     }
 
     /**
@@ -67,8 +70,9 @@ class cargosController extends Controller
     public function show($id)
     {
         $cargo = cargo::findOrFail($id);
-
-        return view('admin.cargos.show', compact('cargo'));
+        $usuario = Usuario::findOrFail(Auth::user()->id);
+        $nivel = $usuario['nivel'];
+        return view('admin.cargos.show', compact('cargo','nivel'));
     }
 
     /**
@@ -81,8 +85,9 @@ class cargosController extends Controller
     public function edit($id)
     {
         $cargo = cargo::findOrFail($id);
-
-        return view('admin.cargos.edit', compact('cargo'));
+        $usuario = Usuario::findOrFail(Auth::user()->id);
+        $nivel = $usuario['nivel'];
+        return view('admin.cargos.edit', compact('cargo','nivel'));
     }
 
     /**

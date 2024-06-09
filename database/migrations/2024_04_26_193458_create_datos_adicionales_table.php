@@ -22,6 +22,8 @@ class CreateDatosAdicionalesTable extends Migration
             $table->integer('cargaComb')->nullable();
             $table->double('peso')->nullable();
             $table->double('altura')->nullable();
+            $table->double('obraviva')->nullable();
+            $table->double('obramuerta')->nullable();
             $table->foreign('idArtefacto')->references('id')->on('artefactos');
             });
     }

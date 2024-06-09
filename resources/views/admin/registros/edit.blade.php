@@ -130,7 +130,7 @@
               <h5 class="px-3 pt-3">REGISTROS DE EMBARCACIONES</h5>
               <a href="propietario">PROPIETARIOS</a>
               <a href="artefactos">ARTEFACTOS</a>
-              <a href="lista-propietarios">LISTAS DE PROPIETARIOS DE EMBARCAIONES</a>
+              <a href="lista-propietarios">LISTAS DE PROPIETARIOS DE EMBARCACIONES</a>
           </div>
       </div>
   @endif
@@ -142,7 +142,7 @@
                   <div class="card-header">Editar Propietario #{{ $propietario->id }}</div>
                   <div class="card-body">
                       <a href="{{ url('/admin/propietario') }}" title="Back"><button class="btn btn-warning btn-sm"><i
-                                  class="fa fa-arrow-left" aria-hidden="true"></i> Retroceder</button></a>
+                                  class="fa fa-arrow-left" aria-hidden="true"></i> VOLVER</button></a>
                       <br />
                       <br />
 

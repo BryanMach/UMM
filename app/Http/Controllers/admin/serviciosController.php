@@ -4,10 +4,10 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
-
+use App\Models\Usuario;
 use App\Models\servicio;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Auth;
 class serviciosController extends Controller
 {
     /**
@@ -19,7 +19,8 @@ class serviciosController extends Controller
     {
         $keyword = $request->get('search');
         $perPage = 25;
-
+        $usuario = Usuario::findOrFail(Auth::user()->id);
+        $nivel = $usuario['nivel'];
         if (!empty($keyword)) {
             $servicios = servicio::where('servicio', 'LIKE', "%$keyword%")
                 ->latest()->paginate($perPage);
@@ -27,7 +28,7 @@ class serviciosController extends Controller
             $servicios = servicio::latest()->paginate($perPage);
         }
 
-        return view('admin.servicios.index', compact('servicios'));
+        return view('admin.servicios.index', compact('servicios','nivel'));
     }
 
     /**
@@ -37,7 +38,9 @@ class serviciosController extends Controller
      */
     public function create()
     {
-        return view('admin.servicios.create');
+        $usuario = Usuario::findOrFail(Auth::user()->id);
+        $nivel = $usuario['nivel'];
+        return view('admin.servicios.create',compact('nivel'));
     }
 
     /**
@@ -67,8 +70,9 @@ class serviciosController extends Controller
     public function show($id)
     {
         $servicio = servicio::findOrFail($id);
-
-        return view('admin.servicios.show', compact('servicio'));
+        $usuario = Usuario::findOrFail(Auth::user()->id);
+        $nivel = $usuario['nivel'];
+        return view('admin.servicios.show', compact('servicio','nivel'));
     }
 
     /**
@@ -81,8 +85,9 @@ class serviciosController extends Controller
     public function edit($id)
     {
         $servicio = servicio::findOrFail($id);
-
-        return view('admin.servicios.edit', compact('servicio'));
+        $usuario = Usuario::findOrFail(Auth::user()->id);
+        $nivel = $usuario['nivel'];
+        return view('admin.servicios.edit', compact('servicio','nivel'));
     }
 
     /**

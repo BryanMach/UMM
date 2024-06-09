@@ -4,18 +4,18 @@
         @foreach ($personas as $persona)
             @if ($formMode == 'edit')
                 @if ($persona->id == $usuario->idPersonal)
-                    <option value="{{ $persona->id }}" selected>{{ $persona->cargo }}:
-                        {{ $persona->grado }}.
+                {{ $persona->grado }}.
+                    <option value="{{ $persona->id }}" selected>{{ $persona->cargo->cargo }}:
                         {{ $persona->nombres }}
                         {{ $persona->apellidos }}</option>
                 @else
-                    <option value="{{ $persona->id }}">{{ $persona->cargo }}:
+                    <option value="{{ $persona->id }}">{{ $persona->cargo->cargo }}:
                         {{ $persona->grado }}.
                         {{ $persona->nombres }}
                         {{ $persona->apellidos }}</option>
                 @endif
             @else
-                <option value="{{ $persona->id }}">{{ $persona->cargo }}:
+                <option value="{{ $persona->id }}">{{ $persona->cargo->cargo }}:
                     {{ $persona->grado }}.
                     {{ $persona->nombres }}
                     {{ $persona->apellidos }}</option>

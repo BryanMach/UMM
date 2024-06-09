@@ -29,7 +29,7 @@ class CreateArtefactosTable extends Migration
             $table->string('construccion')->nullable();
             $table->double('trn')->nullable();
             $table->double('trb')->nullable();
-            $table->string('idServicio')->nullable();
+            $table->integer('idServicio')->unsigned();
             $table->string('asociacion')->nullable();
             $table->string('fotoA')->nullable();
             $table->string('observaciones')->nullable();

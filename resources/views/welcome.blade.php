@@ -835,7 +835,7 @@
                 La Unidad de Marina Mercante como autoridad marítima
                 a nivel nacional, responsable de la regulación del personal
                 mercante, realiza el control, inspección y registro de
-                embarcaciones, buques y otros artefactos navales.
+                EMBARCACIONES, buques y otros artefactos navales.
 
             </h2>
         </div>
@@ -853,9 +853,7 @@
                             fluvial y lacustre, velar por la seguridad de la navegación, la vida humana y evitar la
                             contaminación del medio acuático, a fin de contribuir al cumplimiento de la misión de la
                             DGIMFLMM.</p>
-                        <div class="conectori">
-                            <div class="circuloi"></div>
-                        </div>
+
                     </div>
                 </div>
 
@@ -902,10 +900,10 @@
                     <div class="item der">
                         <span class="casa">Certificaciones</span><br>
                         <p>La unidad marina mercante es la entidad responsable de realizar el registro de buques,
-                            embarcaciones y artefactos navales, emitiendo los correspondientes Certificados de Registro
+                            EMBARCACIONES y artefactos navales, emitiendo los correspondientes Certificados de Registro
                             y Estatutarios en el ámbito nacional e internacional. Asi mismo emite certificados
                             Estatutarios de
-                            cese de bandera, privilegios marítimos, libretas de embarco y otros de conformidad a
+                            privilegios marítimos, libretas de embarco y otros de conformidad a
                             disposiciones legales vigentes</p>
                         <div class="conectord">
                             <div class="circulod"></div>
@@ -941,8 +939,9 @@
             </table>
 
         </div>
+
         <div class="grafico-seccion">
-            <canvas id="graficoTorta" width="500" height="500"></canvas>
+            <canvas id="graficoTorta" width="200" height="200"></canvas>
         </div>
     </section>
 
@@ -950,34 +949,38 @@
     <section id="contacto" class="contacto">
         <div class="contenido-seccion">
             <h2>CONTACTO</h2>
-            <div class="fila">
-                <!-- Mapa:'ci', 'cargo', 'grado', 'nombres', 'apellidos', 'contacto', 'foto', 'descripcion', 'vigencia' -->
-                <div class="col">
-                    <div><img src="{{ asset('images/foto.jpg') }}" alt=""
-                            style="width: 250px; border: 15px solid rgba(127, 71, 7, 0.893);"></div>
-                    <div class="info">
-                        <ul>
-                            <li>
-                                <i class="fas fa-address-card"></i>
-                                Señor: {{ $jefe->grado }} {{ $jefe->nombres }} {{ $jefe->apellidos }}
-                            </li>
-                            <li>
-                                <i class="fas fa-portrait"></i>
-                                Desempeñandose dentro de la Unidad de Marina Mercante como: {{ $jefe->cargo }} de
-                                Unidad
-                            </li>
-                            <li>
-                                <i class="fa-solid fa-mobile-screen"></i>
-                                Contacto: {{ $jefe->contacto }}
-                            </li>
-                            <li>
-                                {{-- <i class="fa-solid fa-envelope"></i> --}}
-                                {{ $jefe->descripcion }}
-                            </li>
-                        </ul>
+            @foreach ($jefe as $item)
+                <div class="fila">
+                    <!-- Mapa:'ci', 'cargo', 'grado', 'nombres', 'apellidos', 'contacto', 'foto', 'descripcion', 'vigencia' -->
+                    <div class="col">
+                        <div><img src="{{ asset('images/foto.jpg') }}" alt=""
+                                style="width: 250px; border: 15px solid rgba(127, 71, 7, 0.893);"></div>
+                        <div class="info">
+
+                            <ul>
+                                <li>
+                                    <i class="fas fa-address-card"></i>
+                                    Señor: {{ $item->grado }} {{ $item->nombres }} {{ $item->apellidos }}
+                                </li>
+                                <li>
+                                    <i class="fas fa-portrait"></i>
+                                    Desempeñandose dentro de la Unidad de Marina Mercante como:
+                                    {{ $item->cargo->cargo }} de Unidad
+                                </li>
+                                <li>
+                                    <i class="fa-solid fa-mobile-screen"></i>
+                                    Contacto: {{ $item->contacto }}
+                                </li>
+                                <li>
+                                    {{-- <i class="fa-solid fa-envelope"></i> --}}
+                                    {{ $item->descripcion }}
+                                </li>
+                            </ul>
+
+                        </div>
                     </div>
                 </div>
-            </div>
+            @endforeach
         </div>
     </section>
 
@@ -1064,7 +1067,7 @@
                 data: {
                     labels: ['Cuenca Amazonas', 'Cuenca De la plata', 'Cuenca Lacustre'],
                     datasets: [{
-                        data: [10, 20, 30], // valores
+                        data: [10, 20, 30], // valores aqui debo modificar
                         backgroundColor: [
                             'rgba(255, 99, 132, 0.2)',
                             'rgba(54, 162, 235, 0.2)',

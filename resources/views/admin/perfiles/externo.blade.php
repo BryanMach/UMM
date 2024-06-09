@@ -175,7 +175,7 @@
                     <tbody>
                         <tr>
                             <td>CARGO</td>
-                            <td>{{ $perfil->cargo }}</td>
+                            <td>{{ $perfil->cargo->cargo }}</td>
                         </tr>
                     </tbody>
                     <tbody>

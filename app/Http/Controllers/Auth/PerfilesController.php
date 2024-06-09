@@ -43,7 +43,9 @@ class PerfilesController extends Controller
                     ->select('artefactos.*')
                     ->get();
                     $bases = BasesOperativa::all();
-                    $jefe = Personal::findOrFail(3);
+                    $jefe = Personal::where('idCargo', 1)
+                    ->where('vigencia', 1)
+                    ->get();
                     return view('welcome', compact('artefactos','bases','jefe'));
     }
     public function administrador(request $request)

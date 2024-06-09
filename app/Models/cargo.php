@@ -27,5 +27,9 @@ class cargo extends Model
      */
     protected $fillable = ['cargo'];
 
+    public function personal()
+    {
+        return $this->hasMany(Personal::class);
+    }
     
 }

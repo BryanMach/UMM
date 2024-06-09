@@ -35,9 +35,9 @@ use App\Http\Controllers\admin\serviciosController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 Route::get('/', [PerfilesController::class, 'bienvenida']);
 Route::get('/dashboard', function () {
     return view('dashboard');

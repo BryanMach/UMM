@@ -4,11 +4,25 @@
         value="{{ isset($personal->ci) ? $personal->ci : '' }}">
     {!! $errors->first('ci', '<p class="help-block">:message</p>') !!}
 </div>
-<div class="form-group {{ $errors->has('cargo') ? 'has-error' : '' }}">
-    <label for="cargo" class="control-label">{{ 'CARGO' }}</label>
-    <input class="form-control" name="cargo" type="text" id="cargo"
-        value="{{ isset($personal->cargo) ? $personal->cargo : '' }}">
-    {!! $errors->first('cargo', '<p class="help-block">:message</p>') !!}
+<div class="form-group {{ $errors->has('idCargo') ? 'has-error' : '' }}">
+    <label for="idCargo" class="control-label">{{ 'CARGO' }}</label>
+    <select class="form-control" name="idCargo" id="idCargo">
+        @foreach ($cargos as $cargo)
+            @if ($formMode == 'edit')
+                @if ($cargo->id == $personal->idCargo)
+                    <option value="{{ $cargo->id }}" selected>{{ $cargo->cargo }}:
+                    </option>
+                @else
+                    <option value="{{ $cargo->id }}">{{ $cargo->cargo }}:
+                    </option>
+                @endif
+            @else
+                <option value="{{ $cargo->id }}">{{ $cargo->cargo }}:
+                </option>
+            @endif
+        @endforeach
+    </select>
+    {!! $errors->first('idCargo', '<p class="help-block">:message</p>') !!}
 </div>
 <div class="form-group {{ $errors->has('grado') ? 'has-error' : '' }}">
     <label for="grado" class="control-label">{{ 'GRADO' }}</label>

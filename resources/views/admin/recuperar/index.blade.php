@@ -103,7 +103,7 @@
               <a href="personal">PERSONAL</a>
               <a href="usuarios">USUARIOS</a>
               <a href="bases-operativas" class="active">BASES DE OPERACIONES</a>
-              <h5 class="px-3 pt-3">REGISTROS DE EMBARCAIONES</h5>
+              <h5 class="px-3 pt-3">REGISTROS DE EMBARCACIONES</h5>
               <a href="propietario">PROPIETARIOS</a>
               <a href="artefactos">ARTEFACTOS NAVALES</a>
               <a href="lista-propietarios">LISTAS DE PROPIETARIOS DE EMBARCACIONES</a>
@@ -121,7 +121,7 @@
               <a href="personal">PERSONAL</a>
               <a href="usuarios">USUARIOS</a>
               <a href="bases-operativas" class="active">BASES DE OPERACIONES</a>
-              <h5 class="px-3 pt-3">REGISTROS DE EMBARCAIONES</h5>
+              <h5 class="px-3 pt-3">REGISTROS DE EMBARCACIONES</h5>
               <a href="propietario">PROPIETARIOS</a>
               <a href="artefactos">ARTEFACTOS NAVALES</a>
               <a href="lista-propietarios">LISTAS DE PROPIETARIOS DE EMBARCACIONES</a>
@@ -155,17 +155,17 @@
                         @switch($nivel)
                           @case(3)
                               <a href="{{ url('/admin/perf45i') }}" title="Back"><button class="btn btn-warning btn-sm">
-                                      <i class="fa fa-arrow-left" aria-hidden="true"></i> Volver</button></a>
+                                      <i class="fa fa-arrow-left" aria-hidden="true"></i> VOLVER</button></a>
                           @break
 
                           @case(2)
                               <a href="{{ url('/admin/perf45j') }}" title="Back"><button class="btn btn-warning btn-sm">
-                                      <i class="fa fa-arrow-left" aria-hidden="true"></i> Volver</button></a>
+                                      <i class="fa fa-arrow-left" aria-hidden="true"></i> VOLVER</button></a>
                           @break
 
                           @case(4)
                               <a href="{{ url('/admin/perf45r') }}" title="Retornar"><button class="btn btn-warning btn-sm">
-                                      <i class="fa fa-arrow-left" aria-hidden="true"></i> Volver</button></a>
+                                      <i class="fa fa-arrow-left" aria-hidden="true"></i> VOLVER</button></a>
                           @break
 
                           @default
@@ -178,7 +178,7 @@
                       <form method="GET" action="{{ url('/admin/recuperar') }}" accept-charset="UTF-8"
                           class="form-inline my-2 my-lg-0 float-right" role="search">
                           <div class="input-group">
-                              <input type="text" class="form-control" name="search" placeholder="Buscar..."
+                              <input type="text" class="form-control" name="search" placeholder="BUSCAR..."
                                   value="{{ request('search') }}">
                               <span class="input-group-append">
                                   <button class="btn btn-secondary" type="submit">
@@ -211,7 +211,7 @@
                                           <td>
                                               <a href="{{ url('/admin/recuperar/' . $item->id) }}"
                                                   title="Ver Recuperar"><button class="btn btn-info btn-sm"><i
-                                                          class="fa fa-eye" aria-hidden="true"></i> Ver</button></a>
+                                                          class="fa fa-eye" aria-hidden="true"></i> VER</button></a>
                                               <a href="{{ url('/admin/recuperar/' . $item->id . '/edit') }}"
                                                   title="Editar Recuperar"><button class="btn btn-primary btn-sm"><i
                                                           class="fa fa-pencil-square-o" aria-hidden="true"></i>

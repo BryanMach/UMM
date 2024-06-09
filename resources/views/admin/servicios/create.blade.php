@@ -9,7 +9,7 @@
                 <div class="card">
                     <div class="card-header">Create New servicio</div>
                     <div class="card-body">
-                        <a href="{{ url('/admin/servicios') }}" title="Back"><button class="btn btn-warning btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</button></a>
+                        <a href="{{ url('/admin/servicios') }}" title="VOLVER"><button class="btn btn-warning btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i> VOLVER</button></a>
                         <br />
                         <br />
 

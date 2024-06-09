@@ -9,7 +9,8 @@ use App\Models\Personal;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Usuario;
-
+use App\Models\User;
+use App\Models\cargo;
 class PersonalController extends Controller
 {
     /**
@@ -23,10 +24,9 @@ class PersonalController extends Controller
         $perPage = 25;
         $usuario = Usuario::findOrFail(Auth::user()->id);
         $nivel = $usuario['nivel'];
-
+        $cargo = cargo::all();
         if (!empty($keyword)) {
             $personal = Personal::where('ci', 'LIKE', "%$keyword%")
-                ->orWhere('cargo', 'LIKE', "%$keyword%")
                 ->orWhere('grado', 'LIKE', "%$keyword%")
                 ->orWhere('nombres', 'LIKE', "%$keyword%")
                 ->orWhere('apellidos', 'LIKE', "%$keyword%")
@@ -39,7 +39,7 @@ class PersonalController extends Controller
             $personal = Personal::latest()->paginate($perPage);
         }
 
-        return view('admin.personal.index', compact('personal', 'nivel'));
+        return view('admin.personal.index', compact('personal', 'nivel','cargo'));
     }
 
     /**
@@ -51,8 +51,8 @@ class PersonalController extends Controller
     {
         $usuario = Usuario::findOrFail(Auth::user()->id);
         $nivel = $usuario['nivel'];
-
-        return view('admin.personal.create', compact('nivel'));
+        $cargos = cargo::all();
+        return view('admin.personal.create', compact('nivel','cargos'));
     }
 
     /**
@@ -85,10 +85,13 @@ class PersonalController extends Controller
     public function show($id)
     {
         $personal = Personal::findOrFail($id);
+
         $usuario = Usuario::findOrFail(Auth::user()->id);
         $nivel = $usuario['nivel'];
-
-        return view('admin.personal.show', compact('personal', 'nivel'));
+        $cargos = cargo::findOrFail($personal['idCargo']);
+        $usuarios = $personal->usuarios;
+        $acc = User::all();
+        return view('admin.personal.show', compact('personal', 'nivel','cargos','usuarios','acc'));
     }
 
     /**
@@ -103,8 +106,8 @@ class PersonalController extends Controller
         $personal = Personal::findOrFail($id);
         $usuario = Usuario::findOrFail(Auth::user()->id);
         $nivel = $usuario['nivel'];
-
-        return view('admin.personal.edit', compact('personal', 'nivel'));
+        $cargos = cargo::all();
+        return view('admin.personal.edit', compact('personal', 'nivel','cargos'));
     }
 
     /**

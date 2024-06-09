@@ -183,7 +183,7 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td>{{ $artefacto->servicio }}</td>
+                        <td>{{ $artefacto->servicio->servicio }}</td>
                         <td>{{ $tipo->tipo }}</td>
                         <td>{{ $artefacto->construccion }}</td>
                     </tr>
