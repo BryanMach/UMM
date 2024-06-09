@@ -827,9 +827,7 @@
                             fluvial y lacustre, velar por la seguridad de la navegación, la vida humana y evitar la
                             contaminación del medio acuático, a fin de contribuir al cumplimiento de la misión de la
                             DGIMFLMM.</p>
-                        <div class="conectori">
-                            <div class="circuloi"></div>
-                        </div>
+                       
                     </div>
                     {{--  <div class="item izq">
                         <h4>Arte y Multimedia</h4>
@@ -867,6 +865,9 @@
                 </div>
             </div>
         </div>
+        <div class="imagen-seccion">
+            <img src="{{ asset('images/esquema.jpg') }}" alt="Descripción de la imagen">
+        </div>
     </section>
 
     <!-- SECCION SKILLS -->
@@ -898,7 +899,7 @@
                          EMBARCACIONES y artefactos navales, emitiendo los correspondientes Certificados de Registro
                             y Estatutarios en el ámbito nacional e internacional. Asi mismo emite certificados
                             Estatutarios de
-                            cese de bandera, privilegios marítimos, libretas de embarco y otros de conformidad a
+                            privilegios marítimos, libretas de embarco y otros de conformidad a
                             disposiciones legales vigentes</p>
                         <div class="conectord">
                             <div class="circulod"></div>
@@ -934,7 +935,10 @@
             </table>
 
         </div>
-
+        
+        <div class="grafico-seccion">
+            <canvas id="graficoTorta" width="50" height="50"></canvas>
+        </div>
     </section>
 
     <!-- SECCION CONTACTO -->
@@ -1045,6 +1049,48 @@
             };
         });
     </script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var ctx = document.getElementById('graficoTorta').getContext('2d');
+            var graficoTorta = new Chart(ctx, {
+                type: 'pie',
+                data: {
+                    labels: ['Cuenca Amazonas', 'Cuenca De la plata', 'Cuenca Lacustre'],
+                    datasets: [{
+                        data: [10, 20, 30], // valores aqui debo modificar
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.2)',
+                            'rgba(54, 162, 235, 0.2)',
+                            'rgba(255, 206, 86, 0.2)'
+                        ],
+                        borderColor: [
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(255, 206, 86, 1)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(tooltipItem) {
+                                    return tooltipItem.label + ': ' + tooltipItem.raw;
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+
 </body>
 
 </html>

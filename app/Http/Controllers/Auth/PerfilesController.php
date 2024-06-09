@@ -43,7 +43,7 @@ class PerfilesController extends Controller
                     ->select('artefactos.*')
                     ->get();
                     $bases = BasesOperativa::all();
-                    $jefe = Personal::findOrFail(3);
+                    $jefe = Personal::findOrFail(1);
                     return view('welcome', compact('artefactos','bases','jefe'));
     }
     public function administrador(request $request)
