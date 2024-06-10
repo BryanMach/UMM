@@ -94,23 +94,23 @@
                                 switch ($basesoperativa->idCuenca) {
                                     case '1':
                                         # code....
-                                        $d='A';
+                                        $d = 'A';
                                         break;
                                     case '2':
                                         # code...
-                                        $d='P';
+                                        $d = 'P';
                                         break;
                                     case '3':
                                         # code...
-                                        $d='L';
+                                        $d = 'L';
                                         break;
                                     default:
                                         # code...
-                                        $d='N';
+                                        $d = 'N';
                                         break;
                                 }
                             @endphp
-                            <td class="text-center">{{$d}}-{{ $certificacion->nreg }}</td>
+                            <td class="text-center">{{ $d }}-{{ $certificacion->nreg }}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -221,7 +221,8 @@
             </table>
         </div>
 
-        <p class="small-text">Francobordo asignado (FB) medido desde la línea de cubierta {{ $artefacto->francobordo }} mm</p>
+        <p class="small-text">Francobordo asignado (FB) medido desde la línea de cubierta {{ $artefacto->francobordo }}
+            mm</p>
         <div>
 
 
@@ -240,7 +241,7 @@
                 <strong>{{ $certificacion->fechaVencimiento }}</strong><br>
 
                 Expedido en:
-                {{$basesoperativa->departamento}}, BOLIVIA, {{ $certificacion->fechaEmision }}
+                {{ $basesoperativa->departamento }}, BOLIVIA, {{ $certificacion->fechaEmision }}
             </p>
         </div>
     </div>

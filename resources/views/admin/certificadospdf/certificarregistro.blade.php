@@ -212,21 +212,21 @@
                 </thead>
                 <tbody>
                     @if ($motor == null)
-                    <tr>
-                        <td>-</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
+                        <tr>
+                            <td>-</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
                     @else
-                    <tr>
-                        <td>{{ $motor->tipo }} {{ $motor->marca }}</td>
-                        <td>{{ $motor->numero }}</td>
-                        <td>{{ $motor->potencia }}</td>
-                        <td> {{ $motor->nominalelectrica }} </td>
-                    </tr>
+                        <tr>
+                            <td>{{ $motor->tipo }} {{ $motor->marca }}</td>
+                            <td>{{ $motor->numero }}</td>
+                            <td>{{ $motor->potencia }}</td>
+                            <td> {{ $motor->nominalelectrica }} </td>
+                        </tr>
                     @endif
-                    
+
                 </tbody>
             </table>
         </div>
@@ -256,12 +256,12 @@
                 QUE LA EMBARCACIÓN, A LA FECHA DE REGISTRO CUMPLE CON LAS EXIGENCIAS DEL D.S. 12884 "LEY DE NAVEGACIÓN
                 MARÍTIMA, FLUVIAL Y LACUSTRE" CAPÍTULO II, REGISTRO Y MATRÍCULA DE EMBARCACIONES Y CON LAS
                 PRESCRIPCIONES PERTINENTES DE LA R.M. 0736 QUE APRUEBA EL REGLAMENTO DE REGISTRO DE BUQUES,
-             EMBARCACIONES Y ARTEFACTOS NAVALES.
+                EMBARCACIONES Y ARTEFACTOS NAVALES.
                 <br>EL PRESENTE CERTIFICADO ES VÁLIDO POR CINCO AÑOS, CONFORME AL DECRETO SUPREMO N° 3073, A
                 PARTIR DEL:
                 {{ $certificacion->fechaEmision }}
             </p>
-            <p class="text-right"><strong>LUGAR Y FECHA:</strong> {{$basesoperativa->departamento}}, BOLIVIA,
+            <p class="text-right"><strong>LUGAR Y FECHA:</strong> {{ $basesoperativa->departamento }}, BOLIVIA,
                 {{ $certificacion->fechaEmision }}</p>
         </div>
     </div>
