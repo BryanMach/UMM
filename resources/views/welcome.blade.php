@@ -518,11 +518,15 @@
     .grafico-seccion {
         margin-top: 20px;
         text-align: center;
+        margin-right: 10%;
+        margin-top: 5%;
     }
 
     #graficoTorta {
-        max-width: 900px;
-        margin: 0 auto;
+        max-width: 100%;
+        width: 450px;
+        height: 450px;
+        background-color: #f4f4f9;
     }
 
 
@@ -839,6 +843,10 @@
 
             </h2>
         </div>
+        <div class="grafico-seccion">
+            <h5 style="color: #131517; font-weight: bold">Cuencas registradas</h5>
+            <canvas id="graficoTorta" width="450" height="450"></canvas>
+        </div>
     </section>
 
     <!-- SECCION SOBRE MI -->
@@ -940,9 +948,7 @@
 
         </div>
 
-        <div class="grafico-seccion">
-            <canvas id="graficoTorta" width="200" height="200"></canvas>
-        </div>
+
     </section>
 
     <!-- SECCION CONTACTO -->
@@ -953,8 +959,11 @@
                 <div class="fila">
                     <!-- Mapa:'ci', 'cargo', 'grado', 'nombres', 'apellidos', 'contacto', 'foto', 'descripcion', 'vigencia' -->
                     <div class="col">
-                        <div><img src="{{ asset('images/foto.jpg') }}" alt=""
-                                style="width: 250px; border: 15px solid rgba(127, 71, 7, 0.893);"></div>
+                        <div style="width: 280px; /* Ajusta el ancho según sea necesario */">
+                            <img src="{{ asset('images/img.jpg') }}" alt=""
+                                style="width: 250px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); border-radius: 8px;">
+                        </div>
+
                         <div class="info">
 
                             <ul>
@@ -965,7 +974,7 @@
                                 <li>
                                     <i class="fas fa-portrait"></i>
                                     Desempeñandose dentro de la Unidad de Marina Mercante como:
-                                    {{ $item->cargo->cargo }} de Unidad
+                                    {{ $item->cargo->cargo }}
                                 </li>
                                 <li>
                                     <i class="fa-solid fa-mobile-screen"></i>
@@ -1069,9 +1078,9 @@
                     datasets: [{
                         data: [10, 20, 30], // valores aqui debo modificar
                         backgroundColor: [
-                            'rgba(255, 99, 132, 0.2)',
-                            'rgba(54, 162, 235, 0.2)',
-                            'rgba(255, 206, 86, 0.2)'
+                            'rgba(225, 46, 10, 0.5)',
+                            'rgba(224, 238, 14, 0.5)',
+                            'rgba(34, 238, 14, 0.5)'
                         ],
                         borderColor: [
                             'rgba(255, 99, 132, 1)',
