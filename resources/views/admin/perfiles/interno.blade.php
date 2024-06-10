@@ -232,13 +232,12 @@
                                     <td>{{ $item->artefactos->nombre }}-{{ $item->artefactos->matricula }}
                                     </td>
                                     @foreach($item->artefactos->certificado as $certificado)
-                                    <td><ul>
-                                        @if($certificado->tipoC==1)
-                                            <li>
-                                                {{ $certificado->nreg }},
-                                            </li>
+                                    @if($certificado->tipoC==1)
+                                    <td>
+                                                {{ $certificado->nreg }}
+                                            
                                         
-                                    </ul></td>
+                                    </td>
                                     <td>{{ $certificado->fechaVencimiento }}</td>
                                     @endif
                                     @endforeach
@@ -271,13 +270,12 @@
                                     <td>{{ $item->artefactos->nombre }}-{{ $item->artefactos->matricula }}
                                     </td>
                                     @foreach($item->artefactos->certificado as $certificado)
-                                    <td><ul>
-                                        @if($certificado->tipoC==1)
-                                            <li>
-                                                {{ $certificado->nreg }},
-                                            </li>
+                                    @if($certificado->tipoC==1)
+                                    <td>
+                                                {{ $certificado->nreg }}
+                                            
                                         
-                                    </ul></td>
+                                    </td>
                                     <td>{{ $certificado->fechaVencimiento }}</td>
                                     @endif
                                     @endforeach
@@ -309,13 +307,12 @@
                                     <td>{{ $item->artefactos->nombre }}-{{ $item->artefactos->matricula }}
                                     </td>
                                     @foreach($item->artefactos->certificado as $certificado)
-                                    <td><ul>
-                                        @if($certificado->tipoC==1)
-                                            <li>
-                                                {{ $certificado->nreg }},
-                                            </li>
+                                    @if($certificado->tipoC==1)
+                                    <td>
+                                                {{ $certificado->nreg }}
+                                            
                                         
-                                    </ul></td>
+                                    </td>
                                     <td>{{ $certificado->fechaVencimiento }}</td>
                                     @endif
                                     @endforeach
