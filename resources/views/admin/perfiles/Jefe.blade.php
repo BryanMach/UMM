@@ -55,7 +55,7 @@
         }
 
         .right-sidebar {
-            width: 200px;
+            width: 250px;
             right: 0;
             border-left: 1px solid #ddd;
         }
@@ -109,7 +109,7 @@
         'ci', 'cargo', 'grado', 'nombres', 'apellidos', 'contacto', 'foto', 'descripcion', 'vigencia'
     -->
     <div class="col-md-3 sidebar text-center" style="position: fixed;">
-        <img src="{{ asset('images/' . $perfil->foto) }}"
+        <img src="{{ asset('storage').'/'. $perfil->foto }}"
                     onerror="this.src='{{ asset('images/Usericono.png') }}'" class="profile-img">
         <h3>{{ $perfil->nombres }} {{ $perfil->apellidos }}</h3>
         <p class="role">{{ $perfil->grado }}</p>
@@ -180,17 +180,23 @@
         </div>
     </div>
     <div class="right-sidebar">
-        <div class="sidebar-header text-center p-3">
-            <h4>REGISTROS DEL PERSONAL</h4>
+        <div class="sidebar-header text-center p-1">
+            <h6>REGISTROS DEL PERSONAL</h6>
         </div>
         <div class="sidebar-content">
-            <a href="personal">PERSONAL</a>
-            <a href="usuarios">USUARIOS</a>
-            <a href="bases-operativas" class="active">BASES DE OPERACIONES</a>
-            <h5 class="px-3 pt-3">REGISTROS DE EMBARCACIONES</h5>
-            <a href="propietario">PROPIETARIOS</a>
-            <a href="artefactos">ARTEFACTOS NAVALES</a>
-            <a href="lista-propietarios">LISTAS DE PROPIETARIOS DE EMBARCACIONES</a>
+            <a href="{{ url('/admin/personal') }}">PERSONAL</a>
+            <a href="{{ url('/admin/usuarios') }}">USUARIOS</a>
+            <a href="{{ url('/admin/cuenca') }}" class="active">CUENCAS</a>
+            <a href="{{ url('/admin/bases-operativas') }}" class="active">BASES DE OPERACIONES</a>
+            <h6 class="px-1 pt-1">REGISTRO DE EMBARCACIONES</h6>
+            <a href="{{ url('/admin/propietario') }}">PROPIETARIOS</a>
+            <a href="{{ url('/admin/artefactos') }}">ARTEFACTOS NAVALES</a>
+            <a href="{{ url('/admin/lista-propietarios') }}">LISTAS DE PROPIETARIOS DE EMBARCACIONES</a>
+            <h6 class="px-1 pt-1">POLÍTICAS</h6>
+            <a href="{{ url('/admin/cargos') }}">CARGOS DE PERSONAL</a>
+            <a href="{{ url('/admin/material') }}">MATERIALES DE CONSTRUCCIÓN</a>
+            <a href="{{ url('/admin/servicios') }}">SERVICIOS DE EMBARCACIONES</a>
+            <a href="{{ url('/admin/tipo') }}">TIPOS DE EMBARCACIONES</a>
             {{-- {{-- <a href="imprimir">Certificaciones</a> --}}
             {{-- <a href="imprimir">Alertas de Vencimiento</a> --}}
             {{-- <a href="dashboard">Modo Administrador</a> --}}
