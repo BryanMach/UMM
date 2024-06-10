@@ -191,7 +191,7 @@
                 <form action="{{ route('logout') }}" method="POST">
                     @csrf
                     <button class="btn btn-outline-secondary mt-4"><i class="fas fa-power-off"></i>
-                        Cerrar Sesión</button>
+                        CERRAR SESIÓN</button>
                 </form>
             </div>
             <div class="col-md-9 main-content" style="margin-left: 25%">
@@ -220,7 +220,8 @@
                             <tr>
                                 <th scope="col">PROPIETARIO</th>
                                 <th scope="col">EMBARCACION</th>
-                                {{-- <th scope="col">VIGENCIAS</th> --}}
+                                <th scope="col">NRO DE REGISTRO</th>
+                                <th scope="col">VIGENCIAS</th>
                                 <th scope="col">ACCIONES</th>
                             </tr>
                         </thead>
@@ -230,7 +231,17 @@
                                     <td>{{ $item->propietarios->nombre }} {{ $item->propietarios->identificador }}</td>
                                     <td>{{ $item->artefactos->nombre }}-{{ $item->artefactos->matricula }}
                                     </td>
-                                    {{-- <td></td> --}}
+                                    @foreach($item->artefactos->certificado as $certificado)
+                                    <td><ul>
+                                        @if($certificado->tipoC==1)
+                                            <li>
+                                                {{ $certificado->nreg }},
+                                            </li>
+                                        
+                                    </ul></td>
+                                    <td>{{ $certificado->fechaVencimiento }}</td>
+                                    @endif
+                                    @endforeach
                                     <td><a href="{{ url('/admin/lista-propietarios/' . $item->id) }}"
                                         title="Ver ListaPropietario"><button class="btn btn-info btn-sm"><i
                                                 class="fa fa-eye" aria-hidden="true"></i> Ver</button></a>
@@ -248,19 +259,28 @@
                             <tr>
                                 <th scope="col">PROPIETARIO</th>
                                 <th scope="col">EMBARCACION</th>
-                                {{-- <th scope="col">VIGENCIAS</th> --}}
+                                <th scope="col">NRO DE REGISTRO</th>
+                                <th scope="col">VIGENCIAS</th>
                                 <th scope="col">ACCIONES</th>
                             </tr>
                         </thead>
                         <tbody>
-
                             @foreach ($listaA as $item)
                                 <tr>
-                                    <td>{{ $item->propietarios->nombre }} {{ $item->propietarios->identificador }}
-                                    </td>
+                                    <td>{{ $item->propietarios->nombre }} {{ $item->propietarios->identificador }}</td>
                                     <td>{{ $item->artefactos->nombre }}-{{ $item->artefactos->matricula }}
                                     </td>
-                                    {{-- <td></td> --}}
+                                    @foreach($item->artefactos->certificado as $certificado)
+                                    <td><ul>
+                                        @if($certificado->tipoC==1)
+                                            <li>
+                                                {{ $certificado->nreg }},
+                                            </li>
+                                        
+                                    </ul></td>
+                                    <td>{{ $certificado->fechaVencimiento }}</td>
+                                    @endif
+                                    @endforeach
                                     <td><a href="{{ url('/admin/lista-propietarios/' . $item->id) }}"
                                         title="Ver ListaPropietario"><button class="btn btn-info btn-sm"><i
                                                 class="fa fa-eye" aria-hidden="true"></i> Ver</button></a>
@@ -277,18 +297,28 @@
                             <tr>
                                 <th scope="col">PROPIETARIO</th>
                                 <th scope="col">EMBARCACION</th>
-                                {{-- <th scope="col">VIGENCIAS</th> --}}
+                                <th scope="col">NRO DE REGISTRO</th>
+                                <th scope="col">VIGENCIAS</th>
                                 <th scope="col">ACCIONES</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($listaP as $item)
                                 <tr>
-                                    <td>{{ $item->propietarios->nombre }} {{ $item->propietarios->identificador }}
-                                    </td>
+                                    <td>{{ $item->propietarios->nombre }} {{ $item->propietarios->identificador }}</td>
                                     <td>{{ $item->artefactos->nombre }}-{{ $item->artefactos->matricula }}
                                     </td>
-                                    {{-- <td></td> --}}
+                                    @foreach($item->artefactos->certificado as $certificado)
+                                    <td><ul>
+                                        @if($certificado->tipoC==1)
+                                            <li>
+                                                {{ $certificado->nreg }},
+                                            </li>
+                                        
+                                    </ul></td>
+                                    <td>{{ $certificado->fechaVencimiento }}</td>
+                                    @endif
+                                    @endforeach
                                     <td><a href="{{ url('/admin/lista-propietarios/' . $item->id) }}"
                                         title="Ver ListaPropietario"><button class="btn btn-info btn-sm"><i
                                                 class="fa fa-eye" aria-hidden="true"></i> Ver</button></a>

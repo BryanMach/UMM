@@ -168,7 +168,7 @@
                       <form method="GET" action="{{ url('/admin/motores') }}" accept-charset="UTF-8"
                           class="form-inline my-2 my-lg-0 float-right" role="search">
                           <div class="input-group">
-                              <input type="text" class="form-control" name="search" placeholder="BUSCAR..."
+                              <input type="text" oninput="this.value = this.value.toUpperCase()"  class="form-control" name="search" placeholder="BUSCAR..."
                                   value="{{ request('search') }}">
                               <span class="input-group-append">
                                   <button class="btn btn-secondary" type="submit">
@@ -213,9 +213,9 @@
                                                   {{ method_field('DELETE') }}
                                                   {{ csrf_field() }}
                                                   <button type="submit" class="btn btn-danger btn-sm"
-                                                      title="Borrar Motore"
+                                                      title="BORRAR Motore"
                                                       onclick="return confirm(&quot;Confirm delete?&quot;)"><i
-                                                          class="fa fa-trash-o" aria-hidden="true"></i> Borrar</button>
+                                                          class="fa fa-trash-o" aria-hidden="true"></i> BORRAR</button>
                                               </form>
                                           </td>
                                       </tr>

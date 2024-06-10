@@ -225,12 +225,21 @@
                     </tr>
                 </thead>
                 <tbody>
+                    @if ($motor == null)
+                    <tr>
+                        <td>-</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    @else
                     <tr>
                         <td>{{ $motor->tipo }} {{ $motor->marca }}</td>
                         <td>{{ $motor->numero }}</td>
                         <td>{{ $motor->potencia }}</td>
-                        <td> {{ $motor->nominalelectrica	 }} </td>
+                        <td> {{ $motor->nominalelectrica }} </td>
                     </tr>
+                    @endif
                 </tbody>
             </table>
         </div>
@@ -269,7 +278,7 @@
                 DEBIENDO SOMETERSE A LAS INSPECCIONES ANUALES OBLIGATORIAS EN LAS FECHAS ESTABLECIDAS POR LA AUTORIDAD
                 COMPETENTE.
             </p>
-            <p class="text-right"><strong>LUGAR Y FECHA:</strong> {{ $datoAdicional->lugar }},
+            <p class="text-right"><strong>LUGAR Y FECHA:</strong> {{$basesoperativa->departamento}}, BOLIVIA, 
                 {{ $certificacion->fechaEmision }}</p>
         </div>
     </div>

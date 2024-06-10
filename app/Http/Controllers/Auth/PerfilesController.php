@@ -21,6 +21,7 @@ use App\Models\Documentacione;
 use App\Models\Inspeccione;
 use App\Models\ubicacion;
 use App\Models\Propietario;
+use App\Models\servicio;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -143,10 +144,11 @@ class PerfilesController extends Controller
         $basesoperativas = BasesOperativa::All();
         $cuencas = Cuenca::All();
         $certificacion = Certificacione::All();
+        $servicios = servicio::all();
         //Usuario::create($requestData);
         $usuario = Usuario::findOrFail(Auth::user()->id);
         $nivel = $usuario['nivel'];
-        return view('admin.registros.create', compact('tipos', 'materiales', 'personas', 'usuarios', 'artefactos', 'basesoperativas', 'cuencas', 'certificacion','nivel'));
+        return view('admin.registros.create', compact('tipos', 'materiales', 'personas', 'usuarios', 'artefactos', 'basesoperativas', 'cuencas', 'certificacion','nivel','servicios'));
     }
     public function renovar(Request $request)
     {
@@ -267,18 +269,20 @@ class PerfilesController extends Controller
         $requestArtefacto = [
             'idUsuarios' => $Usuario->id, 'idBaseOperativa' => $requestData['idBaseOperativa'], 'matricula' => $requestData['matricula'], 'nombre' => $requestData['nombreA'], 'idTipo' => $requestData['idTipo'], 'idMaterial' => $requestData['idMaterial'],
             'eslora' => $requestData['eslora'], 'manga' => $requestData['manga'], 'puntal' => $requestData['puntal'],
-            'francobordo' => $requestData['francobordo'], 'propulsion' => $requestData['propulsion'], 'construccion' => $requestData['construccion'], 'trn' => $requestData['trn'], 'trb' => $requestData['trb'],
-            'servicio' => $requestData['servicio'], 'asociacion' => $requestData['asociacion'], 'observaciones' => $requestData['observaciones']
+            'francobordo' => $requestData['francobordo'], 'propulsion' => $requestData['choice'], 'construccion' => $requestData['construccion'], 'trn' => $requestData['trn'], 'trb' => $requestData['trb'],
+            'idServicio' => $requestData['idServicio'], 'asociacion' => $requestData['asociacion'], 'observaciones' => $requestData['observaciones']
         ];
         $idArtefacto = Artefacto::create($requestArtefacto);
         $requestListaPropietarios = ['idPropietario' => $idPropietario->id, 'idArtefacto' => $idArtefacto->id];
         ListaPropietario::create($requestListaPropietarios);
-
-        $requestMotor = [
-            'idArtefacto' => $idArtefacto->id, 'tipo' => $requestData['tipoM'], 'marca' => $requestData['marca'], 'numero' => $requestData['numero'],
-            'potencia' => $requestData['potencia'], 'nominalelectrica' => $requestData['nominalelectrica']
-        ];
-        Motore::create($requestMotor);
+        if($requestData['choice']=='MOTOR'){
+            $requestMotor = [
+                'idArtefacto' => $idArtefacto->id, 'tipo' => $requestData['tipoM'], 'marca' => $requestData['marca'], 'numero' => $requestData['numero'],
+                'potencia' => $requestData['potencia'], 'nominalelectrica' => $requestData['nominalelectrica']
+            ];
+            Motore::create($requestMotor);
+        }
+        
         /*
      *
      * carga comb es un número con valores
@@ -288,14 +292,32 @@ class PerfilesController extends Controller
      */
         $requestDatoAdicional = [
             'idArtefacto' => $idArtefacto->id, 'lugar' => $requestData['lugar'], 'mercPelig' => $requestData['mercPelig'],
-            'maxPasajeros' => $requestData['maxPasajeros'], 'cargaComb' => $requestData['cargaComb'], 'peso' => $requestData['peso'], 'altura' => $requestData['altura']
+            'maxPasajeros' => $requestData['maxPasajeros']
         ];
         datosAdicionale::create($requestDatoAdicional);
         $requestInspeccion = ['idArtefacto' => $idArtefacto->id, 'gestion' => $requestData['gestion'], 'jefeinspector' => $requestData['jefeinspector'], 'motivo' => $requestData['motivo']];
         Inspeccione::create($requestInspeccion);
-        $requestDocumentacion = ['idArtefacto' => $idArtefacto->id, 'directorio' => $requestData['directorio']];
-        Documentacione::create($requestDocumentacion);
-        return redirect('admin/perf45r')->with('flash_message', 'Nuevo registro exitoso!!!');
+        if($request->has('directorio')){
+            if ($request->hasFile('directorio')) {
+                $requestData['directorio'] = $request->file('foto')->store('uploads', 'public');
+            }
+            $requestDocumentacion = ['idArtefacto' => $idArtefacto->id, 'directorio' => $requestData['directorio']];
+            Documentacione::create($requestDocumentacion);
+        }
+        switch($Usuario->nivel){
+            case 2:
+                $direccion="admin/perf45j";
+                break;
+            case 3:
+                $direccion="admin/perf45i";
+                break;
+            case 4:
+                $direccion="admin/perf45r";
+                break;
+
+        }
+        
+        return redirect($direccion)->with('flash_message', 'Nuevo registro exitoso!!!');
     }
     // Definir función para agregar tiempo a una fecha y devolverla en formato dd/mm/aaaa
     //imprimir_certificado_registro
@@ -310,19 +332,21 @@ class PerfilesController extends Controller
         $propietario = Propietario::findOrFail($requestData['idPropietario']);
         //dd($propietario);
         $artefacto = Artefacto::findOrFail($requestData['idArtefacto']);
-        $inspeccion = Inspeccione::findOrFail($requestData['idArtefacto']);
+        $inspeccion = Inspeccione::where('idArtefacto',$requestData['idArtefacto'])->first();
         $tipo = Tipo::findOrFail($artefacto['idTipo']);
+        $servicio = servicio::findOrFail($artefacto['idServicio']);
         $material = Material::findOrFail($artefacto['idMaterial']);
-        //$usuario = Usuario::findOrFail(Auth::user()->id);
+        //$usuario = Usuario::where('id',Auth::user()->id);
         //$id=$artefacto['idBaseOperativa'];
         $basesoperativa = BasesOperativa::findOrFail($artefacto['idBaseOperativa']);
         
-        $motor = Motore::findOrFail($artefacto['idBaseOperativa']);
-        $datoAdicional = datosAdicionale::findOrFail($artefacto['id']);
+        $motor = Motore::where('idArtefacto',$artefacto['idBaseOperativa'])->first();
+        $datoAdicional = datosAdicionale::where('idArtefacto',$artefacto['id'])->first();
         //dd($basesoperativa);
-        $cuenca = Cuenca::findOrFail($basesoperativa['idCuenca']);
+        $cuenca = Cuenca::where('id',$basesoperativa['idCuenca'])->first();
+        //sdd($cuenca);
         //Proceso para añadir 1 al control de numeros de registro por cuenca
-        $numeroc = Certificacione::findOrFail($cuenca['id']);
+        $numeroc = Certificacione::where('id',$cuenca['id'])->first();
         $aux = $numeroc;
         $numero = $numeroc['numero'];
         $numero = $numero + 1;
@@ -451,22 +475,22 @@ class PerfilesController extends Controller
         $propietario = Propietario::findOrFail($requestData['idPropietario']);
         //dd($propietario);
         $artefacto = Artefacto::findOrFail($requestData['idArtefacto']);
-        $inspeccion = Inspeccione::findOrFail($requestData['idArtefacto']);
+        $inspeccion = Inspeccione::where('idArtefacto',$requestData['idArtefacto'])->first();
         $tipo = Tipo::findOrFail($artefacto['idTipo']);
+        $servicio = servicio::findOrFail($artefacto['idServicio']);
         $material = Material::findOrFail($artefacto['idMaterial']);
-        //$usuario = Usuario::findOrFail(Auth::user()->id);
+        //$usuario = Usuario::where('id',Auth::user()->id);
         //$id=$artefacto['idBaseOperativa'];
         $basesoperativa = BasesOperativa::findOrFail($artefacto['idBaseOperativa']);
-        $motor = Motore::findOrFail($artefacto['idBaseOperativa']);
-        $datoAdicional = datosAdicionale::findOrFail($artefacto['id']);
+        
+        $motor = Motore::where('idArtefacto',$artefacto['idBaseOperativa'])->first();
+        $datoAdicional = datosAdicionale::where('idArtefacto',$artefacto['id'])->first();
         //dd($basesoperativa);
-        $cuenca = Cuenca::findOrFail($basesoperativa['idCuenca']);
+        $cuenca = Cuenca::where('id',$basesoperativa['idCuenca'])->first();
+        //sdd($cuenca);
         //Proceso para añadir 1 al control de numeros de registro por cuenca
-        $numeroc = Certificacione::findOrFail($cuenca['id']);
-        $aux = $numeroc;
-        $numero = $numeroc['numero'];
-        //$numero = $numero + 1;
-        $aux['numero'] = $numero;
+        $numeroc = Certificacione::where('id',$cuenca['id'])->first();
+        //Configuración de tiempos de vencimiento
         $fechaActual = date('Y-m-d');
         $fechaActualTimestamp = strtotime($fechaActual);
         $nuevaFechaTimestamp = strtotime('+5 years', $fechaActualTimestamp);
@@ -489,13 +513,25 @@ class PerfilesController extends Controller
      */
         $requestCertificado = [
             'idArtefacto' => $requestData['idArtefacto'], 'tipoC' => '2',
-            'nreg' => $numero, 'correlativo' => $requestData['correlativo'], 'fechaEmision' => $fechaActual, 'fechaAlerta' => $fechaAlerta, 'fechaVencimiento' => $fechaVencimiento
+            'nreg' => $numeroc->numero, 'correlativo' => $requestData['correlativo'], 'fechaEmision' => $fechaActual, 'fechaAlerta' => $fechaAlerta, 'fechaVencimiento' => $fechaVencimiento
         ];
-        
         $certificacion = certificado::create($requestCertificado);
+        /*
+        array:5 [▼ // app\Http\Controllers\admin\ubicacionController.php:114
+  "_method" => "PATCH"
+  "_token" => "8Y9tRL35bV6eLwWP8o0SK9vYB87hqy9GuHxWeyHT"
+  "idUsuario" => "1"
+  "idCuenca" => "1"
+  "idBaseOperativa" => "2"
+]
+        */
+        //dd('num:'.$numeroc);
+        //"num:{"id":2,"created_at":"2024-05-16T16:27:39.000000Z","updated_at":"2024-05-16T16:27:39.000000Z","idCuenca":2,"numero":1}" 
+        //dd('aux:'.$aux);
+        //"aux:{"id":2,"created_at":"2024-05-16T16:27:39.000000Z","updated_at":"2024-05-16T16:27:39.000000Z","idCuenca":2,"numero":1}"
+        
         $certificacion['fechaEmision'] = $this->mostrarFechaFormateada($certificacion['fechaEmision']);
-        $certificacion['fechaVencimiento'] = $this->mostrarFechaFormateada($certificacion['fechaVencimiento']);
-        ($certificacion['fechaVencimiento']);
+        $certificacion['fechaVencimiento'] = $this->mostrarFechaFormateada($fechaVencimiento);
         $vista = \View::make('admin.certificadospdf.certificarseguridad', compact('propietario', 'tipo', 'material', 'artefacto', 'basesoperativa', 'cuenca',
         'certificacion','inspeccion','motor', 'datoAdicional'))->render();
         $pdf = \App::make('dompdf.wrapper');
@@ -504,61 +540,71 @@ class PerfilesController extends Controller
     }
     public function imprimir_certificado_francobordo(Request $request)
     { //muestro un pdf
-       /*dd('Probando imprimir certificados');*/
-       $requestData = $request->all();
-       //$cuenca=$request->idCuenca;
-       //protected $fillable = ['idUsuarios', 'idBaseOperativa', 'matricula', 'nombre', 'idTipo', 'idMaterial',
-       //'eslora', 'manga', 'puntal', 'francobordo', 'propulsion', 'construccion', 'trn', 'trb', 'servicio', 'asociacion', 'observaciones'];
-       $baseoperativa = $request->idBaseOperativa;
-       $propietario = Propietario::findOrFail($requestData['idPropietario']);
-       //dd($propietario);
-       $artefacto = Artefacto::findOrFail($requestData['idArtefacto']);
-       $inspeccion = Inspeccione::findOrFail($requestData['idArtefacto']);
-       $tipo = Tipo::findOrFail($artefacto['idTipo']);
-       $material = Material::findOrFail($artefacto['idMaterial']);
-       //$usuario = Usuario::findOrFail(Auth::user()->id);
-       //$id=$artefacto['idBaseOperativa'];
-       $basesoperativa = BasesOperativa::findOrFail($artefacto['idBaseOperativa']);
-       $motor = Motore::findOrFail($artefacto['idBaseOperativa']);
-       $datoAdicional = datosAdicionale::findOrFail($artefacto['id']);
-       //dd($basesoperativa);
-       $cuenca = Cuenca::findOrFail($basesoperativa['idCuenca']);
-       //Proceso para añadir 1 al control de numeros de registro por cuenca
-       $numeroc = Certificacione::findOrFail($cuenca['id']);
-       $aux = $numeroc;
-       $numero = $numeroc['numero'];
-       //$numero = $numero + 1;
-       $aux['numero'] = $numero;
-       //$numeroc->update($aux);
-       $fechaActual = date('Y-m-d');
+        $requestData = $request->all();
+        //$cuenca=$request->idCuenca;
+        //protected $fillable = ['idUsuarios', 'idBaseOperativa', 'matricula', 'nombre', 'idTipo', 'idMaterial',
+        //'eslora', 'manga', 'puntal', 'francobordo', 'propulsion', 'construccion', 'trn', 'trb', 'servicio', 'asociacion', 'observaciones'];
+        $baseoperativa = $request->idBaseOperativa;
+        $propietario = Propietario::findOrFail($requestData['idPropietario']);
+        //dd($propietario);
+        $artefacto = Artefacto::findOrFail($requestData['idArtefacto']);
+        $inspeccion = Inspeccione::where('idArtefacto',$requestData['idArtefacto'])->first();
+        $tipo = Tipo::findOrFail($artefacto['idTipo']);
+        $servicio = servicio::findOrFail($artefacto['idServicio']);
+        $material = Material::findOrFail($artefacto['idMaterial']);
+        //$usuario = Usuario::where('id',Auth::user()->id);
+        //$id=$artefacto['idBaseOperativa'];
+        $basesoperativa = BasesOperativa::findOrFail($artefacto['idBaseOperativa']);
+        
+        $motor = Motore::where('idArtefacto',$artefacto['idBaseOperativa'])->first();
+        $datoAdicional = datosAdicionale::where('idArtefacto',$artefacto['id'])->first();
+        //dd($basesoperativa);
+        $cuenca = Cuenca::where('id',$basesoperativa['idCuenca'])->first();
+        //sdd($cuenca);
+        //Proceso para añadir 1 al control de numeros de registro por cuenca
+        $numeroc = Certificacione::where('id',$cuenca['id'])->first();
+        //Configuración de tiempos de vencimiento
+        $fechaActual = date('Y-m-d');
         $fechaActualTimestamp = strtotime($fechaActual);
-        $nuevaFechaTimestamp = strtotime('+1 years', $fechaActualTimestamp);
+        $nuevaFechaTimestamp = strtotime('+5 years', $fechaActualTimestamp);
         $fechaVencimiento = date('Y-m-d', $nuevaFechaTimestamp);
         $fechaVencimientoTimestamp = strtotime($fechaVencimiento);
         $fechaAlertaTimestamp = strtotime('-6 months', $fechaVencimientoTimestamp);
         $fechaAlerta = date('Y-m-d', $fechaAlertaTimestamp);
-       //Proceso para añadir un certificado
-       //'idArtefactos', 'tipoC', 'nreg','correlativo', 'fechaEmision', 'fechaVecimiento'
-       /*
-        * 
-    * tipoC corresponde a un tipo de certificado
-    * registro=1
-    * seguridad=2
-    * arqueo=3
-    * fb=4
-    * medioAmb=5
-    * dot min=6
-    * 
-    */
-       $requestCertificado = [
-           'idArtefacto' => $requestData['idArtefacto'], 'tipoC' => '3',
-           'nreg' => $numero, 'correlativo' => $requestData['correlativo'], 'fechaEmision' => $fechaActual, 'fechaAlerta' => $fechaAlerta, 'fechaVencimiento' => $fechaVencimiento
-       ];
-       //dd($requestCertificado);
-       $certificacion = certificado::create($requestCertificado);
-       $certificacion['fechaEmision'] = $this->mostrarFechaFormateada($certificacion['fechaEmision']);
-       $certificacion['fechaVencimiento'] = $this->mostrarFechaFormateada($certificacion['fechaVencimiento']);
-       ($certificacion['fechaVencimiento']);
+        //Proceso para añadir un certificado
+        //'idArtefactos', 'tipoC', 'nreg','correlativo', 'fechaEmision', 'fechaVecimiento'
+        /*
+         * 
+     * tipoC corresponde a un tipo de certificado
+     * registro=1
+     * seguridad=2
+     * arqueo=3
+     * fb=4
+     * medioAmb=5
+     * dot min=6
+     * 
+     */
+        $requestCertificado = [
+            'idArtefacto' => $requestData['idArtefacto'], 'tipoC' => '3',
+            'nreg' => $numeroc->numero, 'correlativo' => $requestData['correlativo'], 'fechaEmision' => $fechaActual, 'fechaAlerta' => $fechaAlerta, 'fechaVencimiento' => $fechaVencimiento
+        ];
+        $certificacion = certificado::create($requestCertificado);
+        /*
+        array:5 [▼ // app\Http\Controllers\admin\ubicacionController.php:114
+  "_method" => "PATCH"
+  "_token" => "8Y9tRL35bV6eLwWP8o0SK9vYB87hqy9GuHxWeyHT"
+  "idUsuario" => "1"
+  "idCuenca" => "1"
+  "idBaseOperativa" => "2"
+]
+        */
+        //dd('num:'.$numeroc);
+        //"num:{"id":2,"created_at":"2024-05-16T16:27:39.000000Z","updated_at":"2024-05-16T16:27:39.000000Z","idCuenca":2,"numero":1}" 
+        //dd('aux:'.$aux);
+        //"aux:{"id":2,"created_at":"2024-05-16T16:27:39.000000Z","updated_at":"2024-05-16T16:27:39.000000Z","idCuenca":2,"numero":1}"
+        
+        $certificacion['fechaEmision'] = $this->mostrarFechaFormateada($certificacion['fechaEmision']);
+        $certificacion['fechaVencimiento'] = $this->mostrarFechaFormateada($fechaVencimiento);
        $vista = \View::make('admin.certificadospdf.certificarfrancobordo', compact('propietario', 'tipo', 'material', 'artefacto', 'basesoperativa', 'cuenca',
        'certificacion','inspeccion','motor', 'datoAdicional'))->render();
        $pdf = \App::make('dompdf.wrapper');
@@ -575,22 +621,22 @@ class PerfilesController extends Controller
         $propietario = Propietario::findOrFail($requestData['idPropietario']);
         //dd($propietario);
         $artefacto = Artefacto::findOrFail($requestData['idArtefacto']);
-        $inspeccion = Inspeccione::findOrFail($requestData['idArtefacto']);
+        $inspeccion = Inspeccione::where('idArtefacto',$requestData['idArtefacto'])->first();
         $tipo = Tipo::findOrFail($artefacto['idTipo']);
+        $servicio = servicio::findOrFail($artefacto['idServicio']);
         $material = Material::findOrFail($artefacto['idMaterial']);
-        //$usuario = Usuario::findOrFail(Auth::user()->id);
+        //$usuario = Usuario::where('id',Auth::user()->id);
         //$id=$artefacto['idBaseOperativa'];
         $basesoperativa = BasesOperativa::findOrFail($artefacto['idBaseOperativa']);
-        $motor = Motore::findOrFail($artefacto['idBaseOperativa']);
-        $datoAdicional = datosAdicionale::findOrFail($artefacto['id']);
+        
+        $motor = Motore::where('idArtefacto',$artefacto['idBaseOperativa'])->first();
+        $datoAdicional = datosAdicionale::where('idArtefacto',$artefacto['id'])->first();
         //dd($basesoperativa);
-        $cuenca = Cuenca::findOrFail($basesoperativa['idCuenca']);
+        $cuenca = Cuenca::where('id',$basesoperativa['idCuenca'])->first();
+        //sdd($cuenca);
         //Proceso para añadir 1 al control de numeros de registro por cuenca
-        $numeroc = Certificacione::findOrFail($cuenca['id']);
-        $aux = $numeroc;
-        $numero = $numeroc['numero'];
-        //$numero = $numero + 1;
-        $aux['numero'] = $numero;
+        $numeroc = Certificacione::where('id',$cuenca['id'])->first();
+        //Configuración de tiempos de vencimiento
         $fechaActual = date('Y-m-d');
         $fechaActualTimestamp = strtotime($fechaActual);
         $nuevaFechaTimestamp = strtotime('+5 years', $fechaActualTimestamp);
@@ -612,14 +658,26 @@ class PerfilesController extends Controller
      * 
      */
         $requestCertificado = [
-            'idArtefacto' => $requestData['idArtefacto'], 'tipoC' => '2',
-            'nreg' => $numero, 'correlativo' => $requestData['correlativo'], 'fechaEmision' => $fechaActual, 'fechaAlerta' => $fechaAlerta, 'fechaVencimiento' => $fechaVencimiento
+            'idArtefacto' => $requestData['idArtefacto'], 'tipoC' => '4',
+            'nreg' => $numeroc->numero, 'correlativo' => $requestData['correlativo'], 'fechaEmision' => $fechaActual, 'fechaAlerta' => $fechaAlerta, 'fechaVencimiento' => $fechaVencimiento
         ];
-        
         $certificacion = certificado::create($requestCertificado);
+        /*
+        array:5 [▼ // app\Http\Controllers\admin\ubicacionController.php:114
+  "_method" => "PATCH"
+  "_token" => "8Y9tRL35bV6eLwWP8o0SK9vYB87hqy9GuHxWeyHT"
+  "idUsuario" => "1"
+  "idCuenca" => "1"
+  "idBaseOperativa" => "2"
+]
+        */
+        //dd('num:'.$numeroc);
+        //"num:{"id":2,"created_at":"2024-05-16T16:27:39.000000Z","updated_at":"2024-05-16T16:27:39.000000Z","idCuenca":2,"numero":1}" 
+        //dd('aux:'.$aux);
+        //"aux:{"id":2,"created_at":"2024-05-16T16:27:39.000000Z","updated_at":"2024-05-16T16:27:39.000000Z","idCuenca":2,"numero":1}"
+        
         $certificacion['fechaEmision'] = $this->mostrarFechaFormateada($certificacion['fechaEmision']);
-        $certificacion['fechaVencimiento'] = $this->mostrarFechaFormateada($certificacion['fechaVencimiento']);
-        ($certificacion['fechaVencimiento']);
+        $certificacion['fechaVencimiento'] = $this->mostrarFechaFormateada($fechaVencimiento);
         $vista = \View::make('admin.certificadospdf.certificararqueo', compact('propietario', 'tipo', 'material', 'artefacto', 'basesoperativa', 'cuenca',
         'certificacion','inspeccion','motor', 'datoAdicional'))->render();
         $pdf = \App::make('dompdf.wrapper');

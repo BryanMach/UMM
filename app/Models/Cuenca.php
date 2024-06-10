@@ -29,9 +29,9 @@ class Cuenca extends Model
     protected $fillable = ['cuenca'];
 
     public function basesoperativas(){
-        return $this->hasMany(BasesOperativa::class);
+        return $this->hasMany(BasesOperativa::class,'idCuenca');
     }
     public function certificaciones(){
-        return $this->hasMany(Certificacione::class);
+        return $this->hasMany(Certificacione::class,'idCuenca');
     }
 }

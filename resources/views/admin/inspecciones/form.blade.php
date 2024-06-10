@@ -17,22 +17,22 @@
 </div>
 <div class="form-group {{ $errors->has('gestion') ? 'has-error' : '' }}">
     <label for="gestion" class="control-label">{{ 'GESTION' }}</label>
-    <input class="form-control" name="gestion" type="text" id="gestion"
+    <input class="form-control" name="gestion" type="text" oninput="this.value = this.value.toUpperCase()"  id="gestion"
         value="{{ isset($inspeccione->gestion) ? $inspeccione->gestion : '' }}">
     {!! $errors->first('gestion', '<p class="help-block">:message</p>') !!}
 </div>
 <div class="form-group {{ $errors->has('jefeinspector') ? 'has-error' : '' }}">
     <label for="jefeinspector" class="control-label">{{ 'JEFE DE INSPECCION' }}</label>
-    <input class="form-control" name="jefeinspector" type="text" id="jefeinspector"
+    <input class="form-control" name="jefeinspector" type="text" oninput="this.value = this.value.toUpperCase()"  id="jefeinspector"
         value="{{ isset($inspeccione->jefeinspector) ? $inspeccione->jefeinspector : '' }}">
     {!! $errors->first('jefeinspector', '<p class="help-block">:message</p>') !!}
 </div>
 <div class="form-group {{ $errors->has('motivo') ? 'has-error' : '' }}">
     <label for="motivo" class="control-label">{{ 'MOTIVO' }}</label>
-    <input class="form-control" name="motivo" type="text" id="motivo"
+    <input class="form-control" name="motivo" type="text" oninput="this.value = this.value.toUpperCase()"  id="motivo"
         value="{{ isset($inspeccione->motivo) ? $inspeccione->motivo : '' }}">
     {!! $errors->first('motivo', '<p class="help-block">:message</p>') !!}
 </div>
 <div class="form-group">
-    <input class="btn btn-primary" type="submit" value="{{ $formMode === 'edit' ? 'Actualizar' : 'Añadir' }}">
+    <input class="btn btn-primary" type="submit" value="{{ $formMode === 'edit' ? 'ACTUALIZAR' : 'Añadir' }}">
 </div>

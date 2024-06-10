@@ -1,6 +1,6 @@
 <div class="form-group {{ $errors->has('nombre') ? 'has-error' : '' }}">
     <label for="nombre" class="control-label">{{ 'NOMBRE' }}</label>
-    <input class="form-control" name="nombre" type="text" id="nombre"
+    <input class="form-control" name="nombre" type="text" oninput="this.value = this.value.toUpperCase()"  id="nombre"
         value="{{ isset($propietario->nombre) ? $propietario->nombre : '' }}">
     {!! $errors->first('nombre', '<p class="help-block">:message</p>') !!}
 </div>
@@ -19,7 +19,7 @@
 </div>
 <div class="form-group {{ $errors->has('identificador') ? 'has-error' : '' }}">
     <label for="identificador" class="control-label">{{ 'CI/SEPREC' }}</label>
-    <input class="form-control" name="identificador" type="text" id="identificador"
+    <input class="form-control" name="identificador" type="text" oninput="this.value = this.value.toUpperCase()"  id="identificador"
         value="{{ isset($propietario->identificador) ? $propietario->identificador : '' }}">
     {!! $errors->first('identificador', '<p class="help-block">:message</p>') !!}
 </div>
@@ -32,5 +32,5 @@
 
 
 <div class="form-group">
-    <input class="btn btn-primary" type="submit" value="{{ $formMode === 'edit' ? 'Actualizar' : 'Añadir' }}">
+    <input class="btn btn-primary" type="submit" value="{{ $formMode === 'edit' ? 'ACTUALIZAR' : 'Añadir' }}">
 </div>

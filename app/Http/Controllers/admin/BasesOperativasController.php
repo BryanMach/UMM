@@ -4,7 +4,7 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
-
+use App\Models\Propietario;
 use App\Models\BasesOperativa;
 use App\Models\Cuenca;
 use Illuminate\Http\Request;
@@ -102,8 +102,9 @@ class BasesOperativasController extends Controller
     {
         $basesoperativa = BasesOperativa::findOrFail($id);
         $usuario = Usuario::findOrFail(Auth::user()->id);
+        $propietarios = Propietario::All();
         $nivel = $usuario['nivel'];
-        return view('admin.bases-operativas.show', compact('basesoperativa', 'nivel'));
+        return view('admin.bases-operativas.show', compact('basesoperativa', 'nivel','propietarios'));
     }
 
     /**

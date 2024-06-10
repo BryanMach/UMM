@@ -153,7 +153,7 @@
                           accept-charset="UTF-8" style="display:inline">
                           {{ method_field('DELETE') }}
                           {{ csrf_field() }}
-                          <button type="submit" class="btn btn-danger btn-sm" title="Borrar Personal"
+                          <button type="submit" class="btn btn-danger btn-sm" title="BORRAR Personal"
                               onclick="return confirm(&quot;Confirm delete?&quot;)"><i class="fa fa-trash-o"
                                   aria-hidden="true"></i> BORRAR</button>
                       </form>
@@ -189,7 +189,7 @@
                                   </tr>
                                   <tr>
                                       <th> FOTO </th>
-                                      <td> <img src="{{ asset('storage') . '/' . $personal->foto }}" alt="">
+                                      <td> <img src="{{ asset('storage') . '/' . $personal->foto }}" alt="" width="300px" height="300px">
                                       </td>
                                   </tr>
                                   <tr>
@@ -198,6 +198,13 @@
                                   </tr>
                                   <tr>
                                       <th> VIGENCIA </th>
+                                      <td>
+                                        @if ($personal->vigencia == 1)
+                                            ESTA PERSONA ACTUALMENTE TRABAJA PARA LA UNIDAD DE MARINA MERCANTE
+                                        @else
+                                            ESTA PERSONA ACTUALMENTE NO TRABAJA PARA LA UNIDAD DE MARINA MERCANTE
+                                        @endif
+                                    </td>
                                       <td> {{ $personal->vigencia }} </td>
                                   </tr>
                               </tbody>
@@ -206,7 +213,9 @@
                       <div class="table-responsive">
                         <table class="table">
                             <thead>
-                                <th>USUARIOS ASIGNADOS A ESTE PERSONAL</th>
+                                <tr>
+                                <h5 >USUARIOS ASIGNADOS A ESTE PERSONAL</h5>
+                                </tr>
                                 <tr>
                                     <th>NIVEL</th>
                                     <th>USUARIO</th>
@@ -264,9 +273,9 @@
                                                     {{ method_field('DELETE') }}
                                                     {{ csrf_field() }}
                                                     <button type="submit" class="btn btn-danger btn-sm"
-                                                        title="Borrar Usuario"
+                                                        title="BORRAR Usuario"
                                                         onclick="return confirm(&quot;Confirm delete?&quot;)"><i
-                                                            class="fa fa-trash-o" aria-hidden="true"></i> Borrar</button>
+                                                            class="fa fa-trash-o" aria-hidden="true"></i> BORRAR</button>
                                                 </form>
                                             </td>
                                         </tr>

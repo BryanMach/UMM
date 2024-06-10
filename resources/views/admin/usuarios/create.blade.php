@@ -144,13 +144,6 @@
                   <div class="card-body">
                       <a href="{{ url('/admin/usuarios') }}" title="Back"><button class="btn btn-warning btn-sm"><i
                                   class="fa fa-arrow-left" aria-hidden="true"></i> VOLVER</button></a>
-                      <a href="{{ url('/admin/usuarios') }}" title="Back"><button class="btn btn-warning btn-sm"><i
-                                  class="fa fa-arrow-left" aria-hidden="true"></i> Inicio</button></a>
-                      <a href="{{ url('/admin/usuarios') }}" title="Back"><button class="btn btn-warning btn-sm"><i
-                                  class="fa fa-arrow-left" aria-hidden="true"></i> Siguiente</button></a>
-                      <a href="{{ url('/admin/usuarios') }}" title="Back"><button class="btn btn-warning btn-sm"><i
-                                  class="fa fa-arrow-left" aria-hidden="true"></i> Certificar</button></a>
-                      <br />
                       <br />
 
                       @if ($errors->any())

@@ -27,13 +27,13 @@
 <div class="form-group {{ $errors->has('idBaseOperativa') ? 'has-error' : '' }}">
     <div class="form-group {{ $errors->has('matricula') ? 'has-error' : '' }}">
         <label for="matricula" class="control-label">{{ 'MATRICULA' }}</label>
-        <input class="form-control" name="matricula" type="text" id="matricula"
+        <input class="form-control" name="matricula" type="text" oninput="this.value = this.value.toUpperCase()"  id="matricula"
             value="{{ isset($artefacto->matricula) ? $artefacto->matricula : '' }}">
         {!! $errors->first('matricula', '<p class="help-block">:message</p>') !!}
     </div>
     <div class="form-group {{ $errors->has('nombre') ? 'has-error' : '' }}">
         <label for="nombre" class="control-label">{{ 'NOMBRE' }}</label>
-        <input class="form-control" name="nombre" type="text" id="nombre"
+        <input class="form-control" name="nombre" type="text" oninput="this.value = this.value.toUpperCase()"  id="nombre"
             value="{{ isset($artefacto->nombre) ? $artefacto->nombre : '' }}">
         {!! $errors->first('nombre', '<p class="help-block">:message</p>') !!}
     </div>
@@ -98,13 +98,13 @@
     </div>
     <div class="form-group {{ $errors->has('propulsion') ? 'has-error' : '' }}">
         <label for="propulsion" class="control-label">{{ 'PROPULSION' }}</label>
-        <input class="form-control" name="propulsion" type="text" id="propulsion"
+        <input class="form-control" name="propulsion" type="text" oninput="this.value = this.value.toUpperCase()"  id="propulsion"
             value="{{ isset($artefacto->propulsion) ? $artefacto->propulsion : '' }}">
         {!! $errors->first('propulsion', '<p class="help-block">:message</p>') !!}
     </div>
     <div class="form-group {{ $errors->has('construccion') ? 'has-error' : '' }}">
         <label for="construccion" class="control-label">{{ 'CONSTRUCCION' }}</label>
-        <input class="form-control" name="construccion" type="text" id="construccion"
+        <input class="form-control" name="construccion" type="text" oninput="this.value = this.value.toUpperCase()"  id="construccion"
             value="{{ isset($artefacto->construccion) ? $artefacto->construccion : '' }}">
         {!! $errors->first('construccion', '<p class="help-block">:message</p>') !!}
     </div>
@@ -122,24 +122,24 @@
     </div>
     <div class="form-group {{ $errors->has('servicio') ? 'has-error' : '' }}">
         <label for="servicio" class="control-label">{{ 'SERVICIO' }}</label>
-        <input class="form-control" name="servicio" type="text" id="servicio"
+        <input class="form-control" name="servicio" type="text" oninput="this.value = this.value.toUpperCase()"  id="servicio"
             value="{{ isset($artefacto->servicio->servicio) ? $artefacto->servicio->servicio : '' }}">
         {!! $errors->first('servicio', '<p class="help-block">:message</p>') !!}
     </div>
     <div class="form-group {{ $errors->has('asociacion') ? 'has-error' : '' }}">
         <label for="asociacion" class="control-label">{{ 'ASOCIACION' }}</label>
-        <input class="form-control" name="asociacion" type="text" id="asociacion"
+        <input class="form-control" name="asociacion" type="text" oninput="this.value = this.value.toUpperCase()"  id="asociacion"
             value="{{ isset($artefacto->asociacion) ? $artefacto->asociacion : '' }}">
         {!! $errors->first('asociacion', '<p class="help-block">:message</p>') !!}
     </div>
     <div class="form-group {{ $errors->has('observaciones') ? 'has-error' : '' }}">
         <label for="observaciones" class="control-label">{{ 'OBSERVACIONES' }}</label>
-        <input class="form-control" name="observaciones" type="text" id="observaciones"
+        <input class="form-control" name="observaciones" type="text" oninput="this.value = this.value.toUpperCase()"  id="observaciones"
             value="{{ isset($artefacto->observaciones) ? $artefacto->observaciones : '' }}">
         {!! $errors->first('observaciones', '<p class="help-block">:message</p>') !!}
     </div>
 
 
     <div class="form-group">
-        <input class="btn btn-primary" type="submit" value="{{ $formMode === 'edit' ? 'Actualizar' : 'Añadir' }}">
+        <input class="btn btn-primary" type="submit" value="{{ $formMode === 'edit' ? 'ACTUALIZAR' : 'Añadir' }}">
     </div>

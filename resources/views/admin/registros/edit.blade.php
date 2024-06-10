@@ -140,7 +140,7 @@
       <div class="row">
           <div class="col-md-9">
               <div class="card">
-                  <div class="card-header">Editar Propietario #{{ $propietario->id }}</div>
+                  <div class="card-header">EDITAR</div>
                   <div class="card-body">
                       <a href="{{ url('/admin/propietario') }}" title="Back"><button class="btn btn-warning btn-sm"><i
                                   class="fa fa-arrow-left" aria-hidden="true"></i> VOLVER</button></a>

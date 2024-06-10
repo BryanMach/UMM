@@ -4,8 +4,9 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
-
+use App\Models\Artefacto;
 use App\Models\Cuenca;
+use App\Models\Propietario;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Usuario;
@@ -75,7 +76,9 @@ class CuencaController extends Controller
         $cuenca = Cuenca::findOrFail($id);
         $usuario = Usuario::findOrFail(Auth::user()->id);
         $nivel = $usuario['nivel'];
-        return view('admin.cuenca.show', compact('cuenca', 'nivel'));
+        $artefactos = Artefacto::all();
+        $propietarios = Propietario::All();
+        return view('admin.cuenca.show', compact('cuenca', 'nivel','artefactos','propietarios'));
     }
 
     /**

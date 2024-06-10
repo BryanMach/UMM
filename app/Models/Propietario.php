@@ -28,8 +28,12 @@ class Propietario extends Model
      */
     protected $fillable = ['nombre', 'tipo', 'identificador', 'FechaIni'];
 
-    public function propietario()
+    public function lista()
     {
-        return $this->hasMany(ListaPropietario::class);
+        return $this->hasMany(ListaPropietario::class,'idPropietario');
+    }
+    public function artefactos()
+    {
+        return $this->belongsToMany(Artefacto::class, 'lista_propietarios', 'idPropietario', 'idArtefacto');
     }
 }

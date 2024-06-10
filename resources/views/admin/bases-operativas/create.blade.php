@@ -140,11 +140,11 @@
       <div class="row">
           <div class="col-md-9">
               <div class="card">
-                  <div class="card-header">Crear nueva base de operaciones</div>
+                  <div class="card-header">CREAR NUEVA BASE DE OPERACIONES</div>
                   <div class="card-body">
                       <a href="{{ url('/admin/bases-operativas') }}" title="Back"><button
                               class="btn btn-warning btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i>
-                              Retroceder</button></a>
+                              VOLVER</button></a>
                       <br />
                       <br />
 

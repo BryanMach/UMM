@@ -153,9 +153,9 @@
                           accept-charset="UTF-8" style="display:inline">
                           {{ method_field('DELETE') }}
                           {{ csrf_field() }}
-                          <button type="submit" class="btn btn-danger btn-sm" title="Borrar Recuperar"
+                          <button type="submit" class="btn btn-danger btn-sm" title="BORRAR Recuperar"
                               onclick="return confirm(&quot;Confirm delete?&quot;)"><i class="fa fa-trash-o"
-                                  aria-hidden="true"></i> Borrar</button>
+                                  aria-hidden="true"></i> BORRAR</button>
                       </form>
                       <br />
                       <br />

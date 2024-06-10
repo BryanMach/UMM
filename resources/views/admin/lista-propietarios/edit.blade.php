@@ -144,7 +144,7 @@
                   <div class="card-body">
                       <a href="{{ url('/admin/lista-propietarios') }}" title="Back"><button
                               class="btn btn-warning btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i>
-                              Retroceder</button></a>
+                              VOLVER</button></a>
                       <br />
                       <br />
 

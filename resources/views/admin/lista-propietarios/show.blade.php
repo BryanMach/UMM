@@ -145,7 +145,7 @@
 
                       <a href="{{ url('/admin/lista-propietarios') }}" title="Back"><button
                               class="btn btn-warning btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i>
-                              Retroceder</button></a>
+                              VOLVER</button></a>
                       <a href="{{ url('/admin/lista-propietarios/' . $listapropietario->id . '/edit') }}"
                           title="Editar ListaPropietario"><button class="btn btn-primary btn-sm"><i
                                   class="fa fa-pencil-square-o" aria-hidden="true"></i> Editar</button></a>
@@ -155,9 +155,9 @@
                           accept-charset="UTF-8" style="display:inline">
                           {{ method_field('DELETE') }}
                           {{ csrf_field() }}
-                          <button type="submit" class="btn btn-danger btn-sm" title="Borrar ListaPropietario"
+                          <button type="submit" class="btn btn-danger btn-sm" title="BORRAR ListaPropietario"
                               onclick="return confirm(&quot;Confirm delete?&quot;)"><i class="fa fa-trash-o"
-                                  aria-hidden="true"></i> Borrar</button>
+                                  aria-hidden="true"></i> BORRAR</button>
                       </form>
                       @endif
                       </form>
@@ -179,7 +179,7 @@
                                     @else
                                         SEPREC DEL 
                                     @endif
-                                    PORPIETARIO </th>
+                                    PROPIETARIO </th>
                                       <td>{{ $listapropietario->propietarios->identificador }}
                                       </td>
                                 </tr>
@@ -205,7 +205,7 @@
                                               <label for="correlativo">Ingrese el número correlativo de la hoja en la
                                                   que
                                                   imprimirá este certificado de Registro:</label>
-                                              <input type="text" id="correlativo" name="correlativo" pattern="[0-9]*"
+                                              <input type="text" oninput="this.value = this.value.toUpperCase()"  id="correlativo" name="correlativo" pattern="[0-9]*"
                                                   inputmode="number" required
                                                   oninput="this.value = this.value.replace(/[^0-9]/g, '')">
                                               <input class="btn btn-primary" type="submit"
@@ -228,7 +228,7 @@
                                               <label for="correlativo">Ingrese el número correlativo de la hoja en la
                                                   que
                                                   imprimirá este certificado de Seguridad de la navegación:</label>
-                                              <input type="text" id="correlativo" name="correlativo" pattern="[0-9]*"
+                                              <input type="text" oninput="this.value = this.value.toUpperCase()"  id="correlativo" name="correlativo" pattern="[0-9]*"
                                                   inputmode="number" required
                                                   oninput="this.value = this.value.replace(/[^0-9]/g, '')">
                                               <input class="btn btn-primary" type="submit"
@@ -251,7 +251,7 @@
                                               value="{{ $listapropietario->idArtefacto }}">
                                           <label for="correlativo">Ingrese el número correlativo de la hoja en la que
                                               imprimirá este certificado de Francobordo:</label>
-                                          <input type="text" id="correlativo" name="correlativo" pattern="[0-9]*"
+                                          <input type="text" oninput="this.value = this.value.toUpperCase()"  id="correlativo" name="correlativo" pattern="[0-9]*"
                                               inputmode="number" required
                                               oninput="this.value = this.value.replace(/[^0-9]/g, '')">
                                           <input class="btn btn-primary" type="submit"
@@ -272,7 +272,7 @@
                                               value="{{ $listapropietario->idArtefacto }}">
                                           <label for="correlativo">Ingrese el número correlativo de la hoja en la que
                                               imprimirá este certificado de arqueo:</label>
-                                          <input type="text" id="correlativo" name="correlativo" pattern="[0-9]*"
+                                          <input type="text" oninput="this.value = this.value.toUpperCase()"  id="correlativo" name="correlativo" pattern="[0-9]*"
                                               inputmode="number" required
                                               oninput="this.value = this.value.replace(/[^0-9]/g, '')">
                                           <input class="btn btn-primary" type="submit"

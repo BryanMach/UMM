@@ -145,7 +145,7 @@
 
                       <a href="{{ url('/admin/bases-operativas') }}" title="Back"><button
                               class="btn btn-warning btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i>
-                              Retroceder</button></a>
+                              VOLVER</button></a>
                       <a href="{{ url('/admin/bases-operativas/' . $basesoperativa->id . '/edit') }}"
                           title="Editar BasesOperativa"><button class="btn btn-primary btn-sm"><i
                                   class="fa fa-pencil-square-o" aria-hidden="true"></i> Editar</button></a>
@@ -154,9 +154,9 @@
                           accept-charset="UTF-8" style="display:inline">
                           {{ method_field('DELETE') }}
                           {{ csrf_field() }}
-                          <button type="submit" class="btn btn-danger btn-sm" title="Borrar BasesOperativa"
+                          <button type="submit" class="btn btn-danger btn-sm" title="BORRAR BasesOperativa"
                               onclick="return confirm(&quot;Confirm delete?&quot;)"><i class="fa fa-trash-o"
-                                  aria-hidden="true"></i> Borrar</button>
+                                  aria-hidden="true"></i> BORRAR</button>
                       </form>
                       <br />
                       <br />
@@ -172,6 +172,14 @@
                                       <th> BASE DE OPERACIONES </th>
                                       <td> {{ $basesoperativa->baseOperativa }} </td>
                                   </tr>
+                                  <tr>
+                                    <th> DEPARTAMENTO </th>
+                                    <td> {{ $basesoperativa->departamento }} </td>
+                                </tr>
+                                <tr>
+                                    <th> DETALLE LA UBICACIÓN DE LA BASE </th>
+                                    <td> {{ $basesoperativa->detalle }} </td>
+                                </tr>
                               </tbody>
                           </table>
                       </div>
@@ -181,4 +189,61 @@
           </div>
       </div>
   </div>
+  <div class="container">
+    <div class="row">
+        <div class="col-md-9">
+            <div class="card">
+    <h2>Registros en esta base de operaciones</h2>
+    @foreach($propietarios as $propietario)
+        
+            @foreach($propietario->artefactos as $artefacto)
+            @if($basesoperativa->id == $artefacto->baseOperativa->id)
+                <h4>Información del Propietario: {{$propietario->nombre}}</h4>
+                <h5>Artefactos:</h5>
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ $artefacto->nombre }}</h5>
+                            <p class="card-text">Matrícula: {{ $artefacto->matricula }}</p>
+                            <p class="card-text">Tipo: {{ $artefacto->tipo->tipo }}</p>
+                            <p class="card-text">Material: {{ $artefacto->material->material }}</p>
+                            <p class="card-text">Base de operaciones: {{ $artefacto->baseOperativa->baseOperativa }}</p>
+
+                            <h6>Certificados:</h6>
+                            <ul>
+                                @foreach($artefacto->certificado as $certificado)
+                                    <li>
+                                        
+                                        @switch($certificado->tipoC)
+                                            @case(1)
+                                            CERTIFICADO DE REGISTRO: 
+                                                @break
+                                            @case(2)
+                                            CERTIFICADO DE SEGURIDAD: 
+                                                @break
+                                            @case(3)
+                                            CERTIFICADO DE FRANCOBORDO: 
+                                                @break
+                                            @case(4)
+                                            CERTIFICADO DE ARQUEO: 
+                                                @break
+                                            @default
+                                                
+                                        @endswitch
+                                        NÚMERO DE REGISTRO: {{ $certificado->nreg }},
+                                        NÚMERO DE CERTIFICADO: {{ $certificado->correlativo }},<br>
+                                        FECHA DE EMISIÓN: {{ $certificado->fechaEmision }},
+                                        FECHA DE VENCIMIENTO: {{ $certificado->fechaVencimiento }}
+                                    </li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    </div>
+                @endif
+            @endforeach
+        
+    @endforeach
+</div>
+</div>
+</div>
+</div>
 @endsection

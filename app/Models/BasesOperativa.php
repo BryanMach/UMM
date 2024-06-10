@@ -26,10 +26,10 @@ class BasesOperativa extends Model
      *
      * @var array
      */
-    protected $fillable = ['idCuenca', 'baseOperativa'];
+    protected $fillable = ['idCuenca', 'baseOperativa','departamento','detalle'];
 
     public function artefactos(){
-        return $this->hasMany(Artefacto::class);
+        return $this->hasMany(Artefacto::class,'idBaseOperativa');
     }
     public function cuenca(){
         return $this->belongsTo(Cuenca::class, 'idCuenca', 'id');

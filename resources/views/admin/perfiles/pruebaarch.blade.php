@@ -117,7 +117,7 @@
     <div class="search-bar">
         <div class="main-content">
             <h2>Lista de embarcaciones</h2>
-            <input type="text" class="form-control" placeholder="Buscar">
+            <input type="text" oninput="this.value = this.value.toUpperCase()"  class="form-control" placeholder="Buscar">
         <div class="table-responsive">
             <table class="table">
                 <thead>
@@ -287,7 +287,7 @@
             </div>
             <div class="form-group">
                 <label for="datoExtra">Dato adicional:</label>
-                <input type="text" class="form-control" id="datoExtra" name="datoExtra" value="{{ old('datoExtra', $datoExtra) }}">
+                <input type="text" oninput="this.value = this.value.toUpperCase()"  class="form-control" id="datoExtra" name="datoExtra" value="{{ old('datoExtra', $datoExtra) }}">
             </div>
             <button type="submit" class="btn btn-primary">Enviar</button>
         </form>
