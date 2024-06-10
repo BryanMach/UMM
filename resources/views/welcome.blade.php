@@ -930,7 +930,7 @@
                 <thead>
                     <tr>
                         <th scope="col">Embarcacion</th>
-                        <th scope="col">Matricula</th>
+                        <th scope="col">NÚMERO DE REGISTRO</th>
                         <th scope="col">Cuenca</th>
                     </tr>
                 </thead>
@@ -939,7 +939,28 @@
                     @foreach ($artefactos as $artefacto)
                         <tr>
                             <th scope="row">{{ $artefacto->nombre }}</th>
-                            <td>{{ $artefacto->matricula }}</td>
+                            @foreach($artefacto->certificado as $certificado)
+                                    @if($certificado->tipoC==1)
+                                    <td>
+                                        @switch($artefacto->baseoperativa->cuenca->id)
+                                            @case('1')
+                                                L-{{ $certificado->nreg }}
+                                                @break
+                                            @case('2')
+                                                p-{{ $certificado->nreg }}
+                                                @break
+                                            @case('3')
+                                                A-{{ $certificado->nreg }}
+                                                @break
+                                            @default
+                                                
+                                        @endswitch
+                                                
+                                            
+                                        
+                                    </td>
+                                    @endif
+                                    @endforeach
                             <td>{{ $artefacto->baseoperativa->cuenca->cuenca }}</td>
                         </tr>
                     @endforeach
@@ -1071,12 +1092,14 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             var ctx = document.getElementById('graficoTorta').getContext('2d');
+            var counts = @json($counts);
             var graficoTorta = new Chart(ctx, {
                 type: 'pie',
                 data: {
                     labels: ['Cuenca Amazonas', 'Cuenca De la plata', 'Cuenca Lacustre'],
                     datasets: [{
-                        data: [10, 20, 30], // valores aqui debo modificar
+                        
+                        data: [counts['LACUSTRE'], counts['DE LA PLATA'], counts['AMAZÓNICA']], // valores aqui debo modificar
                         backgroundColor: [
                             'rgba(225, 46, 10, 0.5)',
                             'rgba(224, 238, 14, 0.5)',

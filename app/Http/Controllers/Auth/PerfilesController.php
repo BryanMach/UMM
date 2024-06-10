@@ -47,7 +47,21 @@ class PerfilesController extends Controller
                     $jefe = Personal::where('idCargo', 1)
                     ->where('vigencia', 1)
                     ->get();
-                    return view('welcome', compact('artefactos','bases','jefe'));
+                    $cuencas = Cuenca::all();
+
+                    // Crear un array para almacenar los conteos
+                    $counts = [];
+            
+                    // Iterar sobre cada cuenca y contar los artefactos asociados
+                    foreach ($cuencas as $cuenca) {
+                        $count = Artefacto::whereHas('baseOperativa', function ($query) use ($cuenca) {
+                            $query->where('idCuenca', $cuenca->id);
+                        })->count();
+            
+                        // Almacenar el conteo en el array, usando el nombre de la cuenca como clave
+                        $counts[$cuenca->cuenca] = $count;
+                    }
+                    return view('welcome', compact('artefactos','bases','jefe','counts'));
     }
     public function administrador(request $request)
     {
