@@ -102,6 +102,7 @@
         <div class="sidebar-content">
             <a href="{{ url('/admin/personal') }}">PERSONAL</a>
             <a href="{{ url('/admin/usuarios') }}">USUARIOS</a>
+            <a href="{{ url('/admin/cuenca') }}" class="active">CUENCAS</a>
             <a href="{{ url('/admin/bases-operativas') }}" class="active">BASES DE OPERACIONES</a>
             <h5 class="px-3 pt-3">REGISTRO DE EMBARCACIONES</h5>
             <a href="{{ url('/admin/propietario') }}">PROPIETARIOS</a>
@@ -152,9 +153,9 @@
                           accept-charset="UTF-8" style="display:inline">
                           {{ method_field('DELETE') }}
                           {{ csrf_field() }}
-                          <button type="submit" class="btn btn-danger btn-sm" title="Borrar Artefacto"
+                          <button type="submit" class="btn btn-danger btn-sm" title="BORRAR Artefacto"
                               onclick="return confirm(&quot;Confirm delete?&quot;)"><i class="fa fa-trash-o"
-                                  aria-hidden="true"></i> Borrar</button>
+                                  aria-hidden="true"></i> BORRAR</button>
                       </form>
                       @endif
                       <br />
@@ -233,6 +234,37 @@
                                       <td> {{ $artefacto->observaciones }} </td>
                                   </tr>
                                   <tr>
+                                    <th>Certificados:</th><td>
+                            <ul>
+                                @foreach($artefacto->certificado as $certificado)
+                                    <li>
+                                        
+                                        @switch($certificado->tipoC)
+                                            @case(1)
+                                            CERTIFICADO DE REGISTRO: 
+                                                @break
+                                            @case(2)
+                                            CERTIFICADO DE SEGURIDAD: 
+                                                @break
+                                            @case(3)
+                                            CERTIFICADO DE FRANCOBORDO: 
+                                                @break
+                                            @case(4)
+                                            CERTIFICADO DE ARQUEO: 
+                                                @break
+                                            @default
+                                                
+                                        @endswitch
+                                        NÚMERO DE REGISTRO: {{ $certificado->nreg }},
+                                        NÚMERO DE CERTIFICADO: {{ $certificado->correlativo }},<br>
+                                        FECHA DE EMISIÓN: {{ $certificado->fechaEmision }},
+                                        FECHA DE VENCIMIENTO: {{ $certificado->fechaVencimiento }}
+                                    </li>
+                                @endforeach
+                            </ul>
+                        </td>
+                                  </tr>
+                                  <tr>
                                     <th> Foto </th>
                                       <td> <img src="{{ asset('storage/uploads/') . $artefacto->fotoA }}" onerror="this.src='{{ asset('images/barcodefecto.png') }}'" class="profile-img">
                                       </td>
@@ -247,4 +279,22 @@
           </div>
       </div>
   </div>
+  <div class="container">
+    <div class="row">
+        <div class="col-md-9">
+            <div class="card">
+    <h5>Lista de Propietarios:</h5>
+    @foreach($artefacto->propietarios as $propietario)
+        <div class="card mb-3">
+            <div class="card-body">
+                <h5 class="card-title">{{ $propietario->nombre }}</h5>
+                <p class="card-text">Identificador: {{ $propietario->identificador }}</p>
+                <p class="card-text">Fecha de Inicio: {{ $propietario->FechaIni }}</p>
+            </div>
+        </div>
+    @endforeach
+</div>
+</div>
+</div>
+</div>
 @endsection

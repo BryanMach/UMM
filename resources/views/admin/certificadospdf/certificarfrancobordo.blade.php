@@ -240,7 +240,7 @@
                 <strong>{{ $certificacion->fechaVencimiento }}</strong><br>
 
                 Expedido en:
-                {{ $datoAdicional->lugar}}, {{ $certificacion->fechaEmision }}
+                {{$basesoperativa->departamento}}, BOLIVIA, {{ $certificacion->fechaEmision }}
             </p>
         </div>
     </div>

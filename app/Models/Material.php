@@ -29,6 +29,6 @@ class Material extends Model
     protected $fillable = ['material'];
 
     public function material(){
-        return $this->hasMany(Artefacto::class);
+        return $this->hasMany(Artefacto::class,'idMaterial');
     }
 }

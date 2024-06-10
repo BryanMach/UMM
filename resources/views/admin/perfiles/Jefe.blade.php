@@ -55,7 +55,7 @@
         }
 
         .right-sidebar {
-            width: 200px;
+            width: 225px;
             right: 0;
             border-left: 1px solid #ddd;
         }
@@ -64,7 +64,7 @@
         .right-sidebar a {
             color: #333;
             display: block;
-            padding: 10px 20px;
+            padding: 5px 10px;
             text-decoration: none;
         }
 
@@ -109,37 +109,37 @@
         'ci', 'cargo', 'grado', 'nombres', 'apellidos', 'contacto', 'foto', 'descripcion', 'vigencia'
     -->
     <div class="col-md-3 sidebar text-center" style="position: fixed;">
-        <img src="{{ asset('images/img.jpg' /* . $perfil->foto */) }}"
-            onerror="this.src='{{ asset('images/Usericono.png') }}'" class="profile-img">
+        <img src="{{ asset('storage') . '/' . $perfil->foto }}" onerror="this.src='{{ asset('images/Usericono.png') }}'"
+            class="profile-img">
         <h3>{{ $perfil->nombres }} {{ $perfil->apellidos }}</h3>
         <p class="role">{{ $perfil->grado }}</p>
         <table class="description text-left">
             <tbody>
                 <tr>
-                    <td>CARGO</td>
+                    <td>CARGO:</td>
                     <td>{{ $perfil->cargo->cargo }}</td>
                 </tr>
             </tbody>
             <tbody>
                 <tr>
-                    <td>CI</td>
+                    <td>CI:</td>
                     <td>{{ $perfil->ci }}</td>
                 </tr>
                 <tr>
-                    <td>CONTACTO</td>
+                    <td>CONTACTO:</td>
                     <td>{{ $perfil->contacto }}</td>
                 </tr>
             </tbody>
         </table>
         <form action="{{ route('logout') }}" method="POST">
             @csrf
-            <button class="btn btn-outline-secondary mt-4"><i class="fas fa-power-off"></i> Cerrar Sesión</button>
+            <button class="btn btn-outline-secondary mt-4"><i class="fas fa-power-off"></i> CERRAR SESIÓN</button>
         </form>
     </div>
     <div class="search-bar">
         <div class="main-content">
             <h2>PLANILLA DEL PERSONAL</h2>
-            {{-- <input type="text" class="form-control" placeholder="Buscar"> --}}
+            {{-- <input type="text" oninput="this.value = this.value.toUpperCase()"  class="form-control" placeholder="Buscar"> --}}
             <div class="table-responsive">
                 <table class="table">
                     <thead>
@@ -180,17 +180,29 @@
         </div>
     </div>
     <div class="right-sidebar">
-        <div class="sidebar-header text-center p-3">
-            <h4>REGISTROS DEL PERSONAL</h4>
-        </div>
+        {{-- <div class="sidebar-header text-center p-1">
+            
+        </div> --}}
         <div class="sidebar-content">
-            <a href="personal">PERSONAL</a>
-            <a href="usuarios">USUARIOS</a>
-            <a href="bases-operativas" class="active">BASES DE OPERACIONES</a>
-            <h5 class="px-3 pt-3">REGISTROS DE EMBARCACIONES</h5>
-            <a href="propietario">PROPIETARIOS</a>
-            <a href="artefactos">ARTEFACTOS NAVALES</a>
-            <a href="lista-propietarios">LISTAS DE PROPIETARIOS DE EMBARCACIONES</a>
+
+            <h5>REGISTROS DEL PERSONAL</h5>
+            <a href="{{ url('/admin/personal') }}">PERSONAL</a>
+            <a href="{{ url('/admin/usuarios') }}">USUARIOS</a>
+            <a href="{{ url('/admin/cuenca') }}" class="active">CUENCAS</a>
+            <a href="{{ url('/admin/bases-operativas') }}" class="active">BASES DE OPERACIONES</a>
+
+
+            <h5 class="px-1 pt-1">REGISTROS</h5>
+            <a href="{{ url('/admin/propietario') }}">PROPIETARIOS</a>
+            <a href="{{ url('/admin/artefactos') }}">ARTEFACTOS NAVALES</a>
+            <a href="{{ url('/admin/lista-propietarios') }}">LISTAS DE PROPIETARIOS DE EMBARCACIONES</a>
+
+            <h5 class="px-1 pt-1">POLÍTICAS</h5>
+            <a href="{{ url('/admin/cargos') }}">CARGOS DE PERSONAL</a>
+            <a href="{{ url('/admin/material') }}">MATERIALES DE EMBARCACIONES</a>
+            <a href="{{ url('/admin/servicios') }}">SERVICIOS DE EMBARCACIONES</a>
+            <a href="{{ url('/admin/tipo') }}">TIPOS DE EMBARCACIONES</a>
+
             {{-- {{-- <a href="imprimir">Certificaciones</a> --}}
             {{-- <a href="imprimir">Alertas de Vencimiento</a> --}}
             {{-- <a href="dashboard">Modo Administrador</a> --}}
@@ -281,7 +293,7 @@
             </div>
             <div class="form-group">
                 <label for="datoExtra">Dato adicional:</label>
-                <input type="text" class="form-control" id="datoExtra" name="datoExtra" value="{{ old('datoExtra', $datoExtra) }}">
+                <input type="text" oninput="this.value = this.value.toUpperCase()"  class="form-control" id="datoExtra" name="datoExtra" value="{{ old('datoExtra', $datoExtra) }}">
             </div>
             <button type="submit" class="btn btn-primary">Enviar</button>
         </form>

@@ -1,6 +1,6 @@
 <div class="form-group {{ $errors->has('ci') ? 'has-error' : '' }}">
     <label for="ci" class="control-label">{{ 'CI' }}</label>
-    <input class="form-control" name="ci" type="text" id="ci"
+    <input class="form-control" name="ci" type="text" oninput="this.value = this.value.toUpperCase()"  id="ci"
         value="{{ isset($personal->ci) ? $personal->ci : '' }}">
     {!! $errors->first('ci', '<p class="help-block">:message</p>') !!}
 </div>
@@ -26,25 +26,25 @@
 </div>
 <div class="form-group {{ $errors->has('grado') ? 'has-error' : '' }}">
     <label for="grado" class="control-label">{{ 'GRADO' }}</label>
-    <input class="form-control" name="grado" type="text" id="grado"
+    <input class="form-control" name="grado" type="text" oninput="this.value = this.value.toUpperCase()"  id="grado"
         value="{{ isset($personal->grado) ? $personal->grado : '' }}">
     {!! $errors->first('grado', '<p class="help-block">:message</p>') !!}
 </div>
 <div class="form-group {{ $errors->has('nombres') ? 'has-error' : '' }}">
     <label for="nombres" class="control-label">{{ 'NOMBRES' }}</label>
-    <input class="form-control" name="nombres" type="text" id="nombres"
+    <input class="form-control" name="nombres" type="text" oninput="this.value = this.value.toUpperCase()"  id="nombres"
         value="{{ isset($personal->nombres) ? $personal->nombres : '' }}">
     {!! $errors->first('nombres', '<p class="help-block">:message</p>') !!}
 </div>
 <div class="form-group {{ $errors->has('apellidos') ? 'has-error' : '' }}">
     <label for="apellidos" class="control-label">{{ 'APELLIDOS' }}</label>
-    <input class="form-control" name="apellidos" type="text" id="apellidos"
+    <input class="form-control" name="apellidos" type="text" oninput="this.value = this.value.toUpperCase()"  id="apellidos"
         value="{{ isset($personal->apellidos) ? $personal->apellidos : '' }}">
     {!! $errors->first('apellidos', '<p class="help-block">:message</p>') !!}
 </div>
 <div class="form-group {{ $errors->has('contacto') ? 'has-error' : '' }}">
     <label for="contacto" class="control-label">{{ 'CONTACTO' }}</label>
-    <input class="form-control" name="contacto" type="text" id="contacto"
+    <input class="form-control" name="contacto" type="text" oninput="this.value = this.value.toUpperCase()"  id="contacto"
         value="{{ isset($personal->contacto) ? $personal->contacto : '' }}">
     {!! $errors->first('contacto', '<p class="help-block">:message</p>') !!}
 </div>
@@ -56,7 +56,7 @@
 </div>
 <div class="form-group {{ $errors->has('descripcion') ? 'has-error' : '' }}">
     <label for="descripcion" class="control-label">{{ 'DESCRIPCION' }}</label>
-    <input class="form-control" name="descripcion" type="text" id="descripcion"
+    <input class="form-control" name="descripcion" type="text" oninput="this.value = this.value.toUpperCase()"  id="descripcion"
         value="{{ isset($personal->descripcion) ? $personal->descripcion : '' }}">
     {!! $errors->first('descripcion', '<p class="help-block">:message</p>') !!}
 </div>
@@ -76,5 +76,5 @@
 
 
 <div class="form-group">
-    <input class="btn btn-primary" type="submit" value="{{ $formMode === 'edit' ? 'Actualizar' : 'Añadir' }}">
+    <input class="btn btn-primary" type="submit" value="{{ $formMode === 'edit' ? 'ACTUALIZAR' : 'Añadir' }}">
 </div>

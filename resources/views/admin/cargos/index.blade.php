@@ -102,6 +102,7 @@
         <div class="sidebar-content">
             <a href="{{ url('/admin/personal') }}">PERSONAL</a>
             <a href="{{ url('/admin/usuarios') }}">USUARIOS</a>
+            <a href="{{ url('/admin/cuenca') }}" class="active">CUENCAS</a>
             <a href="{{ url('/admin/bases-operativas') }}" class="active">BASES DE OPERACIONES</a>
             <h5 class="px-3 pt-3">REGISTRO DE EMBARCACIONES</h5>
             <a href="{{ url('/admin/propietario') }}">PROPIETARIOS</a>
@@ -143,13 +144,31 @@
                 <div class="card">
                     <div class="card-header">CARGOS</div>
                     <div class="card-body">
+                        @switch($nivel)
+                          @case(3)
+                              <a href="{{ url('/admin/perf45i') }}" title="Back"><button class="btn btn-warning btn-sm">
+                                      <i class="fa fa-arrow-left" aria-hidden="true"></i> VOLVER</button></a>
+                          @break
+
+                          @case(2)
+                              <a href="{{ url('/admin/perf45j') }}" title="Back"><button class="btn btn-warning btn-sm">
+                                      <i class="fa fa-arrow-left" aria-hidden="true"></i> VOLVER</button></a>
+                          @break
+
+                          @case(4)
+                              <a href="{{ url('/admin/perf45r') }}" title="Retornar"><button class="btn btn-warning btn-sm">
+                                      <i class="fa fa-arrow-left" aria-hidden="true"></i> VOLVER</button></a>
+                          @break
+
+                          @default
+                      @endswitch
                         <a href="{{ url('/admin/cargos/create') }}" class="btn btn-success btn-sm" title="AGREGAR NUEVO CARGO">
                             <i class="fa fa-plus" aria-hidden="true"></i> AGREGAR
                         </a>
 
                         <form method="GET" action="{{ url('/admin/cargos') }}" accept-charset="UTF-8" class="form-inline my-2 my-lg-0 float-right" role="search">
                             <div class="input-group">
-                                <input type="text" class="form-control" name="search" placeholder="BUSCAR..." value="{{ request('search') }}">
+                                <input type="text" oninput="this.value = this.value.toUpperCase()"  class="form-control" name="search" placeholder="BUSCAR..." value="{{ request('search') }}">
                                 <span class="input-group-append">
                                     <button class="btn btn-secondary" type="submit">
                                         <i class="fa fa-search"></i>

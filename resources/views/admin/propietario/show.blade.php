@@ -95,44 +95,47 @@
       }
   </style>
   @if ($nivel == 2)
-      <div class="right-sidebar">
-          <div class="sidebar-header text-center p-3">
-              <h4>REGISTRO DE PERSONAL </h4>
-          </div>
-          <div class="sidebar-content">
-              <a href="personal">PERSONAL</a>
-              <a href="usuarios">USUARIOS</a>
-              <a href="bases-operativas" class="active">BASES DE OPERACIONES</a>
-              <h5 class="px-3 pt-3">REGISTRO DE EMBARCACIONES</h5>
-              <a href="propietario">PROPIETARIOS</a>
-              <a href="artefactos">ARTEFACTOS</a>
-              <a href="lista-propietarios">LISTAS DE PROPIETARIOS DE EMBARCACIONES</a>
-              {{-- <a href="imprimir">Certificaciones</a> --}}
-              {{-- <a href="imprimir">Alertas de Vencimiento</a> --}}
-          </div>
-      </div>
+    <div class="right-sidebar">
+        <div class="sidebar-header text-center p-3">
+            <h4>REGISTRO DE PERSONAL </h4>
+        </div>
+        <div class="sidebar-content">
+            <a href="{{ url('/admin/personal') }}">PERSONAL</a>
+            <a href="{{ url('/admin/usuarios') }}">USUARIOS</a>
+            <a href="{{ url('/admin/cuenca') }}" class="active">CUENCAS</a>
+            <a href="{{ url('/admin/bases-operativas') }}" class="active">BASES DE OPERACIONES</a>
+            <h5 class="px-3 pt-3">REGISTRO DE EMBARCACIONES</h5>
+            <a href="{{ url('/admin/propietario') }}">PROPIETARIOS</a>
+            <a href="{{ url('/admin/artefactos') }}">ARTEFACTOS</a>
+            <a href="{{ url('/admin/lista-propietarios') }}">LISTAS DE PROPIETARIOS DE EMBARCACIONES</a>
+            {{-- <a href="{{ url('/admin/') }}imprimir">Certificaciones</a> --}}
+            {{-- <a href="{{ url('/admin/') }}imprimir">Alertas de Vencimiento</a> --}}
+        </div>
+    </div>
+@endif
+@if ($nivel == 3)
+    <div class="right-sidebar">
+        <div class="sidebar-content">
+            <h5 class="px-3 pt-3">REGISTROS DE EMBARCACIONES</h5>
+            <a href="{{ url('/admin/propietario') }}">PROPIETARIOS</a>
+            <a href="{{ url('/admin/artefactos') }}">ARTEFACTOS</a>
+            <a href="{{ url('/admin/lista-propietarios') }}">LISTAS DE PROPIETARIOS DE EMBARCACIONES</a>
+            {{-- <a href="{{ url('/admin/') }}imprimir">Certificaciones</a> --}}
+            {{-- <a href="{{ url('/admin/') }}imprimir">Alertas de Vencimiento</a> --}}
+        </div>
+    </div>
   @endif
-  @if ($nivel == 3)
-      <div class="right-sidebar">
-          <div class="sidebar-content">
-              <h5 class="px-3 pt-3">REGISTROS DE EMBARCACIONES</h5>
-              <a href="propietario">PROPIETARIOS</a>
-              <a href="artefactos">ARTEFACTOS</a>
-              <a href="lista-propietarios">LISTAS DE PROPIETARIOS DE EMBARCACIONES</a>
-              {{-- <a href="imprimir">Certificaciones</a> --}}
-              {{-- <a href="imprimir">Alertas de Vencimiento</a> --}}
-          </div>
-      </div>
-  @else
-      <div class="right-sidebar">
-          <div class="sidebar-content">
-              <h5 class="px-3 pt-3">REGISTROS DE EMBARCACIONES</h5>
-              <a href="propietario">PROPIETARIOS</a>
-              <a href="artefactos">ARTEFACTOS</a>
-              <a href="lista-propietarios">LISTAS DE PROPIETARIOS DE EMBARCACIONES</a>
-          </div>
-      </div>
-  @endif @section('content')
+  @if($nivel == 4)
+    <div class="right-sidebar">
+        <div class="sidebar-content">
+            <h5 class="px-3 pt-3">REGISTROS DE EMBARCACIONES</h5>
+            <a href="{{ url('/admin/propietario') }}">PROPIETARIOS</a>
+            <a href="{{ url('/admin/artefactos') }}">ARTEFACTOS</a>
+            <a href="{{ url('/admin/lista-propietarios') }}">LISTAS DE PROPIETARIOS DE EMBARCACIONES</a>
+        </div>
+    </div>
+@endif
+ @section('content')
   <div class="container">
       <div class="row">
           <div class="col-md-9">
@@ -150,9 +153,9 @@
                           accept-charset="UTF-8" style="display:inline">
                           {{ method_field('DELETE') }}
                           {{ csrf_field() }}
-                          <button type="submit" class="btn btn-danger btn-sm" title="Borrar Propietario"
+                          <button type="submit" class="btn btn-danger btn-sm" title="BORRAR Propietario"
                               onclick="return confirm(&quot;Confirm delete?&quot;)"><i class="fa fa-trash-o"
-                                  aria-hidden="true"></i> Borrar</button>
+                                  aria-hidden="true"></i> BORRAR</button>
                       </form>
                       <br />
                       <br />
@@ -198,4 +201,54 @@
           </div>
       </div>
   </div>
+  <div class="container">
+        <div class="row">
+            <div class="col-md-9">
+                <div class="card">
+    
+    <h3>Artefactos:</h3>
+    @foreach($propietario->artefactos as $artefacto)
+        <div class="card mb-3">
+            <div class="card-body">
+                <h5 class="card-title">{{ $artefacto->nombre }}</h5>
+                <p class="card-text">Matrícula: {{ $artefacto->matricula }}</p>
+                <p class="card-text">Tipo: {{ $artefacto->tipo->tipo }}</p>
+                            <p class="card-text">Material: {{ $artefacto->material->material }}</p>
+                            <p class="card-text">Cuenca: {{ $artefacto->baseOperativa->cuenca->cuenca }}</p>
+
+                            <h6>Certificados:</h6>
+                            <ul>
+                                @foreach($artefacto->certificado as $certificado)
+                                    <li>
+                                        
+                                        @switch($certificado->tipoC)
+                                            @case(1)
+                                            CERTIFICADO DE REGISTRO: 
+                                                @break
+                                            @case(2)
+                                            CERTIFICADO DE SEGURIDAD: 
+                                                @break
+                                            @case(3)
+                                            CERTIFICADO DE FRANCOBORDO: 
+                                                @break
+                                            @case(4)
+                                            CERTIFICADO DE ARQUEO: 
+                                                @break
+                                            @default
+                                                
+                                        @endswitch
+                                        NÚMERO DE REGISTRO: {{ $certificado->nreg }},
+                                        NÚMERO DE CERTIFICADO: {{ $certificado->correlativo }},<br>
+                                        FECHA DE EMISIÓN: {{ $certificado->fechaEmision }},
+                                        FECHA DE VENCIMIENTO: {{ $certificado->fechaVencimiento }}
+                                    </li>
+                                @endforeach
+                            </ul>
+            </div>
+        </div>
+    @endforeach
+</div>
+</div>
+</div>
+</div>
 @endsection

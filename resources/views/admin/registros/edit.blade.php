@@ -102,6 +102,7 @@
         <div class="sidebar-content">
             <a href="{{ url('/admin/personal') }}">PERSONAL</a>
             <a href="{{ url('/admin/usuarios') }}">USUARIOS</a>
+            <a href="{{ url('/admin/cuenca') }}" class="active">CUENCAS</a>
             <a href="{{ url('/admin/bases-operativas') }}" class="active">BASES DE OPERACIONES</a>
             <h5 class="px-3 pt-3">REGISTRO DE EMBARCACIONES</h5>
             <a href="{{ url('/admin/propietario') }}">PROPIETARIOS</a>
@@ -139,7 +140,7 @@
       <div class="row">
           <div class="col-md-9">
               <div class="card">
-                  <div class="card-header">Editar Propietario #{{ $propietario->id }}</div>
+                  <div class="card-header">EDITAR</div>
                   <div class="card-body">
                       <a href="{{ url('/admin/propietario') }}" title="Back"><button class="btn btn-warning btn-sm"><i
                                   class="fa fa-arrow-left" aria-hidden="true"></i> VOLVER</button></a>

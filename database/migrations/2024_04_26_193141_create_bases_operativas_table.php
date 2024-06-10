@@ -17,6 +17,8 @@ class CreateBasesOperativasTable extends Migration
             $table->timestamps();
             $table->integer('idCuenca')->unsigned();
             $table->string('baseOperativa')->nullable();
+            $table->string('departamento')->nullable();
+            $table->string('detalle')->nullable();
             $table->foreign('idCuenca')->references('id')->on('cuencas');
             });
     }

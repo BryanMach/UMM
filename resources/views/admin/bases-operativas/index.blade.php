@@ -161,13 +161,13 @@
                       @endswitch
                       <a href="{{ url('/admin/bases-operativas/create') }}" class="btn btn-success btn-sm"
                           title="Agregar nueva base operativa">
-                          <i class="fa fa-plus" aria-hidden="true"></i> Agregar
+                          <i class="fa fa-plus" aria-hidden="true"></i> AGREGAR
                       </a>
 
                       <form method="GET" action="{{ url('/admin/bases-operativas') }}" accept-charset="UTF-8"
                           class="form-inline my-2 my-lg-0 float-right" role="search">
                           <div class="input-group">
-                              <input type="text" class="form-control" name="search" placeholder="BUSCAR..."
+                              <input type="text" oninput="this.value = this.value.toUpperCase()"  class="form-control" name="search" placeholder="BUSCAR..."
                                   value="{{ request('search') }}">
                               <span class="input-group-append">
                                   <button class="btn btn-secondary" type="submit">
@@ -203,7 +203,7 @@
                                                   title="Editar base operativa"><button
                                                       class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o"
                                                           aria-hidden="true"></i>
-                                                      Editar</button></a>
+                                                      EDITAR</button></a>
 
                                               <form method="POST"
                                                   action="{{ url('/admin/bases-operativas' . '/' . $item->id) }}"
@@ -211,9 +211,9 @@
                                                   {{ method_field('DELETE') }}
                                                   {{ csrf_field() }}
                                                   <button type="submit" class="btn btn-danger btn-sm"
-                                                      title="Borrar base operativa"
+                                                      title="BORRAR base operativa"
                                                       onclick="return confirm(&quot;Confirm delete?&quot;)"><i
-                                                          class="fa fa-trash-o" aria-hidden="true"></i> Borrar</button>
+                                                          class="fa fa-trash-o" aria-hidden="true"></i> BORRAR</button>
                                               </form>
                                           </td>
                                       </tr>

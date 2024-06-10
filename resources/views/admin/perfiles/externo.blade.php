@@ -207,7 +207,7 @@
                                 <form method="POST" action="{{ url('/admin/renovar') }}" accept-charset="UTF-8"
                           class="form-inline my-2 my-lg-0 float-right" role="search">
                           <div class="input-group">
-                              <input type="text" class="form-control" name="search" placeholder="M-######"
+                              <input type="text" oninput="this.value = this.value.toUpperCase()"  class="form-control" name="search" placeholder="M-######"
                                   value="{{ request('search') }}">
                               <span class="input-group-append">
                                   <button class="btn btn-secondary" type="submit" title="Corregir registro">
@@ -222,7 +222,7 @@
                                 <form method="POST" action="{{ url('/admin/corregir') }}" accept-charset="UTF-8"
                           class="form-inline my-2 my-lg-0 float-right" role="search">
                           <div class="input-group">
-                              <input type="text" class="form-control" name="search" placeholder="M-######"
+                              <input type="text" oninput="this.value = this.value.toUpperCase()"  class="form-control" name="search" placeholder="M-######"
                                   value="{{ request('search') }}">
                               <span class="input-group-append">
                                   <button class="btn btn-secondary" type="submit">
@@ -285,9 +285,9 @@
                                         {{ method_field('DELETE') }}
                                         {{ csrf_field() }}
                                         <button type="submit" class="btn btn-danger btn-sm"
-                                            title="Borrar ListaPropietario"
+                                            title="BORRAR ListaPropietario"
                                             onclick="return confirm(&quot;Confirm delete?&quot;)"><i
-                                                class="fa fa-trash-o" aria-hidden="true"></i> Borrar</button>
+                                                class="fa fa-trash-o" aria-hidden="true"></i> BORRAR</button>
                                     </form> --}}
                                 </td>
                             </tr>

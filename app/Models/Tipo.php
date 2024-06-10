@@ -29,6 +29,6 @@ class Tipo extends Model
     protected $fillable = ['tipo'];
 
     public function artefactos(){
-        return $this->hasMany(Artefacto::class);
+        return $this->hasMany(Artefacto::class,'idTipo');
     }
 }

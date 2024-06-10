@@ -95,54 +95,53 @@
       }
   </style>
   @if ($nivel == 2)
-      <div class="right-sidebar">
-          <div class="sidebar-header text-center p-3">
-              <h4>REGISTRO DE PERSONAL </h4>
-          </div>
-          <div class="sidebar-content">
-              <a href="personal">PERSONAL</a>
-              <a href="usuarios">USUARIOS</a>
-              <a href="bases-operativas" class="active">BASES DE OPERACIONES</a>
-              <h5 class="px-3 pt-3">REGISTRO DE EMBARCACIONES</h5>
-              <a href="propietario">PROPIETARIOS</a>
-              <a href="artefactos">ARTEFACTOS</a>
-              <a href="lista-propietarios">LISTAS DE PROPIETARIOS DE EMBARCACIONES</a>
-              {{-- <a href="imprimir">Certificaciones</a> --}}
-              {{-- <a href="imprimir">Alertas de Vencimiento</a> --}}
-          </div>
-      </div>
+    <div class="right-sidebar">
+        <div class="sidebar-header text-center p-3">
+            <h4>REGISTRO DE PERSONAL </h4>
+        </div>
+        <div class="sidebar-content">
+            <a href="{{ url('/admin/personal') }}">PERSONAL</a>
+            <a href="{{ url('/admin/usuarios') }}">USUARIOS</a>
+            <a href="{{ url('/admin/cuenca') }}" class="active">CUENCAS</a>
+            <a href="{{ url('/admin/bases-operativas') }}" class="active">BASES DE OPERACIONES</a>
+            <h5 class="px-3 pt-3">REGISTRO DE EMBARCACIONES</h5>
+            <a href="{{ url('/admin/propietario') }}">PROPIETARIOS</a>
+            <a href="{{ url('/admin/artefactos') }}">ARTEFACTOS</a>
+            <a href="{{ url('/admin/lista-propietarios') }}">LISTAS DE PROPIETARIOS DE EMBARCACIONES</a>
+            {{-- <a href="{{ url('/admin/') }}imprimir">Certificaciones</a> --}}
+            {{-- <a href="{{ url('/admin/') }}imprimir">Alertas de Vencimiento</a> --}}
+        </div>
+    </div>
+@endif
+@if ($nivel == 3)
+    <div class="right-sidebar">
+        <div class="sidebar-content">
+            <h5 class="px-3 pt-3">REGISTROS DE EMBARCACIONES</h5>
+            <a href="{{ url('/admin/propietario') }}">PROPIETARIOS</a>
+            <a href="{{ url('/admin/artefactos') }}">ARTEFACTOS</a>
+            <a href="{{ url('/admin/lista-propietarios') }}">LISTAS DE PROPIETARIOS DE EMBARCACIONES</a>
+            {{-- <a href="{{ url('/admin/') }}imprimir">Certificaciones</a> --}}
+            {{-- <a href="{{ url('/admin/') }}imprimir">Alertas de Vencimiento</a> --}}
+        </div>
+    </div>
   @endif
-  @if ($nivel == 3)
-      <div class="right-sidebar">
-          <div class="sidebar-content">
-              <h5 class="px-3 pt-3">REGISTROS DE EMBARCACIONES</h5>
-              <a href="propietario">PROPIETARIOS</a>
-              <a href="artefactos">ARTEFACTOS</a>
-              <a href="lista-propietarios">LISTAS DE PROPIETARIOS DE EMBARCACIONES</a>
-              {{-- <a href="imprimir">Certificaciones</a> --}}
-              {{-- <a href="imprimir">Alertas de Vencimiento</a> --}}
-          </div>
-      </div>
-  @else
-      <div class="right-sidebar">
-          <div class="sidebar-content">
-              <h5 class="px-3 pt-3">REGISTROS DE EMBARCACIONES</h5>
-              <a href="propietario">PROPIETARIOS</a>
-              <a href="artefactos">ARTEFACTOS</a>
-              <a href="lista-propietarios">LISTAS DE PROPIETARIOS DE EMBARCACIONES</a>
-          </div>
-      </div>
-  @endif @section('content')
+  @if($nivel == 4)
+    <div class="right-sidebar">
+        <div class="sidebar-content">
+            <h5 class="px-3 pt-3">REGISTROS DE EMBARCACIONES</h5>
+            <a href="{{ url('/admin/propietario') }}">PROPIETARIOS</a>
+            <a href="{{ url('/admin/artefactos') }}">ARTEFACTOS</a>
+            <a href="{{ url('/admin/lista-propietarios') }}">LISTAS DE PROPIETARIOS DE EMBARCACIONES</a>
+        </div>
+    </div>
+@endif
+ @section('content')
   <div class="container">
       <div class="row">
           <div class="col-md-9">
               <div class="card">
                   <div class="card-header">ARTEFACTOS NAVALES</div>
                   <div class="card-body">
-                      <a href="{{ url('/admin/artefactos/create') }}" class="btn btn-success btn-sm"
-                          title="Agregar nuevo Artefacto">
-                          <i class="fa fa-plus" aria-hidden="true"></i> Agregar
-                      </a>
                       @switch($nivel)
                           @case(3)
                               <a href="{{ url('/admin/perf45i') }}" title="Back"><button class="btn btn-warning btn-sm">
@@ -161,11 +160,14 @@
 
                           @default
                       @endswitch
-
+                      <a href="{{ url('/admin/artefactos/create') }}" class="btn btn-success btn-sm"
+                      title="Agregar nuevo Artefacto">
+                      <i class="fa fa-plus" aria-hidden="true"></i> Agregar
+                  </a>
                       <form method="GET" action="{{ url('/admin/artefactos') }}" accept-charset="UTF-8"
                           class="form-inline my-2 my-lg-0 float-right" role="search">
                           <div class="input-group">
-                              <input type="text" class="form-control" name="search" placeholder="BUSCAR..."
+                              <input type="text" oninput="this.value = this.value.toUpperCase()"  class="form-control" name="search" placeholder="BUSCAR..."
                                   value="{{ request('search') }}">
                               <span class="input-group-append">
                                   <button class="btn btn-secondary" type="submit">
@@ -212,9 +214,9 @@
                                                   {{ method_field('DELETE') }}
                                                   {{ csrf_field() }}
                                                   <button type="submit" class="btn btn-danger btn-sm"
-                                                      title="Borrar Artefacto"
+                                                      title="BORRAR Artefacto"
                                                       onclick="return confirm(&quot;Confirm delete?&quot;)"><i
-                                                          class="fa fa-trash-o" aria-hidden="true"></i> Borrar</button>
+                                                          class="fa fa-trash-o" aria-hidden="true"></i> BORRAR</button>
                                               </form>
                                           </td>
                                       </tr>

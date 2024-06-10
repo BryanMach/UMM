@@ -102,6 +102,7 @@
         <div class="sidebar-content">
             <a href="{{ url('/admin/personal') }}">PERSONAL</a>
             <a href="{{ url('/admin/usuarios') }}">USUARIOS</a>
+            <a href="{{ url('/admin/cuenca') }}" class="active">CUENCAS</a>
             <a href="{{ url('/admin/bases-operativas') }}" class="active">BASES DE OPERACIONES</a>
             <h5 class="px-3 pt-3">REGISTRO DE EMBARCACIONES</h5>
             <a href="{{ url('/admin/propietario') }}">PROPIETARIOS</a>
@@ -143,13 +144,6 @@
                   <div class="card-body">
                       <a href="{{ url('/admin/usuarios') }}" title="Back"><button class="btn btn-warning btn-sm"><i
                                   class="fa fa-arrow-left" aria-hidden="true"></i> VOLVER</button></a>
-                      <a href="{{ url('/admin/usuarios') }}" title="Back"><button class="btn btn-warning btn-sm"><i
-                                  class="fa fa-arrow-left" aria-hidden="true"></i> Inicio</button></a>
-                      <a href="{{ url('/admin/usuarios') }}" title="Back"><button class="btn btn-warning btn-sm"><i
-                                  class="fa fa-arrow-left" aria-hidden="true"></i> Siguiente</button></a>
-                      <a href="{{ url('/admin/usuarios') }}" title="Back"><button class="btn btn-warning btn-sm"><i
-                                  class="fa fa-arrow-left" aria-hidden="true"></i> Certificar</button></a>
-                      <br />
                       <br />
 
                       @if ($errors->any())

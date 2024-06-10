@@ -168,7 +168,7 @@
                 </select>
                 {!! $errors->first('idBaseOperativa', '<p class="help-block">:message</p>') !!}
             </div>-->
-            <!--<input type="text" class="form-control" placeholder="Buscar">-->
+            <!--<input type="text" oninput="this.value = this.value.toUpperCase()"  class="form-control" placeholder="Buscar">-->
             <table class="table">
                 <thead>
                     <tr>
@@ -208,9 +208,9 @@
                                     {{ method_field('DELETE') }}
                                     {{ csrf_field() }}
                                     <button type="submit" class="btn btn-danger btn-sm"
-                                        title="Borrar ListaPropietario"
+                                        title="BORRAR ListaPropietario"
                                         onclick="return confirm(&quot;Confirm delete?&quot;)"><i
-                                            class="fa fa-trash-o" aria-hidden="true"></i> Borrar</button>
+                                            class="fa fa-trash-o" aria-hidden="true"></i> BORRAR</button>
                                 </form>
                             </td>
                         </tr>
@@ -303,7 +303,7 @@
             </div>
             <div class="form-group">
                 <label for="datoExtra">Dato adicional:</label>
-                <input type="text" class="form-control" id="datoExtra" name="datoExtra" value="{{ old('datoExtra', $datoExtra) }}">
+                <input type="text" oninput="this.value = this.value.toUpperCase()"  class="form-control" id="datoExtra" name="datoExtra" value="{{ old('datoExtra', $datoExtra) }}">
             </div>
             <button type="submit" class="btn btn-primary">Enviar</button>
         </form>

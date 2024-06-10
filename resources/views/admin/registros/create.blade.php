@@ -97,18 +97,19 @@
 @if ($nivel == 2)
     <div class="right-sidebar">
         <div class="sidebar-header text-center p-3">
-            <h4>REGISTROS DEL PERSONAL </h4>
+            <h4>REGISTRO DE PERSONAL </h4>
         </div>
         <div class="sidebar-content">
-            <a href="personal">PERSONAL</a>
-            <a href="usuarios">USUARIOS</a>
-            <a href="bases-operativas" class="active">BASES DE OPERACIONES</a>
-            <h5 class="px-3 pt-3">REGISTROS DE EMBARCACIONES</h5>
-            <a href="propietario">PROPIETARIOS</a>
-            <a href="artefactos">ARTEFACTOS NAVALES</a>
-            <a href="lista-propietarios">LISTAS DE PROPIETARIOS DE EMBARCACIONES</a>
-            {{-- <a href="imprimir">Certificaciones</a> --}}
-            {{-- {{-- <a href="imprimir">Alertas de Vencimiento</a> --}}
+            <a href="{{ url('/admin/personal') }}">PERSONAL</a>
+            <a href="{{ url('/admin/usuarios') }}">USUARIOS</a>
+            <a href="{{ url('/admin/cuenca') }}" class="active">CUENCAS</a>
+            <a href="{{ url('/admin/bases-operativas') }}" class="active">BASES DE OPERACIONES</a>
+            <h5 class="px-3 pt-3">REGISTRO DE EMBARCACIONES</h5>
+            <a href="{{ url('/admin/propietario') }}">PROPIETARIOS</a>
+            <a href="{{ url('/admin/artefactos') }}">ARTEFACTOS</a>
+            <a href="{{ url('/admin/lista-propietarios') }}">LISTAS DE PROPIETARIOS DE EMBARCACIONES</a>
+            {{-- <a href="{{ url('/admin/') }}imprimir">Certificaciones</a> --}}
+            {{-- <a href="{{ url('/admin/') }}imprimir">Alertas de Vencimiento</a> --}}
         </div>
     </div>
 @endif
@@ -116,23 +117,25 @@
     <div class="right-sidebar">
         <div class="sidebar-content">
             <h5 class="px-3 pt-3">REGISTROS DE EMBARCACIONES</h5>
-            <a href="propietario">PROPIETARIOS</a>
-            <a href="artefactos">ARTEFACTOS NAVALES</a>
-            <a href="lista-propietarios">LISTAS DE PROPIETARIOS DE EMBARCACIONES</a>
-            {{-- <a href="imprimir">Certificaciones</a> --}}
-            {{-- <a href="imprimir">Alertas de Vencimiento</a> --}}
+            <a href="{{ url('/admin/propietario') }}">PROPIETARIOS</a>
+            <a href="{{ url('/admin/artefactos') }}">ARTEFACTOS</a>
+            <a href="{{ url('/admin/lista-propietarios') }}">LISTAS DE PROPIETARIOS DE EMBARCACIONES</a>
+            {{-- <a href="{{ url('/admin/') }}imprimir">Certificaciones</a> --}}
+            {{-- <a href="{{ url('/admin/') }}imprimir">Alertas de Vencimiento</a> --}}
         </div>
     </div>
-@else
+  @endif
+  @if($nivel == 4)
     <div class="right-sidebar">
         <div class="sidebar-content">
             <h5 class="px-3 pt-3">REGISTROS DE EMBARCACIONES</h5>
-            <a href="propietario">PROPIETARIOS</a>
-            <a href="artefactos">ARTEFACTOS NAVALES</a>
-            <a href="lista-propietarios">LISTAS DE PROPIETARIOS DE EMBARCACIONES</a>
+            <a href="{{ url('/admin/propietario') }}">PROPIETARIOS</a>
+            <a href="{{ url('/admin/artefactos') }}">ARTEFACTOS</a>
+            <a href="{{ url('/admin/lista-propietarios') }}">LISTAS DE PROPIETARIOS DE EMBARCACIONES</a>
         </div>
     </div>
 @endif
+
 @section('content')
     <div class="container">
         <div class="row">

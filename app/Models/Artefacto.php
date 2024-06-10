@@ -33,7 +33,7 @@ class Artefacto extends Model
     }
     public function inspecciones()
     {
-        return $this->hasMany(Inspeccione::class);
+        return $this->hasMany(Inspeccione::class,'idArtefacto');
     }
     public function datosadicionales()
     {
@@ -45,11 +45,11 @@ class Artefacto extends Model
     }
     public function certificado()
     {
-        return $this->hasMany(certificado::class);
+        return $this->hasMany(certificado::class,'idArtefacto');
     }
-    public function propietario()
+    public function lista()
     {
-        return $this->hasMany(ListaPropietario::class);
+        return $this->hasMany(ListaPropietario::class, 'idArtefacto');
     }
     public function usuarios()
     {
@@ -70,5 +70,9 @@ class Artefacto extends Model
     public function servicio()
     {
         return $this->belongsTo(servicio::class, 'idServicio', 'id');
+    }
+    public function propietarios()
+    {
+        return $this->belongsToMany(Propietario::class, 'lista_propietarios', 'idArtefacto', 'idPropietario');
     }
 }

@@ -214,7 +214,7 @@
             <p>Se certifica que los arqueos de esta embarcación han sido determinados de acuerdo con las disposiciones
                 del Reglamento Nacional de Arqueo para Buques, Embarcaciones y Artefactos Navales, aprobadas mediante
                 RM. 736.</p>
-            <p class="text-left"><strong>EXPEDIDO EN: </strong>{{ $basesoperativa->baseOperativa }}<strong
+            <p class="text-left"><strong>EXPEDIDO EN: </strong>{{$basesoperativa->departamento}}, BOLIVIA<strong
                     class="fecha">
                     FECHA: </strong>{{ $certificacion->fechaEmision }}</p>
             <p>El suscrito Jefe de la Unidad de Marina Mercante declara que esta debidamente autorizado para expedir el

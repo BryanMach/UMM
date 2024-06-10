@@ -120,12 +120,13 @@ class PersonalController extends Controller
      */
     public function update(Request $request, $id)
     {
-
-        $requestData = $request->all();
-
         $personal = Personal::findOrFail($id);
+        $requestData = $request->all();
+        if ($request->hasFile('foto')) {
+            $requestData['foto'] = $request->file('foto')->store('uploads', 'public');
+        }
         $personal->update($requestData);
-
+        
         return redirect('admin/personal')->with('flash_message', 'Personal actualizado!');
     }
 

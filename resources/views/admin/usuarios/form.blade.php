@@ -26,13 +26,13 @@
 </div>
 <div class="form-group {{ $errors->has('usuario') ? 'has-error' : '' }}">
     <label for="usuario" class="control-label">{{ 'USUARIO' }}</label>
-    <input class="form-control" name="usuario" type="text" id="usuario"
+    <input class="form-control" name="usuario" type="text" oninput="this.value = this.value.toUpperCase()"  id="usuario"
         value="{{ isset($usuario->usuario) ? $usuario->usuario : '' }}">
     {!! $errors->first('usuario', '<p class="help-block">:message</p>') !!}
 </div>
 <div class="form-group {{ $errors->has('contrasena') ? 'has-error' : '' }}">
     <label for="contrasena" class="control-label">{{ 'CONTRASEÑA' }}</label>
-    <input class="form-control" name="contrasena" type="text" id="contrasena"
+    <input class="form-control" name="contrasena" type="text" oninput="this.value = this.value.toUpperCase()"  id="contrasena"
         value="{{ isset($usuario->contrasena) ? $usuario->contrasena : '' }}">
     {!! $errors->first('contrasena', '<p class="help-block">:message</p>') !!}
 </div>
@@ -81,5 +81,5 @@
     {!! $errors->first('nivel', '<p class="help-block">:message</p>') !!}
 </div>
 <div class="form-group">
-    <input class="btn btn-primary" type="submit" value="{{ $formMode === 'edit' ? 'Actualizar' : 'Añadir' }}">
+    <input class="btn btn-primary" type="submit" value="{{ $formMode === 'edit' ? 'ACTUALIZAR' : 'Añadir' }}">
 </div>

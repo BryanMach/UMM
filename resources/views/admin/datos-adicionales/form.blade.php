@@ -10,13 +10,13 @@
 </div>
 <div class="form-group {{ $errors->has('lugar') ? 'has-error' : '' }}">
     <label for="lugar" class="control-label">{{ 'LUGAR' }}</label>
-    <input class="form-control" name="lugar" type="text" id="lugar"
+    <input class="form-control" name="lugar" type="text" oninput="this.value = this.value.toUpperCase()"  id="lugar"
         value="{{ isset($datosadicionale->lugar) ? $datosadicionale->lugar : '' }}">
     {!! $errors->first('lugar', '<p class="help-block">:message</p>') !!}
 </div>
 <div class="form-group {{ $errors->has('mercPelig') ? 'has-error' : '' }}">
     <label for="mercPelig" class="control-label">{{ 'TRANASPORTA MERCANCIAS PELIGROSAS?' }}</label>
-    <select class="form-control" name="mercPelig" type="text" id="mercPelig">
+    <select class="form-control" name="mercPelig" type="text" oninput="this.value = this.value.toUpperCase()"  id="mercPelig">
         <option Value="Si">Si</option>
         <option Value="No">No</option>
     </select>
@@ -49,5 +49,5 @@
 
 
 <div class="form-group">
-    <input class="btn btn-primary" type="submit" value="{{ $formMode === 'edit' ? 'Actualizar' : 'Añadir' }}">
+    <input class="btn btn-primary" type="submit" value="{{ $formMode === 'edit' ? 'ACTUALIZAR' : 'Añadir' }}">
 </div>
