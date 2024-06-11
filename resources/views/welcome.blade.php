@@ -125,17 +125,17 @@
 
 
     .inicio .contenido-banner {
-        padding: 20px;
+        padding: 30px;
         background-color: #404d54;
-        width: 40%;
-        height: 55%;
+        width: 60%;
+        height: 80%;
         margin: auto;
         text-align: center;
         border-radius: 40px;
     }
 
     .inicio .contenido-banner h1 {
-        margin-top: 40px;
+        margin-top: 50px;
         font-size: 42px;
         font-family: 'Righteous';
         font-weight: bold;
@@ -836,10 +836,14 @@
         <div class="contenido-banner">
             <h1>UNIDAD MARINA MERCANTE</h1>
             <h2>
-                La Unidad de Marina Mercante como autoridad marítima
-                a nivel nacional, responsable de la regulación del personal
-                mercante, realiza el control, inspección y registro de
-                EMBARCACIONES, buques y otros artefactos navales.
+                LA UNIDAD DE MARINA MERCANTE ES UN ÓRGANISMO TÉCNICO ESPECIALIZADO,
+                RESPONSABLE DE VELAR POR LA SEGURIDAD DE LA NAVEGACIÓN, SALVAGUARDA DE LA VIDA
+                HUMANA Y PREVENCIÓN DE LA CONTAMINACIÓN DEL MEDIO AMBIENTE ACUÁTICO POR
+                EFECTOS DE LA NAVEGACIÓN A TRAVÉS DEL REGISTRO DE BUQUES; EFECTUANDO EL REGISTRO
+                DE LÍNEAS NAVIERAS, AGENCIAS NAVIERAS, FORWARDERS, BROKER, ASTILLEROS NAVALES,
+                CARPINTERÍAS DE RIBERA, COOPERATIVAS, ASOCIACIONES Y OTRAS AFINES A LA ACTIVIDAD
+                NAVIERO-MERCANTE, CONTRIBUYENDO CON EL DESARROLLO DE LOS INTERESES MARÍTIMOS,
+                FLUVIALES, LACUSTRES Y MARINA MERCANTE DEL ESTADO.
 
             </h2>
         </div>
