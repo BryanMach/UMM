@@ -140,7 +140,7 @@
                   <div class="card-header">Editar Recuperar{{ $recuperar->id }}</div>
                   <div class="card-body">
                       <a href="{{ url('/admin/recuperar') }}" title="Back"><button class="btn btn-warning btn-sm"><i
-                                  class="fa fa-arrow-left" aria-hidden="true"></i> VOLVER</button></a>
+                                  class="fa fa-arrow-left" aria-hidden="true"></i> ATRAS</button></a>
                       <br />
                       <br />
                       @if ($errors->any())

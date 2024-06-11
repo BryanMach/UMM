@@ -935,32 +935,33 @@
                     </tr>
                 </thead>
                 <tbody>
-
                     @foreach ($artefactos as $artefacto)
                         <tr>
                             <th scope="row">{{ $artefacto->nombre }}</th>
-                            @foreach($artefacto->certificado as $certificado)
-                                    @if($certificado->tipoC==1)
+                            @foreach ($artefacto->certificado as $certificado)
+                                @if ($certificado->tipoC == 1)
                                     <td>
                                         @switch($artefacto->baseoperativa->cuenca->id)
                                             @case('1')
                                                 L-{{ $certificado->nreg }}
-                                                @break
+                                            @break
+
                                             @case('2')
                                                 p-{{ $certificado->nreg }}
-                                                @break
+                                            @break
+
                                             @case('3')
                                                 A-{{ $certificado->nreg }}
-                                                @break
+                                            @break
+
                                             @default
-                                                
                                         @endswitch
-                                                
-                                            
-                                        
+
+
+
                                     </td>
-                                    @endif
-                                    @endforeach
+                                @endif
+                            @endforeach
                             <td>{{ $artefacto->baseoperativa->cuenca->cuenca }}</td>
                         </tr>
                     @endforeach
@@ -1096,10 +1097,11 @@
             var graficoTorta = new Chart(ctx, {
                 type: 'pie',
                 data: {
-                    labels: ['Cuenca Amazonas', 'Cuenca De la plata', 'Cuenca Lacustre'],
+                    labels: ['Cuenca Lacustre', 'Cuenca De la plata', 'Cuenca Amazonas'],
                     datasets: [{
-                        
-                        data: [counts['LACUSTRE'], counts['DE LA PLATA'], counts['AMAZÓNICA']], // valores aqui debo modificar
+
+                        data: [counts['LACUSTRE'], counts['DE LA PLATA'], counts[
+                            'AMAZÓNICA']], // valores aqui debo modificar
                         backgroundColor: [
                             'rgba(225, 46, 10, 0.5)',
                             'rgba(224, 238, 14, 0.5)',

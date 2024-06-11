@@ -124,8 +124,8 @@
             {{-- <a href="{{ url('/admin/') }}imprimir">Alertas de Vencimiento</a> --}}
         </div>
     </div>
-  @endif
-  @if($nivel == 4)
+@endif
+@if ($nivel == 4)
     <div class="right-sidebar">
         <div class="sidebar-content">
             <h5 class="px-3 pt-3">REGISTROS DE EMBARCACIONES</h5>
@@ -145,24 +145,34 @@
                     <div class="card-header">CARGO</div>
                     <div class="card-body">
 
-                        <a href="{{ url('/admin/cargos') }}" title="VOLVER"><button class="btn btn-warning btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i> VOLVER</button></a>
-                        <a href="{{ url('/admin/cargos/' . $cargo->id . '/edit') }}" title="EDITAR CARGO"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> EDITAR</button></a>
+                        <a href="{{ url('/admin/cargos') }}" title="VOLVER"><button class="btn btn-warning btn-sm"><i
+                                    class="fa fa-arrow-left" aria-hidden="true"></i> ATRAS</button></a>
+                        <a href="{{ url('/admin/cargos/' . $cargo->id . '/edit') }}" title="EDITAR CARGO"><button
+                                class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                EDITAR</button></a>
 
-                        <form method="POST" action="{{ url('admin/cargos' . '/' . $cargo->id) }}" accept-charset="UTF-8" style="display:inline">
+                        <form method="POST" action="{{ url('admin/cargos' . '/' . $cargo->id) }}" accept-charset="UTF-8"
+                            style="display:inline">
                             {{ method_field('DELETE') }}
                             {{ csrf_field() }}
-                            <button type="submit" class="btn btn-danger btn-sm" title="BORRAR CARGO" onclick="return confirm(&quot;Confirm delete?&quot;)"><i class="fa fa-trash-o" aria-hidden="true"></i> BORRAR</button>
+                            <button type="submit" class="btn btn-danger btn-sm" title="BORRAR CARGO"
+                                onclick="return confirm(&quot;Confirm delete?&quot;)"><i class="fa fa-trash-o"
+                                    aria-hidden="true"></i> BORRAR</button>
                         </form>
-                        <br/>
-                        <br/>
+                        <br />
+                        <br />
 
                         <div class="table-responsive">
                             <table class="table">
                                 <tbody>
                                     <tr>
-                                        <th>ID</th><td>{{ $cargo->id }}</td>
+                                        <th>ID</th>
+                                        <td>{{ $cargo->id }}</td>
                                     </tr>
-                                    <tr><th> Cargo </th><td> {{ $cargo->cargo }} </td></tr>
+                                    <tr>
+                                        <th> Cargo </th>
+                                        <td> {{ $cargo->cargo }} </td>
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>

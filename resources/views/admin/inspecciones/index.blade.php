@@ -94,161 +94,159 @@
           margin-top: 20px;
       }
   </style>
-   @if ($nivel == 2)
+  @if ($nivel == 2)
       <div class="right-sidebar">
           <div class="sidebar-header text-center p-3">
               <h4>REGISTRO DE PERSONAL </h4>
           </div>
           <div class="sidebar-content">
-<<<<<<< HEAD
-              <a href="personal">PERSONAL</a>
-              <a href="usuarios">USUARIOS</a>
-              <a href="bases-operativas" class="active">BASES DE OPERACIONES</a>
-              <h5 class="px-3 pt-3">REGISTRO DE EMBARCACIONES</h5>
-              <a href="propietario">PROPIETARIOS</a>
-              <a href="artefactos">ARTEFACTOS</a>
-              <a href="lista-propietarios">LISTAS DE PROPIETARIOS DE EMBARCACIONES</a>
-=======
-              <a href="{{ url('/admin/personal') }}">Personal</a>
-              <a href="{{ url('/admin/usuarios') }}">Usuarios</a>
-              <a href="{{ url('/admin/bases-operativas') }}" class="active">Bases de operaciones</a>
-              <h5 class="px-3 pt-3">Registros de embarcaciones</h5>
-              <a href="{{ url('/admin/propietario') }}">Propietarios</a>
-              <a href="{{ url('/admin/artefactos') }}">Artefactos</a>
-              <a href="{{ url('/admin/lista-propietarios') }}">Listas de propietarios de embarcaciones</a>
->>>>>>> 3d0358b39a49682b648a4f2cab9c7347cca15138
-              {{-- <a href="imprimir">Certificaciones</a> --}}
-              {{-- <a href="imprimir">Alertas de Vencimiento</a> --}}
+              <<<<<<< HEAD <a href="personal">PERSONAL</a>
+                  <a href="usuarios">USUARIOS</a>
+                  <a href="bases-operativas" class="active">BASES DE OPERACIONES</a>
+                  <h5 class="px-3 pt-3">REGISTRO DE EMBARCACIONES</h5>
+                  <a href="propietario">PROPIETARIOS</a>
+                  <a href="artefactos">ARTEFACTOS</a>
+                  <a href="lista-propietarios">LISTAS DE PROPIETARIOS DE EMBARCACIONES</a>
+                  =======
+                  <a href="{{ url('/admin/personal') }}">Personal</a>
+                  <a href="{{ url('/admin/usuarios') }}">Usuarios</a>
+                  <a href="{{ url('/admin/bases-operativas') }}" class="active">Bases de operaciones</a>
+                  <h5 class="px-3 pt-3">Registros de embarcaciones</h5>
+                  <a href="{{ url('/admin/propietario') }}">Propietarios</a>
+                  <a href="{{ url('/admin/artefactos') }}">Artefactos</a>
+                  <a href="{{ url('/admin/lista-propietarios') }}">Listas de propietarios de embarcaciones</a>
+                  >>>>>>> 3d0358b39a49682b648a4f2cab9c7347cca15138
+                  {{-- <a href="imprimir">Certificaciones</a> --}}
+                  {{-- <a href="imprimir">Alertas de Vencimiento</a> --}}
           </div>
       </div>
   @endif
   @if ($nivel == 3)
       <div class="right-sidebar">
           <div class="sidebar-content">
-<<<<<<< HEAD
-              <h5 class="px-3 pt-3">REGISTROS DE EMBARCACIONES</h5>
-              <a href="propietario">PROPIETARIOS</a>
-              <a href="artefactos">ARTEFACTOS</a>
-              <a href="lista-propietarios">LISTAS DE PROPIETARIOS DE EMBARCACIONES</a>
-=======
-              <h5 class="px-3 pt-3">Registros de embarcaciones</h5>
-              <a href="{{ url('/admin/propietario') }}">Propietarios</a>
-              <a href="{{ url('/admin/artefactos') }}">Artefactos</a>
-              <a href="{{ url('/admin/lista-propietarios') }}">Listas de propietarios de embarcaciones</a>
->>>>>>> 3d0358b39a49682b648a4f2cab9c7347cca15138
-              {{-- <a href="imprimir">Certificaciones</a> --}}
-              {{-- <a href="imprimir">Alertas de Vencimiento</a> --}}
-          </div>
-      </div>
-    @endif
-    @if($nivel == 4)
-      <div class="right-sidebar">
-          <div class="sidebar-content">
-<<<<<<< HEAD
-              <h5 class="px-3 pt-3">REGISTROS DE EMBARCACIONES</h5>
-              <a href="propietario">PROPIETARIOS</a>
-              <a href="artefactos">ARTEFACTOS</a>
-              <a href="lista-propietarios">LISTAS DE PROPIETARIOS DE EMBARCACIONES</a>
-=======
-              <h5 class="px-3 pt-3">Registros de embarcaciones</h5>
-              <a href="{{ url('/admin/propietario') }}">Propietarios</a>
-              <a href="{{ url('/admin/artefactos') }}">Artefactos</a>
-              <a href="{{ url('/admin/artefactos') }}">Listas de propietarios de embarcaciones</a>
->>>>>>> 3d0358b39a49682b648a4f2cab9c7347cca15138
+              <<<<<<< HEAD <h5 class="px-3 pt-3">REGISTROS DE EMBARCACIONES</h5>
+                  <a href="propietario">PROPIETARIOS</a>
+                  <a href="artefactos">ARTEFACTOS</a>
+                  <a href="lista-propietarios">LISTAS DE PROPIETARIOS DE EMBARCACIONES</a>
+                  =======
+                  <h5 class="px-3 pt-3">Registros de embarcaciones</h5>
+                  <a href="{{ url('/admin/propietario') }}">Propietarios</a>
+                  <a href="{{ url('/admin/artefactos') }}">Artefactos</a>
+                  <a href="{{ url('/admin/lista-propietarios') }}">Listas de propietarios de embarcaciones</a>
+                  >>>>>>> 3d0358b39a49682b648a4f2cab9c7347cca15138
+                  {{-- <a href="imprimir">Certificaciones</a> --}}
+                  {{-- <a href="imprimir">Alertas de Vencimiento</a> --}}
           </div>
       </div>
   @endif
- @section('content')
-  <div class="container">
-      <div class="row">
-          <div class="col-md-9">
-              <div class="card">
-                  <div class="card-header">INSPECCIONES</div>
-                  <div class="card-body">
-                        @switch($nivel)
-                          @case(3)
-                              <a href="{{ url('/admin/perf45i') }}" title="Back"><button class="btn btn-warning btn-sm">
-                                      <i class="fa fa-arrow-left" aria-hidden="true"></i> VOLVER</button></a>
-                          @break
+  @if ($nivel == 4)
+      <div class="right-sidebar">
+          <div class="sidebar-content">
+              <<<<<<< HEAD <h5 class="px-3 pt-3">REGISTROS DE EMBARCACIONES</h5>
+                  <a href="propietario">PROPIETARIOS</a>
+                  <a href="artefactos">ARTEFACTOS</a>
+                  <a href="lista-propietarios">LISTAS DE PROPIETARIOS DE EMBARCACIONES</a>
+                  =======
+                  <h5 class="px-3 pt-3">Registros de embarcaciones</h5>
+                  <a href="{{ url('/admin/propietario') }}">Propietarios</a>
+                  <a href="{{ url('/admin/artefactos') }}">Artefactos</a>
+                  <a href="{{ url('/admin/artefactos') }}">Listas de propietarios de embarcaciones</a>
+                  >>>>>>> 3d0358b39a49682b648a4f2cab9c7347cca15138
+          </div>
+      </div>
+  @endif
+  @section('content')
+      <div class="container">
+          <div class="row">
+              <div class="col-md-9">
+                  <div class="card">
+                      <div class="card-header">INSPECCIONES</div>
+                      <div class="card-body">
+                          @switch($nivel)
+                              @case(3)
+                                  <a href="{{ url('/admin/perf45i') }}" title="Back"><button class="btn btn-warning btn-sm">
+                                          <i class="fa fa-arrow-left" aria-hidden="true"></i> ATRAS</button></a>
+                              @break
 
-                          @case(2)
-                              <a href="{{ url('/admin/perf45j') }}" title="Back"><button class="btn btn-warning btn-sm">
-                                      <i class="fa fa-arrow-left" aria-hidden="true"></i> VOLVER</button></a>
-                          @break
+                              @case(2)
+                                  <a href="{{ url('/admin/perf45j') }}" title="Back"><button class="btn btn-warning btn-sm">
+                                          <i class="fa fa-arrow-left" aria-hidden="true"></i> ATRAS</button></a>
+                              @break
 
-                          @case(4)
-                              <a href="{{ url('/admin/perf45r') }}" title="Retornar"><button class="btn btn-warning btn-sm">
-                                      <i class="fa fa-arrow-left" aria-hidden="true"></i> VOLVER</button></a>
-                          @break
+                              @case(4)
+                                  <a href="{{ url('/admin/perf45r') }}" title="Retornar"><button class="btn btn-warning btn-sm">
+                                          <i class="fa fa-arrow-left" aria-hidden="true"></i> ATRAS</button></a>
+                              @break
 
-                          @default
-                      @endswitch
-                      <a href="{{ url('/admin/inspecciones/create') }}" class="btn btn-success btn-sm"
-                          title="Agregar nuevo Inspeccione">
-                          <i class="fa fa-plus" aria-hidden="true"></i> Agregar
-                      </a>
+                              @default
+                          @endswitch
+                          <a href="{{ url('/admin/inspecciones/create') }}" class="btn btn-success btn-sm"
+                              title="Agregar nuevo Inspeccione">
+                              <i class="fa fa-plus" aria-hidden="true"></i> Agregar
+                          </a>
 
-                      <form method="GET" action="{{ url('/admin/inspecciones') }}" accept-charset="UTF-8"
-                          class="form-inline my-2 my-lg-0 float-right" role="search">
-                          <div class="input-group">
-                              <input type="text" oninput="this.value = this.value.toUpperCase()"  class="form-control" name="search" placeholder="BUSCAR..."
-                                  value="{{ request('search') }}">
-                              <span class="input-group-append">
-                                  <button class="btn btn-secondary" type="submit">
-                                      <i class="fa fa-search"></i>
-                                  </button>
-                              </span>
-                          </div>
-                      </form>
+                          <form method="GET" action="{{ url('/admin/inspecciones') }}" accept-charset="UTF-8"
+                              class="form-inline my-2 my-lg-0 float-right" role="search">
+                              <div class="input-group">
+                                  <input type="text" oninput="this.value = this.value.toUpperCase()" class="form-control"
+                                      name="search" placeholder="BUSCAR..." value="{{ request('search') }}">
+                                  <span class="input-group-append">
+                                      <button class="btn btn-secondary" type="submit">
+                                          <i class="fa fa-search"></i>
+                                      </button>
+                                  </span>
+                              </div>
+                          </form>
 
-                      <br />
-                      <br />
-                      <div class="table-responsive">
-                          <table class="table">
-                              <thead>
-                                  <tr>
-                                      <th>Nº</th>
-                                      <th>ARTEFACTO NAVAL</th>
-                                      <th>GESTION</th>
-                                      <th>OPCIONES</th>
-                                  </tr>
-                              </thead>
-                              <tbody>
-                                  @foreach ($inspecciones as $item)
+                          <br />
+                          <br />
+                          <div class="table-responsive">
+                              <table class="table">
+                                  <thead>
                                       <tr>
-                                          <td>{{ $loop->iteration }}</td>
-                                          <td>{{ $item->artefactos->matricula }}</td>
-                                          <td>{{ $item->gestion }}</td>
-                                          <td>
-                                              <a href="{{ url('/admin/inspecciones/' . $item->id) }}"
-                                                  title="Ver Inspeccione"><button class="btn btn-info btn-sm"><i
-                                                          class="fa fa-eye" aria-hidden="true"></i> VER</button></a>
-                                              <a href="{{ url('/admin/inspecciones/' . $item->id . '/edit') }}"
-                                                  title="Editar Inspeccione"><button class="btn btn-primary btn-sm"><i
-                                                          class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                                                      Editar</button></a>
-
-                                              <form method="POST"
-                                                  action="{{ url('/admin/inspecciones' . '/' . $item->id) }}"
-                                                  accept-charset="UTF-8" style="display:inline">
-                                                  {{ method_field('DELETE') }}
-                                                  {{ csrf_field() }}
-                                                  <button type="submit" class="btn btn-danger btn-sm"
-                                                      title="BORRAR Inspeccione"
-                                                      onclick="return confirm(&quot;Confirm delete?&quot;)"><i
-                                                          class="fa fa-trash-o" aria-hidden="true"></i> BORRAR</button>
-                                              </form>
-                                          </td>
+                                          <th>Nº</th>
+                                          <th>ARTEFACTO NAVAL</th>
+                                          <th>GESTION</th>
+                                          <th>OPCIONES</th>
                                       </tr>
-                                  @endforeach
-                              </tbody>
-                          </table>
-                          <div class="pagination-wrapper"> {!! $inspecciones->appends(['search' => Request::get('search')])->render() !!} </div>
-                      </div>
+                                  </thead>
+                                  <tbody>
+                                      @foreach ($inspecciones as $item)
+                                          <tr>
+                                              <td>{{ $loop->iteration }}</td>
+                                              <td>{{ $item->artefactos->matricula }}</td>
+                                              <td>{{ $item->gestion }}</td>
+                                              <td>
+                                                  <a href="{{ url('/admin/inspecciones/' . $item->id) }}"
+                                                      title="Ver Inspeccione"><button class="btn btn-info btn-sm"><i
+                                                              class="fa fa-eye" aria-hidden="true"></i> VER</button></a>
+                                                  <a href="{{ url('/admin/inspecciones/' . $item->id . '/edit') }}"
+                                                      title="Editar Inspeccione"><button class="btn btn-primary btn-sm"><i
+                                                              class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                                          Editar</button></a>
 
+                                                  <form method="POST"
+                                                      action="{{ url('/admin/inspecciones' . '/' . $item->id) }}"
+                                                      accept-charset="UTF-8" style="display:inline">
+                                                      {{ method_field('DELETE') }}
+                                                      {{ csrf_field() }}
+                                                      <button type="submit" class="btn btn-danger btn-sm"
+                                                          title="BORRAR Inspeccione"
+                                                          onclick="return confirm(&quot;Confirm delete?&quot;)"><i
+                                                              class="fa fa-trash-o" aria-hidden="true"></i>
+                                                          BORRAR</button>
+                                                  </form>
+                                              </td>
+                                          </tr>
+                                      @endforeach
+                                  </tbody>
+                              </table>
+                              <div class="pagination-wrapper"> {!! $inspecciones->appends(['search' => Request::get('search')])->render() !!} </div>
+                          </div>
+
+                      </div>
                   </div>
               </div>
           </div>
       </div>
-  </div>
-@endsection
+  @endsection

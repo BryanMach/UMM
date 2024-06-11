@@ -9,7 +9,8 @@
                 <div class="card">
                     <div class="card-header">Edit servicio #{{ $servicio->id }}</div>
                     <div class="card-body">
-                        <a href="{{ url('/admin/servicios') }}" title="VOLVER"><button class="btn btn-warning btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i> VOLVER</button></a>
+                        <a href="{{ url('/admin/servicios') }}" title="VOLVER"><button class="btn btn-warning btn-sm"><i
+                                    class="fa fa-arrow-left" aria-hidden="true"></i> ATRAS</button></a>
                         <br />
                         <br />
 
@@ -21,7 +22,8 @@
                             </ul>
                         @endif
 
-                        <form method="POST" action="{{ url('/admin/servicios/' . $servicio->id) }}" accept-charset="UTF-8" class="form-horizontal" enctype="multipart/form-data">
+                        <form method="POST" action="{{ url('/admin/servicios/' . $servicio->id) }}" accept-charset="UTF-8"
+                            class="form-horizontal" enctype="multipart/form-data">
                             {{ method_field('PATCH') }}
                             {{ csrf_field() }}
 

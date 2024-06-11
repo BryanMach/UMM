@@ -94,7 +94,7 @@
           margin-top: 20px;
       }
   </style>
-   @if ($nivel == 2)
+  @if ($nivel == 2)
       <div class="right-sidebar">
           <div class="sidebar-header text-center p-3">
               <h4>REGISTRO DE PERSONAL </h4>
@@ -123,8 +123,8 @@
               {{-- <a href="imprimir">Alertas de Vencimiento</a> --}}
           </div>
       </div>
-    @endif
-    @if($nivel == 4)
+  @endif
+  @if ($nivel == 4)
       <div class="right-sidebar">
           <div class="sidebar-content">
               <h5 class="px-3 pt-3">REGISTROS DE EMBARCACIONES</h5>
@@ -134,98 +134,98 @@
           </div>
       </div>
   @endif
- @section('content')
-  <div class="container">
-      <div class="row">
-          <div class="col-md-9">
-              <div class="card">
-                  <div class="card-header">BASES DE OPERACIONES</div>
-                  <div class="card-body">
-                        @switch($nivel)
-                          @case(3)
-                              <a href="{{ url('/admin/perf45i') }}" title="Back"><button class="btn btn-warning btn-sm">
-                                      <i class="fa fa-arrow-left" aria-hidden="true"></i> VOLVER</button></a>
-                          @break
+  @section('content')
+      <div class="container">
+          <div class="row">
+              <div class="col-md-9">
+                  <div class="card">
+                      <div class="card-header">BASES DE OPERACIONES</div>
+                      <div class="card-body">
+                          @switch($nivel)
+                              @case(3)
+                                  <a href="{{ url('/admin/perf45i') }}" title="Back"><button class="btn btn-warning btn-sm">
+                                          <i class="fa fa-arrow-left" aria-hidden="true"></i> ATRAS</button></a>
+                              @break
 
-                          @case(2)
-                              <a href="{{ url('/admin/perf45j') }}" title="Back"><button class="btn btn-warning btn-sm">
-                                      <i class="fa fa-arrow-left" aria-hidden="true"></i> VOLVER</button></a>
-                          @break
+                              @case(2)
+                                  <a href="{{ url('/admin/perf45j') }}" title="Back"><button class="btn btn-warning btn-sm">
+                                          <i class="fa fa-arrow-left" aria-hidden="true"></i> ATRAS</button></a>
+                              @break
 
-                          @case(4)
-                              <a href="{{ url('/admin/perf45r') }}" title="Retornar"><button class="btn btn-warning btn-sm">
-                                      <i class="fa fa-arrow-left" aria-hidden="true"></i> VOLVER</button></a>
-                          @break
+                              @case(4)
+                                  <a href="{{ url('/admin/perf45r') }}" title="Retornar"><button class="btn btn-warning btn-sm">
+                                          <i class="fa fa-arrow-left" aria-hidden="true"></i> ATRAS</button></a>
+                              @break
 
-                          @default
-                      @endswitch
-                      <a href="{{ url('/admin/bases-operativas/create') }}" class="btn btn-success btn-sm"
-                          title="Agregar nueva base operativa">
-                          <i class="fa fa-plus" aria-hidden="true"></i> AGREGAR
-                      </a>
+                              @default
+                          @endswitch
+                          <a href="{{ url('/admin/bases-operativas/create') }}" class="btn btn-success btn-sm"
+                              title="Agregar nueva base operativa">
+                              <i class="fa fa-plus" aria-hidden="true"></i> AGREGAR
+                          </a>
 
-                      <form method="GET" action="{{ url('/admin/bases-operativas') }}" accept-charset="UTF-8"
-                          class="form-inline my-2 my-lg-0 float-right" role="search">
-                          <div class="input-group">
-                              <input type="text" oninput="this.value = this.value.toUpperCase()"  class="form-control" name="search" placeholder="BUSCAR..."
-                                  value="{{ request('search') }}">
-                              <span class="input-group-append">
-                                  <button class="btn btn-secondary" type="submit">
-                                      <i class="fa fa-search"></i>
-                                  </button>
-                              </span>
-                          </div>
-                      </form>
+                          <form method="GET" action="{{ url('/admin/bases-operativas') }}" accept-charset="UTF-8"
+                              class="form-inline my-2 my-lg-0 float-right" role="search">
+                              <div class="input-group">
+                                  <input type="text" oninput="this.value = this.value.toUpperCase()" class="form-control"
+                                      name="search" placeholder="BUSCAR..." value="{{ request('search') }}">
+                                  <span class="input-group-append">
+                                      <button class="btn btn-secondary" type="submit">
+                                          <i class="fa fa-search"></i>
+                                      </button>
+                                  </span>
+                              </div>
+                          </form>
 
-                      <br />
-                      <br />
-                      <div class="table-responsive">
-                          <table class="table">
-                              <thead>
-                                  <tr>
-                                      <th>Nº</th>
-                                      <th>CUENCA</th>
-                                      <th>BASE DE OPERACIONES</th>
-                                      <th>OPCIONES</th>
-                                  </tr>
-                              </thead>
-                              <tbody>
-                                  @foreach ($basesoperativas as $item)
+                          <br />
+                          <br />
+                          <div class="table-responsive">
+                              <table class="table">
+                                  <thead>
                                       <tr>
-                                          <td>{{ $loop->iteration }}</td>
-                                          <td>{{ $item->cuenca->cuenca }}</td>
-                                          <td>{{ $item->baseOperativa }}</td>
-                                          <td>
-                                              <a href="{{ url('/admin/bases-operativas/' . $item->id) }}"
-                                                  title="Ver base operativa"><button class="btn btn-info btn-sm"><i
-                                                          class="fa fa-eye" aria-hidden="true"></i> VER</button></a>
-                                              <a href="{{ url('/admin/bases-operativas/' . $item->id . '/edit') }}"
-                                                  title="Editar base operativa"><button
-                                                      class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o"
-                                                          aria-hidden="true"></i>
-                                                      EDITAR</button></a>
-
-                                              <form method="POST"
-                                                  action="{{ url('/admin/bases-operativas' . '/' . $item->id) }}"
-                                                  accept-charset="UTF-8" style="display:inline">
-                                                  {{ method_field('DELETE') }}
-                                                  {{ csrf_field() }}
-                                                  <button type="submit" class="btn btn-danger btn-sm"
-                                                      title="BORRAR base operativa"
-                                                      onclick="return confirm(&quot;Confirm delete?&quot;)"><i
-                                                          class="fa fa-trash-o" aria-hidden="true"></i> BORRAR</button>
-                                              </form>
-                                          </td>
+                                          <th>Nº</th>
+                                          <th>CUENCA</th>
+                                          <th>BASE DE OPERACIONES</th>
+                                          <th>OPCIONES</th>
                                       </tr>
-                                  @endforeach
-                              </tbody>
-                          </table>
-                          <div class="pagination-wrapper"> {!! $basesoperativas->appends(['search' => Request::get('search')])->render() !!} </div>
-                      </div>
+                                  </thead>
+                                  <tbody>
+                                      @foreach ($basesoperativas as $item)
+                                          <tr>
+                                              <td>{{ $loop->iteration }}</td>
+                                              <td>{{ $item->cuenca->cuenca }}</td>
+                                              <td>{{ $item->baseOperativa }}</td>
+                                              <td>
+                                                  <a href="{{ url('/admin/bases-operativas/' . $item->id) }}"
+                                                      title="Ver base operativa"><button class="btn btn-info btn-sm"><i
+                                                              class="fa fa-eye" aria-hidden="true"></i> VER</button></a>
+                                                  <a href="{{ url('/admin/bases-operativas/' . $item->id . '/edit') }}"
+                                                      title="Editar base operativa"><button
+                                                          class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o"
+                                                              aria-hidden="true"></i>
+                                                          EDITAR</button></a>
 
+                                                  <form method="POST"
+                                                      action="{{ url('/admin/bases-operativas' . '/' . $item->id) }}"
+                                                      accept-charset="UTF-8" style="display:inline">
+                                                      {{ method_field('DELETE') }}
+                                                      {{ csrf_field() }}
+                                                      <button type="submit" class="btn btn-danger btn-sm"
+                                                          title="BORRAR base operativa"
+                                                          onclick="return confirm(&quot;Confirm delete?&quot;)"><i
+                                                              class="fa fa-trash-o" aria-hidden="true"></i> BORRAR</button>
+                                                  </form>
+                                              </td>
+                                          </tr>
+                                      @endforeach
+                                  </tbody>
+                              </table>
+                              <div class="pagination-wrapper"> {!! $basesoperativas->appends(['search' => Request::get('search')])->render() !!} </div>
+                          </div>
+
+                      </div>
                   </div>
               </div>
           </div>
       </div>
-  </div>
-@endsection
+  @endsection

@@ -124,8 +124,8 @@
             {{-- <a href="{{ url('/admin/') }}imprimir">Alertas de Vencimiento</a> --}}
         </div>
     </div>
-  @endif
-  @if($nivel == 4)
+@endif
+@if ($nivel == 4)
     <div class="right-sidebar">
         <div class="sidebar-content">
             <h5 class="px-3 pt-3">REGISTROS DE EMBARCACIONES</h5>
@@ -144,7 +144,8 @@
                 <div class="card">
                     <div class="card-header">EDITAR CARGO</div>
                     <div class="card-body">
-                        <a href="{{ url('/admin/cargos') }}" title="Back"><button class="btn btn-warning btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i> VOLVER</button></a>
+                        <a href="{{ url('/admin/cargos') }}" title="Back"><button class="btn btn-warning btn-sm"><i
+                                    class="fa fa-arrow-left" aria-hidden="true"></i> ATRAS</button></a>
                         <br />
                         <br />
 
@@ -156,7 +157,8 @@
                             </ul>
                         @endif
 
-                        <form method="POST" action="{{ url('/admin/cargos/' . $cargo->id) }}" accept-charset="UTF-8" class="form-horizontal" enctype="multipart/form-data">
+                        <form method="POST" action="{{ url('/admin/cargos/' . $cargo->id) }}" accept-charset="UTF-8"
+                            class="form-horizontal" enctype="multipart/form-data">
                             {{ method_field('PATCH') }}
                             {{ csrf_field() }}
 

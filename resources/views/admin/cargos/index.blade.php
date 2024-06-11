@@ -124,8 +124,8 @@
             {{-- <a href="{{ url('/admin/') }}imprimir">Alertas de Vencimiento</a> --}}
         </div>
     </div>
-  @endif
-  @if($nivel == 4)
+@endif
+@if ($nivel == 4)
     <div class="right-sidebar">
         <div class="sidebar-content">
             <h5 class="px-3 pt-3">REGISTROS DE EMBARCACIONES</h5>
@@ -145,30 +145,33 @@
                     <div class="card-header">CARGOS</div>
                     <div class="card-body">
                         @switch($nivel)
-                          @case(3)
-                              <a href="{{ url('/admin/perf45i') }}" title="Back"><button class="btn btn-warning btn-sm">
-                                      <i class="fa fa-arrow-left" aria-hidden="true"></i> VOLVER</button></a>
-                          @break
+                            @case(3)
+                                <a href="{{ url('/admin/perf45i') }}" title="Back"><button class="btn btn-warning btn-sm">
+                                        <i class="fa fa-arrow-left" aria-hidden="true"></i> ATRAS</button></a>
+                            @break
 
-                          @case(2)
-                              <a href="{{ url('/admin/perf45j') }}" title="Back"><button class="btn btn-warning btn-sm">
-                                      <i class="fa fa-arrow-left" aria-hidden="true"></i> VOLVER</button></a>
-                          @break
+                            @case(2)
+                                <a href="{{ url('/admin/perf45j') }}" title="Back"><button class="btn btn-warning btn-sm">
+                                        <i class="fa fa-arrow-left" aria-hidden="true"></i> ATRAS</button></a>
+                            @break
 
-                          @case(4)
-                              <a href="{{ url('/admin/perf45r') }}" title="Retornar"><button class="btn btn-warning btn-sm">
-                                      <i class="fa fa-arrow-left" aria-hidden="true"></i> VOLVER</button></a>
-                          @break
+                            @case(4)
+                                <a href="{{ url('/admin/perf45r') }}" title="Retornar"><button class="btn btn-warning btn-sm">
+                                        <i class="fa fa-arrow-left" aria-hidden="true"></i> ATRAS</button></a>
+                            @break
 
-                          @default
-                      @endswitch
-                        <a href="{{ url('/admin/cargos/create') }}" class="btn btn-success btn-sm" title="AGREGAR NUEVO CARGO">
+                            @default
+                        @endswitch
+                        <a href="{{ url('/admin/cargos/create') }}" class="btn btn-success btn-sm"
+                            title="AGREGAR NUEVO CARGO">
                             <i class="fa fa-plus" aria-hidden="true"></i> AGREGAR
                         </a>
 
-                        <form method="GET" action="{{ url('/admin/cargos') }}" accept-charset="UTF-8" class="form-inline my-2 my-lg-0 float-right" role="search">
+                        <form method="GET" action="{{ url('/admin/cargos') }}" accept-charset="UTF-8"
+                            class="form-inline my-2 my-lg-0 float-right" role="search">
                             <div class="input-group">
-                                <input type="text" oninput="this.value = this.value.toUpperCase()"  class="form-control" name="search" placeholder="BUSCAR..." value="{{ request('search') }}">
+                                <input type="text" oninput="this.value = this.value.toUpperCase()" class="form-control"
+                                    name="search" placeholder="BUSCAR..." value="{{ request('search') }}">
                                 <span class="input-group-append">
                                     <button class="btn btn-secondary" type="submit">
                                         <i class="fa fa-search"></i>
@@ -177,32 +180,43 @@
                             </div>
                         </form>
 
-                        <br/>
-                        <br/>
+                        <br />
+                        <br />
                         <div class="table-responsive">
                             <table class="table">
                                 <thead>
                                     <tr>
-                                        <th>Nº</th><th>CARGO</th><th>OPCIONES</th>
+                                        <th>Nº</th>
+                                        <th>CARGO</th>
+                                        <th>OPCIONES</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($cargos as $item)
-                                    <tr>
-                                        <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $item->cargo }}</td>
-                                        <td>
-                                            <a href="{{ url('/admin/cargos/' . $item->id) }}" title="View cargo"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> VER</button></a>
-                                            <a href="{{ url('/admin/cargos/' . $item->id . '/edit') }}" title="Edit cargo"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> EDITAR</button></a>
+                                    @foreach ($cargos as $item)
+                                        <tr>
+                                            <td>{{ $loop->iteration }}</td>
+                                            <td>{{ $item->cargo }}</td>
+                                            <td>
+                                                <a href="{{ url('/admin/cargos/' . $item->id) }}"
+                                                    title="View cargo"><button class="btn btn-info btn-sm"><i
+                                                            class="fa fa-eye" aria-hidden="true"></i> VER</button></a>
+                                                <a href="{{ url('/admin/cargos/' . $item->id . '/edit') }}"
+                                                    title="Edit cargo"><button class="btn btn-primary btn-sm"><i
+                                                            class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                                        EDITAR</button></a>
 
-                                            <form method="POST" action="{{ url('/admin/cargos' . '/' . $item->id) }}" accept-charset="UTF-8" style="display:inline">
-                                                {{ method_field('DELETE') }}
-                                                {{ csrf_field() }}
-                                                <button type="submit" class="btn btn-danger btn-sm" title="Delete cargo" onclick="return confirm(&quot;Confirm delete?&quot;)"><i class="fa fa-trash-o" aria-hidden="true"></i> BORRAR</button>
-                                            </form>
-                                        </td>
-                                    </tr>
-                                @endforeach
+                                                <form method="POST" action="{{ url('/admin/cargos' . '/' . $item->id) }}"
+                                                    accept-charset="UTF-8" style="display:inline">
+                                                    {{ method_field('DELETE') }}
+                                                    {{ csrf_field() }}
+                                                    <button type="submit" class="btn btn-danger btn-sm"
+                                                        title="Delete cargo"
+                                                        onclick="return confirm(&quot;Confirm delete?&quot;)"><i
+                                                            class="fa fa-trash-o" aria-hidden="true"></i> BORRAR</button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                             <div class="pagination-wrapper"> {!! $cargos->appends(['search' => Request::get('search')])->render() !!} </div>

@@ -43,7 +43,7 @@
                      <div class="card-header">Crear nuevo Motor</div>
                      <div class="card-body">
                          <a href="{{ url('/admin/motores') }}" title="Back"><button class="btn btn-warning btn-sm"><i
-                                     class="fa fa-arrow-left" aria-hidden="true"></i> VOLVER</button></a>
+                                     class="fa fa-arrow-left" aria-hidden="true"></i> ATRAS</button></a>
                          <br />
                          <br />
 

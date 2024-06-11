@@ -152,20 +152,20 @@
               <div class="card">
                   <div class="card-header">RECUPERAR</div>
                   <div class="card-body">
-                        @switch($nivel)
+                      @switch($nivel)
                           @case(3)
                               <a href="{{ url('/admin/perf45i') }}" title="Back"><button class="btn btn-warning btn-sm">
-                                      <i class="fa fa-arrow-left" aria-hidden="true"></i> VOLVER</button></a>
+                                      <i class="fa fa-arrow-left" aria-hidden="true"></i> ATRAS</button></a>
                           @break
 
                           @case(2)
                               <a href="{{ url('/admin/perf45j') }}" title="Back"><button class="btn btn-warning btn-sm">
-                                      <i class="fa fa-arrow-left" aria-hidden="true"></i> VOLVER</button></a>
+                                      <i class="fa fa-arrow-left" aria-hidden="true"></i> ATRAS</button></a>
                           @break
 
                           @case(4)
                               <a href="{{ url('/admin/perf45r') }}" title="Retornar"><button class="btn btn-warning btn-sm">
-                                      <i class="fa fa-arrow-left" aria-hidden="true"></i> VOLVER</button></a>
+                                      <i class="fa fa-arrow-left" aria-hidden="true"></i> ATRAS</button></a>
                           @break
 
                           @default
@@ -178,8 +178,8 @@
                       <form method="GET" action="{{ url('/admin/recuperar') }}" accept-charset="UTF-8"
                           class="form-inline my-2 my-lg-0 float-right" role="search">
                           <div class="input-group">
-                              <input type="text" oninput="this.value = this.value.toUpperCase()"  class="form-control" name="search" placeholder="BUSCAR..."
-                                  value="{{ request('search') }}">
+                              <input type="text" oninput="this.value = this.value.toUpperCase()" class="form-control"
+                                  name="search" placeholder="BUSCAR..." value="{{ request('search') }}">
                               <span class="input-group-append">
                                   <button class="btn btn-secondary" type="submit">
                                       <i class="fa fa-search"></i>
