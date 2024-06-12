@@ -636,6 +636,74 @@
         width: 100%;
     }
 
+    button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        /* Centra el contenido horizontalmente */
+        padding: 10px 20px;
+        background: linear-gradient(45deg, #007bff, #00c6ff);
+        /* Degradado de azul a un color más claro */
+        color: white;
+        border: none;
+        border-radius: 20px;
+        cursor: pointer;
+        width: 200px;
+        height: 200px;
+        margin-bottom: 50px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        /* Sombra para darle un poco de profundidad */
+    }
+
+    button i {
+        font-size: 50px;
+        /* Ajusta el tamaño del icono */
+        margin-right: 10px;
+        /* Espacio entre el icono y el texto */
+    }
+
+    button:hover {
+        background: linear-gradient(45deg, #0056b3, #0090e7);
+        /* Degradado diferente al pasar el cursor */
+    }
+
+    button i.icon {
+        margin-right: 10px;
+    }
+
+    .hidden {
+        display: none;
+    }
+
+    #toggleText {
+        margin-top: 20px;
+    }
+
+    .whatsapp-float {
+        position: fixed;
+        width: 60px;
+        height: 60px;
+        bottom: 40px;
+        right: 40px;
+        background-color: #25d366;
+        color: white;
+        border-radius: 50px;
+        text-align: center;
+        font-size: 30px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+        cursor: pointer;
+    }
+
+    .whatsapp-float i {
+        margin-top: 15px;
+    }
+
+    .whatsapp-float:hover {
+        background-color: #128c7e;
+    }
+
+
     .contacto .col .info {
         position: absolute;
         top: 40%;
@@ -787,6 +855,10 @@
 </style>
 
 <body>
+    <a href="https://wa.me/72000220" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
     <!-- MENU ENCABEZADO -->
     <div class="contenedor-header">
         <header>
@@ -848,7 +920,7 @@
             </h2>
         </div>
         <div class="grafico-seccion">
-            <h5 style="color: #131517; font-weight: bold">Cuencas registradas</h5>
+            <h5 style="color: #131517; font-weight: bold">Registros de embarcaciones por cuencas</h5>
             <canvas id="graficoTorta" width="450" height="450"></canvas>
         </div>
     </section>
@@ -859,7 +931,7 @@
             <h2>Quienes Somos</h2>
             <div class="fila">
                 <div class="col izquierda">
-                    <h3>Misión</h3>
+                    <h3>MISIÓN</h3>
                     <div class="item izq">
                         <p>Promover, fomentar y normar toda actividad de la marina mercante en los ámbitos marítimo,
                             fluvial y lacustre, velar por la seguridad de la navegación, la vida humana y evitar la
@@ -870,7 +942,7 @@
                 </div>
 
                 <div class="col derecha">
-                    <h3>Visión</h3>
+                    <h3>VISIÓN</h3>
                     <div class="item der">
                         <p>Constituirse en el ente rector que administre y norme la actividad de marina mercante a nivel
                             nacional e internacional.</p>
@@ -882,6 +954,7 @@
             </div>
         </div>
         <div class="imagen-seccion">
+            <h1>ORGANIGRAMA</h1>
             <img src="{{ asset('images/esquema.jpg') }}" alt="Descripción de la imagen">
         </div>
     </section>
@@ -891,8 +964,35 @@
         <div class="contenido-seccion">
             <h2>Servicios</h2>
             <div class="fila">
-                <div class="col izquierda">
-                    <div class="item izq">
+                <div class="col izquierda" style="margin-left: 15%">
+                    <button class="toggleButton">
+                        <i class="icon">🔍</i>
+                        <span class="buttonText">Mostrar más</span>
+                    </button>
+                    <div class="toggleText hidden" style="  margin-bottom: 20px;">
+                        La unidad marina mercante es la entidad responsable de expedir los carnets
+                        de habilitacion para el personal que trabaja en el ámbito maritimo, fluvial
+                        y lacustre. Estos carnets son documentos esenciales que certifican la
+                        identidad y competencia del personal mercante y sus embarcaciones,
+                        garantizando así que cumplen con los requisitos y estándares necesarios para
+                        desempeñar sus funciones a bordo de los buques, embarcaciones y artefactos
+                        navales.
+                    </div>
+
+                    <button class="toggleButton">
+                        <i class="icon">🔍</i>
+                        <span class="buttonText">Mostrar más</span>
+                    </button>
+                    <div class="toggleText hidden">
+                        La unidad marina mercante es la entidad responsable de expedir los carnets
+                        de habilitacion para el personal que trabaja en el ámbito maritimo, fluvial
+                        y lacustre. Estos carnets son documentos esenciales que certifican la
+                        identidad y competencia del personal mercante y sus embarcaciones,
+                        garantizando así que cumplen con los requisitos y estándares necesarios para
+                        desempeñar sus funciones a bordo de los buques, embarcaciones y artefactos
+                        navales.
+                    </div>
+                    {{-- <div class="item izq">
                         <span class="casa">Carnetizacíon</span>
                         <p>La unidad marina mercante es la entidad responsable de expedir los carnets
                             de habilitacion para el personal que trabaja en el ámbito maritimo, fluvial
@@ -901,15 +1001,40 @@
                             garantizando así que cumplen con los requisitos y estándares necesarios para
                             desempeñar sus funciones a bordo de los buques, embarcaciones y artefactos
                             navales.</p>
-                        {{-- libretas de embarque --}}
                         <div class="conectori">
                             <div class="circuloi"></div>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
 
                 <div class="col derecha">
-                    <div class="item der">
+                    <button class="toggleButton">
+                        <i class="icon">🔍</i>
+                        <span class="buttonText">Mostrar más</span>
+                    </button>
+                    <div class="toggleText hidden" style="  margin-bottom: 20px;">
+                        La unidad marina mercante es la entidad responsable de expedir los carnets
+                        de habilitacion para el personal que trabaja en el ámbito maritimo, fluvial
+                        y lacustre. Estos carnets son documentos esenciales que certifican la
+                        identidad y competencia del personal mercante y sus embarcaciones,
+                        garantizando así que cumplen con los requisitos y estándares necesarios para
+                        desempeñar sus funciones a bordo de los buques, embarcaciones y artefactos
+                        navales.
+                    </div>
+                    <button class="toggleButton">
+                        <i class="icon">🔍</i>
+                        <span class="buttonText">Mostrar más</span>
+                    </button>
+                    <div class="toggleText hidden">
+                        La unidad marina mercante es la entidad responsable de expedir los carnets
+                        de habilitacion para el personal que trabaja en el ámbito maritimo, fluvial
+                        y lacustre. Estos carnets son documentos esenciales que certifican la
+                        identidad y competencia del personal mercante y sus embarcaciones,
+                        garantizando así que cumplen con los requisitos y estándares necesarios para
+                        desempeñar sus funciones a bordo de los buques, embarcaciones y artefactos
+                        navales.
+                    </div>
+                    {{-- <div class="item der">
                         <span class="casa">Certificaciones</span><br>
                         <p>La unidad marina mercante es la entidad responsable de realizar el registro de buques,
                             EMBARCACIONES y artefactos navales, emitiendo los correspondientes Certificados de Registro
@@ -920,7 +1045,7 @@
                         <div class="conectord">
                             <div class="circulod"></div>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </div>
@@ -980,14 +1105,14 @@
     <!-- SECCION CONTACTO -->
     <section id="contacto" class="contacto">
         <div class="contenido-seccion">
-            <h2>CONTACTO</h2>
+            <h2 style="font-weight: bold">CONTACTO</h2>
             @foreach ($jefe as $item)
                 <div class="fila">
                     <!-- Mapa:'ci', 'cargo', 'grado', 'nombres', 'apellidos', 'contacto', 'foto', 'descripcion', 'vigencia' -->
                     <div class="col">
                         <div style="width: 280px; /* Ajusta el ancho según sea necesario */">
-                            <img src="{{ asset('images/img.jpg') }}" alt=""
-                                style="width: 250px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); border-radius: 8px;">
+                            {{-- <img src="{{ asset('images/img.jpg') }}" alt=""
+                                style="width: 250px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); border-radius: 8px;"> --}}
                         </div>
 
                         <div class="info">
@@ -995,24 +1120,37 @@
                             <ul>
                                 <li>
                                     <i class="fas fa-address-card"></i>
-                                    Señor: {{ $item->grado }} {{ $item->nombres }} {{ $item->apellidos }}
+                                    {{ $item->grado }} {{ $item->nombres }} {{ $item->apellidos }}
                                 </li>
-                                <li>
+                                {{--    <li>
                                     <i class="fas fa-portrait"></i>
                                     Desempeñandose dentro de la Unidad de Marina Mercante como:
                                     {{ $item->cargo->cargo }}
-                                </li>
+                                </li> --}}
                                 <li>
                                     <i class="fa-solid fa-mobile-screen"></i>
-                                    Contacto: {{ $item->contacto }}
+                                    Contacto: {{ $item->contacto }} {{-- <a
+                                        href="https://wa.me/{{ str_replace(' ', '', $item->contacto) }}"
+                                        target="_blank">
+                                        <i class="fab fa-whatsapp-square"></i>
+                                    </a> --}}
                                 </li>
-                                <li>
-                                    {{-- <i class="fa-solid fa-envelope"></i> --}}
+                                {{--    <li>
+                                    {{-- <i class="fa-solid fa-envelope"></i>
                                     {{ $item->descripcion }}
-                                </li>
+                                </li> --}}
                             </ul>
 
+
                         </div>
+                    </div>
+
+                    <div class="col mapa">
+                        <h1 class="text-center" style="font-weight: bold">DIRECCION</h1>
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3825.4938241010354!2d-68.12315832008383!3d-16.50114873804708!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x915f210002836f05%3A0xd8f7daf47c410fc8!2sIntendencia%20Central%20de%20las%20FF.%20AA.%20-%20Ej%C3%A9rcito%20de%20Bolivia!5e0!3m2!1ses!2sbo!4v1718199796146!5m2!1ses!2sbo"
+                            width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade"></iframe>
                     </div>
                 </div>
             @endforeach
@@ -1024,15 +1162,25 @@
         <a href="#inicio" class="arriba">
             <i class="fa-solid fa-angles-up"></i>
         </a>
-        {{--  <div class="redes">
-            <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
-            <a href="#"><i class="fa-brands fa-twitter"></i></a>
-            <a href="#"><i class="fa-brands fa-skype"></i></a>
-            <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
-            <a href="#"><i class="fa-solid fa-rss"></i></a>
-        </div> --}}
+        <div class="redes">
+            <a href="#"><i class="fas fa-phone"></i></i></a>
+        </div>
+        <p>TELEFONOS: </p>
+        <p>CORREO: </p>
     </footer>
-
+    <script>
+        // script.js
+        document.querySelectorAll('.toggleButton').forEach(button => {
+            button.addEventListener('click', function() {
+                const toggleText = this.nextElementSibling;
+                if (toggleText.classList.contains('hidden')) {
+                    toggleText.classList.remove('hidden');
+                } else {
+                    toggleText.classList.add('hidden');
+                }
+            });
+        });
+    </script>
     <script>
         let menuVisible = false;
         //Función que oculta o muestra el menu
