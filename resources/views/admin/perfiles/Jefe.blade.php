@@ -197,7 +197,7 @@
             <a href="{{ url('/admin/artefactos') }}">ARTEFACTOS NAVALES</a>
             <a href="{{ url('/admin/lista-propietarios') }}">LISTAS DE PROPIETARIOS DE EMBARCACIONES</a>
 
-            <h5 class="px-1 pt-1">POLÍTICAS</h5>
+            <h5 class="px-1 pt-1">MODIFICACIONES</h5>
             <a href="{{ url('/admin/cargos') }}">CARGOS DE PERSONAL</a>
             <a href="{{ url('/admin/material') }}">MATERIALES DE EMBARCACIONES</a>
             <a href="{{ url('/admin/servicios') }}">SERVICIOS DE EMBARCACIONES</a>

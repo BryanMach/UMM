@@ -40,28 +40,29 @@ class PerfilesController extends Controller
      */
     public function bienvenida()
     {
+        $paginas = 5;
         $artefactos = Artefacto::join('lista_propietarios', 'lista_propietarios.idArtefacto', '=', 'artefactos.id')
-                    ->select('artefactos.*')
-                    ->get();
-                    $bases = BasesOperativa::all();
-                    $jefe = Personal::where('idCargo', 1)
-                    ->where('vigencia', 1)
-                    ->get();
-                    $cuencas = Cuenca::all();
+            ->select('artefactos.*')
+            ->paginate($paginas);
+        $bases = BasesOperativa::all();
+        $jefe = Personal::where('idCargo', 1)
+            ->where('vigencia', 1)
+            ->get();
+        $cuencas = Cuenca::all();
 
-                    // Crear un array para almacenar los conteos
-                    $counts = [];
-            
-                    // Iterar sobre cada cuenca y contar los artefactos asociados
-                    foreach ($cuencas as $cuenca) {
-                        $count = Artefacto::whereHas('baseOperativa', function ($query) use ($cuenca) {
-                            $query->where('idCuenca', $cuenca->id);
-                        })->count();
-            
-                        // Almacenar el conteo en el array, usando el nombre de la cuenca como clave
-                        $counts[$cuenca->cuenca] = $count;
-                    }
-                    return view('welcome', compact('artefactos','bases','jefe','counts'));
+        // Crear un array para almacenar los conteos
+        $counts = [];
+
+        // Iterar sobre cada cuenca y contar los artefactos asociados
+        foreach ($cuencas as $cuenca) {
+            $count = Artefacto::whereHas('baseOperativa', function ($query) use ($cuenca) {
+                $query->where('idCuenca', $cuenca->id);
+            })->count();
+
+            // Almacenar el conteo en el array, usando el nombre de la cuenca como clave
+            $counts[$cuenca->cuenca] = $count;
+        }
+        return view('welcome', compact('artefactos', 'bases', 'jefe', 'counts'));
     }
     public function administrador(request $request)
     {
@@ -95,27 +96,27 @@ class PerfilesController extends Controller
         $perfil = Personal::findOrFail($usuario->idPersonal);
         $persona = Personal::All();
         $listaL = ListaPropietario::join('artefactos', 'lista_propietarios.idArtefacto', '=', 'artefactos.id')
-                    ->join('bases_operativas', 'artefactos.idBaseOperativa', '=', 'bases_operativas.id')
-                    ->where('bases_operativas.idCuenca', 3)
-                    ->select('lista_propietarios.*')
-                    ->get();
-                    $listaP = ListaPropietario::join('artefactos', 'lista_propietarios.idArtefacto', '=', 'artefactos.id')
-                    ->join('bases_operativas', 'artefactos.idBaseOperativa', '=', 'bases_operativas.id')
-                    
-                    ->where('bases_operativas.idCuenca', 2)
-                    ->select('lista_propietarios.*')
-                    ->get();
-                    
-                    $listaA = ListaPropietario::join('artefactos', 'lista_propietarios.idArtefacto', '=', 'artefactos.id')
-                    ->join('bases_operativas', 'artefactos.idBaseOperativa', '=', 'bases_operativas.id')
-                    
-                    ->where('bases_operativas.idCuenca', 1)
-                    ->select('lista_propietarios.*')
-                    ->get();
-                    $nivel = $usuario['nivel'];
+            ->join('bases_operativas', 'artefactos.idBaseOperativa', '=', 'bases_operativas.id')
+            ->where('bases_operativas.idCuenca', 3)
+            ->select('lista_propietarios.*')
+            ->get();
+        $listaP = ListaPropietario::join('artefactos', 'lista_propietarios.idArtefacto', '=', 'artefactos.id')
+            ->join('bases_operativas', 'artefactos.idBaseOperativa', '=', 'bases_operativas.id')
+
+            ->where('bases_operativas.idCuenca', 2)
+            ->select('lista_propietarios.*')
+            ->get();
+
+        $listaA = ListaPropietario::join('artefactos', 'lista_propietarios.idArtefacto', '=', 'artefactos.id')
+            ->join('bases_operativas', 'artefactos.idBaseOperativa', '=', 'bases_operativas.id')
+
+            ->where('bases_operativas.idCuenca', 1)
+            ->select('lista_propietarios.*')
+            ->get();
+        $nivel = $usuario['nivel'];
         if ($usuario->nivel == 3) {
-            $vista = \View::make('admin.perfiles.interno', compact('persona', 'usuario', 'perfil','listaL','listaP','listaA'))->render();
-            return view('admin.perfiles.interno', compact('vista', 'persona', 'usuario', 'perfil','listaL','listaP','listaA'));
+            $vista = \View::make('admin.perfiles.interno', compact('persona', 'usuario', 'perfil', 'listaL', 'listaP', 'listaA'))->render();
+            return view('admin.perfiles.interno', compact('vista', 'persona', 'usuario', 'perfil', 'listaL', 'listaP', 'listaA'));
         }
     }
     public function registrador(request $request)
@@ -129,15 +130,15 @@ class PerfilesController extends Controller
         $cuencas = Cuenca::All();
         //$listapropietarios = ListaPropietario::where('idUsuario','and','id');
         $listapropietarios = ListaPropietario::join('artefactos', 'lista_propietarios.idArtefacto', '=', 'artefactos.id')
-                    ->join('usuarios', 'artefactos.idUsuarios', '=', 'usuarios.id')
-                    ->where('usuarios.id', $usuario->id)
-                    ->select('lista_propietarios.*')
-                    ->get();
-                    $nivel = $usuario['nivel'];
+            ->join('usuarios', 'artefactos.idUsuarios', '=', 'usuarios.id')
+            ->where('usuarios.id', $usuario->id)
+            ->select('lista_propietarios.*')
+            ->get();
+        $nivel = $usuario['nivel'];
         //$listapropietarios = ListaPropietario::latest('idPropietario')->paginate(25);;
         if ($usuario->nivel == 4) {
-            $vista = \View::make('admin.perfiles.externo', compact('listapropietarios','personal', 'usuario', 'perfil', 'basesoperativas', 'cuencas','nivel'))->render();
-            return view('admin.perfiles.externo', compact('vista', 'listapropietarios', 'personal', 'usuario', 'perfil', 'basesoperativas', 'cuencas','nivel'));
+            $vista = \View::make('admin.perfiles.externo', compact('listapropietarios', 'personal', 'usuario', 'perfil', 'basesoperativas', 'cuencas', 'nivel'))->render();
+            return view('admin.perfiles.externo', compact('vista', 'listapropietarios', 'personal', 'usuario', 'perfil', 'basesoperativas', 'cuencas', 'nivel'));
         }
     }
 
@@ -162,7 +163,7 @@ class PerfilesController extends Controller
         //Usuario::create($requestData);
         $usuario = Usuario::findOrFail(Auth::user()->id);
         $nivel = $usuario['nivel'];
-        return view('admin.registros.create', compact('tipos', 'materiales', 'personas', 'usuarios', 'artefactos', 'basesoperativas', 'cuencas', 'certificacion','nivel','servicios'));
+        return view('admin.registros.create', compact('tipos', 'materiales', 'personas', 'usuarios', 'artefactos', 'basesoperativas', 'cuencas', 'certificacion', 'nivel', 'servicios'));
     }
     public function renovar(Request $request)
     {
@@ -204,7 +205,7 @@ class PerfilesController extends Controller
         $motore = Motore::findOrFail($listapropietarios['idPropietario']);
         $datosadicionale = datosAdicionale::findOrFail($listapropietarios['idPropietario']);
         $inspeccione = Inspeccione::findOrFail($listapropietarios['idPropietario']);
-        $documentacione =Documentacione::findOrFail($listapropietarios['idPropietario']);
+        $documentacione = Documentacione::findOrFail($listapropietarios['idPropietario']);
         $basesoperativas = BasesOperativa::All();
         $cuencas = Cuenca::All();
         $certificacion = Certificacione::All();
@@ -215,7 +216,7 @@ class PerfilesController extends Controller
         */
         $usuario = Usuario::findOrFail(Auth::user()->id);
         $nivel = $usuario['nivel'];
-        return view('admin.registros.edit', compact('propietario','motore','datosadicionale','inspeccione','documentacione','tipos', 'materiales', 'personas', 'usuarios', 'artefacto', 'basesoperativas', 'cuencas', 'certificacion','nivel'));
+        return view('admin.registros.edit', compact('propietario', 'motore', 'datosadicionale', 'inspeccione', 'documentacione', 'tipos', 'materiales', 'personas', 'usuarios', 'artefacto', 'basesoperativas', 'cuencas', 'certificacion', 'nivel'));
     }
     public function guardarRenovacion(Request $request)
     {
@@ -289,14 +290,14 @@ class PerfilesController extends Controller
         $idArtefacto = Artefacto::create($requestArtefacto);
         $requestListaPropietarios = ['idPropietario' => $idPropietario->id, 'idArtefacto' => $idArtefacto->id];
         ListaPropietario::create($requestListaPropietarios);
-        if($requestData['choice']=='MOTOR'){
+        if ($requestData['choice'] == 'MOTOR') {
             $requestMotor = [
                 'idArtefacto' => $idArtefacto->id, 'tipo' => $requestData['tipoM'], 'marca' => $requestData['marca'], 'numero' => $requestData['numero'],
                 'potencia' => $requestData['potencia'], 'nominalelectrica' => $requestData['nominalelectrica']
             ];
             Motore::create($requestMotor);
         }
-        
+
         /*
      *
      * carga comb es un número con valores
@@ -311,26 +312,25 @@ class PerfilesController extends Controller
         datosAdicionale::create($requestDatoAdicional);
         $requestInspeccion = ['idArtefacto' => $idArtefacto->id, 'gestion' => $requestData['gestion'], 'jefeinspector' => $requestData['jefeinspector'], 'motivo' => $requestData['motivo']];
         Inspeccione::create($requestInspeccion);
-        if($request->has('directorio')){
+        if ($request->has('directorio')) {
             if ($request->hasFile('directorio')) {
                 $requestData['directorio'] = $request->file('foto')->store('uploads', 'public');
             }
             $requestDocumentacion = ['idArtefacto' => $idArtefacto->id, 'directorio' => $requestData['directorio']];
             Documentacione::create($requestDocumentacion);
         }
-        switch($Usuario->nivel){
+        switch ($Usuario->nivel) {
             case 2:
-                $direccion="admin/perf45j";
+                $direccion = "admin/perf45j";
                 break;
             case 3:
-                $direccion="admin/perf45i";
+                $direccion = "admin/perf45i";
                 break;
             case 4:
-                $direccion="admin/perf45r";
+                $direccion = "admin/perf45r";
                 break;
-
         }
-        
+
         return redirect($direccion)->with('flash_message', 'Nuevo registro exitoso!!!');
     }
     // Definir función para agregar tiempo a una fecha y devolverla en formato dd/mm/aaaa
@@ -346,21 +346,21 @@ class PerfilesController extends Controller
         $propietario = Propietario::findOrFail($requestData['idPropietario']);
         //dd($propietario);
         $artefacto = Artefacto::findOrFail($requestData['idArtefacto']);
-        $inspeccion = Inspeccione::where('idArtefacto',$requestData['idArtefacto'])->first();
+        $inspeccion = Inspeccione::where('idArtefacto', $requestData['idArtefacto'])->first();
         $tipo = Tipo::findOrFail($artefacto['idTipo']);
         $servicio = servicio::findOrFail($artefacto['idServicio']);
         $material = Material::findOrFail($artefacto['idMaterial']);
         //$usuario = Usuario::where('id',Auth::user()->id);
         //$id=$artefacto['idBaseOperativa'];
         $basesoperativa = BasesOperativa::findOrFail($artefacto['idBaseOperativa']);
-        
-        $motor = Motore::where('idArtefacto',$artefacto['idBaseOperativa'])->first();
-        $datoAdicional = datosAdicionale::where('idArtefacto',$artefacto['id'])->first();
+
+        $motor = Motore::where('idArtefacto', $artefacto['idBaseOperativa'])->first();
+        $datoAdicional = datosAdicionale::where('idArtefacto', $artefacto['id'])->first();
         //dd($basesoperativa);
-        $cuenca = Cuenca::where('id',$basesoperativa['idCuenca'])->first();
+        $cuenca = Cuenca::where('id', $basesoperativa['idCuenca'])->first();
         //sdd($cuenca);
         //Proceso para añadir 1 al control de numeros de registro por cuenca
-        $numeroc = Certificacione::where('id',$cuenca['id'])->first();
+        $numeroc = Certificacione::where('id', $cuenca['id'])->first();
         $aux = $numeroc;
         $numero = $numeroc['numero'];
         $numero = $numero + 1;
@@ -404,83 +404,94 @@ class PerfilesController extends Controller
         //"num:{"id":2,"created_at":"2024-05-16T16:27:39.000000Z","updated_at":"2024-05-16T16:27:39.000000Z","idCuenca":2,"numero":1}" 
         //dd('aux:'.$aux);
         //"aux:{"id":2,"created_at":"2024-05-16T16:27:39.000000Z","updated_at":"2024-05-16T16:27:39.000000Z","idCuenca":2,"numero":1}"
-        $aux=["numero"=>$numero];
+        $aux = ["numero" => $numero];
         $numeroc->update($aux);
         $certificacion['fechaEmision'] = $this->mostrarFechaFormateada($certificacion['fechaEmision']);
         $certificacion['fechaVencimiento'] = $this->mostrarFechaFormateada($fechaVencimiento);
         //dd('fechaEmision'.$certificacion['fechaEmision'].'fechaVencimiento'.$certificacion['fechaVencimiento']);
-        $vista = \View::make('admin.certificadospdf.certificarregistro', compact('propietario', 'tipo', 'material', 'artefacto', 'basesoperativa', 'cuenca',
-        'certificacion','inspeccion','motor', 'datoAdicional'))->render();
+        $vista = \View::make('admin.certificadospdf.certificarregistro', compact(
+            'propietario',
+            'tipo',
+            'material',
+            'artefacto',
+            'basesoperativa',
+            'cuenca',
+            'certificacion',
+            'inspeccion',
+            'motor',
+            'datoAdicional'
+        ))->render();
         $pdf = \App::make('dompdf.wrapper');
         $pdf->loadHTML($vista);
-        return $pdf->stream('registro'.$requestCertificado['nreg'].'.pdf');
-    }
-    
-    public function mostrarFechaFormateada($fecha) {
-    $dia=Carbon::parse($fecha)->format('d');
-    $mes=Carbon::parse($fecha)->format('m');
-    $año=Carbon::parse($fecha)->format('Y');
-    
-    switch ($mes) {
-        case '01':
-            # code...
-            $mes='ENERO';
-            break;
-        case '02':
-            # code...
-            $mes='FEBRERO';
-            break;
-        case '03':
-            # code...
-            $mes='MARZO';
-            break;
-        case '04':
-            # code...
-            $mes='ABRIL';
-            break;
-        case '05':
-            # code...
-            $mes='MAYO';
-        break;
-        case '06':
-            # code...
-            $mes='JUNIO';
-            break;
-        case '07':
-            # code...
-            $mes='JULIO';
-            break;
-        case '08':
-            # code...
-            $mes='AGOSTO';
-            break;
-        case '09':
-            # code...
-            $mes='SEPTIEMBRE';
-            break;
-        case '10':
-            # code...
-            $mes='OCTUBRE';
-        break;
-        case '11':
-            # code...
-            $mes='NOVIEMBRE';
-            break;
-        case '12':
-            # code...
-            $mes='DICIEMBRE';
-        break;
-        default:
-            # code...
-            break;
+        return $pdf->stream('registro' . $requestCertificado['nreg'] . '.pdf');
     }
 
-    $fechaFormateada = $dia.' DE '.$mes.' DE '.$año;
-    return $fechaFormateada;
+    public function mostrarFechaFormateada($fecha)
+    {
+        $dia = Carbon::parse($fecha)->format('d');
+        $mes = Carbon::parse($fecha)->format('m');
+        $año = Carbon::parse($fecha)->format('Y');
+
+        switch ($mes) {
+            case '01':
+                # code...
+                $mes = 'ENERO';
+                break;
+            case '02':
+                # code...
+                $mes = 'FEBRERO';
+                break;
+            case '03':
+                # code...
+                $mes = 'MARZO';
+                break;
+            case '04':
+                # code...
+                $mes = 'ABRIL';
+                break;
+            case '05':
+                # code...
+                $mes = 'MAYO';
+                break;
+            case '06':
+                # code...
+                $mes = 'JUNIO';
+                break;
+            case '07':
+                # code...
+                $mes = 'JULIO';
+                break;
+            case '08':
+                # code...
+                $mes = 'AGOSTO';
+                break;
+            case '09':
+                # code...
+                $mes = 'SEPTIEMBRE';
+                break;
+            case '10':
+                # code...
+                $mes = 'OCTUBRE';
+                break;
+            case '11':
+                # code...
+                $mes = 'NOVIEMBRE';
+                break;
+            case '12':
+                # code...
+                $mes = 'DICIEMBRE';
+                break;
+            default:
+                # code...
+                break;
+        }
+
+        $fechaFormateada = $dia . ' DE ' . $mes . ' DE ' . $año;
+        return $fechaFormateada;
     }
     public function imprimir_certificado_seguridad(Request $request)
     { //muestro un pdf
-        
+
         $requestData = $request->all();
         //$cuenca=$request->idCuenca;
         //protected $fillable = ['idUsuarios', 'idBaseOperativa', 'matricula', 'nombre', 'idTipo', 'idMaterial',
@@ -489,21 +500,21 @@ class PerfilesController extends Controller
         $propietario = Propietario::findOrFail($requestData['idPropietario']);
         //dd($propietario);
         $artefacto = Artefacto::findOrFail($requestData['idArtefacto']);
-        $inspeccion = Inspeccione::where('idArtefacto',$requestData['idArtefacto'])->first();
+        $inspeccion = Inspeccione::where('idArtefacto', $requestData['idArtefacto'])->first();
         $tipo = Tipo::findOrFail($artefacto['idTipo']);
         $servicio = servicio::findOrFail($artefacto['idServicio']);
         $material = Material::findOrFail($artefacto['idMaterial']);
         //$usuario = Usuario::where('id',Auth::user()->id);
         //$id=$artefacto['idBaseOperativa'];
         $basesoperativa = BasesOperativa::findOrFail($artefacto['idBaseOperativa']);
-        
-        $motor = Motore::where('idArtefacto',$artefacto['idBaseOperativa'])->first();
-        $datoAdicional = datosAdicionale::where('idArtefacto',$artefacto['id'])->first();
+
+        $motor = Motore::where('idArtefacto', $artefacto['idBaseOperativa'])->first();
+        $datoAdicional = datosAdicionale::where('idArtefacto', $artefacto['id'])->first();
         //dd($basesoperativa);
-        $cuenca = Cuenca::where('id',$basesoperativa['idCuenca'])->first();
+        $cuenca = Cuenca::where('id', $basesoperativa['idCuenca'])->first();
         //sdd($cuenca);
         //Proceso para añadir 1 al control de numeros de registro por cuenca
-        $numeroc = Certificacione::where('id',$cuenca['id'])->first();
+        $numeroc = Certificacione::where('id', $cuenca['id'])->first();
         //Configuración de tiempos de vencimiento
         $fechaActual = date('Y-m-d');
         $fechaActualTimestamp = strtotime($fechaActual);
@@ -543,14 +554,24 @@ class PerfilesController extends Controller
         //"num:{"id":2,"created_at":"2024-05-16T16:27:39.000000Z","updated_at":"2024-05-16T16:27:39.000000Z","idCuenca":2,"numero":1}" 
         //dd('aux:'.$aux);
         //"aux:{"id":2,"created_at":"2024-05-16T16:27:39.000000Z","updated_at":"2024-05-16T16:27:39.000000Z","idCuenca":2,"numero":1}"
-        
+
         $certificacion['fechaEmision'] = $this->mostrarFechaFormateada($certificacion['fechaEmision']);
         $certificacion['fechaVencimiento'] = $this->mostrarFechaFormateada($fechaVencimiento);
-        $vista = \View::make('admin.certificadospdf.certificarseguridad', compact('propietario', 'tipo', 'material', 'artefacto', 'basesoperativa', 'cuenca',
-        'certificacion','inspeccion','motor', 'datoAdicional'))->render();
+        $vista = \View::make('admin.certificadospdf.certificarseguridad', compact(
+            'propietario',
+            'tipo',
+            'material',
+            'artefacto',
+            'basesoperativa',
+            'cuenca',
+            'certificacion',
+            'inspeccion',
+            'motor',
+            'datoAdicional'
+        ))->render();
         $pdf = \App::make('dompdf.wrapper');
         $pdf->loadHTML($vista);
-        return $pdf->stream('seguridad'.$requestCertificado['nreg'].'.pdf');
+        return $pdf->stream('seguridad' . $requestCertificado['nreg'] . '.pdf');
     }
     public function imprimir_certificado_francobordo(Request $request)
     { //muestro un pdf
@@ -562,21 +583,21 @@ class PerfilesController extends Controller
         $propietario = Propietario::findOrFail($requestData['idPropietario']);
         //dd($propietario);
         $artefacto = Artefacto::findOrFail($requestData['idArtefacto']);
-        $inspeccion = Inspeccione::where('idArtefacto',$requestData['idArtefacto'])->first();
+        $inspeccion = Inspeccione::where('idArtefacto', $requestData['idArtefacto'])->first();
         $tipo = Tipo::findOrFail($artefacto['idTipo']);
         $servicio = servicio::findOrFail($artefacto['idServicio']);
         $material = Material::findOrFail($artefacto['idMaterial']);
         //$usuario = Usuario::where('id',Auth::user()->id);
         //$id=$artefacto['idBaseOperativa'];
         $basesoperativa = BasesOperativa::findOrFail($artefacto['idBaseOperativa']);
-        
-        $motor = Motore::where('idArtefacto',$artefacto['idBaseOperativa'])->first();
-        $datoAdicional = datosAdicionale::where('idArtefacto',$artefacto['id'])->first();
+
+        $motor = Motore::where('idArtefacto', $artefacto['idBaseOperativa'])->first();
+        $datoAdicional = datosAdicionale::where('idArtefacto', $artefacto['id'])->first();
         //dd($basesoperativa);
-        $cuenca = Cuenca::where('id',$basesoperativa['idCuenca'])->first();
+        $cuenca = Cuenca::where('id', $basesoperativa['idCuenca'])->first();
         //sdd($cuenca);
         //Proceso para añadir 1 al control de numeros de registro por cuenca
-        $numeroc = Certificacione::where('id',$cuenca['id'])->first();
+        $numeroc = Certificacione::where('id', $cuenca['id'])->first();
         //Configuración de tiempos de vencimiento
         $fechaActual = date('Y-m-d');
         $fechaActualTimestamp = strtotime($fechaActual);
@@ -616,14 +637,24 @@ class PerfilesController extends Controller
         //"num:{"id":2,"created_at":"2024-05-16T16:27:39.000000Z","updated_at":"2024-05-16T16:27:39.000000Z","idCuenca":2,"numero":1}" 
         //dd('aux:'.$aux);
         //"aux:{"id":2,"created_at":"2024-05-16T16:27:39.000000Z","updated_at":"2024-05-16T16:27:39.000000Z","idCuenca":2,"numero":1}"
-        
+
         $certificacion['fechaEmision'] = $this->mostrarFechaFormateada($certificacion['fechaEmision']);
         $certificacion['fechaVencimiento'] = $this->mostrarFechaFormateada($fechaVencimiento);
-       $vista = \View::make('admin.certificadospdf.certificarfrancobordo', compact('propietario', 'tipo', 'material', 'artefacto', 'basesoperativa', 'cuenca',
-       'certificacion','inspeccion','motor', 'datoAdicional'))->render();
-       $pdf = \App::make('dompdf.wrapper');
-       $pdf->loadHTML($vista);
-       return $pdf->stream('francobordo'.$requestCertificado['nreg'].'.pdf');
+        $vista = \View::make('admin.certificadospdf.certificarfrancobordo', compact(
+            'propietario',
+            'tipo',
+            'material',
+            'artefacto',
+            'basesoperativa',
+            'cuenca',
+            'certificacion',
+            'inspeccion',
+            'motor',
+            'datoAdicional'
+        ))->render();
+        $pdf = \App::make('dompdf.wrapper');
+        $pdf->loadHTML($vista);
+        return $pdf->stream('francobordo' . $requestCertificado['nreg'] . '.pdf');
     }
     public function imprimir_certificado_arqueo(Request $request)
     { //muestro un pdf
@@ -635,21 +666,21 @@ class PerfilesController extends Controller
         $propietario = Propietario::findOrFail($requestData['idPropietario']);
         //dd($propietario);
         $artefacto = Artefacto::findOrFail($requestData['idArtefacto']);
-        $inspeccion = Inspeccione::where('idArtefacto',$requestData['idArtefacto'])->first();
+        $inspeccion = Inspeccione::where('idArtefacto', $requestData['idArtefacto'])->first();
         $tipo = Tipo::findOrFail($artefacto['idTipo']);
         $servicio = servicio::findOrFail($artefacto['idServicio']);
         $material = Material::findOrFail($artefacto['idMaterial']);
         //$usuario = Usuario::where('id',Auth::user()->id);
         //$id=$artefacto['idBaseOperativa'];
         $basesoperativa = BasesOperativa::findOrFail($artefacto['idBaseOperativa']);
-        
-        $motor = Motore::where('idArtefacto',$artefacto['idBaseOperativa'])->first();
-        $datoAdicional = datosAdicionale::where('idArtefacto',$artefacto['id'])->first();
+
+        $motor = Motore::where('idArtefacto', $artefacto['idBaseOperativa'])->first();
+        $datoAdicional = datosAdicionale::where('idArtefacto', $artefacto['id'])->first();
         //dd($basesoperativa);
-        $cuenca = Cuenca::where('id',$basesoperativa['idCuenca'])->first();
+        $cuenca = Cuenca::where('id', $basesoperativa['idCuenca'])->first();
         //sdd($cuenca);
         //Proceso para añadir 1 al control de numeros de registro por cuenca
-        $numeroc = Certificacione::where('id',$cuenca['id'])->first();
+        $numeroc = Certificacione::where('id', $cuenca['id'])->first();
         //Configuración de tiempos de vencimiento
         $fechaActual = date('Y-m-d');
         $fechaActualTimestamp = strtotime($fechaActual);
@@ -689,14 +720,24 @@ class PerfilesController extends Controller
         //"num:{"id":2,"created_at":"2024-05-16T16:27:39.000000Z","updated_at":"2024-05-16T16:27:39.000000Z","idCuenca":2,"numero":1}" 
         //dd('aux:'.$aux);
         //"aux:{"id":2,"created_at":"2024-05-16T16:27:39.000000Z","updated_at":"2024-05-16T16:27:39.000000Z","idCuenca":2,"numero":1}"
-        
+
         $certificacion['fechaEmision'] = $this->mostrarFechaFormateada($certificacion['fechaEmision']);
         $certificacion['fechaVencimiento'] = $this->mostrarFechaFormateada($fechaVencimiento);
-        $vista = \View::make('admin.certificadospdf.certificararqueo', compact('propietario', 'tipo', 'material', 'artefacto', 'basesoperativa', 'cuenca',
-        'certificacion','inspeccion','motor', 'datoAdicional'))->render();
+        $vista = \View::make('admin.certificadospdf.certificararqueo', compact(
+            'propietario',
+            'tipo',
+            'material',
+            'artefacto',
+            'basesoperativa',
+            'cuenca',
+            'certificacion',
+            'inspeccion',
+            'motor',
+            'datoAdicional'
+        ))->render();
         $pdf = \App::make('dompdf.wrapper');
         $pdf->loadHTML($vista);
-        return $pdf->stream('arqueo'.$requestCertificado['nreg'].'.pdf');
+        return $pdf->stream('arqueo' . $requestCertificado['nreg'] . '.pdf');
     }
 
     /**
