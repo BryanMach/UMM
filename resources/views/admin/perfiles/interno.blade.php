@@ -231,30 +231,29 @@
                                     <td>{{ $item->propietarios->nombre }} {{ $item->propietarios->identificador }}</td>
                                     <td>{{ $item->artefactos->nombre }}-{{ $item->artefactos->matricula }}
                                     </td>
-                                    @foreach($item->artefactos->certificado as $certificado)
-                                    @if($certificado->tipoC==1)
-                                    <td>
+                                    @foreach ($item->artefactos->certificado as $certificado)
+                                        @if ($certificado->tipoC == 1)
+                                            <td>
                                                 {{ $certificado->nreg }}
-                                            
-                                        
-                                    </td>
-                                    <td>{{ $certificado->fechaVencimiento }}</td>
-                                    @endif
+
+
+                                            </td>
+                                            <td>{{ $certificado->fechaVencimiento }}</td>
+                                        @endif
                                     @endforeach
                                     <td><a href="{{ url('/admin/lista-propietarios/' . $item->id) }}"
-                                        title="Ver ListaPropietario"><button class="btn btn-info btn-sm"><i
-                                                class="fa fa-eye" aria-hidden="true"></i> Ver</button></a>
+                                            title="Ver ListaPropietario"><button class="btn btn-info btn-sm"><i
+                                                    class="fa fa-eye" aria-hidden="true"></i> Ver</button></a>
                                     </td>
                                 </tr>
                             @endforeach
                         </tbody>
                     </table>
                 </div>
-                <h1>Cuenca del Amazonas</h1>
+                <h1>Cuenca Lacustre</h1>
                 <div style="overflow-y: auto; max-height: 400px;">
                     <table class="table table-bordered mt-4" style="width: 100%;">
-
-                        <thead>
+                        <thead style="position: sticky; top: 0; background-color: white; z-index: 1000;">
                             <tr>
                                 <th scope="col">PROPIETARIO</th>
                                 <th scope="col">EMBARCACION</th>
@@ -266,28 +265,38 @@
                         <tbody>
                             @foreach ($listaA as $item)
                                 <tr>
-                                    <td>{{ $item->propietarios->nombre }} {{ $item->propietarios->identificador }}</td>
-                                    <td>{{ $item->artefactos->nombre }}-{{ $item->artefactos->matricula }}
+                                    <td>{{ $item->propietarios->nombre }} {{ $item->propietarios->identificador }}
                                     </td>
-                                    @foreach($item->artefactos->certificado as $certificado)
-                                    @if($certificado->tipoC==1)
-                                    <td>
-                                                {{ $certificado->nreg }}
-                                            
-                                        
-                                    </td>
-                                    <td>{{ $certificado->fechaVencimiento }}</td>
-                                    @endif
+                                    <td>{{ $item->artefactos->nombre }}-{{ $item->artefactos->matricula }}</td>
+                                    @php
+                                        $nreg = 'N/A';
+                                        $fechaVencimiento = 'N/A';
+                                    @endphp
+                                    @foreach ($item->artefactos->certificado as $certificado)
+                                        @if ($certificado->tipoC == 1)
+                                            @php
+                                                $nreg = $certificado->nreg ?? 'N/A';
+                                                $fechaVencimiento = $certificado->fechaVencimiento ?? 'N/A';
+                                            @endphp
+                                        @endif
                                     @endforeach
-                                    <td><a href="{{ url('/admin/lista-propietarios/' . $item->id) }}"
-                                        title="Ver ListaPropietario"><button class="btn btn-info btn-sm"><i
-                                                class="fa fa-eye" aria-hidden="true"></i> Ver</button></a>
+                                    <td>{{ $nreg }}</td>
+                                    <td>{{ $fechaVencimiento }}</td>
+                                    <td>
+                                        <a href="{{ url('/admin/lista-propietarios/' . $item->id) }}"
+                                            title="Ver ListaPropietario">
+                                            <button class="btn btn-info btn-sm">
+                                                <i class="fa fa-eye" aria-hidden="true"></i> Ver
+                                            </button>
+                                        </a>
                                     </td>
                                 </tr>
                             @endforeach
                         </tbody>
                     </table>
                 </div>
+
+
                 <h1>Cuenca De la Plata</h1>
                 <div style="overflow-y: auto; max-height: 400px;">
                     <table class="table table-bordered mt-4" style="width: 100%;">
@@ -303,22 +312,23 @@
                         <tbody>
                             @foreach ($listaP as $item)
                                 <tr>
-                                    <td>{{ $item->propietarios->nombre }} {{ $item->propietarios->identificador }}</td>
+                                    <td>{{ $item->propietarios->nombre }} {{ $item->propietarios->identificador }}
+                                    </td>
                                     <td>{{ $item->artefactos->nombre }}-{{ $item->artefactos->matricula }}
                                     </td>
-                                    @foreach($item->artefactos->certificado as $certificado)
-                                    @if($certificado->tipoC==1)
-                                    <td>
+                                    @foreach ($item->artefactos->certificado as $certificado)
+                                        @if ($certificado->tipoC == 1)
+                                            <td>
                                                 {{ $certificado->nreg }}
-                                            
-                                        
-                                    </td>
-                                    <td>{{ $certificado->fechaVencimiento }}</td>
-                                    @endif
+
+
+                                            </td>
+                                            <td>{{ $certificado->fechaVencimiento }}</td>
+                                        @endif
                                     @endforeach
                                     <td><a href="{{ url('/admin/lista-propietarios/' . $item->id) }}"
-                                        title="Ver ListaPropietario"><button class="btn btn-info btn-sm"><i
-                                                class="fa fa-eye" aria-hidden="true"></i> Ver</button></a>
+                                            title="Ver ListaPropietario"><button class="btn btn-info btn-sm"><i
+                                                    class="fa fa-eye" aria-hidden="true"></i> Ver</button></a>
                                     </td>
                                 </tr>
                             @endforeach

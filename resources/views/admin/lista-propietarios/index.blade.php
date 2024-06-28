@@ -106,7 +106,7 @@
               <a href="{{ url('/admin/bases-operativas') }}" class="active">BASES DE OPERACIONES</a>
               <h5 class="px-3 pt-3">REGISTRO DE EMBARCACIONES</h5>
               <a href="{{ url('/admin/propietario') }}">PROPIETARIOS</a>
-              <a href="{{ url('/admin/artefactos') }}">ARTEFACTOS</a>
+              <a href="{{ url('/admin/artefactos') }}">ARTEFACTOS NAVALES</a>
               <a href="{{ url('/admin/lista-propietarios') }}">LISTAS DE PROPIETARIOS DE EMBARCACIONES</a>
               {{-- <a href="{{ url('/admin/') }}imprimir">Certificaciones</a> --}}
               {{-- <a href="{{ url('/admin/') }}imprimir">Alertas de Vencimiento</a> --}}
@@ -118,7 +118,7 @@
           <div class="sidebar-content">
               <h5 class="px-3 pt-3">REGISTROS DE EMBARCACIONES</h5>
               <a href="{{ url('/admin/propietario') }}">PROPIETARIOS</a>
-              <a href="{{ url('/admin/artefactos') }}">ARTEFACTOS</a>
+              <a href="{{ url('/admin/artefactos') }}">ARTEFACTOS NAVALES</a>
               <a href="{{ url('/admin/lista-propietarios') }}">LISTAS DE PROPIETARIOS DE EMBARCACIONES</a>
               {{-- <a href="{{ url('/admin/') }}imprimir">Certificaciones</a> --}}
               {{-- <a href="{{ url('/admin/') }}imprimir">Alertas de Vencimiento</a> --}}
@@ -130,7 +130,7 @@
           <div class="sidebar-content">
               <h5 class="px-3 pt-3">REGISTROS DE EMBARCACIONES</h5>
               <a href="{{ url('/admin/propietario') }}">PROPIETARIOS</a>
-              <a href="{{ url('/admin/artefactos') }}">ARTEFACTOS</a>
+              <a href="{{ url('/admin/artefactos') }}">ARTEFACTOS NAVALES</a>
               <a href="{{ url('/admin/lista-propietarios') }}">LISTAS DE PROPIETARIOS DE EMBARCACIONES</a>
           </div>
       </div>
@@ -162,7 +162,7 @@
                           @endswitch
                           <a href="{{ url('/admin/lista-propietarios/create') }}" class="btn btn-success btn-sm"
                               title="Agregar nuevo ListaPropietario">
-                              <i class="fa fa-plus" aria-hidden="true"></i> Agregar
+                              <i class="fa fa-plus" aria-hidden="true"></i> AGREGAR
                           </a>
 
                           <form method="GET" action="{{ url('/admin/lista-propietarios') }}" accept-charset="UTF-8"
@@ -185,9 +185,9 @@
                                   <thead>
                                       <tr>
                                           <th>Nº</th>
-                                          <th>CI</th>
-                                          <th>PROPIETARIOS</th>
-                                          <th>ARTEFACTO NAVAL</th>
+                                          <th>PROPIETARIO</th>
+                                          <th>NOMBRE DE EMBARCACION</th>
+                                          <th>NUMERO DE REGISTRO</th>
                                           <th>OPCIONES</th>
                                       </tr>
                                   </thead>
@@ -197,13 +197,11 @@
                                           <tr>
                                               <td>{{ $loop->iteration }}</td>
 
-                                              <td><a
-                                                      href="{{ url('/admin/propietario/' . $item->idPropietario) }}">{{ $item->propietarios->identificador }}</a>
+                                              <td> {{ $item->propietarios->nombre }}
                                               </td>
-                                              <td> {{ $item->propietarios->nombre }}</td>
-
-                                              <td><a href="{{ url('/admin/artefactos/' . $item->idArtefacto) }}">{{ $item->artefactos->matricula }}
-                                                      {{ $item->artefactos->nombre }}</a>
+                                              <td>{{ $item->artefactos->nombre }}
+                                              </td>
+                                              <td>{{ $item->artefactos->matricula }}
                                               </td>
                                               <td>
                                                   <a href="{{ url('/admin/lista-propietarios/' . $item->id) }}"
@@ -212,7 +210,7 @@
                                                   <a href="{{ url('/admin/lista-propietarios/' . $item->id . '/edit') }}"
                                                       title="Editar ListaPropietario"><button
                                                           class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o"
-                                                              aria-hidden="true"></i> Editar</button></a>
+                                                              aria-hidden="true"></i> EDITAR</button></a>
 
                                                   {{-- @if ($nivel) --}}
                                                   <form method="POST"

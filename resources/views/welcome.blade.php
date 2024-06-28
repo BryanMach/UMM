@@ -132,6 +132,7 @@
         margin: auto;
         text-align: center;
         border-radius: 40px;
+        margin-top: 13%;
     }
 
     .inicio .contenido-banner h1 {
@@ -518,8 +519,8 @@
     .grafico-seccion {
         margin-top: 20px;
         text-align: center;
-        margin-right: 10%;
         margin-top: 5%;
+        margin-left: 5%;
     }
 
     #graficoTorta {
@@ -875,25 +876,9 @@
                     <li class="text-center"><a href="#curriculum" onclick="seleccionar()">EMBARCACIONES CERTIFICADAS</a>
                     </li>
                     <li class="text-center"><a href="#contacto" onclick="seleccionar()">CONTACTO</a></li>
-                    <li class="text-center"><a href="http://localhost/UMM/public/login" style="margin-left: 150%">
-                            @if (Route::has('login'))
-                                <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
-                                    {{-- @php
-                                        use App\Models\Usuarios;
+                    <li class="text-center"><a href="http://localhost/UMM/public/login" style="margin-left: 150%"
+                            class="text-sm text-gray-700 dark:text-gray-500 underline">INGRESAR</a>
 
-                                        $usuarios = Usuarios::findOrFail(Auth::user()->id);
-                                        dd($usuarios);
-                                    @endphp --}}
-
-                                    @auth
-                                        <a href="{{ url('/dashboard') }}"
-                                            class="text-sm text-gray-700 dark:text-gray-500 underline">Panel</a>
-                                    @else
-                                        <a href="{{ route('login') }}"
-                                            class="text-sm text-gray-700 dark:text-gray-500 underline">INGRESAR</a>
-                                    @endauth
-                                </div>
-                            @endif
                     </li>
                 </ul>
             </nav>
@@ -928,7 +913,7 @@
     <!-- SECCION SOBRE MI -->
     <section id="sobremi" class="sobremi">
         <div class="contenido-seccion">
-            <h2>Quienes Somos</h2>
+            <h2>QUIENES SOMOS</h2>
             <div class="fila">
                 <div class="col izquierda">
                     <h3>MISIÓN</h3>
@@ -962,26 +947,21 @@
     <!-- SECCION SKILLS -->
     <section id="skills" class="curriculum">
         <div class="contenido-seccion">
-            <h2>Servicios</h2>
+            <h2>SERVICIOS</h2>
             <div class="fila">
                 <div class="col izquierda" style="margin-left: 15%">
                     <button class="toggleButton">
                         <i class="icon">🔍</i>
-                        <span class="buttonText">Mostrar más</span>
+                        <span class="buttonText">REGISTRO PERSONAL MERCANTE</span>
                     </button>
                     <div class="toggleText hidden" style="  margin-bottom: 20px;">
-                        La unidad marina mercante es la entidad responsable de expedir los carnets
-                        de habilitacion para el personal que trabaja en el ámbito maritimo, fluvial
-                        y lacustre. Estos carnets son documentos esenciales que certifican la
-                        identidad y competencia del personal mercante y sus embarcaciones,
-                        garantizando así que cumplen con los requisitos y estándares necesarios para
-                        desempeñar sus funciones a bordo de los buques, embarcaciones y artefactos
-                        navales.
+                        Registro, carnetización y capacitación del personal mercante: Emite el carnet de tripulante
+                        para que puedan navegar sin restricciones en todos los espejos de agua en el estado.
                     </div>
 
                     <button class="toggleButton">
                         <i class="icon">🔍</i>
-                        <span class="buttonText">Mostrar más</span>
+                        <span class="buttonText">EMISION DE LIBRETAS</span>
                     </button>
                     <div class="toggleText hidden">
                         La unidad marina mercante es la entidad responsable de expedir los carnets
@@ -992,38 +972,32 @@
                         desempeñar sus funciones a bordo de los buques, embarcaciones y artefactos
                         navales.
                     </div>
-                    {{-- <div class="item izq">
-                        <span class="casa">Carnetizacíon</span>
-                        <p>La unidad marina mercante es la entidad responsable de expedir los carnets
-                            de habilitacion para el personal que trabaja en el ámbito maritimo, fluvial
-                            y lacustre. Estos carnets son documentos esenciales que certifican la
-                            identidad y competencia del personal mercante y sus embarcaciones,
-                            garantizando así que cumplen con los requisitos y estándares necesarios para
-                            desempeñar sus funciones a bordo de los buques, embarcaciones y artefactos
-                            navales.</p>
-                        <div class="conectori">
-                            <div class="circuloi"></div>
-                        </div>
-                    </div> --}}
+                    <button class="toggleButton">
+                        <i class="icon">🔍</i>
+                        <span class="buttonText">REGISTRO DE: </span>
+                    </button>
+                    <div class="toggleText hidden">
+                        EMBARCACIONES <br>
+                        LINEAS NAVIERAS <br>
+                        AGENCIAS NAVIERAS <br>
+                        ASTILLEROS NAVALES <br>
+                        CARPETAS DE RIVERA <br>
+
+                    </div>
                 </div>
 
                 <div class="col derecha">
                     <button class="toggleButton">
                         <i class="icon">🔍</i>
-                        <span class="buttonText">Mostrar más</span>
+                        <span class="buttonText">REFRENDO DE TITULOS</span>
                     </button>
                     <div class="toggleText hidden" style="  margin-bottom: 20px;">
-                        La unidad marina mercante es la entidad responsable de expedir los carnets
-                        de habilitacion para el personal que trabaja en el ámbito maritimo, fluvial
-                        y lacustre. Estos carnets son documentos esenciales que certifican la
-                        identidad y competencia del personal mercante y sus embarcaciones,
-                        garantizando así que cumplen con los requisitos y estándares necesarios para
-                        desempeñar sus funciones a bordo de los buques, embarcaciones y artefactos
-                        navales.
+                        La unidad marina mercante es la entidad responsable de refrendar Títulos y Certificados del
+                        personal Mercante otorgados en el extranjero.
                     </div>
                     <button class="toggleButton">
                         <i class="icon">🔍</i>
-                        <span class="buttonText">Mostrar más</span>
+                        <span class="buttonText">INSPECCIONES</span>
                     </button>
                     <div class="toggleText hidden">
                         La unidad marina mercante es la entidad responsable de expedir los carnets
@@ -1034,18 +1008,6 @@
                         desempeñar sus funciones a bordo de los buques, embarcaciones y artefactos
                         navales.
                     </div>
-                    {{-- <div class="item der">
-                        <span class="casa">Certificaciones</span><br>
-                        <p>La unidad marina mercante es la entidad responsable de realizar el registro de buques,
-                            EMBARCACIONES y artefactos navales, emitiendo los correspondientes Certificados de Registro
-                            y Estatutarios en el ámbito nacional e internacional. Asi mismo emite certificados
-                            Estatutarios de
-                            privilegios marítimos, libretas de embarco y otros de conformidad a
-                            disposiciones legales vigentes</p>
-                        <div class="conectord">
-                            <div class="circulod"></div>
-                        </div>
-                    </div> --}}
                 </div>
             </div>
         </div>
@@ -1054,13 +1016,13 @@
     <!-- SECCION CURRICULUM -->
     <section class="skills" id="curriculum">
         <div class="contenido-seccion">
-            <h2>Embarcaciones certificadas</h2>
+            <h2>EMBARCACIONES CERTIFICADAS</h2>
             <table class="table table-md table-dark text-center">
                 <thead>
                     <tr>
-                        <th scope="col">Embarcacion</th>
+                        <th scope="col">EMBARCACIONES</th>
                         <th scope="col">NÚMERO DE REGISTRO</th>
-                        <th scope="col">Cuenca</th>
+                        <th scope="col">CUENCA</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -1076,7 +1038,7 @@
                                             @break
 
                                             @case('2')
-                                                p-{{ $certificado->nreg }}
+                                                P-{{ $certificado->nreg }}
                                             @break
 
                                             @case('3')
@@ -1085,9 +1047,6 @@
 
                                             @default
                                         @endswitch
-
-
-
                                     </td>
                                 @endif
                             @endforeach
@@ -1110,9 +1069,7 @@
                 <div class="fila">
                     <!-- Mapa:'ci', 'cargo', 'grado', 'nombres', 'apellidos', 'contacto', 'foto', 'descripcion', 'vigencia' -->
                     <div class="col">
-                        <div style="width: 280px; /* Ajusta el ancho según sea necesario */">
-                            {{-- <img src="{{ asset('images/img.jpg') }}" alt=""
-                                style="width: 250px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); border-radius: 8px;"> --}}
+                        <div style="width: 280px;">
                         </div>
 
                         <div class="info">
@@ -1122,23 +1079,10 @@
                                     <i class="fas fa-address-card"></i>
                                     {{ $item->grado }} {{ $item->nombres }} {{ $item->apellidos }}
                                 </li>
-                                {{--    <li>
-                                    <i class="fas fa-portrait"></i>
-                                    Desempeñandose dentro de la Unidad de Marina Mercante como:
-                                    {{ $item->cargo->cargo }}
-                                </li> --}}
                                 <li>
                                     <i class="fa-solid fa-mobile-screen"></i>
-                                    Contacto: {{ $item->contacto }} {{-- <a
-                                        href="https://wa.me/{{ str_replace(' ', '', $item->contacto) }}"
-                                        target="_blank">
-                                        <i class="fab fa-whatsapp-square"></i>
-                                    </a> --}}
+                                    Contacto: {{ $item->contacto }}
                                 </li>
-                                {{--    <li>
-                                    {{-- <i class="fa-solid fa-envelope"></i>
-                                    {{ $item->descripcion }}
-                                </li> --}}
                             </ul>
 
 
@@ -1249,11 +1193,11 @@
             var graficoTorta = new Chart(ctx, {
                 type: 'pie',
                 data: {
-                    labels: ['Cuenca Lacustre', 'Cuenca De la plata', 'Cuenca Amazonas'],
+                    labels: ['Cuenca Lacustre', 'Cuenca Del Plata', 'Cuenca Amazonas'],
                     datasets: [{
 
-                        data: [counts['LACUSTRE'], counts['DE LA PLATA'], counts[
-                            'AMAZÓNICA']], // valores aqui debo modificar
+                        data: [counts['LACUSTRE'], counts['DEL PLATA'], counts[
+                            'AMAZONICA']], // valores aqui debo modificar
                         backgroundColor: [
                             'rgba(225, 46, 10, 0.5)',
                             'rgba(224, 238, 14, 0.5)',

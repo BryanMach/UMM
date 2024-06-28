@@ -148,7 +148,7 @@
                                   ATRAS</button></a>
                           <a href="{{ url('/admin/propietario/' . $propietario->id . '/edit') }}"
                               title="Editar Propietario"><button class="btn btn-primary btn-sm"><i
-                                      class="fa fa-pencil-square-o" aria-hidden="true"></i> Editar</button></a>
+                                      class="fa fa-pencil-square-o" aria-hidden="true"></i> EDITAR</button></a>
 
                           <form method="POST" action="{{ url('admin/propietario' . '/' . $propietario->id) }}"
                               accept-charset="UTF-8" style="display:inline">

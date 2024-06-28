@@ -243,10 +243,14 @@
                 <tbody>
                     <tr>
                         <td>{{ $material->material }}</td>
-                        <td>{{ $datoAdicional->altura }} MTS. con {{ $datoAdicional->peso }} KGS.</td>
-                        <td>{{ $datoAdicional->mercPelig }}</td>
-                        <td>{{ $datoAdicional->maxPasajeros }}</td>
+                        <td>
+                            {{ $datoAdicional->altura ?? 'N/A' }} MTS. con
+                            {{ $datoAdicional->peso ?? 'N/A' }} KGS.
+                        </td>
+                        <td>{{ $datoAdicional->mercPelig ?? 'N/A' }}</td>
+                        <td>{{ $datoAdicional->maxPasajeros ?? 'N/A' }}</td>
                     </tr>
+
                 </tbody>
             </table>
         </div>

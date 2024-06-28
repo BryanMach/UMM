@@ -130,7 +130,7 @@
           <div class="sidebar-content">
               <h5 class="px-3 pt-3">REGISTROS DE EMBARCACIONES</h5>
               <a href="{{ url('/admin/propietario') }}">PROPIETARIOS</a>
-              <a href="{{ url('/admin/artefactos') }}">ARTEFACTOS</a>
+              <a href="{{ url('/admin/artefactos') }}">ARTEFACTOS NAVALES</a>
               <a href="{{ url('/admin/lista-propietarios') }}">LISTAS DE PROPIETARIOS DE EMBARCACIONES</a>
           </div>
       </div>
@@ -163,7 +163,7 @@
                           @if ($nivel != 4)
                               <a href="{{ url('/admin/propietario/create') }}" class="btn btn-success btn-sm"
                                   title="Agregar nuevo Propietario">
-                                  <i class="fa fa-plus" aria-hidden="true"></i> Agregar
+                                  <i class="fa fa-plus" aria-hidden="true"></i> AGREGAR
                               </a>
                           @endif
                           <form method="GET" action="{{ url('/admin/propietario') }}" accept-charset="UTF-8"
@@ -210,7 +210,7 @@
                                                   <a href="{{ url('/admin/propietario/' . $item->id . '/edit') }}"
                                                       title="Editar Propietario"><button class="btn btn-primary btn-sm"><i
                                                               class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                                                          Editar</button></a>
+                                                          EDITAR</button></a>
                                                   @if ($nivel != 4)
                                                       <form method="POST"
                                                           action="{{ url('/admin/propietario' . '/' . $item->id) }}"

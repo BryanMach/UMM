@@ -105,7 +105,7 @@
 </head>
 
 <body>
-    <!--compact('vista','personal','usuario','perfil'));
+    <!--compact('vista','personal','usuario','per edfil'));
         'ci', 'cargo', 'grado', 'nombres', 'apellidos', 'contacto', 'foto', 'descripcion', 'vigencia'
     -->
     <div class="col-md-3 sidebar text-center" style="position: fixed;">

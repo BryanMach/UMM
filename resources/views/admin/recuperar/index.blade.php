@@ -172,7 +172,7 @@
                       @endswitch
                       <a href="{{ url('/admin/recuperar/create') }}" class="btn btn-success btn-sm"
                           title="Agregar nuevo Recuperar">
-                          <i class="fa fa-plus" aria-hidden="true"></i> Agregar
+                          <i class="fa fa-plus" aria-hidden="true"></i> AGREGAR
                       </a>
 
                       <form method="GET" action="{{ url('/admin/recuperar') }}" accept-charset="UTF-8"

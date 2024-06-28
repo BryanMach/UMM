@@ -162,7 +162,7 @@
                           @endswitch
                           <a href="{{ url('/admin/datos-adicionales/create') }}" class="btn btn-success btn-sm"
                               title="Agregar nuevo datosAdicionale">
-                              <i class="fa fa-plus" aria-hidden="true"></i> Agregar
+                              <i class="fa fa-plus" aria-hidden="true"></i> AGREGAR
                           </a>
 
                           <form method="GET" action="{{ url('/admin/datos-adicionales') }}" accept-charset="UTF-8"

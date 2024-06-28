@@ -147,7 +147,7 @@
                                       class="fa fa-arrow-left" aria-hidden="true"></i> ATRAS</button></a>
                           <a href="{{ url('/admin/recuperar/' . $recuperar->id . '/edit') }}"
                               title="Editar Recuperar"><button class="btn btn-primary btn-sm"><i
-                                      class="fa fa-pencil-square-o" aria-hidden="true"></i> Editar</button></a>
+                                      class="fa fa-pencil-square-o" aria-hidden="true"></i> EDITAR</button></a>
 
                           <form method="POST" action="{{ url('admin/recuperar' . '/' . $recuperar->id) }}"
                               accept-charset="UTF-8" style="display:inline">

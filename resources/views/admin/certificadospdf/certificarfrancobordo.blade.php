@@ -152,103 +152,109 @@
                     </tr>
                     <tr>
                         <td>Embarcación nueva ( )</td>
-                        @if ($datoAdicional->cargaComb < 20)
-                            <td>Embarcación Autopropulsada (X)</td>
-                        @else
-                            <td>Embarcación Autopropulsada ( )</td>
-                        @endif
-                        @if ($datoAdicional->cargaComb == 11)
-                            <td>Tanque (X)</td>
-                        @else
-                            <td>Tanque ( )</td>
-                        @endif
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        @if ($datoAdicional->cargaComb == 12)
-                            <td>Cerrada (X)</td>
-                        @else
-                            <td>Cerrada ( )</td>
-                        @endif
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        @if ($datoAdicional->cargaComb == 13)
-                            <td>Abierta (X)</td>
-                        @else
-                            <td>Abierta ( )</td>
-                        @endif
-                    </tr>
-                    <tr>
-                        <td>Embarcación existente ( X )</td>
-                        @if ($datoAdicional->cargaComb > 20)
-                            <td>Embarcación Sin Propulsión (X)</td>
-                        @else
-                            <td>Embarcación Sin Propulsión ( )</td>
-                        @endif
-                        @if ($datoAdicional->cargaComb == 21)
-                            <td>Tanque (X)</td>
-                        @else
-                            <td>Tanque ( )</td>
-                        @endif
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        @if ($datoAdicional->cargaComb == 22)
-                            <td>Cerrada (X)</td>
-                        @else
-                            <td>Cerrada ( )</td>
-                        @endif
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        @if ($datoAdicional->cargaComb == 23)
-                            <td>Abierta (X)</td>
-                        @else
-                            <td>Abierta ( )</td>
-                        @endif
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+                        @isset($datoAdicional->cargaComb)
+                            @if ($datoAdicional->cargaComb < 20)
+                                <td>Embarcación Autopropulsada (X)</td>
+                            @else
+                                <td>Embarcación Autopropulsada (X)</td>
+                            @endif
+                            @if ($datoAdicional->cargaComb == 11)
+                                <td>Tanque (X)</td>
+                            @else
+                                <td>Tanque ( )</td>
+                            @endif
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            @isset($datoAdicional->cargaComb)
+                                @if ($datoAdicional->cargaComb == 12)
+                                    <td>Cerrada (X)</td>
+                                @else
+                                    <td>Cerrada ( )</td>
+                                @endif
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                @isset($datoAdicional->cargaComb)
+                                    @if ($datoAdicional->cargaComb == 13)
+                                        <td>Abierta (X)</td>
+                                    @else
+                                        <td>Abierta ( )</td>
+                                    @endif
+                                </tr>
+                                <tr>
+                                    <td>Embarcación existente ( X )</td>
+                                    @isset($datoAdicional->cargaComb)
+                                        @if ($datoAdicional->cargaComb > 20)
+                                            <td>Embarcación Sin Propulsión (X)</td>
+                                        @else
+                                            <td>Embarcación Sin Propulsión ( )</td>
+                                        @endif
+                                        @if ($datoAdicional->cargaComb == 21)
+                                            <td>Tanque (X)</td>
+                                        @else
+                                            <td>Tanque ( )</td>
+                                        @endif
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        @isset($datoAdional->cargaComb)
+                                            @if ($datoAdicional->cargaComb == 22)
+                                                <td>Cerrada (X)</td>
+                                            @else
+                                                <td>Cerrada ( )</td>
+                                            @endif
+                                        </tr>
+                                        <tr>
+                                            <td></td>
+                                            <td></td>
+                                            @isset($datoAdicional->cargaComb)
+                                                @if ($datoAdicional->cargaComb == 23)
+                                                    <td>Abierta (X)</td>
+                                                @else
+                                                    <td>Abierta ( )</td>
+                                                @endif
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
 
-        <p class="small-text">Francobordo asignado (FB) medido desde la línea de cubierta {{ $artefacto->francobordo }}
-            mm</p>
-        <div>
+                                <p class="small-text">Francobordo asignado (FB) medido desde la línea de cubierta {{ $artefacto->francobordo }}
+                                    mm</p>
+                                <div>
 
 
 
 
 
-        </div>
-        <div style="height: 220px;"></div>
+                                </div>
+                                <div style="height: 220px;"></div>
 
-        <div class="footer">
-            <p class="text-left">Se certifica que esta embarcación ha sido inspeccionada y que su francobordo ha sido
-                asignado y marcado
-                de acuerdo con lo dispuesto en el “Reglamento Nacional para la Asignación de Francobordo”, aprobado por
-                RM. 736. <br>
-                Este certificado, es emitido el <strong>{{ $certificacion->fechaEmision }}</strong>, es válido hasta el
-                <strong>{{ $certificacion->fechaVencimiento }}</strong><br>
+                                <div class="footer">
+                                    <p class="text-left">Se certifica que esta embarcación ha sido inspeccionada y que su francobordo ha sido
+                                        asignado y marcado
+                                        de acuerdo con lo dispuesto en el “Reglamento Nacional para la Asignación de Francobordo”, aprobado por
+                                        RM. 736. <br>
+                                        Este certificado, es emitido el <strong>{{ $certificacion->fechaEmision }}</strong>, es válido hasta el
+                                        <strong>{{ $certificacion->fechaVencimiento }}</strong><br>
 
-                Expedido en:
-                {{ $basesoperativa->departamento }}, BOLIVIA, {{ $certificacion->fechaEmision }}
-            </p>
-        </div>
-    </div>
+                                        Expedido en:
+                                        {{ $basesoperativa->departamento }}, BOLIVIA, {{ $certificacion->fechaEmision }}
+                                    </p>
+                                </div>
+                            </div>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-</body>
+                            <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+                            <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+                            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+                        </body>
 
-</html>
+                        </html>

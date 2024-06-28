@@ -162,7 +162,7 @@
                           @endswitch
                           <a href="{{ url('/admin/ubicacion/create') }}" class="btn btn-success btn-sm"
                               title="Add New ubicacion">
-                              <i class="fa fa-plus" aria-hidden="true"></i> Agregar
+                              <i class="fa fa-plus" aria-hidden="true"></i> AGREGAR
                           </a>
 
                           <form method="GET" action="{{ url('/admin/ubicacion') }}" accept-charset="UTF-8"

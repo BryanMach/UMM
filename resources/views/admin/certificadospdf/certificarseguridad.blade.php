@@ -94,26 +94,26 @@
                     <tbody>
                         <tr>
                             @php
-                            switch ($basesoperativa->idCuenca) {
-                                case '1':
-                                    # code....
-                                    $d='A';
-                                    break;
-                                case '2':
-                                    # code...
-                                    $d='P';
-                                    break;
-                                case '3':
-                                    # code...
-                                    $d='L';
-                                    break;
-                                default:
-                                    # code...
-                                    $d='N';
-                                    break;
-                            }
-                        @endphp
-                        <td class="text-center">{{$d}}-{{ $certificacion->nreg }}</td>
+                                switch ($basesoperativa->idCuenca) {
+                                    case '1':
+                                        # code....
+                                        $d = 'A';
+                                        break;
+                                    case '2':
+                                        # code...
+                                        $d = 'P';
+                                        break;
+                                    case '3':
+                                        # code...
+                                        $d = 'L';
+                                        break;
+                                    default:
+                                        # code...
+                                        $d = 'N';
+                                        break;
+                                }
+                            @endphp
+                            <td class="text-center">{{ $d }}-{{ $certificacion->nreg }}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -143,7 +143,7 @@
                     </tr>
                     <tr>
                         <td>LUGAR DE INSPECCIÓN:</td>
-                        
+
                         <td colspan="3"><strong>{{ $basesoperativa->baseOperativa }}</strong></td>
                     </tr>
                     <tr>
@@ -226,19 +226,19 @@
                 </thead>
                 <tbody>
                     @if ($motor == null)
-                    <tr>
-                        <td>-</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
+                        <tr>
+                            <td>-</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
                     @else
-                    <tr>
-                        <td>{{ $motor->tipo }} {{ $motor->marca }}</td>
-                        <td>{{ $motor->numero }}</td>
-                        <td>{{ $motor->potencia }}</td>
-                        <td> {{ $motor->nominalelectrica }} </td>
-                    </tr>
+                        <tr>
+                            <td>{{ $motor->tipo }} {{ $motor->marca }}</td>
+                            <td>{{ $motor->numero }}</td>
+                            <td>{{ $motor->potencia }}</td>
+                            <td> {{ $motor->nominalelectrica }} </td>
+                        </tr>
                     @endif
                 </tbody>
             </table>
@@ -256,9 +256,10 @@
                 <tbody>
                     <tr>
                         <td>{{ $material->material }}</td>
-                        <td>{{ $datoAdicional->altura }} MTS. con {{ $datoAdicional->peso }} KGS.</td>
-                        <td>{{ $datoAdicional->mercPelig }}</td>
-                        <td>{{ $datoAdicional->maxPasajeros }}</td>
+                        <td>{{ $datoAdicional->altura ?? 'N/A' }} MTS. con {{ $datoAdicional->peso ?? 'N/A' }} KGS.
+                        </td>
+                        <td>{{ $datoAdicional->mercPelig ?? 'N/A' }}</td>
+                        <td>{{ $datoAdicional->maxPasajeros ?? 'N/A' }}</td>
                     </tr>
                 </tbody>
             </table>
@@ -278,7 +279,7 @@
                 DEBIENDO SOMETERSE A LAS INSPECCIONES ANUALES OBLIGATORIAS EN LAS FECHAS ESTABLECIDAS POR LA AUTORIDAD
                 COMPETENTE.
             </p>
-            <p class="text-right"><strong>LUGAR Y FECHA:</strong> {{$basesoperativa->departamento}}, BOLIVIA, 
+            <p class="text-right"><strong>LUGAR Y FECHA:</strong> {{ $basesoperativa->departamento }}, BOLIVIA,
                 {{ $certificacion->fechaEmision }}</p>
         </div>
     </div>

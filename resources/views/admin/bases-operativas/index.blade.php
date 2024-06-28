@@ -100,13 +100,13 @@
               <h4>REGISTRO DE PERSONAL </h4>
           </div>
           <div class="sidebar-content">
-              <a href="{{ url('/admin/personal') }}">Personal</a>
-              <a href="{{ url('/admin/usuarios') }}">Usuarios</a>
-              <a href="{{ url('/admin/bases-operativas') }}" class="active">Bases de operaciones</a>
-              <h5 class="px-3 pt-3">Registros de embarcaciones</h5>
-              <a href="{{ url('/admin/propietario') }}">Propietarios</a>
-              <a href="{{ url('/admin/artefactos') }}">Artefactos</a>
-              <a href="{{ url('/admin/lista-propietarios') }}">Listas de propietarios de embarcaciones</a>
+              <a href="{{ url('/admin/personal') }}">PERSONAL</a>
+              <a href="{{ url('/admin/usuarios') }}">USUARIOS</a>
+              <a href="{{ url('/admin/bases-operativas') }}" class="active">BASES DE OPERACIONES</a>
+              <h5 class="px-3 pt-3">REGISTROS DE EMBARCACIONES</h5>
+              <a href="{{ url('/admin/propietario') }}">PROPIETARIOS</a>
+              <a href="{{ url('/admin/artefactos') }}">ARTEFACTOS NAVALES</a>
+              <a href="{{ url('/admin/lista-propietarios') }}">LISTAS DE PROPIETARIOS DE EMBARCACIONES</a>
               {{-- <a href="imprimir">Certificaciones</a> --}}
               {{-- <a href="imprimir">Alertas de Vencimiento</a> --}}
           </div>

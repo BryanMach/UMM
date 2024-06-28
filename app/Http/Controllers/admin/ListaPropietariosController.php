@@ -5,6 +5,8 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
 use App\Models\Artefacto;
+use App\Models\Certificacione;
+use App\Models\certificado;
 use App\Models\ListaPropietario;
 use App\Models\Propietario;
 use Illuminate\Http\Request;

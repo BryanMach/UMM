@@ -163,7 +163,7 @@
 
                       <a href="{{ url('/admin/personal/create') }}" class="btn btn-success btn-sm"
                           title="Agregar nuevo Personal">
-                          <i class="fa fa-plus" aria-hidden="true"></i> Agregar
+                          <i class="fa fa-plus" aria-hidden="true"></i> AGREGAR
                       </a>
 
 
@@ -207,7 +207,7 @@
                                               <a href="{{ url('/admin/personal/' . $item->id . '/edit') }}"
                                                   title="Editar Personal"><button class="btn btn-primary btn-sm"><i
                                                           class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                                                      Editar</button></a>
+                                                      EDITAR</button></a>
 
                                               <form method="POST"
                                                   action="{{ url('/admin/personal' . '/' . $item->id) }}"

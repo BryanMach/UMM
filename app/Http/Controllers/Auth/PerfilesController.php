@@ -45,7 +45,7 @@ class PerfilesController extends Controller
             ->select('artefactos.*')
             ->paginate($paginas);
         $bases = BasesOperativa::all();
-        $jefe = Personal::where('idCargo', 1)
+        $jefe = Personal::where('idCargo', 2)
             ->where('vigencia', 1)
             ->get();
         $cuencas = Cuenca::all();

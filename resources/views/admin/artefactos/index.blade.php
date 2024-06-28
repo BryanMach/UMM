@@ -106,7 +106,7 @@
               <a href="{{ url('/admin/bases-operativas') }}" class="active">BASES DE OPERACIONES</a>
               <h5 class="px-3 pt-3">REGISTRO DE EMBARCACIONES</h5>
               <a href="{{ url('/admin/propietario') }}">PROPIETARIOS</a>
-              <a href="{{ url('/admin/artefactos') }}">ARTEFACTOS</a>
+              <a href="{{ url('/admin/artefactos') }}">ARTEFACTOS NAVALES</a>
               <a href="{{ url('/admin/lista-propietarios') }}">LISTAS DE PROPIETARIOS DE EMBARCACIONES</a>
               {{-- <a href="{{ url('/admin/') }}imprimir">Certificaciones</a> --}}
               {{-- <a href="{{ url('/admin/') }}imprimir">Alertas de Vencimiento</a> --}}
@@ -118,7 +118,7 @@
           <div class="sidebar-content">
               <h5 class="px-3 pt-3">REGISTROS DE EMBARCACIONES</h5>
               <a href="{{ url('/admin/propietario') }}">PROPIETARIOS</a>
-              <a href="{{ url('/admin/artefactos') }}">ARTEFACTOS</a>
+              <a href="{{ url('/admin/artefactos') }}">ARTEFACTOS NAVALES</a>
               <a href="{{ url('/admin/lista-propietarios') }}">LISTAS DE PROPIETARIOS DE EMBARCACIONES</a>
               {{-- <a href="{{ url('/admin/') }}imprimir">Certificaciones</a> --}}
               {{-- <a href="{{ url('/admin/') }}imprimir">Alertas de Vencimiento</a> --}}
@@ -130,7 +130,7 @@
           <div class="sidebar-content">
               <h5 class="px-3 pt-3">REGISTROS DE EMBARCACIONES</h5>
               <a href="{{ url('/admin/propietario') }}">PROPIETARIOS</a>
-              <a href="{{ url('/admin/artefactos') }}">ARTEFACTOS</a>
+              <a href="{{ url('/admin/artefactos') }}">ARTEFACTOS NAVALES</a>
               <a href="{{ url('/admin/lista-propietarios') }}">LISTAS DE PROPIETARIOS DE EMBARCACIONES</a>
           </div>
       </div>
@@ -162,7 +162,7 @@
                           @endswitch
                           <a href="{{ url('/admin/artefactos/create') }}" class="btn btn-success btn-sm"
                               title="Agregar nuevo Artefacto">
-                              <i class="fa fa-plus" aria-hidden="true"></i> Agregar
+                              <i class="fa fa-plus" aria-hidden="true"></i> AGREGAR
                           </a>
                           <form method="GET" action="{{ url('/admin/artefactos') }}" accept-charset="UTF-8"
                               class="form-inline my-2 my-lg-0 float-right" role="search">
@@ -184,9 +184,10 @@
                                   <thead>
                                       <tr>
                                           <th>Nº</th>
-                                          <th>usuarios</th>
+                                          <th>USUARIO</th>
                                           <th>BASE DE OPERACIONES</th>
-                                          <th>MATRICULA</th>
+                                          <th>NOMBRE DE EMBARCACION</th>
+                                          <th>NUMERO DE REGISTRO</th>
                                           <th>OPCIONES</th>
                                       </tr>
                                   </thead>
@@ -198,6 +199,7 @@
                                                       href="{{ url('/admin/usuarios/' . $item->idUsuarios) }}">{{ $item->usuarios->usuario }}</a>
                                               </td>
                                               <td>{{ $item->baseoperativa->baseOperativa }}</td>
+                                              <td>{{ $item->nombre }}</td>
                                               <td>{{ $item->matricula }}</td>
                                               <td>
                                                   <a href="{{ url('/admin/artefactos/' . $item->id) }}"
@@ -206,7 +208,7 @@
                                                   <a href="{{ url('/admin/artefactos/' . $item->id . '/edit') }}"
                                                       title="Editar Artefacto"><button class="btn btn-primary btn-sm"><i
                                                               class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                                                          Editar</button></a>
+                                                          EDITAR</button></a>
 
                                                   <form method="POST"
                                                       action="{{ url('/admin/artefactos' . '/' . $item->id) }}"

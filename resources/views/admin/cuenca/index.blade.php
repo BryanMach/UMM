@@ -162,7 +162,7 @@
                           @endswitch
                           <a href="{{ url('/admin/cuenca/create') }}" class="btn btn-success btn-sm"
                               title="Agregar nuevo Cuenca">
-                              <i class="fa fa-plus" aria-hidden="true"></i> Agregar
+                              <i class="fa fa-plus" aria-hidden="true"></i> AGREGAR
                           </a>
 
                           <form method="GET" action="{{ url('/admin/cuenca') }}" accept-charset="UTF-8"
@@ -201,7 +201,7 @@
                                                   <a href="{{ url('/admin/cuenca/' . $item->id . '/edit') }}"
                                                       title="Editar Cuenca"><button class="btn btn-primary btn-sm"><i
                                                               class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                                                          Editar</button></a>
+                                                          EDITAR</button></a>
 
                                                   <form method="POST"
                                                       action="{{ url('/admin/cuenca' . '/' . $item->id) }}"
