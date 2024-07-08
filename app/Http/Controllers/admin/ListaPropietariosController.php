@@ -30,13 +30,22 @@ class ListaPropietariosController extends Controller
         if (!empty($keyword)) {
             $listapropietarios = ListaPropietario::where('idPropietario', 'LIKE', "%$keyword%")
                 ->orWhere('idArtefacto', 'LIKE', "%$keyword%")
-                ->latest()->paginate($perPage);
+                ->with(['propietarios', 'artefactos.certificado', 'artefactos.baseoperativa.cuenca'])
+                ->latest()
+                ->paginate($perPage);
         } else {
-            $listapropietarios = ListaPropietario::latest('idPropietario')->paginate($perPage);
+            $listapropietarios = ListaPropietario::with(['propietarios', 'artefactos.certificado', 'artefactos.baseoperativa.cuenca'])
+                ->latest('idPropietario')
+                ->paginate($perPage);
         }
 
         return view('admin.lista-propietarios.index', compact('listapropietarios', 'nivel'));
     }
+
+
+
+
+
 
     /**
      * Show the form for creating a new resource.

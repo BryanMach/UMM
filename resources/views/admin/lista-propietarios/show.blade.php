@@ -118,7 +118,7 @@
           <div class="sidebar-content">
               <h5 class="px-3 pt-3">REGISTROS DE EMBARCACIONES</h5>
               <a href="{{ url('/admin/propietario') }}">PROPIETARIOS</a>
-              <a href="{{ url('/admin/artefactos') }}">ARTEFACTOS</a>
+              <a href="{{ url('/admin/artefactos') }}">ARTEFACTOS NAVALES</a>
               <a href="{{ url('/admin/lista-propietarios') }}">LISTAS DE PROPIETARIOS DE EMBARCACIONES</a>
               {{-- <a href="{{ url('/admin/') }}imprimir">Certificaciones</a> --}}
               {{-- <a href="{{ url('/admin/') }}imprimir">Alertas de Vencimiento</a> --}}
@@ -130,7 +130,7 @@
           <div class="sidebar-content">
               <h5 class="px-3 pt-3">REGISTROS DE EMBARCACIONES</h5>
               <a href="{{ url('/admin/propietario') }}">PROPIETARIOS</a>
-              <a href="{{ url('/admin/artefactos') }}">ARTEFACTOS</a>
+              <a href="{{ url('/admin/artefactos') }}">ARTEFACTOS NAVALES</a>
               <a href="{{ url('/admin/lista-propietarios') }}">LISTAS DE PROPIETARIOS DE EMBARCACIONES</a>
           </div>
       </div>
@@ -171,18 +171,10 @@
 
                                       <tr>
                                           <th> NOMBRE DEL PROPIETARIO</th>
-                                          <td>NOMBRES: {{ $listapropietario->propietarios->nombre }}
+                                          <td>{{ $listapropietario->propietarios->nombre }}
                                           </td>
                                       </tr>
                                       <tr>
-                                          <th>
-                                              @if ($listapropietario->propietarios->tipo == 0)
-                                                  CÉDULA DE IDENTIDAD DEL
-                                              @else
-                                                  SEPREC DEL
-                                              @endif
-                                              PROPIETARIO
-                                          </th>
                                           <td>{{ $listapropietario->propietarios->identificador }}
                                           </td>
                                       </tr>
@@ -285,6 +277,52 @@
                                                   oninput="this.value = this.value.replace(/[^0-9]/g, '')">
                                               <input class="btn btn-primary" type="submit"
                                                   value="Emitir certificado de arqueo">
+                                          </form>
+                                      </td>
+                                  </tr>
+                                  <tr>
+                                      <td>
+                                          <form method="POST"
+                                              action="{{ url('admin/imprimir-certificado-medio-ambiente') }}"
+                                              accept-charset="UTF-8" class="form-horizontal"
+                                              enctype="multipart/form-data">
+                                              {{ csrf_field() }}
+                                              <input type="hidden" name="id" value="{{ $listapropietario->id }}">
+                                              <input type="hidden" name="idPropietario"
+                                                  value="{{ $listapropietario->idPropietario }}">
+                                              <input type="hidden" name="idArtefacto"
+                                                  value="{{ $listapropietario->idArtefacto }}">
+                                              <label for="correlativo">Ingrese el número correlativo de la hoja en la que
+                                                  imprimirá este certificado de medio ambiente:</label>
+                                              <input type="text" oninput="this.value = this.value.toUpperCase()"
+                                                  id="correlativo" name="correlativo" pattern="[0-9]*"
+                                                  inputmode="number" required
+                                                  oninput="this.value = this.value.replace(/[^0-9]/g, '')">
+                                              <input class="btn btn-primary" type="submit"
+                                                  value="Emitir certificado de medio ambiente">
+                                          </form>
+                                      </td>
+                                  </tr>
+                                  <tr>
+                                      <td>
+                                          <form method="POST"
+                                              action="{{ url('admin/imprimir-certificado-dotacion-minima') }}"
+                                              accept-charset="UTF-8" class="form-horizontal"
+                                              enctype="multipart/form-data">
+                                              {{ csrf_field() }}
+                                              <input type="hidden" name="id" value="{{ $listapropietario->id }}">
+                                              <input type="hidden" name="idPropietario"
+                                                  value="{{ $listapropietario->idPropietario }}">
+                                              <input type="hidden" name="idArtefacto"
+                                                  value="{{ $listapropietario->idArtefacto }}">
+                                              <label for="correlativo">Ingrese el número correlativo de la hoja en la que
+                                                  imprimirá este certificado de dotacion minima:</label>
+                                              <input type="text" oninput="this.value = this.value.toUpperCase()"
+                                                  id="correlativo" name="correlativo" pattern="[0-9]*"
+                                                  inputmode="number" required
+                                                  oninput="this.value = this.value.replace(/[^0-9]/g, '')">
+                                              <input class="btn btn-primary" type="submit"
+                                                  value="Emitir certificado de dotacion minima">
                                           </form>
                                       </td>
                                   </tr>

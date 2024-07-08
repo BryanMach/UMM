@@ -1,7 +1,7 @@
 <div class="form-group {{ $errors->has('idPropietario') ? 'has-error' : '' }}">
     <label for="idPropietario" class="control-label">{{ 'LISTA DE PROPIETARIOS' }}</label>
     <select class="form-control" name="idPropietario" id="idPropietario">
-        @foreach ($propietarios as $propietario)
+        @foreach ($listapropietario as $propietario)
             <option value="{{ $propietario->id }}">
                 {{ $propietario->identificador }} {{ $propietario->nombre }}</option>
         @endforeach

@@ -739,7 +739,172 @@ class PerfilesController extends Controller
         $pdf->loadHTML($vista);
         return $pdf->stream('arqueo' . $requestCertificado['nreg'] . '.pdf');
     }
+    public function imprimir_certificado_medio_ambiente(Request $request)
+    { //muestro un pdf
+        $requestData = $request->all();
+        //$cuenca=$request->idCuenca;
+        //protected $fillable = ['idUsuarios', 'idBaseOperativa', 'matricula', 'nombre', 'idTipo', 'idMaterial',
+        //'eslora', 'manga', 'puntal', 'francobordo', 'propulsion', 'construccion', 'trn', 'trb', 'servicio', 'asociacion', 'observaciones'];
+        $baseoperativa = $request->idBaseOperativa;
+        $propietario = Propietario::findOrFail($requestData['idPropietario']);
+        //dd($propietario);
+        $artefacto = Artefacto::findOrFail($requestData['idArtefacto']);
+        $inspeccion = Inspeccione::where('idArtefacto', $requestData['idArtefacto'])->first();
+        $tipo = Tipo::findOrFail($artefacto['idTipo']);
+        $servicio = servicio::findOrFail($artefacto['idServicio']);
+        $material = Material::findOrFail($artefacto['idMaterial']);
+        //$usuario = Usuario::where('id',Auth::user()->id);
+        //$id=$artefacto['idBaseOperativa'];
+        $basesoperativa = BasesOperativa::findOrFail($artefacto['idBaseOperativa']);
 
+        $motor = Motore::where('idArtefacto', $artefacto['idBaseOperativa'])->first();
+        $datoAdicional = datosAdicionale::where('idArtefacto', $artefacto['id'])->first();
+        //dd($basesoperativa);
+        $cuenca = Cuenca::where('id', $basesoperativa['idCuenca'])->first();
+        //sdd($cuenca);
+        //Proceso para añadir 1 al control de numeros de registro por cuenca
+        $numeroc = Certificacione::where('id', $cuenca['id'])->first();
+        //Configuración de tiempos de vencimiento
+        $fechaActual = date('Y-m-d');
+        $fechaActualTimestamp = strtotime($fechaActual);
+        $nuevaFechaTimestamp = strtotime('+5 years', $fechaActualTimestamp);
+        $fechaVencimiento = date('Y-m-d', $nuevaFechaTimestamp);
+        $fechaVencimientoTimestamp = strtotime($fechaVencimiento);
+        $fechaAlertaTimestamp = strtotime('-6 months', $fechaVencimientoTimestamp);
+        $fechaAlerta = date('Y-m-d', $fechaAlertaTimestamp);
+        //Proceso para añadir un certificado
+        //'idArtefactos', 'tipoC', 'nreg','correlativo', 'fechaEmision', 'fechaVecimiento'
+        /*
+         * 
+     * tipoC corresponde a un tipo de certificado
+     * registro=1
+     * seguridad=2
+     * arqueo=3
+     * fb=4
+     * medioAmb=5
+     * dot min=6
+     * 
+     */
+        $requestCertificado = [
+            'idArtefacto' => $requestData['idArtefacto'], 'tipoC' => '5',
+            'nreg' => $numeroc->numero, 'correlativo' => $requestData['correlativo'], 'fechaEmision' => $fechaActual, 'fechaAlerta' => $fechaAlerta, 'fechaVencimiento' => $fechaVencimiento
+        ];
+        $certificacion = certificado::create($requestCertificado);
+        /*
+        array:5 [▼ // app\Http\Controllers\admin\ubicacionController.php:114
+  "_method" => "PATCH"
+  "_token" => "8Y9tRL35bV6eLwWP8o0SK9vYB87hqy9GuHxWeyHT"
+  "idUsuario" => "1"
+  "idCuenca" => "1"
+  "idBaseOperativa" => "2"
+]
+        */
+        //dd('num:'.$numeroc);
+        //"num:{"id":2,"created_at":"2024-05-16T16:27:39.000000Z","updated_at":"2024-05-16T16:27:39.000000Z","idCuenca":2,"numero":1}" 
+        //dd('aux:'.$aux);
+        //"aux:{"id":2,"created_at":"2024-05-16T16:27:39.000000Z","updated_at":"2024-05-16T16:27:39.000000Z","idCuenca":2,"numero":1}"
+
+        $certificacion['fechaEmision'] = $this->mostrarFechaFormateada($certificacion['fechaEmision']);
+        $certificacion['fechaVencimiento'] = $this->mostrarFechaFormateada($fechaVencimiento);
+        $vista = \View::make('admin.certificadospdf.certificadomedioambiente', compact(
+            'propietario',
+            'tipo',
+            'material',
+            'artefacto',
+            'basesoperativa',
+            'cuenca',
+            'certificacion',
+            'inspeccion',
+            'motor',
+            'datoAdicional'
+        ))->render();
+        $pdf = \App::make('dompdf.wrapper');
+        $pdf->loadHTML($vista);
+        return $pdf->stream('medioambiente' . $requestCertificado['nreg'] . '.pdf');
+    }
+    public function imprimir_certificado_dotacion_minima(Request $request)
+    { //muestro un pdf
+        $requestData = $request->all();
+        //$cuenca=$request->idCuenca;
+        //protected $fillable = ['idUsuarios', 'idBaseOperativa', 'matricula', 'nombre', 'idTipo', 'idMaterial',
+        //'eslora', 'manga', 'puntal', 'francobordo', 'propulsion', 'construccion', 'trn', 'trb', 'servicio', 'asociacion', 'observaciones'];
+        $baseoperativa = $request->idBaseOperativa;
+        $propietario = Propietario::findOrFail($requestData['idPropietario']);
+        //dd($propietario);
+        $artefacto = Artefacto::findOrFail($requestData['idArtefacto']);
+        $inspeccion = Inspeccione::where('idArtefacto', $requestData['idArtefacto'])->first();
+        $tipo = Tipo::findOrFail($artefacto['idTipo']);
+        $servicio = servicio::findOrFail($artefacto['idServicio']);
+        $material = Material::findOrFail($artefacto['idMaterial']);
+        //$usuario = Usuario::where('id',Auth::user()->id);
+        //$id=$artefacto['idBaseOperativa'];
+        $basesoperativa = BasesOperativa::findOrFail($artefacto['idBaseOperativa']);
+
+        $motor = Motore::where('idArtefacto', $artefacto['idBaseOperativa'])->first();
+        $datoAdicional = datosAdicionale::where('idArtefacto', $artefacto['id'])->first();
+        //dd($basesoperativa);
+        $cuenca = Cuenca::where('id', $basesoperativa['idCuenca'])->first();
+        //sdd($cuenca);
+        //Proceso para añadir 1 al control de numeros de registro por cuenca
+        $numeroc = Certificacione::where('id', $cuenca['id'])->first();
+        //Configuración de tiempos de vencimiento
+        $fechaActual = date('Y-m-d');
+        $fechaActualTimestamp = strtotime($fechaActual);
+        $nuevaFechaTimestamp = strtotime('+5 years', $fechaActualTimestamp);
+        $fechaVencimiento = date('Y-m-d', $nuevaFechaTimestamp);
+        $fechaVencimientoTimestamp = strtotime($fechaVencimiento);
+        $fechaAlertaTimestamp = strtotime('-6 months', $fechaVencimientoTimestamp);
+        $fechaAlerta = date('Y-m-d', $fechaAlertaTimestamp);
+        //Proceso para añadir un certificado
+        //'idArtefactos', 'tipoC', 'nreg','correlativo', 'fechaEmision', 'fechaVecimiento'
+        /*
+         * 
+     * tipoC corresponde a un tipo de certificado
+     * registro=1
+     * seguridad=2
+     * arqueo=3
+     * fb=4
+     * medioAmb=5
+     * dot min=6
+     * 
+     */
+        $requestCertificado = [
+            'idArtefacto' => $requestData['idArtefacto'], 'tipoC' => '6',
+            'nreg' => $numeroc->numero, 'correlativo' => $requestData['correlativo'], 'fechaEmision' => $fechaActual, 'fechaAlerta' => $fechaAlerta, 'fechaVencimiento' => $fechaVencimiento
+        ];
+        $certificacion = certificado::create($requestCertificado);
+        /*
+        array:5 [▼ // app\Http\Controllers\admin\ubicacionController.php:114
+  "_method" => "PATCH"
+  "_token" => "8Y9tRL35bV6eLwWP8o0SK9vYB87hqy9GuHxWeyHT"
+  "idUsuario" => "1"
+  "idCuenca" => "1"
+  "idBaseOperativa" => "2"
+]
+        */
+        //dd('num:'.$numeroc);
+        //"num:{"id":2,"created_at":"2024-05-16T16:27:39.000000Z","updated_at":"2024-05-16T16:27:39.000000Z","idCuenca":2,"numero":1}" 
+        //dd('aux:'.$aux);
+        //"aux:{"id":2,"created_at":"2024-05-16T16:27:39.000000Z","updated_at":"2024-05-16T16:27:39.000000Z","idCuenca":2,"numero":1}"
+
+        $certificacion['fechaEmision'] = $this->mostrarFechaFormateada($certificacion['fechaEmision']);
+        $certificacion['fechaVencimiento'] = $this->mostrarFechaFormateada($fechaVencimiento);
+        $vista = \View::make('admin.certificadospdf.certificadodotacionminima', compact(
+            'propietario',
+            'tipo',
+            'material',
+            'artefacto',
+            'basesoperativa',
+            'cuenca',
+            'certificacion',
+            'inspeccion',
+            'motor',
+            'datoAdicional'
+        ))->render();
+        $pdf = \App::make('dompdf.wrapper');
+        $pdf->loadHTML($vista);
+        return $pdf->stream('dotacionminima' . $requestCertificado['nreg'] . '.pdf');
+    }
     /**
      * Show the form for creating a new resource.
      *

@@ -955,7 +955,8 @@
                         <span class="buttonText">REGISTRO PERSONAL MERCANTE</span>
                     </button>
                     <div class="toggleText hidden" style="  margin-bottom: 20px;">
-                        Registro, carnetización y capacitación del personal mercante: Emite el carnet de tripulante
+                        La unidad marina mercante es la entidad responsable del Registro, carnetización y capacitación
+                        del personal mercante: Emite el carnet de tripulante
                         para que puedan navegar sin restricciones en todos los espejos de agua en el estado.
                     </div>
 
@@ -964,17 +965,13 @@
                         <span class="buttonText">EMISION DE LIBRETAS</span>
                     </button>
                     <div class="toggleText hidden">
-                        La unidad marina mercante es la entidad responsable de expedir los carnets
-                        de habilitacion para el personal que trabaja en el ámbito maritimo, fluvial
-                        y lacustre. Estos carnets son documentos esenciales que certifican la
-                        identidad y competencia del personal mercante y sus embarcaciones,
-                        garantizando así que cumplen con los requisitos y estándares necesarios para
-                        desempeñar sus funciones a bordo de los buques, embarcaciones y artefactos
-                        navales.
+                        La unidad marina mercante es la entidad responsable de emitir Certificados de Reconocimiento y
+                        Registro de Sociedades de Clasificación, Registradores Delegados, Líneas Navieras, Agencias
+                        Navieras, Forwarders, Brokers y otros.
                     </div>
                     <button class="toggleButton">
                         <i class="icon">🔍</i>
-                        <span class="buttonText">REGISTRO DE: </span>
+                        <span class="buttonText">RESPONSABLE DEL REGISTRO DE: </span>
                     </button>
                     <div class="toggleText hidden">
                         EMBARCACIONES <br>
@@ -1000,13 +997,9 @@
                         <span class="buttonText">INSPECCIONES</span>
                     </button>
                     <div class="toggleText hidden">
-                        La unidad marina mercante es la entidad responsable de expedir los carnets
-                        de habilitacion para el personal que trabaja en el ámbito maritimo, fluvial
-                        y lacustre. Estos carnets son documentos esenciales que certifican la
-                        identidad y competencia del personal mercante y sus embarcaciones,
-                        garantizando así que cumplen con los requisitos y estándares necesarios para
-                        desempeñar sus funciones a bordo de los buques, embarcaciones y artefactos
-                        navales.
+                        La unidad marina mercante es la entidad responsable de las inspecciones de las empresas Fordwarder
+                        (transportistas), asociaciones cooperativas, empresas dedicadas al rubro de marina mercante y el
+                        movimiento de mercancías a nivel nacional.
                     </div>
                 </div>
             </div>
@@ -1029,9 +1022,9 @@
                     @foreach ($artefactos as $artefacto)
                         <tr>
                             <th scope="row">{{ $artefacto->nombre }}</th>
-                            @foreach ($artefacto->certificado as $certificado)
-                                @if ($certificado->tipoC == 1)
-                                    <td>
+                            <td>
+                                @foreach ($artefacto->certificado as $certificado)
+                                    @if ($certificado->tipoC == 1)
                                         @switch($artefacto->baseoperativa->cuenca->id)
                                             @case('1')
                                                 L-{{ $certificado->nreg }}
@@ -1047,9 +1040,10 @@
 
                                             @default
                                         @endswitch
-                                    </td>
-                                @endif
-                            @endforeach
+                                    @endif
+                                @endforeach
+                            </td>
+
                             <td>{{ $artefacto->baseoperativa->cuenca->cuenca }}</td>
                         </tr>
                     @endforeach

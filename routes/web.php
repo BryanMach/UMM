@@ -83,6 +83,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('admin/imprimir-certificado-seguridad', [PerfilesController::class, 'imprimir_certificado_seguridad']);
     Route::post('admin/imprimir-certificado-francobordo', [PerfilesController::class, 'imprimir_certificado_francobordo']);
     Route::post('admin/imprimir-certificado-arqueo', [PerfilesController::class, 'imprimir_certificado_arqueo']);
+    Route::post('admin/imprimir-certificado-medio-ambiente', [PerfilesController::class, 'imprimir_certificado_medio_ambiente']);
+    Route::post('admin/imprimir-certificado-dotacion-minima', [PerfilesController::class, 'imprimir_certificado_dotacion_minima']);
     Route::get('admin/imprimir', [ArtefactosController::class, 'imprimir']);
     Route::get('admin/perf45a', [PerfilesController::class, 'administrador']);
     Route::get('admin/perf45j', [PerfilesController::class, 'jefe']);

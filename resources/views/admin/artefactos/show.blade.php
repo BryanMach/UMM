@@ -257,6 +257,14 @@
                                                                   CERTIFICADO DE ARQUEO:
                                                               @break
 
+                                                              @case(5)
+                                                                  CERTIFICADO DE MEDIO AMBIENTE:
+                                                              @break
+
+                                                              @case(6)
+                                                                  CERTIFICADO DE DOTACION MINIMA:
+                                                              @break
+
                                                               @default
                                                           @endswitch
                                                           NÚMERO DE REGISTRO: {{ $certificado->nreg }},

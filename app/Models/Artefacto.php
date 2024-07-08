@@ -33,7 +33,7 @@ class Artefacto extends Model
     }
     public function inspecciones()
     {
-        return $this->hasMany(Inspeccione::class,'idArtefacto');
+        return $this->hasMany(Inspeccione::class, 'idArtefacto');
     }
     public function datosadicionales()
     {
@@ -45,7 +45,7 @@ class Artefacto extends Model
     }
     public function certificado()
     {
-        return $this->hasMany(certificado::class,'idArtefacto');
+        return $this->hasMany(certificado::class, 'idArtefacto', 'id');
     }
     public function lista()
     {

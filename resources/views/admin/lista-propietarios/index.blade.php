@@ -185,55 +185,88 @@
                                   <thead>
                                       <tr>
                                           <th>Nº</th>
-                                          <th>PROPIETARIO</th>
+                                          <th>NOMBRE DEL PROPIETARIO</th>
                                           <th>NOMBRE DE EMBARCACION</th>
                                           <th>NUMERO DE REGISTRO</th>
                                           <th>OPCIONES</th>
                                       </tr>
                                   </thead>
                                   <tbody>
-
                                       @foreach ($listapropietarios as $item)
                                           <tr>
                                               <td>{{ $loop->iteration }}</td>
-
-                                              <td> {{ $item->propietarios->nombre }}
-                                              </td>
-                                              <td>{{ $item->artefactos->nombre }}
-                                              </td>
-                                              <td>{{ $item->artefactos->matricula }}
-                                              </td>
+                                              <td>{{ $item->propietarios->nombre }}</td>
+                                              <td>{{ $item->artefactos->nombre }}</td>
                                               <td>
-                                                  <a href="{{ url('/admin/lista-propietarios/' . $item->id) }}"
-                                                      title="Ver ListaPropietario"><button class="btn btn-info btn-sm"><i
-                                                              class="fa fa-eye" aria-hidden="true"></i> VER</button></a>
-                                                  <a href="{{ url('/admin/lista-propietarios/' . $item->id . '/edit') }}"
-                                                      title="Editar ListaPropietario"><button
-                                                          class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o"
-                                                              aria-hidden="true"></i> EDITAR</button></a>
+                                                  @if ($item->artefactos->certificado->isNotEmpty())
+                                                      @foreach ($item->artefactos->certificado as $certificado)
+                                                          {{-- Debug certificado --}}
 
-                                                  {{-- @if ($nivel) --}}
-                                                  <form method="POST"
-                                                      action="{{ url('/admin/lista-propietarios' . '/' . $item->id) }}"
-                                                      accept-charset="UTF-8" style="display:inline">
-                                                      {{ method_field('DELETE') }}
-                                                      {{ csrf_field() }}
-                                                      <button type="submit" class="btn btn-danger btn-sm"
-                                                          title="BORRAR ListaPropietario"
-                                                          onclick="return confirm(&quot;Confirm delete?&quot;)"><i
-                                                              class="fa fa-trash-o" aria-hidden="true"></i> BORRAR</button>
-                                                  </form>
-                                              </td>
-                                          </tr>
-                                      @endforeach
-                                  </tbody>
-                              </table>
-                              <div class="pagination-wrapper"> {!! $listapropietarios->appends(['search' => Request::get('search')])->render() !!} </div>
+                                                          @if ($certificado->tipoC == 1)
+                                                              @switch((int)$item->artefactos->baseoperativa->cuenca->id)
+                                                                  @case(1)
+                                                                      L-{{ $certificado->nreg }}
+                                                                  @break
+
+                                                                  @case(2)
+                                                                      P-{{ $certificado->nreg }}
+                                                                  @break
+
+                                                                  @case(3)
+                                                                      A-{{ $certificado->nreg }}
+                                                                  @break
+
+                                                                  @default
+                                                                      No Registrado
+                                                              @endswitch
+                                                          @break
+
+                                                          {{-- Si solo quieres mostrar el primer certificado que cumple la condición --}}
+                                                      @endif
+                                                  @endforeach
+                                              @else
+                                                  No Registrado
+                                              @endif
+                                          </td>
+                                          <td>
+                                              <a href="{{ url('/admin/lista-propietarios/' . $item->id) }}"
+                                                  title="Ver ListaPropietario">
+                                                  <button class="btn btn-info btn-sm">
+                                                      <i class="fa fa-eye" aria-hidden="true"></i> VER
+                                                  </button>
+                                              </a>
+                                              <a href="{{ url('/admin/lista-propietarios/' . $item->id . '/edit') }}"
+                                                  title="Editar ListaPropietario">
+                                                  <button class="btn btn-primary btn-sm">
+                                                      <i class="fa fa-pencil-square-o" aria-hidden="true"></i> EDITAR
+                                                  </button>
+                                              </a>
+                                              <form method="POST"
+                                                  action="{{ url('/admin/lista-propietarios' . '/' . $item->id) }}"
+                                                  accept-charset="UTF-8" style="display:inline">
+                                                  {{ method_field('DELETE') }}
+                                                  {{ csrf_field() }}
+                                                  <button type="submit" class="btn btn-danger btn-sm"
+                                                      title="BORRAR ListaPropietario"
+                                                      onclick="return confirm(&quot;Confirm delete?&quot;)">
+                                                      <i class="fa fa-trash-o" aria-hidden="true"></i> BORRAR
+                                                  </button>
+                                              </form>
+                                          </td>
+                                      </tr>
+                                  @endforeach
+                              </tbody>
+                          </table>
+                          <div class="pagination-wrapper">
+                              {!! $listapropietarios->appends(['search' => Request::get('search')])->render() !!}
                           </div>
-
                       </div>
+
+
+
                   </div>
               </div>
           </div>
       </div>
-  @endsection
+  </div>
+@endsection
