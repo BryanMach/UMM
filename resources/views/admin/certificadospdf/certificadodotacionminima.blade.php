@@ -43,7 +43,7 @@
 
         <div class="row section">
             <div class="col-12 section-title">
-                <h5>1. CARACTERÍSTICAS DE LA EMBARCACIÓN</h5>i
+                <h5>1. CARACTERÍSTICAS DE LA EMBARCACIÓN</h5>
             </div>
             <div class="col-12">
                 <table class="table table-bordered">
