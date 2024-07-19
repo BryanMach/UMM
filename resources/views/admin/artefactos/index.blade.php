@@ -195,42 +195,63 @@
                                       @foreach ($artefactos as $item)
                                           <tr>
                                               <td>{{ $loop->iteration }}</td>
-                                              <td><a
-                                                      href="{{ url('/admin/usuarios/' . $item->idUsuarios) }}">{{ $item->usuarios->usuario }}</a>
+                                              <td>{{ $item->usuarios->usuario }}
                                               </td>
                                               <td>{{ $item->baseoperativa->baseOperativa }}</td>
                                               <td>{{ $item->nombre }}</td>
-                                              <td>{{ $item->matricula }}</td>
                                               <td>
-                                                  <a href="{{ url('/admin/artefactos/' . $item->id) }}"
-                                                      title="Ver Artefacto"><button class="btn btn-info btn-sm"><i
-                                                              class="fa fa-eye" aria-hidden="true"></i> VER</button></a>
-                                                  <a href="{{ url('/admin/artefactos/' . $item->id . '/edit') }}"
-                                                      title="Editar Artefacto"><button class="btn btn-primary btn-sm"><i
-                                                              class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                                                          EDITAR</button></a>
+                                                  @foreach ($item->certificado as $certificado)
+                                                      @if ($certificado->tipoC == 1)
+                                                          @switch((int)$item->baseoperativa->cuenca->id)
+                                                              @case(1)
+                                                                  L-{{ $certificado->nreg }}
+                                                              @break
 
-                                                  <form method="POST"
-                                                      action="{{ url('/admin/artefactos' . '/' . $item->id) }}"
-                                                      accept-charset="UTF-8" style="display:inline">
-                                                      {{ method_field('DELETE') }}
-                                                      {{ csrf_field() }}
-                                                      <button type="submit" class="btn btn-danger btn-sm"
-                                                          title="BORRAR Artefacto"
-                                                          onclick="return confirm(&quot;Confirm delete?&quot;)"><i
-                                                              class="fa fa-trash-o" aria-hidden="true"></i> BORRAR</button>
-                                                  </form>
-                                              </td>
-                                          </tr>
-                                      @endforeach
-                                  </tbody>
-                              </table>
-                              <div class="pagination-wrapper"> {!! $artefactos->appends(['search' => Request::get('search')])->render() !!} </div>
-                          </div>
+                                                              @case(2)
+                                                                  P-{{ $certificado->nreg }}
+                                                              @break
 
+                                                              @case(3)
+                                                                  A-{{ $certificado->nreg }}
+                                                              @break
+
+                                                              @default
+                                                                  No Registrado
+                                                          @endswitch
+                                                      @break
+                                                  @endif
+                                              @endforeach
+                                          </td>
+                                          <td>
+                                              <a href="{{ url('/admin/artefactos/' . $item->id) }}"
+                                                  title="Ver Artefacto"><button class="btn btn-info btn-sm"><i
+                                                          class="fa fa-eye" aria-hidden="true"></i> VER</button></a>
+                                              <a href="{{ url('/admin/artefactos/' . $item->id . '/edit') }}"
+                                                  title="Editar Artefacto"><button class="btn btn-primary btn-sm"><i
+                                                          class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                                      EDITAR</button></a>
+
+                                              <form method="POST"
+                                                  action="{{ url('/admin/artefactos' . '/' . $item->id) }}"
+                                                  accept-charset="UTF-8" style="display:inline">
+                                                  {{ method_field('DELETE') }}
+                                                  {{ csrf_field() }}
+                                                  <button type="submit" class="btn btn-danger btn-sm"
+                                                      title="BORRAR Artefacto"
+                                                      onclick="return confirm(&quot;Confirm delete?&quot;)"><i
+                                                          class="fa fa-trash-o" aria-hidden="true"></i> BORRAR</button>
+                                              </form>
+                                          </td>
+                                      </tr>
+                                  @endforeach
+                              </tbody>
+                          </table>
+                          <div class="pagination-wrapper"> {!! $artefactos->appends(['search' => Request::get('search')])->render() !!} </div>
                       </div>
+
                   </div>
               </div>
           </div>
       </div>
-  @endsection
+  </div>
+@endsection

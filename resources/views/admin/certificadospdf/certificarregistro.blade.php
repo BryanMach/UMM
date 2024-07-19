@@ -214,9 +214,9 @@
                     @if ($motor == null)
                         <tr>
                             <td>-</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
                         </tr>
                     @else
                         <tr>

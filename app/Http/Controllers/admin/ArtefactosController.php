@@ -13,6 +13,7 @@ use App\Models\Tipo;
 use Illuminate\Http\Request;
 use App\Models\Usuario;
 use Illuminate\Support\Facades\Auth;
+use App\Models\certificado;
 
 
 class ArtefactosController extends Controller
@@ -28,7 +29,7 @@ class ArtefactosController extends Controller
         $perPage = 25;
         $usuario = Usuario::findOrFail(Auth::user()->id);
         $nivel = $usuario['nivel'];
-        $servicio= servicio::all();
+        $servicio = servicio::all();
         if (!empty($keyword)) {
             $artefactos = Artefacto::where('matricula', 'LIKE', "%$keyword%")
                 ->orWhere('nombre', 'LIKE', "%$keyword%")
@@ -46,12 +47,13 @@ class ArtefactosController extends Controller
                 ->orWhere('idUsuarios', 'LIKE', "%$keyword%")
                 ->orWhere('idTipo', 'LIKE', "%$keyword%")
                 ->orWhere('idMaterial', 'LIKE', "%$keyword%")
+                ->with('certificado', 'baseoperativa.cuenca')
                 ->latest()->paginate($perPage);
         } else {
-            $artefactos = Artefacto::with('usuarios')->latest()->paginate($perPage);
+            $artefactos = Artefacto::with(['certificado', 'usuarios', 'baseoperativa.cuenca'])->latest()->paginate($perPage);
         }
 
-        return view('admin.artefactos.index', compact('artefactos', 'nivel','servicio'));
+        return view('admin.artefactos.index', compact('artefactos', 'nivel', 'servicio'));
     }
 
     /**
@@ -67,8 +69,8 @@ class ArtefactosController extends Controller
         $materiales = Material::All();
         $usuario = Usuario::findOrFail(Auth::user()->id);
         $nivel = $usuario['nivel'];
-        $servicio= servicio::all();
-        return view('admin.artefactos.create', compact('basesoperativas', 'tipos', 'usuarios', 'materiales', 'nivel','servicio'));
+        $servicio = servicio::all();
+        return view('admin.artefactos.create', compact('basesoperativas', 'tipos', 'usuarios', 'materiales', 'nivel', 'servicio'));
     }
 
     /**
@@ -100,8 +102,8 @@ class ArtefactosController extends Controller
         $artefacto = Artefacto::findOrFail($id);
         $usuario = Usuario::findOrFail(Auth::user()->id);
         $nivel = $usuario['nivel'];
-        $servicio= servicio::all();
-        return view('admin.artefactos.show', compact('artefacto' , 'nivel','servicio'));
+        $servicio = servicio::all();
+        return view('admin.artefactos.show', compact('artefacto', 'nivel', 'servicio'));
     }
 
     /**
@@ -120,8 +122,8 @@ class ArtefactosController extends Controller
         $materiales = Material::All();
         $usuario = Usuario::findOrFail(Auth::user()->id);
         $nivel = $usuario['nivel'];
-        $servicio= servicio::all();
-        return view('admin.artefactos.edit', compact('artefacto', 'basesoperativas', 'tipos', 'usuarios', 'materiales', 'nivel','servicio'));
+        $servicio = servicio::all();
+        return view('admin.artefactos.edit', compact('artefacto', 'basesoperativas', 'tipos', 'usuarios', 'materiales', 'nivel', 'servicio'));
     }
 
     /**

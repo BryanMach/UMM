@@ -28,6 +28,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Ramsey\Uuid\Type\Integer;
 use Carbon\Carbon;
+use Barryvdh\DomPDF\Facade as PDF;
 
 
 class PerfilesController extends Controller
@@ -740,7 +741,7 @@ class PerfilesController extends Controller
         return $pdf->stream('arqueo' . $requestCertificado['nreg'] . '.pdf');
     }
     public function imprimir_certificado_medio_ambiente(Request $request)
-    { //muestro un pdf
+    { //muestro un pdf 
         $requestData = $request->all();
         //$cuenca=$request->idCuenca;
         //protected $fillable = ['idUsuarios', 'idBaseOperativa', 'matricula', 'nombre', 'idTipo', 'idMaterial',
@@ -902,7 +903,7 @@ class PerfilesController extends Controller
             'datoAdicional'
         ))->render();
         $pdf = \App::make('dompdf.wrapper');
-        $pdf->loadHTML($vista);
+        $pdf->loadHTML($vista)->setPaper('folio');
         return $pdf->stream('dotacionminima' . $requestCertificado['nreg'] . '.pdf');
     }
     /**
