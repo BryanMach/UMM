@@ -102,11 +102,11 @@
         <div class="sidebar-content">
             <a href="{{ url('/admin/personal') }}">PERSONAL</a>
             <a href="{{ url('/admin/usuarios') }}">USUARIOS</a>
-            <a href="{{ url('/admin/cuenca') }}" class="active">CUENCAS</a>
-            <a href="{{ url('/admin/bases-operativas') }}" class="active">BASES DE OPERACIONES</a>
+            <a href="{{ url('/admin/cuenca') }}">CUENCAS</a>
+            <a href="{{ url('/admin/bases-operativas') }}">BASES DE OPERACIONES</a>
             <h5 class="px-3 pt-3">REGISTRO DE EMBARCACIONES</h5>
             <a href="{{ url('/admin/propietario') }}">PROPIETARIOS</a>
-            <a href="{{ url('/admin/artefactos') }}">ARTEFACTOS</a>
+            <a href="{{ url('/admin/artefactos') }}">ARTEFACTOS NAVALES</a>
             <a href="{{ url('/admin/lista-propietarios') }}">LISTAS DE PROPIETARIOS DE EMBARCACIONES</a>
             {{-- <a href="{{ url('/admin/') }}imprimir">Certificaciones</a> --}}
             {{-- <a href="{{ url('/admin/') }}imprimir">Alertas de Vencimiento</a> --}}
@@ -118,7 +118,7 @@
         <div class="sidebar-content">
             <h5 class="px-3 pt-3">REGISTROS DE EMBARCACIONES</h5>
             <a href="{{ url('/admin/propietario') }}">PROPIETARIOS</a>
-            <a href="{{ url('/admin/artefactos') }}">ARTEFACTOS</a>
+            <a href="{{ url('/admin/artefactos') }}">ARTEFACTOS NAVALES</a>
             <a href="{{ url('/admin/lista-propietarios') }}">LISTAS DE PROPIETARIOS DE EMBARCACIONES</a>
             {{-- <a href="{{ url('/admin/') }}imprimir">Certificaciones</a> --}}
             {{-- <a href="{{ url('/admin/') }}imprimir">Alertas de Vencimiento</a> --}}
@@ -130,7 +130,7 @@
         <div class="sidebar-content">
             <h5 class="px-3 pt-3">REGISTROS DE EMBARCACIONES</h5>
             <a href="{{ url('/admin/propietario') }}">PROPIETARIOS</a>
-            <a href="{{ url('/admin/artefactos') }}">ARTEFACTOS</a>
+            <a href="{{ url('/admin/artefactos') }}">ARTEFACTOS NAVALES</a>
             <a href="{{ url('/admin/lista-propietarios') }}">LISTAS DE PROPIETARIOS DE EMBARCACIONES</a>
         </div>
     </div>
@@ -229,3 +229,31 @@
         </div>
     </div>
 @endsection
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const sidebarLinks = document.querySelectorAll('.sidebar-content a');
+
+        sidebarLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                // Remover la clase 'active' de todos los enlaces
+                sidebarLinks.forEach(l => l.classList.remove('active'));
+
+                // Añadir la clase 'active' al enlace clickeado
+                this.classList.add('active');
+
+                // Si quieres mantener la opción activa después de recargar la página,
+                // puedes guardar la URL en localStorage
+                localStorage.setItem('activeLink', this.getAttribute('href'));
+            });
+        });
+
+        // Verificar si hay una opción activa guardada y aplicarla
+        const activeLink = localStorage.getItem('activeLink');
+        if (activeLink) {
+            const link = document.querySelector(`.sidebar-content a[href="${activeLink}"]`);
+            if (link) {
+                link.classList.add('active');
+            }
+        }
+    });
+</script>

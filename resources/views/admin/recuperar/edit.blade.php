@@ -102,7 +102,7 @@
           <div class="sidebar-content">
               <a href="personal">PERSONAL</a>
               <a href="usuarios">USUARIOS</a>
-              <a href="bases-operativas" class="active">BASES DE OPERACIONES</a>
+              <a href="bases-operativas">BASES DE OPERACIONES</a>
               <h5 class="px-3 pt-3">REGISTROS DE EMBARCACIONES</h5>
               <a href="propietario">PROPIETARIOS</a>
               <a href="artefactos">ARTEFACTOS NAVALES</a>

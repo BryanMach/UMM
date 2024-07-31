@@ -5,64 +5,53 @@
           background-color: #f8f9fa;
       }
 
-      .sidebar {
-          height: 100vh;
-          background: linear-gradient(to bottom, white, rgb(16, 232, 200));
-          padding: 30px;
-          border-right: 1px solid #dee2e6;
-      }
-
-      .profile-img {
-          width: 200px;
-          height: 200px;
-          border-radius: 50%;
-          object-fit: cover;
-      }
-
-      .sidebar h3 {
-          margin-top: 15px;
-          font-size: 1.75rem;
-          color: #000;
-      }
-
-      .sidebar .role {
-          color: #9370DB;
-          font-size: 1.1rem;
-          margin-bottom: 20px;
-      }
-
-      .sidebar .description {
-          color: #6c757d;
-          font-size: 20px;
-
-      }
-
-      .sidebar,
       .right-sidebar {
+          width: 250px;
           height: 100vh;
           background-color: #fff;
-          border-right: 1px solid #ddd;
+          border-left: 1px solid #e0e0e0;
           position: fixed;
           top: 0;
-      }
-
-      .right-sidebar {
-          width: 200px;
           right: 0;
-          border-left: 1px solid #ddd;
+          overflow-y: auto;
+          box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
       }
 
-      .sidebar a,
-      .right-sidebar a {
+      .sidebar-header,
+      .sidebar-content h5 {
+          background-color: #99bcfad5;
+          color: #333;
+          padding: 0.75rem 1rem;
+          margin: 0;
+          font-size: 1rem;
+          font-weight: 600;
+          text-transform: uppercase;
+          border-bottom: 1px solid #e0e0e0;
+      }
+
+      .sidebar-content {
+          padding: 0;
+      }
+
+      .sidebar-content a {
           color: #333;
           display: block;
-          padding: 10px 20px;
+          padding: 0.75rem 1.5rem;
           text-decoration: none;
+          transition: all 0.3s ease;
+          border-left: 4px solid transparent;
       }
 
-      .sidebar a:hover,
-      .right-sidebar a:hover {
-          background-color: #f1f1f1;
+      .sidebar-content a:hover,
+      .sidebar-content a.active {
+          background-color: #f8f9fa;
+          border-left-color: #3498db;
+      }
+
+      .sidebar-content a.active {
+          font-weight: 600;
+          background-color: #e9ecef;
+          color: #2c3e50;
       }
 
       .main-content {
@@ -94,95 +83,124 @@
           margin-top: 20px;
       }
   </style>
-   @if ($nivel == 2)
-    <div class="right-sidebar">
-        <div class="sidebar-header text-center p-3">
-            <h4>REGISTRO DE PERSONAL </h4>
-        </div>
-        <div class="sidebar-content">
-            <a href="{{ url('/admin/personal') }}">PERSONAL</a>
-            <a href="{{ url('/admin/usuarios') }}">USUARIOS</a>
-            <a href="{{ url('/admin/cuenca') }}" class="active">CUENCAS</a>
-            <a href="{{ url('/admin/bases-operativas') }}" class="active">BASES DE OPERACIONES</a>
-            <h5 class="px-3 pt-3">REGISTRO DE EMBARCACIONES</h5>
-            <a href="{{ url('/admin/propietario') }}">PROPIETARIOS</a>
-            <a href="{{ url('/admin/artefactos') }}">ARTEFACTOS</a>
-            <a href="{{ url('/admin/lista-propietarios') }}">LISTAS DE PROPIETARIOS DE EMBARCACIONES</a>
-            {{-- <a href="{{ url('/admin/') }}imprimir">Certificaciones</a> --}}
-            {{-- <a href="{{ url('/admin/') }}imprimir">Alertas de Vencimiento</a> --}}
-        </div>
-    </div>
-@endif
-@if ($nivel == 3)
-    <div class="right-sidebar">
-        <div class="sidebar-content">
-            <h5 class="px-3 pt-3">REGISTROS DE EMBARCACIONES</h5>
-            <a href="{{ url('/admin/propietario') }}">PROPIETARIOS</a>
-            <a href="{{ url('/admin/artefactos') }}">ARTEFACTOS</a>
-            <a href="{{ url('/admin/lista-propietarios') }}">LISTAS DE PROPIETARIOS DE EMBARCACIONES</a>
-            {{-- <a href="{{ url('/admin/') }}imprimir">Certificaciones</a> --}}
-            {{-- <a href="{{ url('/admin/') }}imprimir">Alertas de Vencimiento</a> --}}
-        </div>
-    </div>
+  @if ($nivel == 2)
+      <div class="right-sidebar">
+          <div class="sidebar-header text-center p-3">
+              <h4>REGISTRO DE PERSONAL </h4>
+          </div>
+          <div class="sidebar-content">
+              <a href="{{ url('/admin/personal') }}">PERSONAL</a>
+              <a href="{{ url('/admin/usuarios') }}">USUARIOS</a>
+              <a href="{{ url('/admin/cuenca') }}">CUENCAS</a>
+              <a href="{{ url('/admin/bases-operativas') }}">BASES DE OPERACIONES</a>
+              <h5 class="px-3 pt-3">REGISTRO DE EMBARCACIONES</h5>
+              <a href="{{ url('/admin/propietario') }}">PROPIETARIOS</a>
+              <a href="{{ url('/admin/artefactos') }}">ARTEFACTOS NAVALES</a>
+              <a href="{{ url('/admin/lista-propietarios') }}">LISTAS DE PROPIETARIOS DE EMBARCACIONES</a>
+              {{-- <a href="{{ url('/admin/') }}imprimir">Certificaciones</a> --}}
+              {{-- <a href="{{ url('/admin/') }}imprimir">Alertas de Vencimiento</a> --}}
+          </div>
+      </div>
   @endif
-  @if($nivel == 4)
-    <div class="right-sidebar">
-        <div class="sidebar-content">
-            <h5 class="px-3 pt-3">REGISTROS DE EMBARCACIONES</h5>
-            <a href="{{ url('/admin/propietario') }}">PROPIETARIOS</a>
-            <a href="{{ url('/admin/artefactos') }}">ARTEFACTOS</a>
-            <a href="{{ url('/admin/lista-propietarios') }}">LISTAS DE PROPIETARIOS DE EMBARCACIONES</a>
-        </div>
-    </div>
-@endif
- @section('content')
-  <div class="container">
-      <div class="row">
-          <div class="col-md-9">
-              <div class="card">
-                  <div class="card-header">UBICACION {{ $ubicacion->id }}</div>
-                  <div class="card-body">
+  @if ($nivel == 3)
+      <div class="right-sidebar">
+          <div class="sidebar-content">
+              <h5 class="px-3 pt-3">REGISTROS DE EMBARCACIONES</h5>
+              <a href="{{ url('/admin/propietario') }}">PROPIETARIOS</a>
+              <a href="{{ url('/admin/artefactos') }}">ARTEFACTOS NAVALES</a>
+              <a href="{{ url('/admin/lista-propietarios') }}">LISTAS DE PROPIETARIOS DE EMBARCACIONES</a>
+              {{-- <a href="{{ url('/admin/') }}imprimir">Certificaciones</a> --}}
+              {{-- <a href="{{ url('/admin/') }}imprimir">Alertas de Vencimiento</a> --}}
+          </div>
+      </div>
+  @endif
+  @if ($nivel == 4)
+      <div class="right-sidebar">
+          <div class="sidebar-content">
+              <h5 class="px-3 pt-3">REGISTROS DE EMBARCACIONES</h5>
+              <a href="{{ url('/admin/propietario') }}">PROPIETARIOS</a>
+              <a href="{{ url('/admin/artefactos') }}">ARTEFACTOS NAVALES</a>
+              <a href="{{ url('/admin/lista-propietarios') }}">LISTAS DE PROPIETARIOS DE EMBARCACIONES</a>
+          </div>
+      </div>
+  @endif
+  @section('content')
+      <div class="container">
+          <div class="row">
+              <div class="col-md-9">
+                  <div class="card">
+                      <div class="card-header">UBICACION {{ $ubicacion->id }}</div>
+                      <div class="card-body">
 
-                      <a href="{{ url('/admin/ubicacion') }}" title="Back"><button class="btn btn-warning btn-sm"><i
-                                  class="fa fa-arrow-left" aria-hidden="true"></i> Back</button></a>
-                      <a href="{{ url('/admin/ubicacion/' . $ubicacion->id . '/edit') }}" title="Edit ubicacion"><button
-                              class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                              Edit</button></a>
+                          <a href="{{ url('/admin/ubicacion') }}" title="Back"><button class="btn btn-warning btn-sm"><i
+                                      class="fa fa-arrow-left" aria-hidden="true"></i> Back</button></a>
+                          <a href="{{ url('/admin/ubicacion/' . $ubicacion->id . '/edit') }}"
+                              title="Edit ubicacion"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o"
+                                      aria-hidden="true"></i>
+                                  Edit</button></a>
 
-                      <form method="POST" action="{{ url('admin/ubicacion' . '/' . $ubicacion->id) }}"
-                          accept-charset="UTF-8" style="display:inline">
-                          {{ method_field('DELETE') }}
-                          {{ csrf_field() }}
-                          <button type="submit" class="btn btn-danger btn-sm" title="Delete ubicacion"
-                              onclick="return confirm(&quot;Confirm delete?&quot;)"><i class="fa fa-trash-o"
-                                  aria-hidden="true"></i> Delete</button>
-                      </form>
-                      <br />
-                      <br />
+                          <form method="POST" action="{{ url('admin/ubicacion' . '/' . $ubicacion->id) }}"
+                              accept-charset="UTF-8" style="display:inline">
+                              {{ method_field('DELETE') }}
+                              {{ csrf_field() }}
+                              <button type="submit" class="btn btn-danger btn-sm" title="Delete ubicacion"
+                                  onclick="return confirm(&quot;Confirm delete?&quot;)"><i class="fa fa-trash-o"
+                                      aria-hidden="true"></i> Delete</button>
+                          </form>
+                          <br />
+                          <br />
 
-                      <div class="table-responsive">
-                          <table class="table">
-                              <tbody>
+                          <div class="table-responsive">
+                              <table class="table">
+                                  <tbody>
 
-                                  <tr>
-                                      <th> USUARIO </th>
-                                      <td> {{ $ubicacion->idUsuario }} </td>
-                                  </tr>
-                                  <tr>
-                                      <th> CUENCA </th>
-                                      <td> {{ $ubicacion->idCuenca }} </td>
-                                  </tr>
-                                  <tr>
-                                      <th> BASE DE OPERACIONES </th>
-                                      <td> {{ $ubicacion->idBaseOperativa }} </td>
-                                  </tr>
-                              </tbody>
-                          </table>
+                                      <tr>
+                                          <th> USUARIO </th>
+                                          <td> {{ $ubicacion->idUsuario }} </td>
+                                      </tr>
+                                      <tr>
+                                          <th> CUENCA </th>
+                                          <td> {{ $ubicacion->idCuenca }} </td>
+                                      </tr>
+                                      <tr>
+                                          <th> BASE DE OPERACIONES </th>
+                                          <td> {{ $ubicacion->idBaseOperativa }} </td>
+                                      </tr>
+                                  </tbody>
+                              </table>
+                          </div>
+
                       </div>
-
                   </div>
               </div>
           </div>
       </div>
-  </div>
-@endsection
+  @endsection
+  <script>
+      document.addEventListener('DOMContentLoaded', function() {
+          const sidebarLinks = document.querySelectorAll('.sidebar-content a');
+
+          sidebarLinks.forEach(link => {
+              link.addEventListener('click', function(e) {
+                  // Remover la clase 'active' de todos los enlaces
+                  sidebarLinks.forEach(l => l.classList.remove('active'));
+
+                  // Añadir la clase 'active' al enlace clickeado
+                  this.classList.add('active');
+
+                  // Si quieres mantener la opción activa después de recargar la página,
+                  // puedes guardar la URL en localStorage
+                  localStorage.setItem('activeLink', this.getAttribute('href'));
+              });
+          });
+
+          // Verificar si hay una opción activa guardada y aplicarla
+          const activeLink = localStorage.getItem('activeLink');
+          if (activeLink) {
+              const link = document.querySelector(`.sidebar-content a[href="${activeLink}"]`);
+              if (link) {
+                  link.classList.add('active');
+              }
+          }
+      });
+  </script>

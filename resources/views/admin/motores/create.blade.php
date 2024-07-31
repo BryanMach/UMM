@@ -7,7 +7,7 @@
          <div class="sidebar-content">
              <a href="personal">PERSONAL</a>
              <a href="usuarios">USUARIOS</a>
-             <a href="bases-operativas" class="active">BASES DE OPERACIONES</a>
+             <a href="bases-operativas">BASES DE OPERACIONES</a>
              <h5 class="px-3 pt-3">REGISTRO DE EMBARCACIONES</h5>
              <a href="propietario">PROPIETARIOS</a>
              <a href="artefactos">ARTEFACTOS NAVALES</a>
@@ -23,7 +23,7 @@
              <h4>REGISTROS DE PERSONAL</h4>
          </div>
          <div class="sidebar-content">
-             <a href="bases-operativas" class="active">BASES DE OPERACIONES</a>
+             <a href="bases-operativas">BASES DE OPERACIONES</a>
              <h5 class="px-3 pt-3">REGISTROS DE EMBARCACIONES</h5>
              <a href="propietario">PROPIETARIOS</a>
              <a href="artefactos">ARTEFACTOS NAVALES</a>
@@ -69,3 +69,31 @@
          </div>
      </div>
  @endsection
+ <script>
+     document.addEventListener('DOMContentLoaded', function() {
+         const sidebarLinks = document.querySelectorAll('.sidebar-content a');
+
+         sidebarLinks.forEach(link => {
+             link.addEventListener('click', function(e) {
+                 // Remover la clase 'active' de todos los enlaces
+                 sidebarLinks.forEach(l => l.classList.remove('active'));
+
+                 // Añadir la clase 'active' al enlace clickeado
+                 this.classList.add('active');
+
+                 // Si quieres mantener la opción activa después de recargar la página,
+                 // puedes guardar la URL en localStorage
+                 localStorage.setItem('activeLink', this.getAttribute('href'));
+             });
+         });
+
+         // Verificar si hay una opción activa guardada y aplicarla
+         const activeLink = localStorage.getItem('activeLink');
+         if (activeLink) {
+             const link = document.querySelector(`.sidebar-content a[href="${activeLink}"]`);
+             if (link) {
+                 link.classList.add('active');
+             }
+         }
+     });
+ </script>

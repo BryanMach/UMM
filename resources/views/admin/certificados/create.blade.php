@@ -102,7 +102,7 @@
           <div class="sidebar-content">
               <a href="{{ url('/admin/personal') }}">Personal</a>
               <a href="{{ url('/admin/usuarios') }}">Usuarios</a>
-              <a href="{{ url('/admin/bases-operativas') }}" class="active">Bases de operaciones</a>
+              <a href="{{ url('/admin/bases-operativas') }}">Bases de operaciones</a>
               <h5 class="px-3 pt-3">Registros de embarcaciones</h5>
               <a href="{{ url('/admin/propietario') }}">Propietarios</a>
               <a href="{{ url('/admin/artefactos') }}">Artefactos</a>

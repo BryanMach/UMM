@@ -171,7 +171,8 @@
                                 style="width: 50%; padding: 0px; padding-left: 6px;font-weight: normal;border-right: 1.1px solid #424242;">
                                 1.7 POTENCIA DE
                                 PROPULSIÓN</th>
-                            <td style="width: 50%; padding: 0px;border: 1.1px solid #424242;" class="text-center">650-HP
+                            <td style="width: 50%; padding: 0px;border: 1.1px solid #424242;" class="text-center">
+                                {{ $motor->potencia }} - HP
                             </td>
                         </tr>
                         <tr>
