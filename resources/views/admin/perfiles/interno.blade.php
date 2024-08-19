@@ -44,7 +44,7 @@
 
         .sidebar .description {
             color: #6c757d;
-            font-size: 20px;
+            font-size: 18px;
 
         }
 
@@ -318,7 +318,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($listaA as $item)
+                            @foreach ($listaP as $item)
                                 <tr>
                                     <td>{{ $item->propietarios->nombre }} {{ $item->propietarios->identificador }}
                                     </td>

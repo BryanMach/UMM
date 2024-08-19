@@ -1,11 +1,11 @@
 <div class="form-group {{ $errors->has('idPropietario') ? 'has-error' : '' }}">
     <label for="idPropietario" class="control-label">{{ 'LISTA DE PROPIETARIOS' }}</label>
     <select class="form-control" name="idPropietario" id="idPropietario">
-        @foreach ($listapropietario as $propietario)
-            <option value="{{ $propietario->id }}">
-                {{ $propietario->identificador }} {{ $propietario->nombre }}</option>
-        @endforeach
+        <option value="{{ $listapropietario->id }}">
+            {{ $listapropietario->identificador }} {{ $listapropietario->nombre }}
+        </option>
     </select>
+
     {!! $errors->first('idPropietario', '<p class="help-block">:message</p>') !!}
 </div>
 <div class="form-group {{ $errors->has('idArtefacto') ? 'has-error' : '' }}">

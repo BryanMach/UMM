@@ -106,8 +106,9 @@ class ListaPropietariosController extends Controller
         $listapropietario = ListaPropietario::findOrFail($id);
         $usuario = Usuario::findOrFail(Auth::user()->id);
         $nivel = $usuario['nivel'];
+        $artefactos = Artefacto::all();
 
-        return view('admin.lista-propietarios.edit', compact('listapropietario', 'nivel'));
+        return view('admin.lista-propietarios.edit', compact('listapropietario', 'nivel', 'artefactos'));
     }
 
     /**

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
@@ -45,33 +45,55 @@
 
         }
 
-        .sidebar,
         .right-sidebar {
+            width: 250px;
             height: 100vh;
             background-color: #fff;
-            border-right: 1px solid #ddd;
+            border-left: 1px solid #e0e0e0;
             position: fixed;
             top: 0;
-        }
-
-        .right-sidebar {
-            width: 225px;
             right: 0;
-            border-left: 1px solid #ddd;
+            overflow-y: auto;
+            box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
         }
 
-        .sidebar a,
-        .right-sidebar a {
+        .sidebar-header,
+        .sidebar-content h5 {
+            background-color: #99bcfad5;
+            color: #333;
+            padding: 0.75rem 1rem;
+            margin: 0;
+            font-size: 1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .sidebar-content {
+            padding: 0;
+        }
+
+        .sidebar-content a {
             color: #333;
             display: block;
-            padding: 5px 10px;
+            padding: 0.75rem 1.5rem;
             text-decoration: none;
+            transition: all 0.3s ease;
+            border-left: 4px solid transparent;
         }
 
-        .sidebar a:hover,
-        .right-sidebar a:hover {
-            background-color: #f1f1f1;
+        .sidebar-content a:hover,
+        .sidebar-content a.active {
+            background-color: #f8f9fa;
+            border-left-color: #3498db;
         }
+
+        .sidebar-content a.active {
+            font-weight: 600;
+            background-color: #e9ecef;
+            color: #2c3e50;
+        }
+
 
         .main-content {
             margin-left: 220px;
@@ -109,8 +131,7 @@
         'ci', 'cargo', 'grado', 'nombres', 'apellidos', 'contacto', 'foto', 'descripcion', 'vigencia'
     -->
     <div class="col-md-3 sidebar text-center" style="position: fixed;">
-        <img src="{{ asset('storage') . '/' . $perfil->foto }}" onerror="this.src='{{ asset('images/Usericono.png') }}'"
-            class="profile-img">
+        <img src="{{-- {{ asset('storage') . '/' . $perfil->foto }}" onerror="this.src='{{ asset('images/Usericono.png') }}' --}}" class="profile-img">
         <h3>{{ $perfil->nombres }} {{ $perfil->apellidos }}</h3>
         <p class="role">{{ $perfil->grado }}</p>
         <table class="description text-left">
@@ -140,7 +161,7 @@
         <div class="main-content">
             <h2>PLANILLA DEL PERSONAL</h2>
             {{-- <input type="text" oninput="this.value = this.value.toUpperCase()"  class="form-control" placeholder="Buscar"> --}}
-            <div class="table-responsive">
+            <div class="table-responsive" style="margin-left: -55px">
                 <table class="table">
                     <thead>
                         <tr>
@@ -188,8 +209,8 @@
             <h5>REGISTROS DEL PERSONAL</h5>
             <a href="{{ url('/admin/personal') }}">PERSONAL</a>
             <a href="{{ url('/admin/usuarios') }}">USUARIOS</a>
-            <a href="{{ url('/admin/cuenca') }}" class="active">CUENCAS</a>
-            <a href="{{ url('/admin/bases-operativas') }}" class="active">BASES DE OPERACIONES</a>
+            <a href="{{ url('/admin/cuenca') }}">CUENCAS</a>
+            <a href="{{ url('/admin/bases-operativas') }}">BASES DE OPERACIONES</a>
 
 
             <h5 class="px-1 pt-1">REGISTROS</h5>
@@ -202,8 +223,13 @@
             <a href="{{ url('/admin/material') }}">MATERIALES DE EMBARCACIONES</a>
             <a href="{{ url('/admin/servicios') }}">SERVICIOS DE EMBARCACIONES</a>
             <a href="{{ url('/admin/tipo') }}">TIPOS DE EMBARCACIONES</a>
+            <h5 class="px-1 pt-1">CARNETIZACION</h5>
+            <a href="{{ url('/admin/personas') }}">PERSONAS</a>
+            <a href="{{ url('/admin/material') }}"></a>
+            <a href="{{ url('/admin/servicios') }}"></a>
+            <a href="{{ url('/admin/tipo') }}"></a>
 
-            {{-- {{-- <a href="imprimir">Certificaciones</a> --}}
+            {{-- <a href="imprimir">Certificaciones</a> --}}
             {{-- <a href="imprimir">Alertas de Vencimiento</a> --}}
             {{-- <a href="dashboard">Modo Administrador</a> --}}
         </div>

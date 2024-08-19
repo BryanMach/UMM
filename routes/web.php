@@ -78,6 +78,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('admin/certificados', 'admin\certificadosController');
     Route::resource('admin/cargos', cargosController::class);
     Route::resource('admin/servicios', serviciosController::class);
+    Route::resource('admin/personas', ListaPropietariosController::class);
 
     Route::post('admin/imprimir-certificado-registro', [PerfilesController::class, 'imprimir_certificado_registro']);
     Route::post('admin/imprimir-certificado-seguridad', [PerfilesController::class, 'imprimir_certificado_seguridad']);

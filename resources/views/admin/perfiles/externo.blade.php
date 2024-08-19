@@ -231,10 +231,10 @@
                               </span>
                           </div>
                       </form> --}}
-                                {{-- <a class="nav-link" href="#">Corrección</a> --}}
+                            {{-- <a class="nav-link" href="#">Corrección</a> --}}
                             </li>
                         </ul>
-                        
+
                     </div>
                 </nav>
                 <table class="table table-bordered mt-4">
@@ -254,13 +254,12 @@
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
 
-                                <td><a
-                                        href="{{ url('/admin/propietario/' . $item->idPropietario) }}">{{ $item->propietarios->identificador }}</a>
+                                <td>{{ $item->propietarios->identificador }}
                                 </td>
                                 <td> {{ $item->propietarios->nombre }}</td>
 
-                                <td><a href="{{ url('/admin/artefactos/' . $item->idArtefacto) }}">{{ $item->artefactos->matricula }}
-                                        {{ $item->artefactos->nombre }}</a>
+                                <td>{{ $item->artefactos->matricula }}
+                                    {{ $item->artefactos->nombre }}
                                 </td>
                                 <td>
                                     <a href="{{ url('/admin/lista-propietarios/' . $item->id) }}"
