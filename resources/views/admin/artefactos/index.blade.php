@@ -1,81 +1,18 @@
   @extends('layouts.app')
   <style>
-      body {
-          font-family: Arial, sans-serif;
-          background-color: #f8f9fa;
+      .search-icon {
+          cursor: pointer;
+          margin-left: 5px;
+          font-size: 14px;
       }
 
-      .right-sidebar {
-          width: 250px;
-          height: 100vh;
-          background-color: #fff;
-          border-left: 1px solid #e0e0e0;
-          position: fixed;
-          top: 0;
-          right: 0;
-          overflow-y: auto;
-          box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
-      }
-
-      .sidebar-header,
-      .sidebar-content h5 {
-          background-color: #99bcfad5;
-          color: #333;
-          padding: 0.75rem 1rem;
-          margin: 0;
-          font-size: 1rem;
-          font-weight: 600;
-          text-transform: uppercase;
-          border-bottom: 1px solid #e0e0e0;
-      }
-
-      .sidebar-content {
-          padding: 0;
-      }
-
-      .sidebar-content a {
-          color: #333;
-          display: block;
-          padding: 0.75rem 1.5rem;
-          text-decoration: none;
-          transition: all 0.3s ease;
-          border-left: 4px solid transparent;
-      }
-
-      .sidebar-content a:hover,
-      .sidebar-content a.active {
-          background-color: #f8f9fa;
-          border-left-color: #3498db;
-      }
-
-      .sidebar-content a.active {
-          font-weight: 600;
-          background-color: #e9ecef;
-          color: #2c3e50;
-      }
-
-
-      .search-bar {
-          display: flex;
-          align-items: center;
-          margin-left: 15%;
-          margin-top: 5%;
-      }
-
-      .search-bar input {
-          flex-grow: 1;
-          margin-right: 10px;
-      }
-
-      .table-container {
-          background-color: #fff;
-          border: 1px solid #ddd;
-          padding: 20px;
-          border-radius: 5px;
-      }
-
-      .table-responsive {
-          margin-top: 20px;
+      .search-input {
+          margin-top: 5px;
+          width: 100%;
+          padding: 5px;
+          font-size: 12px;
+          border: 1px solid #ccc;
+          border-radius: 3px;
       }
   </style>
   @if ($nivel == 2)
@@ -167,26 +104,92 @@
                               <table class="table" width="100%">
                                   <thead>
                                       <tr>
-                                          <th>Nº</th>
-                                          <th>USUARIO</th>
-                                          <th>BASE DE OPERACIONES</th>
-                                          <th>NOMBRE DE EMBARCACION</th>
-                                          <th>NUMERO DE REGISTRO</th>
+                                          <th>
+                                              Nº
+                                          </th>
+                                          <th>
+                                              USUARIO
+                                              <i class="fa fa-search" onclick="toggleSearchInput('search-usuario')"></i>
+                                          </th>
+                                          <th>
+                                              BASE DE OPERACIONES
+                                              <i class="fa fa-search" onclick="toggleSearchInput('search-base')"></i>
+                                          </th>
+                                          <th>
+                                              NOMBRE DE EMBARCACIÓN
+                                              <i class="fa fa-search" onclick="toggleSearchInput('search-nombre')"></i>
+                                          </th>
+                                          <th>
+                                              NÚMERO DE REGISTRO
+                                              <i class="fa fa-search" onclick="toggleSearchInput('search-registro')"></i>
+                                          </th>
                                           <th>OPCIONES</th>
+                                      </tr>
+                                      <!-- Fila de Inputs de Búsqueda -->
+                                      <tr id="search-row" style="display: none;">
+                                          <td>
+                                          </td>
+                                          <td>
+                                              <form method="GET" action="{{ url('/admin/artefactos') }}">
+                                                  <input type="text" name="search-usuario" class="form-control"
+                                                      placeholder="Buscar Usuario">
+                                              </form>
+                                          </td>
+                                          <td>
+                                              <form method="GET" action="{{ url('/admin/artefactos') }}">
+                                                  <input type="text" name="search-base" class="form-control"
+                                                      placeholder="Buscar Base">
+                                              </form>
+                                          </td>
+                                          <td>
+                                              <form method="GET" action="{{ url('/admin/artefactos') }}">
+                                                  <input type="text" name="search-nombre" class="form-control"
+                                                      placeholder="Buscar Nombre">
+                                              </form>
+                                          </td>
+                                          <td>
+                                              <form method="GET" action="{{ url('/admin/artefactos') }}">
+                                                  <input type="text" name="search-registro" class="form-control"
+                                                      placeholder="Buscar Registro">
+                                              </form>
+                                          </td>
+                                          <td></td>
                                       </tr>
                                   </thead>
                                   <tbody>
                                       @foreach ($artefactos as $item)
-                                          <tr>
+                                          @php
+                                              $rowClass = ''; // Variable para definir la clase CSS de la fila
+                                              $certificadoVencido = false;
+
+                                              foreach ($item->certificado as $certificado) {
+                                                  // Verifica que el certificado tiene tipoC y calcula los días
+                                                  if ($certificado->tipoC == 1 && $certificado->fechaVencimiento) {
+                                                      $diasDiferencia = \Carbon\Carbon::now()->diffInDays(
+                                                          \Carbon\Carbon::parse($certificado->fechaVencimiento),
+                                                          false,
+                                                      );
+
+                                                      if ($diasDiferencia < 15) {
+                                                          $rowClass = 'table-danger'; // Clase de Bootstrap para fondo rojo
+                                                          $certificadoVencido = true;
+                                                          break;
+                                                      } elseif ($diasDiferencia < 30) {
+                                                          $rowClass = 'table-warning'; // Clase de Bootstrap para fondo amarillo
+                                                          $certificadoVencido = true;
+                                                      }
+                                                  }
+                                              }
+                                          @endphp
+                                          <tr class="{{ $rowClass }}">
                                               <td>{{ $loop->iteration }}</td>
-                                              <td>{{ $item->usuarios->usuario }}
-                                              </td>
+                                              <td>{{ $item->usuarios->usuario }}</td>
                                               <td>{{ $item->baseoperativa->baseOperativa }}</td>
                                               <td>{{ $item->nombre }}</td>
                                               <td>
                                                   @foreach ($item->certificado as $certificado)
                                                       @if ($certificado->tipoC == 1)
-                                                          @switch((int)$item->baseoperativa->cuenca->id)
+                                                          @switch((int) $item->baseoperativa->cuenca->id)
                                                               @case(1)
                                                                   L-{{ $certificado->nreg }}
                                                               @break
@@ -208,13 +211,16 @@
                                           </td>
                                           <td>
                                               <a href="{{ url('/admin/artefactos/' . $item->id) }}"
-                                                  title="Ver Artefacto"><button class="btn btn-info btn-sm"><i
-                                                          class="fa fa-eye" aria-hidden="true"></i> VER</button></a>
+                                                  title="Ver Artefacto">
+                                                  <button class="btn btn-info btn-sm"><i class="fa fa-eye"
+                                                          aria-hidden="true"></i> VER</button>
+                                              </a>
                                               <a href="{{ url('/admin/artefactos/' . $item->id . '/edit') }}"
-                                                  title="Editar Artefacto"><button class="btn btn-primary btn-sm"><i
+                                                  title="Editar Artefacto">
+                                                  <button class="btn btn-primary btn-sm"><i
                                                           class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                                                      EDITAR</button></a>
-
+                                                      EDITAR</button>
+                                              </a>
                                               <form method="POST"
                                                   action="{{ url('/admin/artefactos' . '/' . $item->id) }}"
                                                   accept-charset="UTF-8" style="display:inline">
@@ -222,8 +228,9 @@
                                                   {{ csrf_field() }}
                                                   <button type="submit" class="btn btn-danger btn-sm"
                                                       title="BORRAR Artefacto"
-                                                      onclick="return confirm(&quot;Confirm delete?&quot;)"><i
-                                                          class="fa fa-trash-o" aria-hidden="true"></i> BORRAR</button>
+                                                      onclick="return confirm('Confirm delete?')">
+                                                      <i class="fa fa-trash-o" aria-hidden="true"></i> BORRAR
+                                                  </button>
                                               </form>
                                           </td>
                                       </tr>
@@ -266,4 +273,19 @@
             }
         }
     });
+</script>
+<script>
+    // Función para mostrar/ocultar el input de búsqueda correspondiente
+    function toggleSearchInput(inputId) {
+        const row = document.getElementById('search-row');
+        const input = document.getElementById(inputId);
+
+        // Muestra la fila si está oculta
+        row.style.display = row.style.display === 'none' ? '' : 'none';
+
+        // Enfoca el input correspondiente
+        if (input) {
+            input.focus();
+        }
+    }
 </script>

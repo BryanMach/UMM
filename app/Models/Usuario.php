@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use app\Models\Artefacto;
+use app\Models\Persona;
 
 class Usuario extends Model
 {
@@ -35,5 +36,9 @@ class Usuario extends Model
     public function personals()
     {
         return $this->belongsTo(Personal::class, 'idPersonal', 'id');
+    }
+    public function personas()
+    {
+        return $this->hasMany(Persona::class);
     }
 }

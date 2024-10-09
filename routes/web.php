@@ -22,6 +22,7 @@ use App\Http\Controllers\admin\ubicacionController;
 use App\Http\Controllers\Auth\PerfilesController;
 use App\Http\Controllers\admin\cargosController;
 use App\Http\Controllers\admin\serviciosController;
+use App\Http\Controllers\admin\PersonasController;
 
 
 /*
@@ -74,11 +75,12 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('admin/datos-adicionales', datosAdicionalesController::class);
     Route::resource('admin/recuperar', RecuperarController::class);
     Route::resource('admin/ubicacion', ubicacionController::class);
+    Route::resource('admin/personas', PersonasController::class);
     //Route::resource('admin/certicados', 'admin\certicadosController');
     Route::resource('admin/certificados', 'admin\certificadosController');
     Route::resource('admin/cargos', cargosController::class);
     Route::resource('admin/servicios', serviciosController::class);
-    Route::resource('admin/personas', ListaPropietariosController::class);
+
 
     Route::post('admin/imprimir-certificado-registro', [PerfilesController::class, 'imprimir_certificado_registro']);
     Route::post('admin/imprimir-certificado-seguridad', [PerfilesController::class, 'imprimir_certificado_seguridad']);
@@ -105,4 +107,5 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('admin/corregir/guardarCorrección', [PerfilesController::class, 'guardarCorrección']);
     //Rutas para certificar
     Route::resource('admin/certificados', certificadosController::class);
+    Route::get('admin/index2', [PersonasController::class, 'index2']);
 });

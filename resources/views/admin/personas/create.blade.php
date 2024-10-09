@@ -16,6 +16,7 @@
             <a href="{{ url('/admin/lista-propietarios') }}">LISTAS DE PROPIETARIOS DE EMBARCACIONES</a>
             {{-- <a href="{{ url('/admin/') }}imprimir">Certificaciones</a> --}}
             {{-- <a href="{{ url('/admin/') }}imprimir">Alertas de Vencimiento</a> --}}
+
         </div>
     </div>
 @endif
@@ -44,13 +45,11 @@
 @section('content')
     <div class="container">
         <div class="row">
-            {{-- @include('admin.sidebar') --}}
-
             <div class="col-md-9">
                 <div class="card">
-                    <div class="card-header">CREAR NUEVO CARGO</div>
+                    <div class="card-header">Crear nueva persona</div>
                     <div class="card-body">
-                        <a href="{{ url('/admin/cargos') }}" title="Back"><button class="btn btn-warning btn-sm"><i
+                        <a href="{{ url('/admin/personas') }}" title="Back"><button class="btn btn-warning btn-sm"><i
                                     class="fa fa-arrow-left" aria-hidden="true"></i> ATRAS</button></a>
                         <br />
                         <br />
@@ -63,11 +62,11 @@
                             </ul>
                         @endif
 
-                        <form method="POST" action="{{ url('/admin/cargos') }}" accept-charset="UTF-8"
+                        <form method="POST" action="{{ url('/admin/personas') }}" accept-charset="UTF-8"
                             class="form-horizontal" enctype="multipart/form-data">
                             {{ csrf_field() }}
 
-                            @include ('admin.cargos.form', ['formMode' => 'create'])
+                            @include ('admin.personas.form', ['formMode' => 'create'])
 
                         </form>
 

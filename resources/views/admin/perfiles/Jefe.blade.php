@@ -130,8 +130,9 @@
     <!--compact('vista','personal','usuario','per edfil'));
         'ci', 'cargo', 'grado', 'nombres', 'apellidos', 'contacto', 'foto', 'descripcion', 'vigencia'
     -->
-    <div class="col-md-3 sidebar text-center" style="position: fixed;">
-        <img src="{{-- {{ asset('storage') . '/' . $perfil->foto }}" onerror="this.src='{{ asset('images/Usericono.png') }}' --}}" class="profile-img">
+    <div class="col-md-3 sidebar text-center" style="position: fixed; margin-top: -60px">
+        <img src="{{ asset('storage') . '/' . $perfil->foto }}" onerror="this.src='{{ asset('images/Usericono.png') }}'"
+            class="profile-img">
         <h3>{{ $perfil->nombres }} {{ $perfil->apellidos }}</h3>
         <p class="role">{{ $perfil->grado }}</p>
         <table class="description text-left">

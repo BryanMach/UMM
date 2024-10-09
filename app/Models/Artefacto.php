@@ -75,4 +75,8 @@ class Artefacto extends Model
     {
         return $this->belongsToMany(Propietario::class, 'lista_propietarios', 'idArtefacto', 'idPropietario');
     }
+    public function personas()
+    {
+        return $this->belongsTo(Persona::class);
+    }
 }

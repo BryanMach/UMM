@@ -44,13 +44,11 @@
 @section('content')
     <div class="container">
         <div class="row">
-            {{-- @include('admin.sidebar') --}}
-
             <div class="col-md-9">
                 <div class="card">
-                    <div class="card-header">CREAR NUEVO CARGO</div>
+                    <div class="card-header">Editar persona</div>
                     <div class="card-body">
-                        <a href="{{ url('/admin/cargos') }}" title="Back"><button class="btn btn-warning btn-sm"><i
+                        <a href="{{ url('/admin/personas') }}" title="Back"><button class="btn btn-warning btn-sm"><i
                                     class="fa fa-arrow-left" aria-hidden="true"></i> ATRAS</button></a>
                         <br />
                         <br />
@@ -63,11 +61,12 @@
                             </ul>
                         @endif
 
-                        <form method="POST" action="{{ url('/admin/cargos') }}" accept-charset="UTF-8"
+                        <form method="POST" action="{{ url('/admin/personas/' . $personas->id) }}" accept-charset="UTF-8"
                             class="form-horizontal" enctype="multipart/form-data">
+                            {{ method_field('PATCH') }}
                             {{ csrf_field() }}
 
-                            @include ('admin.cargos.form', ['formMode' => 'create'])
+                            @include ('admin.personas.form', ['formMode' => 'edit'])
 
                         </form>
 
