@@ -150,17 +150,16 @@
 
                             @default
                         @endswitch
-                        <a href="{{ url('/admin/lista-propietarios/' . $listapropietario->id . '/edit') }}"
-                            title="Editar ListaPropietario"><button class="btn btn-primary btn-sm"><i
-                                    class="fa fa-pencil-square-o" aria-hidden="true"></i> EDITAR</button></a>
+                        <a href="{{ url('/admin/personas/' . $personas->id . '/edit') }}" title="EDITAR PERSONA"><button
+                                class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                EDITAR</button></a>
                         {{-- @dd($nivel); --}}
                         @if ($nivel != 4)
-                            <form method="POST"
-                                action="{{ url('admin/listapropietarios' . '/' . $listapropietario->id) }}"
+                            <form method="POST" action="{{ url('admin/personas' . '/' . $personas->id) }}"
                                 accept-charset="UTF-8" style="display:inline">
                                 {{ method_field('DELETE') }}
                                 {{ csrf_field() }}
-                                <button type="submit" class="btn btn-danger btn-sm" title="BORRAR ListaPropietario"
+                                <button type="submit" class="btn btn-danger btn-sm" title="BORRAR persona"
                                     onclick="return confirm(&quot;Confirm delete?&quot;)"><i class="fa fa-trash-o"
                                         aria-hidden="true"></i> BORRAR</button>
                             </form>
@@ -188,7 +187,7 @@
                                     </tr>
                                     <tr>
                                         <th>NACIONALIDAD</th>
-                                        <td>{{-- {{ $personas->CI }} --}}</td>
+                                        <td>{{ $personas->nacionalidad }}</td>
                                     </tr>
                                     <tr>
                                         <th>LUGAR DE NACIMIENTO</th>
@@ -205,6 +204,10 @@
                                     <tr>
                                         <th>FECHA DE VENCIMIENTO DE CARNET</th>
                                         <td>{{ $personas->venCarnet }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>MATRICULA</th>
+                                        <td>{{ $personas->matricula }}</td>
                                     </tr>
                                     <tr>
                                         <th> CARNETS </th>

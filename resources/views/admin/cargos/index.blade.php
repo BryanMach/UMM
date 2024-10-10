@@ -103,9 +103,9 @@
                                             <td>{{ $loop->iteration }}</td>
                                             <td>{{ $item->cargo }}</td>
                                             <td>
-                                                <a href="{{ url('/admin/cargos/' . $item->id) }}"
+                                                {{--  <a href="{{ url('/admin/cargos/' . $item->id) }}"
                                                     title="View cargo"><button class="btn btn-info btn-sm"><i
-                                                            class="fa fa-eye" aria-hidden="true"></i> VER</button></a>
+                                                            class="fa fa-eye" aria-hidden="true"></i> VER</button></a> --}}
                                                 <a href="{{ url('/admin/cargos/' . $item->id . '/edit') }}"
                                                     title="Edit cargo"><button class="btn btn-primary btn-sm"><i
                                                             class="fa fa-pencil-square-o" aria-hidden="true"></i>

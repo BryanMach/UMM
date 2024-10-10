@@ -102,9 +102,9 @@
                                               <td>{{ $loop->iteration }}</td>
                                               <td>{{ $item->tipo }}</td>
                                               <td>
-                                                  <a href="{{ url('/admin/tipo/' . $item->id) }}" title="Ver Tipo"><button
+                                                  {{--  <a href="{{ url('/admin/tipo/' . $item->id) }}" title="Ver Tipo"><button
                                                           class="btn btn-info btn-sm"><i class="fa fa-eye"
-                                                              aria-hidden="true"></i> Ver</button></a>
+                                                              aria-hidden="true"></i> Ver</button></a> --}}
                                                   <a href="{{ url('/admin/tipo/' . $item->id . '/edit') }}"
                                                       title="Editar Tipo"><button class="btn btn-primary btn-sm"><i
                                                               class="fa fa-pencil-square-o" aria-hidden="true"></i>

@@ -59,6 +59,12 @@
             id="estadoCiv" value="{{ isset($personas->estadoCiv) ? $personas->estadoCiv : '' }}">
         {!! $errors->first('estadoCiv', '<p class="help-block">:message</p>') !!}
     </div>
+    <div class="form-group {{ $errors->has('nacionalidad') ? 'has-error' : '' }}">
+        <label for="nacionalidad" class="control-label">{{ 'NACIONALIDAD' }}</label>
+        <input class="form-control" name="nacionalidad" type="text" oninput="this.value = this.value.toUpperCase()"
+            id="nacionalidad" value="{{ isset($personas->nacionalidad) ? $personas->nacionalidad : '' }}">
+        {!! $errors->first('nacionalidad', '<p class="help-block">:message</p>') !!}
+    </div>
     <div class="form-group">
         <label for="matricula" class="control-label">{{ 'MATRÍCULA' }}</label>
         <input class="form-control" name="matricula" type="text" oninput="this.value = this.value.toUpperCase()"
@@ -103,24 +109,3 @@
     <div class="form-group">
         <input class="btn btn-primary" type="submit" value="{{ $formMode === 'edit' ? 'ACTUALIZAR' : 'Añadir' }}">
     </div>
-
-
-    <script>
-        // Simula un array con las matrículas existentes en la base de datos
-        var matriculasExistentes = ['586/06', '08336', '09510', '09501', '11996', '121221', '121230', '132014', '08133',
-            '10934', '10936', '10763', '09495', '10935', '08011', '764/06', '09476', '09683', '666/06', '111026',
-            '10913', '382/05', '08139', '09532', '131663', '111015'
-        ]; // Ejemplo de matrículas ya existentes
-
-        // Agregar el evento input al campo de matrícula
-        document.getElementById('matricula').addEventListener('input', function() {
-            var matricula = this.value.toUpperCase(); // Convertir la matrícula a mayúsculas
-
-            // Verificar si la matrícula ya existe en el array
-            if (matriculasExistentes.includes(matricula)) {
-                document.getElementById('matricula-existe').style.display = 'block'; // Mostrar el mensaje
-            } else {
-                document.getElementById('matricula-existe').style.display = 'none'; // Ocultar el mensaje
-            }
-        });
-    </script>
